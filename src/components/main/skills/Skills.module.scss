@@ -1,0 +1,30 @@
+.skills {
+	background: #DDFEE9;
+	&__container {
+	max-width: 1050px;
+	margin: 0 auto;
+	padding: 70px 15px;
+	@media (max-width: 583px) {
+		padding: 30px 15px;
+	 }
+	}
+	&__content {
+		display: flex;
+		flex-direction: column;
+		border: black 1px solid;
+		.my_skills__title {
+			align-self: center;
+			margin: 0px 0px 50px 0px;
+		}
+		.my_skills__block_items {
+		display: flex;
+		justify-content: space-between;
+		gap: 30px;
+		@media (max-width: 650px) {
+			padding: 0 15px;
+			flex-wrap: wrap;
+			justify-content: center;
+		 }
+		}
+	}
+}

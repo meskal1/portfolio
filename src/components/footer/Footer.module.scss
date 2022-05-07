@@ -1,0 +1,34 @@
+.footer {
+	background: #E8FEE0;
+	&__container {
+	max-width: 1050px;
+	margin: 0 auto;
+	padding: 70px 15px 10px;
+		@media (max-width: 583px) {
+		padding: 30px 15px 10px;
+		}
+	}
+	&__content {
+		text-align: center;
+		padding: 0 15px;
+		border: black 1px solid;
+		.footer__title{
+		margin: 0px 0px 30px 0px;
+		}
+		.footer__block_social{
+			display: flex;
+			justify-content: center;
+			gap: 25px;
+			margin: 0px 0px 30px 0px;
+			.footer__pic_social{
+				width: 50px;
+				height: 50px;
+				background: #C4C4C4;
+				.footer__social_img{
+				}
+			}
+		}
+		.footer__copyrights{
+		}
+	}
+}

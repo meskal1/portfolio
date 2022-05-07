@@ -1,0 +1,37 @@
+.header {
+	position: fixed;
+	z-index: 5;
+	width: 100%;
+	top: 0px;
+	left: 0px;
+	background: #CFEAFF;
+	&__container {
+	max-width: 1050px;
+	margin: 0 auto;
+	padding: 0 15px;
+	}
+	&__content {
+	display: flex;
+	min-height: 80px;
+	align-items: center;
+	justify-content:space-between;
+	// gap: 20px;
+	}
+	&__logo {
+		&_img {
+		}
+	}
+	.nav_items {
+		&__list {
+		display: flex;
+		gap: 20px;
+		border: black 1px solid;
+			.nav_item {
+				&__link {
+					display: inline-block;
+					color: black;
+				}
+			}
+		}
+	}
+}

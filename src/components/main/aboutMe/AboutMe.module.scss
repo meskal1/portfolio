@@ -1,0 +1,56 @@
+.about_me {
+	background: #FFDEE9;
+	&__container {
+	max-width: 1050px;
+	margin: 0 auto;
+	padding: 80px 15px;
+	@media (max-width: 583px) {
+		padding: 30px 15px;
+	 }
+	}
+	&__content {
+		display: flex;
+		padding: 0 70px;
+		gap: 20px;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		border: black 1px solid;
+		position: relative;
+		@media (max-width: 583px) {
+			justify-content: center;
+			padding: 20px 70px;
+		 }
+		@media (max-width: 523px) {
+			padding: 20px 40px;
+		 }
+	}
+	&__text_block {
+		max-width: 350px;
+		&__hello {
+		}
+		&__name {
+		}
+		&__i_am {
+		}
+	}
+	&__pic {
+		width: 200px;
+		height: 300px;
+		position: relative;
+		overflow: hidden;
+
+	}
+	&__img {
+		object-fit:cover;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		transition: all linear 0.2s;
+			&:hover{
+				transform: scale(1.05);
+			}
+		}
+}
