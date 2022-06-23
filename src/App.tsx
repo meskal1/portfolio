@@ -3,8 +3,8 @@ import s from './App.module.scss';
 import { Footer } from './components/footer/Footer';
 import { Header } from './components/header/Header';
 import { Home } from './components/main/home/Home';
-import Contacts from './components/main/contacts/Contacts';
-import Employment from './components/main/employment/Employment';
+import Contacts from './components/main/contact/Contacts';
+import { About } from './components/main/about/About';
 import Projects from './components/main/projects/Projects';
 import Skills from './components/main/skills/Skills';
 import logo from './img/transparent_logo.svg'
@@ -40,11 +40,11 @@ function App() {
 					<main className={s.main}>
 						<Routes>
 							<Route path="/" element={<Home />} />
-							<Route path="/main" element={<Home />} />
+							<Route path="/home" element={<Home />} />
 							<Route path="/skills" element={<Skills />} />
 							<Route path="/projects" element={<Projects />} />
 							<Route path="/contacts" element={<Contacts />} />
-							<Route path="/about" element={<Employment />} />
+							<Route path="/about" element={<About />} />
 						</Routes>
 					</main>
 					<Footer />

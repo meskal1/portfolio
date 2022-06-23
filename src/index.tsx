@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter } from 'react-router-dom';
 import './scripts.js'
-import './dynamic_adapt.js'
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement

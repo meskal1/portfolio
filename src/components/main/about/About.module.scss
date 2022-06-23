@@ -1,0 +1,105 @@
+@import "../../../mixin.scss";
+.about {
+	display: flex;
+	flex-grow: 1;
+	background: #1C1D25;
+	&__container {
+		display: flex;
+		flex-grow: 1;
+		justify-content: center;
+		max-width: 1050px;
+		margin: 0 auto;
+		padding: 0 15px;
+	}
+	&__content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		flex-grow: 1;
+		padding: 50px 0px;
+		row-gap: 30px;
+	}
+	&__title {
+		opacity: 0;
+		animation: animate 0.7s ease 1 1.1s forwards;
+		font-size: 50px;
+		font-weight: 700;
+	}
+	&__text_container{
+		width: 600px;
+	}
+	&__text{
+		position: relative;
+		display: inline;
+		font-size: 23px;
+		line-height: 35px;
+		&::before{
+			content:'';
+			position: absolute;
+			width: 2px;
+			height: 26px;
+			bottom: -1px;
+			right: -5px;
+			background: red;
+			// animation: typewriter ease 1s infinite;
+		}
+	}
+	&__invitation_block{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		row-gap: 15px;
+	}
+	&__invitation{
+		opacity: 0;
+		animation: animate 0.7s ease 1 1.2s forwards;
+		display: inline;
+		font-size: 22px;
+		line-height: 30px;
+		font-weight: 700;
+		&::before{
+			content:'';
+			position: absolute;
+			width: 2px;
+			height: 26px;
+			bottom: 4px;
+			right: -5px;
+			background: red;
+			// animation: typewriter ease 1s infinite;
+		}
+	}
+	&__invitation_button {
+		animation: animateButton 0.7s ease 1 1.3s forwards;
+		opacity: 0;
+		color: black;
+		display: inline-block;
+		font-weight: 700;
+		padding: 9px 15px 6px;
+		border-radius: 30px;
+		background: linear-gradient(to bottom, #F9C847 , #f9c64782);
+		transition: all linear 0.05s;
+		&:active {
+			box-shadow: #f9c64752 0px 16px 15px -2px;
+			transform: translate(0px,2px);
+			}
+			&:hover {
+			color: white;
+			}
+	}
+}
+@keyframes typewriter {
+	1% {background:transparent}
+	20% {background:transparent}
+}
+@keyframes animateButton{
+	0% {transform: translate(0,20px);}
+	100% {transform: translate(0px,0px);opacity: 1;box-shadow: #f9c64752 0px 20px 15px 0px;}
+}
+@keyframes animate{
+	0% {transform: translate(0,20px);}
+	100% {transform: translate(0px,0px);opacity: 1}
+}
+// Привет, меня зовут Даниил, я инженер по информационной безопасности, а теперь и фронтенд разработчик. Мне нравиться создавать вещи, с которыми приятно взаимодействовать пользлователям. Как разработчик, я стремлюсь создавать простые, понятные и красивые решения для веба. Все началось когда мне захотелось создать свой сайт, что послужило поиску нужной информации, прохождению соответствующих курсов и достижению цели, что Вы сейчас наблюдаете. Теперь меня никто не остановит...
+// I AM AVAILABLE FOR FREELANCE
+// Hi, my name is Daniil, I'm an InfoSec engineer and now a front-end developer. I like to create things that are pleasant for users to interact with. As a developer, I pursuit to create simple, understandable and beautiful solutions for the web. It all started when I wanted to create my own website, which served as the search for the necessary information, the passage of relevant courses and the achievement of the goal that you are now observing. Now no one can stop me...

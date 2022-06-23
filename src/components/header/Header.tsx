@@ -9,7 +9,7 @@ export type HeaderType = {
 
 export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu }) => {
 	const header = [
-		{ id: '1', link: '/main', name: 'Home' },
+		{ id: '1', link: '/home', name: 'Home' },
 		{ id: '2', link: '/skills', name: 'Skills' },
 		{ id: '3', link: '/projects', name: 'Projects' },
 		{ id: '4', link: '/contacts', name: 'Contact' },
@@ -51,7 +51,7 @@ export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu }) => {
 			<header className={s.header}>
 				<div className={s.header__container}>
 					<div className={s.header__content}>
-						<a className={s.header__logo} href="/">
+						<a className={s.header__logo} href="https://meskal1.github.io/portfolio/#">
 							<img className={s.header__logo_img} src={logo} alt="logo" />
 						</a>
 						<div className={s.menu_burger_container} onClick={onClickMenuBurger}>

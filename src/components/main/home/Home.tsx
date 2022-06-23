@@ -8,17 +8,17 @@ export type HomeType = {
 export const Home: React.FC<HomeType> = ({ }) => {
 	return (
 		<>
-			<section className={s.about_me}>
-				<div className={s.about_me__container} >
-					<div className={s.about_me__content}>
-						<div className={s.about_me__text_block} >
-							<h1 className={s.about_me__name}>Daniil Kalach</h1>
-							<h3 className={s.about_me__who_i_am}>Front-end Developer</h3>
-							<a className={s.about_me__button} href="#" >DOWNLOAD CV</a>
+			<section className={s.home}>
+				<div className={s.home__container} >
+					<div className={s.home__content}>
+						<div className={s.home__text_block} >
+							<h2 className={s.home__name}>Daniil Kalach</h2>
+							<h1 className={s.home__profession}>Front-end Developer</h1>
+							<a className={s.home__download_cv} href="#" >DOWNLOAD CV</a>
 						</div>
 						<div className={s.container_pic}>
-							<div className={s.about_me__pic}>
-								<img className={s.about_me__img} src={photo} alt="Photo" />
+							<div className={s.home__pic}>
+								<img className={s.home__img} src={photo} alt="Photo" />
 							</div>
 						</div>
 					</div>
