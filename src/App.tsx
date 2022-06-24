@@ -3,7 +3,7 @@ import s from './App.module.scss';
 import { Footer } from './components/footer/Footer';
 import { Header } from './components/header/Header';
 import { Home } from './components/main/home/Home';
-import Contacts from './components/main/contact/Contacts';
+import { Contact } from './components/main/contact/Contact';
 import { About } from './components/main/about/About';
 import Projects from './components/main/projects/Projects';
 import Skills from './components/main/skills/Skills';
@@ -42,7 +42,7 @@ function App() {
 							<Route path="/home" element={<Home />} />
 							<Route path="/skills" element={<Skills />} />
 							<Route path="/projects" element={<Projects />} />
-							<Route path="/contacts" element={<Contacts />} />
+							<Route path="/contacts" element={<Contact />} />
 							<Route path="/about" element={<About displayedLogo={display} displayedLogoProps={s.display} />} />
 						</Routes>
 					</main>
