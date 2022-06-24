@@ -1,0 +1,26 @@
+.about__invitation{
+		opacity: 0;
+		animation: animate 0.7s ease 1 19.2s forwards;
+		display: inline;
+		font-size: 22px;
+		line-height: 30px;
+		font-weight: 700;
+		&::before{
+			content:'';
+			position: absolute;
+			width: 2px;
+			height: 26px;
+			bottom: 4px;
+			right: -5px;
+			background: red;
+			animation: typewriter ease 1s infinite;
+		}
+	}
+	@keyframes typewriter {
+		1% {background:transparent}
+		20% {background:transparent}
+	}
+	@keyframes animate{
+		0% {transform: translate(0,20px);}
+		100% {transform: translate(0px,0px);opacity:1}
+	}

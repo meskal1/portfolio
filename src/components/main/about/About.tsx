@@ -1,33 +1,23 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import s from './About.module.scss'
+import { AboutText } from './aboutText/AboutText';
+import { InvitationText } from './invitationText/InvitationText';
 
-export type AboutType = {
-
+type AboutType = {
+	displayedLogo: string
+	displayedLogoProps: string
 }
-let i = 0
-export const About: React.FC<AboutType> = ({ }) => {
 
-	const aboutText = `Hi, my name is Daniil, I'm an InfoSec engineer and now a front-end developer. I like to create things that are awesome for users to interact with. As a developer, I pursuit to create simple, understandable and beautiful solutions for the web. It all started when I wanted to create my own website, which served for search of the information, compliting of relevant courses and the achievement of the goal that you are now observing. And I don't forget about sports. Now, no one can stop me. :)`
-	const [typedAboutText, setW] = useState([''])
-	let [typedAboutText2, setE] = useState('')
-	i = useMemo(() => i++, [typedAboutText])
-	useEffect(() => {
-		// setTimeout(() => {
-		const arrayOfText = aboutText.split(``)
-		function loop() {
-			if (typedAboutText2.length < aboutText.length) {
-				setW(typedAboutText.concat(arrayOfText[i]))
-				setE(typedAboutText.join(``))
-				// setI(i)
-				i++
-				console.log(typedAboutText2);
-				console.log(i);
-			}
-		}
-		// }, 3290)
-		const interval = setInterval(loop, 2000)
-		return () => { clearInterval(interval) }
-	}, [typedAboutText])
+export const About: React.FC<AboutType> = ({ displayedLogo, displayedLogoProps }) => {
+	let [canIStartAimate, setCanIStartAimate] = useState(false);
+	let [canIStartAimate2, setCanIStartAimate2] = useState(false);
+
+	if (displayedLogo === displayedLogoProps) setTimeout(() => {
+		setCanIStartAimate(true)
+	}, 2000)
+	if (displayedLogo === displayedLogoProps) setTimeout(() => {
+		setCanIStartAimate2(true)
+	}, 21000)
 
 	return (
 		<>
@@ -36,10 +26,10 @@ export const About: React.FC<AboutType> = ({ }) => {
 					<div className={s.about__content}>
 						<h2 className={s.about__title}>About me</h2>
 						<div className={s.about__text_container}>
-							<p className={s.about__text}>{typedAboutText2}</p>
+							<AboutText canIStartAimate={canIStartAimate} />
 						</div>
 						<div className={s.about__invitation_block}>
-							<p className={s.about__invitation}>AVAILABLE FOR FREELANCE</p>
+							<InvitationText canIStartAimate={canIStartAimate2} />
 							<a className={s.about__invitation_button} href="#">HIRE ME</a>
 						</div>
 					</div>

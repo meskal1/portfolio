@@ -11,7 +11,6 @@ import logo from './img/transparent_logo.svg'
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
-
 	let [display, setDisplay] = useState(s.displayNone)
 	setTimeout(() => {
 		setDisplay(s.display)
@@ -44,7 +43,7 @@ function App() {
 							<Route path="/skills" element={<Skills />} />
 							<Route path="/projects" element={<Projects />} />
 							<Route path="/contacts" element={<Contacts />} />
-							<Route path="/about" element={<About />} />
+							<Route path="/about" element={<About displayedLogo={display} displayedLogoProps={s.display} />} />
 						</Routes>
 					</main>
 					<Footer />

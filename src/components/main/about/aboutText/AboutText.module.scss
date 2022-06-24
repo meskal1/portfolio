@@ -1,0 +1,37 @@
+@import "../../../../mixin.scss";
+.about__text{
+	position: relative;
+	display: inline;
+	font-size: 23px;
+	line-height: 35px;
+	@include adaptiveValue("line-height",35,22,630,388,1);
+	@include adaptiveValue("font-size",23,22,630,388,1);
+	@media (min-width: 536px) and (max-height: 736px) {
+		line-height: 30px;
+	}
+	@media (min-width: 536px) and (max-height: 674px) {
+		line-height: 25px;
+		font-size: 22px;
+	}
+	&::before{
+		content:'';
+		position: absolute;
+		width: 2px;
+		height: 26px;
+		bottom: -1px;
+		right: -5px;
+		background: red;
+		animation: typewriter 1s ease 2, bgTransparent 0.01s ease 19s forwards, typewriterAgain 1s ease 18s infinite;
+	}
+}
+@keyframes typewriter {
+	1% {background:transparent}
+	20% {background:transparent}
+}
+@keyframes typewriterAgain {
+	1% {background:transparent}
+	20% {background:transparent}
+}
+@keyframes bgTransparent {
+	100% {background:transparent}
+}
