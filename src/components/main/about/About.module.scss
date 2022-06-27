@@ -20,7 +20,7 @@
 		row-gap: 30px;
 		@include adaptiveValue("row-gap",30,25,630,388,1);
 		@media (max-height: 674px) {
-			row-gap: 20px;
+			row-gap: 15px;
 		}
 	}
 	&__title {
@@ -31,14 +31,15 @@
 	}
 	&__text_container{
 		width: 600px;
-		@include adaptiveValue("width",600,290,630,320,1);
+		@include adaptiveValue("width",600,250,630,280,1);
 	}
 	&__invitation_block{
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		row-gap: 15px;
-		margin: 0px 0px 15px 0px;
+		margin: 0px 0px 20px 0px;
+		@include adaptiveValue("row-gap",15,10,630,320,1);
 	}
 	&__invitation_button {
 		animation: animateButton 0.7s ease 1 19.3s forwards;

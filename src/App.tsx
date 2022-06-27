@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './App.module.scss';
 import { Footer } from './components/footer/Footer';
 import { Header } from './components/header/Header';
@@ -11,12 +11,16 @@ import logo from './img/transparent_logo.svg'
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
-	let [display, setDisplay] = useState(s.displayNone)
-	setTimeout(() => {
-		setDisplay(s.display)
-	}, 3290)
-	const [isMenuOpen, setIsMenuOpen] = useState('')
 
+	// Отображается лого, потом меняется стиль для всего контента с display: none на display: flex
+	let [displayContent, setDisplayContent] = useState<string>(s.displayNone)
+	setTimeout(() => {
+		setDisplayContent(s.display)
+	}, 3290)
+
+	const [isMenuOpen, setIsMenuOpen] = useState<string>('')
+	// При нажатии на бургер добавляется/убирается атрибут style у body со свойством overflow: hidden.
+	// Добавляются/убираются стили отображения бургера.
 	const onClickBurgerMenu = () => {
 		if (isMenuOpen === s.menuOpen) {
 			setIsMenuOpen('')
@@ -27,6 +31,22 @@ function App() {
 		}
 	};
 
+	const [mediaQueryWidth, setMediaQueryWidth] = useState<boolean>(false);
+	// Если width больше 535px и применены стили s.menuOpen, то сбросить стили и удалить атрибут style у body со свойством overflow: hidden (функционал если с открытым меню повернуть в landscape (горизонт))
+	if (!mediaQueryWidth && isMenuOpen) {
+		document.querySelector('body')?.removeAttribute('style');
+		setIsMenuOpen('');
+	}
+	useEffect(() => {
+		const widthWatcher = window.matchMedia("(max-width: 535px)")
+		setMediaQueryWidth(widthWatcher.matches);
+
+		const updateMediaQueryValue = () => setMediaQueryWidth(widthWatcher.matches)
+		widthWatcher.addEventListener('change', updateMediaQueryValue)
+
+		return () => widthWatcher.removeEventListener('change', updateMediaQueryValue)
+	}, [])
+
 	return (
 		<>
 			<div className={`${s.wrapper} ${isMenuOpen}`}>
@@ -34,8 +54,8 @@ function App() {
 					<div className={s.logo2}><img className={s.logo1} src={logo} alt="logo2" /></div>
 					<div className={s.wave_container}><div className={s.wave}></div></div>
 				</div>
-				<div className={display}>
-					<Header onClickBurgerMenu={onClickBurgerMenu} />
+				<div className={displayContent}>
+					<Header onClickBurgerMenu={onClickBurgerMenu} mediaQueryWidth={mediaQueryWidth} />
 					<main className={s.main}>
 						<Routes>
 							<Route path="/" element={<Home />} />
@@ -43,10 +63,10 @@ function App() {
 							<Route path="/skills" element={<Skills />} />
 							<Route path="/projects" element={<Projects />} />
 							<Route path="/contacts" element={<Contact />} />
-							<Route path="/about" element={<About displayedLogo={display} displayedLogoProps={s.display} />} />
+							<Route path="/about" element={<About displayedLogo={displayContent} displayedLogoProps={s.display} />} />
 						</Routes>
 					</main>
-					<Footer />
+					<Footer isMenuOpen={isMenuOpen} />
 				</div>
 			</div>
 		</>

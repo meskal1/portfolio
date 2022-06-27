@@ -1,14 +1,19 @@
 @import "../../mixin.scss";
+// .footerMenuClosed {
+// 	display: none;
+// }
+// .footerMenuOpen {
+// 	display: unset;
+// }
 .footer {
-	// position: fixed;
-	// z-index: 1;
-	// width: 100%;
-	// bottom: 0px;
-	// left: 0px;
-	// opacity: 0;
 	background: transparent;
-	@media (max-width: 811px) {
-	// position: relative;
+	@media (max-width: 377px) {
+		display: none;
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 2;
 	}
 	&__container {
 	max-width: 1050px;
@@ -26,6 +31,9 @@
 			gap: 20px;
 			margin: 0px 0px 20px 0px; 
 			@include adaptiveValue("margin-bottom",20,10,500,320,1);
+			@media (max-width: 377px) {
+				animation: animateFooter 0.7s ease 1 .8s forwards;
+			}
 			.footer__pic_social{
 				width: 30px;
 				height: 30px;
@@ -66,6 +74,7 @@
 			line-height: 22px;
 			color: rgb(112, 108, 108);
 			@media (max-width: 377px) {
+				animation: animateFooter 0.7s ease 1 .9s forwards;
 				flex-direction: column;
 				align-items: center;
 				}

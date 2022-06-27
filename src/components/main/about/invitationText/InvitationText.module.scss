@@ -1,3 +1,4 @@
+@import "../../../../mixin.scss";
 .about__invitation{
 		opacity: 0;
 		animation: animate 0.7s ease 1 19.2s forwards;
@@ -5,6 +6,8 @@
 		font-size: 22px;
 		line-height: 30px;
 		font-weight: 700;
+		@include adaptiveValue("font-size",22,19,319,280,1); // Galaxy fold
+		@include adaptiveValue("line-height",30,25,319,280,1); // Galaxy fold
 		&::before{
 			content:'';
 			position: absolute;

@@ -16,15 +16,15 @@
 	}
 	&__content {
 	display: flex;
-	min-height: 100px;
+	min-height: rem(100);
 	align-items: center;
 	justify-content:space-between;
-	@include adaptiveValue("min-height",100,80,1050,811,1)
+	@include adaptiveValue("min-height",100,70,1050,580,1);
 	}
 	&__logo {
 		position: relative;
 		width: 45px;
-		height:30px;
+		height: 30px;
 		overflow: hidden;
 		animation: animateLogo 1s ease 1 ;
 	}
@@ -42,8 +42,7 @@
 	}
 	.nav_items{
 		@media (max-width: 535px) {
-			position: absolute;
-			z-index: -1;
+			display: none;
 		}
 	}
 	.nav_items__list {
@@ -138,6 +137,7 @@
 				font-weight: 700;
 				font-size: 36px;
 				line-height: 35px;
+				@include adaptiveValue("font-size",36,33,305,280,1); // Galaxy Fold
 			}
 		}
 	}

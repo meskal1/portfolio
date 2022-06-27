@@ -6,14 +6,17 @@ import codears_logo from '../../img/codears_logo.svg'
 import { FooterAnimate } from './footerAnimate/FooterAnimate';
 
 export type FooterType = {
-
+	isMenuOpen: string
 }
 //TODO Сделать переходы по страницам сверху вних опускается шторка или слайдер страниц или анимирование взад и анимированноепоявление новой страницы, увеличивающийся круг закрывающий быстро контент и анимирутеся новый 
-//TODO Сделать меню бургер
-export const Footer: React.FC<FooterType> = ({ }) => {
+
+export const Footer: React.FC<FooterType> = ({ isMenuOpen }) => {
+
+	const menuOpen = isMenuOpen !== '' ? { display: 'unset' } : {};
+
 	return (
 		<>
-			<footer className={s.footer}>
+			<footer className={s.footer} style={menuOpen}>
 				<div className={s.footer__container}>
 					<div className={s.footer__content}>
 						<div className={s.footer__block_social}>
@@ -40,3 +43,18 @@ export const Footer: React.FC<FooterType> = ({ }) => {
 		</>
 	);
 };
+
+// let [mediaQueryWidth, setMediaQueryWidth] = useState<boolean>(false);
+// useEffect(() => {
+// 	const widthWatcher = window.matchMedia("(max-width: 377px)")
+// 	setMediaQueryWidth(widthWatcher.matches);
+
+// 	function updateMediaQueryValue() {
+// 		setMediaQueryWidth(widthWatcher.matches)
+// 	}
+// 	widthWatcher.addEventListener('change', updateMediaQueryValue)
+
+// 	return function cleanup() {
+// 		widthWatcher.removeEventListener('change', updateMediaQueryValue)
+// 	}
+// }, [])

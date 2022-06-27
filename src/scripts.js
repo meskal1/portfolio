@@ -13,5 +13,3 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
 // В css задать нашему блоку высоту
 // height: 100vh; /* Резервный вариант для браузеров, не поддерживающих пользовательские свойства */
 // height: calc(var(--vh, 1vh) * 100);
-
-

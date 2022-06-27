@@ -5,9 +5,10 @@ import { Link, useLocation } from 'react-router-dom';
 
 export type HeaderType = {
 	onClickBurgerMenu: () => void
+	mediaQueryWidth: boolean
 }
 
-export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu }) => {
+export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidth }) => {
 	const header = [
 		{ id: '1', link: '/home', name: 'Home' },
 		{ id: '2', link: '/skills', name: 'Skills' },
@@ -15,9 +16,16 @@ export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu }) => {
 		{ id: '4', link: '/contacts', name: 'Contact' },
 		{ id: '5', link: '/about', name: 'About me' },
 	]
+	// Проверяю какая ссылка открыта в данный момент
 	const location = useLocation();
 	const [isActive, setIsActive] = useState(s.not_active)
 	const [isMenuOpen, setIsMenuOpen] = useState('')
+
+	// Если width больше 535px и применены стили s.active, то сбросить стили (функционал если с открытым меню повернуть в landscape (горизонт))
+	if (isMenuOpen && !mediaQueryWidth) {
+		setIsActive(s.not_active);
+		setIsMenuOpen('');
+	}
 
 	const onClickMenuBurger = () => {
 		isActive === s.not_active ? setIsActive(s.active) : setIsActive(s.not_active)

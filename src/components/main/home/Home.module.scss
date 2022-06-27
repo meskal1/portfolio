@@ -40,11 +40,14 @@
 		margin: 0px 0px 10px 0px;
 		@include adaptiveValue("font-size",76,50,500,320,1);
 		@include adaptiveValue("line-height",70,44,500,320,1);
+		@media (max-width: 319px) {
+			font-size: 44px; // Galaxy fold
+		}
 	}
 	&__profession {
 		animation: animateTitle 0.7s ease 1 1.2s forwards;
 		opacity: 0;
-		font-size: 32px;
+		font-size: rem(32);
 		font-weight: 700;
 		margin: 0px 0px 25px 0px;
 		@include adaptiveValue("font-size",32,25,500,320,1);
@@ -53,12 +56,13 @@
 	&__download_cv{
 		align-self: flex-start;
 		animation: animateLink 0.7s ease 1 1.3s forwards;
+		display:flex;
 		opacity: 0;
 		color: black;
-		display: inline-block;
 		font-weight: 700;
 		padding: 9px 15px 6px;
 		border-radius: 30px;
+		text-align: center;
 		background: linear-gradient(to bottom, #F9C847 , #f9c64782);
 		transition: all linear 0.05s;
 		@media (max-width: 811px) {
