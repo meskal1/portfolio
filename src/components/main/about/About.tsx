@@ -4,18 +4,17 @@ import { AboutText } from './aboutText/AboutText';
 import { InvitationText } from './invitationText/InvitationText';
 
 type AboutType = {
-	displayedLogo: string
-	displayedLogoProps: string
+	contentDisplayed: boolean
 }
 
-export const About: React.FC<AboutType> = ({ displayedLogo, displayedLogoProps }) => {
+export const About: React.FC<AboutType> = ({ contentDisplayed }) => {
 	let [canIStartAimate, setCanIStartAimate] = useState(false);
 	let [canIStartAimate2, setCanIStartAimate2] = useState(false);
 
-	if (displayedLogo === displayedLogoProps) setTimeout(() => {
+	if (contentDisplayed) setTimeout(() => {
 		setCanIStartAimate(true)
 	}, 2000)
-	if (displayedLogo === displayedLogoProps) setTimeout(() => {
+	if (contentDisplayed) setTimeout(() => {
 		setCanIStartAimate2(true)
 	}, 21000)
 

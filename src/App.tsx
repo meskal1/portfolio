@@ -13,10 +13,11 @@ import { Route, Routes } from 'react-router-dom';
 function App() {
 
 	// Отображается лого, потом меняется стиль для всего контента с display: none на display: flex
-	let [displayContent, setDisplayContent] = useState<string>(s.displayNone)
+	const [isContentDisplayed, setIsContentDisplayed] = useState<string>(s.displayNone)
 	setTimeout(() => {
-		setDisplayContent(s.display)
+		setIsContentDisplayed(s.display)
 	}, 3290)
+	const contentDisplayed = isContentDisplayed === s.display
 
 	const [isMenuOpen, setIsMenuOpen] = useState<string>('')
 	// При нажатии на бургер добавляется/убирается атрибут style у body со свойством overflow: hidden.
@@ -54,7 +55,7 @@ function App() {
 					<div className={s.logo2}><img className={s.logo1} src={logo} alt="logo2" /></div>
 					<div className={s.wave_container}><div className={s.wave}></div></div>
 				</div>
-				<div className={displayContent}>
+				<div className={isContentDisplayed}>
 					<Header onClickBurgerMenu={onClickBurgerMenu} mediaQueryWidth={mediaQueryWidth} />
 					<main className={s.main}>
 						<Routes>
@@ -63,7 +64,7 @@ function App() {
 							<Route path="/skills" element={<Skills />} />
 							<Route path="/projects" element={<Projects />} />
 							<Route path="/contacts" element={<Contact />} />
-							<Route path="/about" element={<About displayedLogo={displayContent} displayedLogoProps={s.display} />} />
+							<Route path="/about" element={<About contentDisplayed={contentDisplayed} />} />
 						</Routes>
 					</main>
 					<Footer isMenuOpen={isMenuOpen} />

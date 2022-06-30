@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import s from './AboutText.module.scss'
 
-export type AboutTextType = {
+type AboutTextType = {
 	canIStartAimate: boolean
 }
 

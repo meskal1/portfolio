@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import s from './Header.module.scss'
 import logo from '../../img/logo.svg'
 import { Link, useLocation } from 'react-router-dom';
+import { NavItems } from './navItems/NavItems';
 
 export type HeaderType = {
 	onClickBurgerMenu: () => void
@@ -9,7 +10,8 @@ export type HeaderType = {
 }
 
 export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidth }) => {
-	const header = [
+	console.log('rendered header');
+	const headerLinks = [
 		{ id: '1', link: '/home', name: 'Home' },
 		{ id: '2', link: '/skills', name: 'Skills' },
 		{ id: '3', link: '/projects', name: 'Projects' },
@@ -28,22 +30,12 @@ export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidt
 	}
 
 	const onClickMenuBurger = () => {
-		isActive === s.not_active ? setIsActive(s.active) : setIsActive(s.not_active)
-		isMenuOpen === '' ? setIsMenuOpen(s.menuOpen) : setIsMenuOpen('')
+		isActive === s.not_active ? setIsActive(s.active) : setIsActive(s.not_active);
+		isMenuOpen === '' ? setIsMenuOpen(s.menuOpen) : setIsMenuOpen('');
 		onClickBurgerMenu();
 	};
 
-	const headerLinks = header.map((el, i) => {
-		return (
-			<li className={s.nav_item} style={{ animationDelay: `${+el.id * 0.1}s` }} key={el.id}>
-				<Link
-					className={location.pathname === el.link ? s.active_link : s.nav_item__link}
-					to={el.link}>{el.name}</Link>
-			</li>
-		)
-	})
-
-	const burgerLinks = header.map((el, i) => {
+	const burgerLinks = headerLinks.map((el, i) => {
 		return (
 			<li className={s.nav_item_burger} style={{ animationDelay: `${+el.id * 0.1}s` }} key={el.id}>
 				<Link
@@ -69,11 +61,7 @@ export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidt
 								<span></span>
 							</div>
 						</div>
-						<nav className={s.nav_items}>
-							<ul className={s.nav_items__list}>
-								{headerLinks}
-							</ul>
-						</nav>
+						{!mediaQueryWidth && <NavItems headerLinks={headerLinks} location={location.pathname} />}
 						<nav className={`${s.nav_burger_items} ${isMenuOpen}`}>
 							<ul className={s.nav_burger_items__list}>
 								{burgerLinks}

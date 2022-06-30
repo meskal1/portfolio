@@ -13,3 +13,21 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
 // В css задать нашему блоку высоту
 // height: 100vh; /* Резервный вариант для браузеров, не поддерживающих пользовательские свойства */
 // height: calc(var(--vh, 1vh) * 100);
+
+
+// const element = document.querySelector('.contacts__input_name');
+
+// const keyframes = {
+// 	background: ['black', 'red']
+// }
+
+// const options = {
+// 	id: "color-change",
+// 	duration: 2000,
+// 	delay: 1000,
+// 	easing: "ease-in-out",
+// 	iterations: Infinity,
+// 	fill: "forwards"
+// }
+
+// element.animate(keyframes, options);

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import s from './Contact.module.scss'
 
 export type ContactType = {
 
 }
 
-export const Contact: React.FC<ContactType> = ({ }) => {
-
+export const Contact: React.FC<ContactType> = memo(({ }) => {
+	console.log('rendered contact');
 	const [autocomplite, setAutocomplite] = useState(localStorage.getItem('isOffAutocomplite') || 'off')
 	const [isChecked, setIsChecked] = useState<boolean>(localStorage.getItem('isOffAutocomplite') === 'on' ? true : false)
 
@@ -32,30 +32,34 @@ export const Contact: React.FC<ContactType> = ({ }) => {
 							<h2 className={s.contacts__title}>Contact</h2>
 							<p className={s.contacts__text}>Contact me if you have a job or just say hi. :)</p>
 						</div>
-						<form className={s.contacts__form} action="">
+						<div className={s.contacts__form_container}>
 							<label className={s.switcher} htmlFor="checkbox">autocomplete
 								<input type="checkbox" id="checkbox" onChange={onChangeAutocomplite} checked={isChecked} />
 							</label>
-							<div className={s.contacts__block_input1}>
-								<input className={s.contacts__input_name} id="name" required placeholder="NAME" name="name" type="text" autoComplete={autocomplite} />
-								<label className={s.contacts__label_name} htmlFor="name">NAME</label>
-							</div>
-							<div className={s.contacts__block_input}>
-								<input className={s.contacts__input_email} required placeholder="EMAIL" name="email" type="text" autoComplete={autocomplite} />
-								<label className={s.contacts__label_email} htmlFor="email">EMAIL</label>
-							</div>
-							<div className={s.contacts__block_input}>
-								<textarea placeholder="MESSAGE" required className={s.contacts__textarea} name="message" id="contacts" />
-								<label className={s.contacts__label_message} htmlFor="message">MESSAGE</label>
-							</div>
-						</form>
+							<form className={s.contacts__form} action="">
+								<div className={s.contacts__block_input}>
+									<label className={s.background_autocomplite}></label>
+									<input className={s.contacts__input_name} id="name" required placeholder="NAME" name="name" type="text" autoComplete={autocomplite} />
+									<label className={s.contacts__label_name} htmlFor="name">NAME</label>
+								</div>
+								<div className={s.contacts__block_input}>
+									<label className={s.background_autocomplite}></label>
+									<input className={s.contacts__input_email} required placeholder="EMAIL" name="email" type="text" autoComplete={autocomplite} />
+									<label className={s.contacts__label_email} htmlFor="email">EMAIL</label>
+								</div>
+								<div className={s.contacts__block_input}>
+									<textarea placeholder="MESSAGE" required className={s.contacts__textarea} name="message" id="contacts" />
+									<label className={s.contacts__label_message} htmlFor="message">MESSAGE</label>
+								</div>
+							</form>
+						</div>
 						<button className={s.contacts__form_button} type="submit" form="contacts">SEND ME MESSAGE</button>
 					</div>
 				</div>
 			</section>
 		</>
 	);
-};
+});
 // Анимсация кнопки градиент черно желтый цветтекста белый сверху вних как на шторке
 // Добавить поле с чемто по нажатию на кнопку или ссылку, анимация поля по высоте и по ширине
 // Анимация появления инпутов справа на лево, афтер цетбекграунд, бифореплашка выпуклая растянулась и сжалась
@@ -65,9 +69,8 @@ export const Contact: React.FC<ContactType> = ({ }) => {
 
 // Блок зафиксировать абоут
 
-// Мониторить размер ширины и высоты вьюпорта и исходя из этого убрать елемент(компоненту) меню из хедера, или добавить в хедер, того же касается бургер меню списка, тогоже касается футера и добавление его в бургер меню
+// Мониторить размер ширины и высоты вьюпорта и исходя из этого убрать елемент(компоненту) меню из хедера, или добавить в хедер, того же касается бургер меню списка
 
 // Вкладка проекты выпирающий скрол с квадратными видео превью и при ховере выдвигающийся прозрачный гласморфизм с текстом описания примененых стеков технологий
 
-// Убрать багу с открытым меню и переворачиванием в горизонтальный режим телефона (остается фон)
-// Исправить баг сотображением логотипа без футера вылазиютжелтыелинии
+// Исправить баг с отображением начального логотипа, без футера вылазиют желтые линии

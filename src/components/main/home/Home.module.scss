@@ -2,7 +2,7 @@
 .home {
 	display: flex;
 	flex-grow: 1;
-	background: #1C1D25;
+	// background: #1C1D25;
 	// height: 100vh; /* Резервный вариант для браузеров, не поддерживающих пользовательские свойства */
 	// height: calc(var(--vh, 1vh) * 100);
 	&__container {

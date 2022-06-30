@@ -1,0 +1,14 @@
+@import "../../../mixin.scss";
+.nav_items{
+	@media (max-width: 535px) {
+		display: none;
+	}
+}
+.nav_items__list {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 40px;
+	font-size: 16px;
+	line-height: 16px;
+	@include adaptiveValue("column-gap",40,10,811,320,1);
+}

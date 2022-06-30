@@ -11,7 +11,7 @@ export type FooterType = {
 //TODO Сделать переходы по страницам сверху вних опускается шторка или слайдер страниц или анимирование взад и анимированноепоявление новой страницы, увеличивающийся круг закрывающий быстро контент и анимирутеся новый 
 
 export const Footer: React.FC<FooterType> = ({ isMenuOpen }) => {
-
+	console.log('rendered Footer');
 	const menuOpen = isMenuOpen !== '' ? { display: 'unset' } : {};
 
 	return (
