@@ -1,19 +1,14 @@
 @import "../../mixin.scss";
-// .footerMenuClosed {
-// 	display: none;
-// }
-// .footerMenuOpen {
-// 	display: unset;
-// }
 .footer {
-	background: transparent;
+	position: relative;
+	z-index: 4;
 	@media (max-width: 377px) {
 		display: none;
 		position: fixed;
 		left: 0;
 		right: 0;
 		bottom: 0;
-		z-index: 2;
+		z-index: 5;
 	}
 	&__container {
 	max-width: 1050px;
@@ -97,7 +92,6 @@
 }
 @keyframes animateFooter{
 	0% {transform: translate(0,20px);opacity: 0;}
-	50% {}
 	100% {transform:translate(0,0px);opacity: 1}
 }
 // @media(hover: hover) and (pointer: coarse){

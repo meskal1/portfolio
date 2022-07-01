@@ -1,9 +1,9 @@
 // ИСПРАВЛЕНИЕ ВЫСОТЫ vh НА МОБИЛЬНЫХ УСТРОЙСТВАХ ИЗЗА НАВИГАЦИОННОЙ ПЛАШКИ
 
 // Сначала мы получаем высоту области просмотра и умножаем ее на 1%, чтобы получить значение для единицы vh.
-let vh = window.innerHeight * 0.01;
-// Затем мы устанавливаем значение в пользовательском свойстве --vh в корень документа.
-document.documentElement.style.setProperty('--vh', `${vh}px`);
+// let vh = window.innerHeight * 0.01;
+// // Затем мы устанавливаем значение в пользовательском свойстве --vh в корень документа.
+// document.documentElement.style.setProperty('--vh', `${vh}px`);
 // Слушаем событие resize
 // window.addEventListener('resize', () => {
 // 	// Выполняем тот же скрипт, что и раньше
@@ -16,11 +16,9 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 
 // const element = document.querySelector('.contacts__input_name');
-
 // const keyframes = {
 // 	background: ['black', 'red']
 // }
-
 // const options = {
 // 	id: "color-change",
 // 	duration: 2000,
@@ -29,5 +27,4 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
 // 	iterations: Infinity,
 // 	fill: "forwards"
 // }
-
 // element.animate(keyframes, options);

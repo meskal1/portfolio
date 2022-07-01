@@ -9,18 +9,14 @@ export type NavAnimatedLinkType = {
 	location: string
 }
 
-export const NavAnimatedLink: React.FC<NavAnimatedLinkType> = React.memo(({ id, link, name, location }) => {
+export const NavAnimatedLink: React.FC<NavAnimatedLinkType> = ({ id, link, name, location }) => {
 
-	const [pageTransition, setPageTransition] = useState('')
-
-	if (pageTransition !== '' && location !== link) setPageTransition('')
-
+	const [pageTransition, setPageTransition] = useState('');
+	if (pageTransition !== '' && location !== link) setPageTransition('');
 	const onClickLinkHandler = () => setPageTransition(s.pageTransition);
 
-	const [isAnimationLoaded, setIsAnimationLoaded] = useState(s.animationIsLoading)
-	const onAnimationEnd = () => {
-		setIsAnimationLoaded(s.animationIsLoaded)
-	};
+	const [isAnimationLoaded, setIsAnimationLoaded] = useState(s.animationIsLoading);
+	const onAnimationEnd = () => setIsAnimationLoaded(s.animationIsLoaded);
 
 	return (
 		<>
@@ -36,4 +32,4 @@ export const NavAnimatedLink: React.FC<NavAnimatedLinkType> = React.memo(({ id, 
 			</li>
 		</>
 	);
-});
+};
