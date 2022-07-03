@@ -38,7 +38,6 @@
 	.active_link {
 		color: #F9C847;
 		transform: scale(1.1);
-		animation: menuColorTransition 0.2s ease;
 		&::before{
 			width: 100%;
 			box-shadow: #F9C847 0px 20px 15px 3px ;
@@ -94,4 +93,7 @@
 }
 .animationIsLoaded{
 	opacity: 1;
+}
+.animationBlackColor{
+	animation: menuColorTransition 0.2s ease;
 }

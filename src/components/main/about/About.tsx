@@ -17,7 +17,7 @@ export const About: React.FC<AboutType> = ({ contentDisplayed }) => {
 	}, 2000)
 	if (contentDisplayed) setTimeout(() => {
 		setCanIStartAimate2(true)
-	}, 21000)
+	}, 20000)
 
 	return (
 		<>
