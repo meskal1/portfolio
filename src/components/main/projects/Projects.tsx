@@ -12,11 +12,11 @@ const Projects: React.FC<ProjectsType> = ({ }) => {
 			<section className={s.projects}>
 				<div className={s.projects__container}>
 					<div className={s.projects__content}>
-						<h2 className={s.projects_title}>Мои работы</h2>
-						<div className={s.projects__block_items}>
+						<h2 className={s.projects__title}>Projects</h2>
+						{/* <div className={s.projects__block_items}>
 							<ProjectsItem />
 							<ProjectsItem />
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</section>

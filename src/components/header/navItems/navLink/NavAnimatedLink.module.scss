@@ -53,6 +53,7 @@
 		font-weight: 500;
 		color: #b0b2c3;
 		transition: ease 0.2s all;
+		cursor: pointer;
 		&::before{
 			content:'';
 			display: block;

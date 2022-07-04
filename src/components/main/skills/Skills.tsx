@@ -12,12 +12,12 @@ const Skills: React.FC<SkillsType> = ({ }) => {
 			<section className={s.skills} >
 				<div className={s.skills__container} >
 					<div className={s.skills__content} >
-						<h2 className={s.my_skills__title} >Мои скилы</h2>
-						<div className={s.my_skills__block_items}>
+						<h2 className={s.skills__title} >Skills</h2>
+						{/* <div className={s.skills__block_items}>
 							<SkillsItem />
 							<SkillsItem />
 							<SkillsItem />
-						</div>
+						</div> */}
 					</div>
 				</div>
 				{/* <div id="projects" style={{ marginBottom: "70px" }}></div> */}

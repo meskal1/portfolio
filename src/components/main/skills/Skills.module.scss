@@ -1,30 +1,37 @@
+@import "../../../mixin.scss";
 .skills {
-	background: #DDFEE9;
+	// background: #DDFEE9;
 	&__container {
-	max-width: 1050px;
-	margin: 0 auto;
-	padding: 70px 15px;
-	@media (max-width: 583px) {
-		padding: 30px 15px;
-	 }
+		display: flex;
+		justify-content: center;
+		flex-grow: 1;
+		max-width: 1050px;
+		margin: 0 auto;
+		padding: 0 15px;
 	}
 	&__content {
 		display: flex;
 		flex-direction: column;
-		border: black 1px solid;
-		.my_skills__title {
-			align-self: center;
-			margin: 0px 0px 50px 0px;
-		}
-		.my_skills__block_items {
-		display: flex;
-		justify-content: space-between;
-		gap: 30px;
-		@media (max-width: 650px) {
-			padding: 0 15px;
-			flex-wrap: wrap;
-			justify-content: center;
-		 }
-		}
+		// border: black 1px solid;
 	}
+	&__title {
+		opacity: 0;
+		animation: animateTitle 0.7s ease 1 1.1s forwards;
+		font-size: rem(50);
+		font-weight: 700;
+	}
+	// &__block_items {
+	// display: flex;
+	// justify-content: space-between;
+	// gap: 30px;
+	// @media (max-width: 650px) {
+	// 	padding: 0 15px;
+	// 	flex-wrap: wrap;
+	// 	justify-content: center;
+	//  }
+	// }
+}
+@keyframes animateTitle {
+	0% {transform: translate(0,20px);}
+	100% {transform: translate(0px,0px);opacity: 1}
 }
