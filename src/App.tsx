@@ -8,7 +8,7 @@ import { About } from './components/main/about/About';
 import Projects from './components/main/projects/Projects';
 import Skills from './components/main/skills/Skills';
 import logo from './img/transparent_logo.svg'
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 function App() {
 
@@ -59,12 +59,12 @@ function App() {
 					<Header onClickBurgerMenu={onClickBurgerMenu} mediaQueryWidth={mediaQueryWidth} />
 					<main className={s.main}>
 						<Routes>
-							<Route path="/" element={<Home />} />
-							<Route path="/home" element={<Home />} />
-							<Route path="/skills" element={<Skills />} />
-							<Route path="/projects" element={<Projects />} />
-							<Route path="/contacts" element={<Contact />} />
-							<Route path="/about" element={<About contentDisplayed={contentDisplayed} />} />
+							<Route path="/" element={<Navigate to="/home" />} />
+							<Route path="home" element={<Home />} />
+							<Route path="skills" element={<Skills />} />
+							<Route path="projects" element={<Projects />} />
+							<Route path="contacts" element={<Contact />} />
+							<Route path="about" element={<About contentDisplayed={contentDisplayed} />} />
 						</Routes>
 					</main>
 					<Footer isMenuOpen={isMenuOpen} />

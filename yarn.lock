@@ -7776,7 +7776,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.6.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -7876,6 +7876,11 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
+react-delayed@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/react-delayed/-/react-delayed-0.2.3.tgz#6432d2d20c8d3b242e278b4087046fda243d1131"
+  integrity sha512-3bd+YlsSS+I3gedANUPQCxhTs1OmCz/rzCLsCY/K3Wju7gS+Qoc7jS14/7w5U2pmpSaSBOUs9qI3iwsMCCDD9g==
+
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-12.0.1.tgz"
@@ -7918,6 +7923,13 @@ react-error-overlay@^6.0.11:
   version "6.0.11"
   resolved "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.11.tgz"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
+
+react-flash-message@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-flash-message/-/react-flash-message-1.0.8.tgz#25146e1a229d91e0f40d714344b366c210f4c271"
+  integrity sha512-XND1LenvTjZI9SvGgGxF74SDZih1fS+iN304/Lhwd/vukTyBLJ9PrOvJehdf9KkxdWtK3fxmQl+c/cpZktyMVg==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-is@^16.13.1:
   version "16.13.1"
@@ -9391,6 +9403,11 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
+
+use-lifecycle-hooks@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/use-lifecycle-hooks/-/use-lifecycle-hooks-1.1.0.tgz#45a9adaf767cffffdda3eff92eb2ebc631b50141"
+  integrity sha512-ONOfzfzHTzkzaaKxVuEhWKVlRjX3uKdYVB8k6E8Old+O10GdgISXVRjY2LjE2yyMXEHZqNUfIy/vY3UNsgN+uA==
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"

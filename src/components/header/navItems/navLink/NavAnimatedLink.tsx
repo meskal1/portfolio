@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import s from './NavAnimatedLink.module.scss'
 
 export type NavAnimatedLinkType = {
@@ -10,6 +10,7 @@ export type NavAnimatedLinkType = {
 }
 
 export const NavAnimatedLink: React.FC<NavAnimatedLinkType> = ({ id, link, name, location }) => {
+	console.log('render nav link');
 	// Увеличивающийся круг при клике 
 	const [pageTransition, setPageTransition] = useState('');
 	// Черный цвет на 0.2 сек при клике
@@ -19,13 +20,24 @@ export const NavAnimatedLink: React.FC<NavAnimatedLinkType> = ({ id, link, name,
 		setPageTransition('');
 		setMenuColorTransition('');
 	}
+
+
+	// const [activeLink, setActiveLink] = useState('')
 	const onClickLinkHandler = () => {
+		// setActiveLink(s.active_link)
 		if (location !== link) setPageTransition(s.pageTransition);
 		if (location !== link) setMenuColorTransition(s.animationBlackColor)
 	}
 	// Убираю после загрузки анимации стили animation: forwards, потому что идет перекрытие ссылок увелич круга
 	const [isAnimationLoaded, setIsAnimationLoaded] = useState(s.animationIsLoading);
 	const onAnimationEnd = () => setIsAnimationLoaded(s.animationIsLoaded);
+
+	const navigate = useNavigate();
+	const linkDelay = () => {
+		setTimeout(() => {
+			// navigate(link)
+		}, 500)
+	};
 
 	return (
 		<>
@@ -35,8 +47,11 @@ export const NavAnimatedLink: React.FC<NavAnimatedLinkType> = ({ id, link, name,
 				style={{ animationDelay: `${+id * 0.1}s` }}
 				onClick={onClickLinkHandler}>
 				<Link
+					// className={`${s.nav_item__link} ${menuColorTransition} ${activeLink}`}
 					className={`${s.nav_item__link} ${menuColorTransition} ${location === link ? s.active_link : null}`}
-					to={link}>{name}
+					onClick={linkDelay}
+					to={link}
+				>{name}
 				</Link>
 			</li>
 		</>

@@ -8,7 +8,6 @@ import { FooterAnimate } from './footerAnimate/FooterAnimate';
 export type FooterType = {
 	isMenuOpen: string
 }
-//TODO Сделать переходы по страницам сверху вних опускается шторка или слайдер страниц или анимирование взад и анимированноепоявление новой страницы, увеличивающийся круг закрывающий быстро контент и анимирутеся новый 
 
 export const Footer: React.FC<FooterType> = React.memo(({ isMenuOpen }) => {
 	console.log('rendered Footer');
@@ -43,7 +42,6 @@ export const Footer: React.FC<FooterType> = React.memo(({ isMenuOpen }) => {
 		</>
 	);
 });
-
 // let [mediaQueryWidth, setMediaQueryWidth] = useState<boolean>(false);
 // useEffect(() => {
 // 	const widthWatcher = window.matchMedia("(max-width: 377px)")

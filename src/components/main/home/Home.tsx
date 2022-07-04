@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './Home.module.scss'
 import photo from '../../../img/photo.webp'
+
 export type HomeType = {
 
 }

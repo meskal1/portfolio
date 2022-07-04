@@ -166,7 +166,7 @@
 			width: 0px;
 			height: 1px;
 			border-radius: 30px;
-			background:white;
+			background:#b0b2c3;
 		}
 		&::after{
 			content:'';
@@ -259,7 +259,7 @@
 		outline: none;
 		border: 1px solid black;
 		border-radius: 30px;
-		background:white;
+		background:#b0b2c3;
 		background: linear-gradient(to bottom, rgb(18, 19, 27) 0%, rgb(38, 39, 47) 100%);
 		@include adaptiveValue("min-height",150,120,462,320,1);
 		// -webkit-appearance: none; 
@@ -356,13 +356,13 @@
 }
 @keyframes animateInput {
 	0% {width: 0px;}
-	79% {background:white}
+	79% {background:#b0b2c3}
 	80% {width: 100%; height: 1px; background: linear-gradient(to bottom, rgb(18, 19, 27) 0%, rgb(38, 39, 47) 100%);}
 	100% {width: 100%; height: 49px; background: linear-gradient(to bottom, rgb(18, 19, 27) 0%, rgb(38, 39, 47) 100%); }
 }
 @keyframes animateTextarea {
 	0% {width: 0px;}
-	79% {background:white}
+	79% {background:#b0b2c3}
 	80% {width: 100%; height: 1px;  background: linear-gradient(to bottom, rgb(18, 19, 27) 0%, rgb(38, 39, 47) 100%);}
 	100% {width: 100%; height: 100%; background: linear-gradient(to bottom, rgb(18, 19, 27) 0%, rgb(38, 39, 47) 100%);}
 }

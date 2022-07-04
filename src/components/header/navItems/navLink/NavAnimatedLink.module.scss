@@ -80,10 +80,10 @@
 
 .pageTransition {
 	&::before{
-		animation: animatePageTransition 0.6s ease ;
+		animation: animatePageTransition .6s ease ;
 	}
 	&::after{
-		animation: animatePageTransition 0.6s ease 0.3s;
+		animation: animatePageTransition .6s ease 0.3s;
 	}
  }
 
