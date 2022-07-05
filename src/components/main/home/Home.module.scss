@@ -182,7 +182,7 @@
 }
 @keyframes animateLink {
 	0% {transform: translate(0,20px);}
-	100% {transform: translate(0px,0px);opacity: 1;box-shadow: #f9c64752 0px 20px 15px 0px;}
+	100% {transform: translate(0px,0px);opacity: 1; box-shadow: #f9c64752 0px 20px 15px 0px;}
 }
 @keyframes animatePhoto {
 	0% {height: 230px;}

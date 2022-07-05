@@ -12,9 +12,9 @@ export type NavAnimatedLinkType = {
 export const NavAnimatedLink: React.FC<NavAnimatedLinkType> = ({ id, link, name, location }) => {
 	console.log('render nav link');
 	// Увеличивающийся круг при клике 
-	const [pageTransition, setPageTransition] = useState('');
+	const [pageTransition, setPageTransition] = useState<string>('');
 	// Черный цвет на 0.2 сек при клике
-	const [menuColorTransition, setMenuColorTransition] = useState('');
+	const [menuColorTransition, setMenuColorTransition] = useState<string>('');
 	// Зануляю анимацию перехода
 	setTimeout(() => {
 		if (pageTransition !== '' && location !== link) {
@@ -46,12 +46,12 @@ export const NavAnimatedLink: React.FC<NavAnimatedLinkType> = ({ id, link, name,
 				onAnimationEnd={onAnimationEnd}
 				style={{ animationDelay: `${+id * 0.1}s` }}
 				onClick={onClickLinkHandler}>
-				<div
+				<a
 					className={`${s.nav_item__link} ${menuColorTransition} ${location === link ? s.active_link : null}`}
 					onClick={linkDelay}
 				// to={link}
 				>{name}
-				</div>
+				</a>
 			</li>
 		</>
 	);

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import s from './About.module.scss'
 import { AboutText } from './aboutText/AboutText';
 import { InvitationText } from './invitationText/InvitationText';
-// import { useComponentWillMount } from 'use-lifecycle-hooks';
 
 type AboutType = {
 	contentDisplayed: boolean
@@ -24,14 +23,6 @@ export const About: React.FC<AboutType> = ({ contentDisplayed }) => {
 	}
 	const onAnimationEnd = () => setCanIStartAimateButton(s.animationIsLoaded);
 
-
-	// useComponentWillMount(() => {
-	// 	const timeout = new Date().getTime() + 500;
-
-	// 	//Do your 500ms animation here
-
-	// 	while (new Date().getTime() < timeout) { }
-	// })
 	return (
 		<>
 			<section className={s.about}>

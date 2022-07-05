@@ -21,7 +21,7 @@
 		flex-grow: 1;
 		row-gap: 30px;
 		@include adaptiveValue("row-gap",30,15,462,320,1);
-		.switcher {
+		.switcher_container {
 			opacity: 0;
 			position: relative;
 			display: inline-block;
@@ -49,25 +49,27 @@
 				left: 1px;
 				width: 0;
 				height: 0;
-				box-shadow:  0 0 0px 1000px #1C1D25 inset;
-				&::before{
+				opacity: 0;
+				&:checked ~ .switcher {
+					&::before {
+					left: 0px;
+					background-color: rgb(34, 199, 34);
+					transform: translate(13px,0);
+					}
+				}
+			}
+			.switcher {
+				&::before {
 					content: "";
 					position: absolute;
 					width: 9px;
 					height: 9px;
-					top: 2px;
-					left: 2px;
+					top: 3px;
+					left: 3px;
 					border-radius: 50%;
 					background-color: red;
 					transition: all .2s linear;
-					}
-				&:checked {
-					&::before{
-					left: 0px;
-					background-color: rgb(34, 199, 34);
-					transform: translate(12px,0);
-					}
-				 }
+				}
 			}
 		}
 	}
@@ -122,36 +124,12 @@
 			width: 100%;
 			height: 50px;
 			outline: none;
-			border: 1px solid black;
+			border: 1px solid #676975;
 			border-radius: 30px;
 			padding: 15px 20px;
 			background: linear-gradient(to bottom, rgb(18, 19, 27) 0%, rgb(38, 39, 47) 100%);
 			// -webkit-appearance: none; 
 			// appearance: none;
-			&::placeholder {
-				position: absolute;
-				top: 19px;
-				left: 20px;
-				color: #666774;
-				font-size: rem(14);
-				font-weight: 600;
-				transition: all ease 0.4s;
-			 }
-			 &:focus{
-				&::placeholder {
-					left: 50px;
-					opacity: 0;
-					// transform: scale(0);
-				 }
-			 }
-			 &::before{
-				content:'';
-				position: absolute;
-				width: 30px;
-				height: 30px;
-				z-index: 2;
-				background: red;
-			 }
 		}
 	}
 	&__block_input{
@@ -200,6 +178,10 @@
 		}
 	}
 	&__input_name {
+		&:focus  ~ .contacts__label_name ~ .placeholder,
+		&:valid  ~ .contacts__label_name ~ .placeholder {
+		  transform: scale(0);
+		}
 		&:focus ~ .contacts__label_name,
 		&:valid ~ .contacts__label_name {
 			opacity: 1;
@@ -207,6 +189,10 @@
 		}
 	}
 	&__input_email {
+		&:focus  ~ .contacts__label_email ~ .placeholder,
+		&:valid  ~ .contacts__label_email ~ .placeholder {
+		  transform: scale(0);
+		}
 		&:focus ~ .contacts__label_email,
 		&:valid ~ .contacts__label_email {
 			opacity: 1;
@@ -250,16 +236,15 @@
 		position: relative;
 		font-family: 'League Spartan', sans-serif;
 		font-size: rem(20);
-		font-weight: 500;
 		color: white;
 		caret-color: red;
 		padding: 15px 20px;
 		width: 100%;
 		min-height: 150px;
 		outline: none;
-		border: 1px solid black;
+		border: 1px solid #676975;
 		border-radius: 30px;
-		background:#b0b2c3;
+		background:#676975;
 		background: linear-gradient(to bottom, rgb(18, 19, 27) 0%, rgb(38, 39, 47) 100%);
 		@include adaptiveValue("min-height",150,120,462,320,1);
 		// -webkit-appearance: none; 
@@ -290,26 +275,14 @@
 				background-color: #ffffff;
 			}
 		}
-		&::placeholder {
-			position: absolute;
-			top: 19px;
-			left: 20px;
-			color: #666774;
-			font-size: rem(14);
-			font-weight: 600;
-			transition: all ease 0.4s;
-		 }
-		 &:focus{
-			&::placeholder {
-				left: 50px;
-				opacity: 0;
-				// transform: scale(0);
-			 }
+		 &:focus  ~ .contacts__label_message ~ .placeholder,
+		 &:valid  ~ .contacts__label_message ~ .placeholder {
+			transform: scale(0);
 		 }
 		 &:focus ~ .contacts__label_message,
 		 &:valid ~ .contacts__label_message {
-			 opacity: 1;
-			 transform: scale(1);
+			opacity: 1;
+			transform: scale(1);
 		 }
 	}
 	&__form_button {
@@ -336,7 +309,17 @@
 		cursor: pointer;
 	}
 }
-.background_autocomplite{
+.placeholder{
+	position: absolute;
+	top: 20px;
+	left: 21px;
+	color: rgb(102, 103, 116);
+	font-size: rem(14);
+	font-weight: 600;
+	cursor: text;
+	transition: all ease 0.4s;
+}
+.bg_ForAutocompliteText{
 	position: absolute;
 	width: 430px;
 	height: 50px;
@@ -346,6 +329,7 @@
 	background: linear-gradient(to bottom, rgb(18, 19, 27) 0%, rgb(38, 39, 47) 100%);
 	@include adaptiveValue("width",430,250,462,280,1);
 }
+
 @keyframes animateTitle {
 	0% {transform: translate(0,20px);}
 	100% {transform: translate(0px,0px);opacity: 1}
@@ -356,13 +340,13 @@
 }
 @keyframes animateInput {
 	0% {width: 0px;}
-	79% {background:#b0b2c3}
+	79% {background:#676975}
 	80% {width: 100%; height: 1px; background: linear-gradient(to bottom, rgb(18, 19, 27) 0%, rgb(38, 39, 47) 100%);}
 	100% {width: 100%; height: 49px; background: linear-gradient(to bottom, rgb(18, 19, 27) 0%, rgb(38, 39, 47) 100%); }
 }
 @keyframes animateTextarea {
 	0% {width: 0px;}
-	79% {background:#b0b2c3}
+	79% {background:#676975}
 	80% {width: 100%; height: 1px;  background: linear-gradient(to bottom, rgb(18, 19, 27) 0%, rgb(38, 39, 47) 100%);}
 	100% {width: 100%; height: 100%; background: linear-gradient(to bottom, rgb(18, 19, 27) 0%, rgb(38, 39, 47) 100%);}
 }
