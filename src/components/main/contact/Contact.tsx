@@ -1,5 +1,6 @@
-import React, { ChangeEvent, memo, useState } from 'react';
+import React, { ChangeEvent, memo, useEffect, useState } from 'react';
 import s from './Contact.module.scss'
+import { TextareaMessage } from './textareaMessage/TextareaMessage';
 
 export type ContactType = {
 
@@ -21,21 +22,62 @@ export const Contact: React.FC<ContactType> = memo(({ }) => {
 		}
 	};
 
+	const [isAnimationLoaded, setIsAnimationLoaded] = useState(s.animationIsLoading);
+
+	const [buttonErrorStyle, setButtonErrorStyle] = useState<string>('')
+	const [nameFieldErrorStyle, setNameFieldErrorStyle] = useState<string>('')
+	const [emailFieldErrorStyle, setEmailFieldErrorStyle] = useState<string>('')
+
+
+	const [fontSizeCyrillicName, setFontSizeCyrillicName] = useState<string>('')
+	const [textField, setTextField] = useState<string>(sessionStorage.getItem('textField') || '')
+	const [fontSizeCyrillicTextField, setFontSizeCyrillicTextField] = useState<string>('')
+	const [textFieldErrorStyle, setTextFieldErrorStyle] = useState<string>('')
+
+
+	const cyrillicChar = /[а-яёА-ЯЁ]/;
+	const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[ a-zA-Z0-9-]+(?:\.[ a-zA-Z0-9-]+) *$/;
+
 	const [nameField, setNameField] = useState<string>(sessionStorage.getItem('nameField') || '')
 	const [emailField, setEmailField] = useState<string>(sessionStorage.getItem('emailField') || '')
-	const [textField, setTextField] = useState<string>(sessionStorage.getItem('textField') || '')
+
 	const onChangeNameField = (e: ChangeEvent<HTMLInputElement>) => {
-		setNameField(e.currentTarget.value)
-		sessionStorage.setItem('nameField', e.currentTarget.value)
+		const validate = e.currentTarget.value.replace(/[^a-zA-Zа-яёА-ЯЁ -]/, '').slice(0, 50)
+		validate.match(cyrillicChar) ? setFontSizeCyrillicName(s.fontSizeCyrillic) : setFontSizeCyrillicName('')
+		setNameField(validate)
+		sessionStorage.setItem('nameField', validate)
 	};
 	const onChangeEmailField = (e: ChangeEvent<HTMLInputElement>) => {
-		setEmailField(e.currentTarget.value)
-		sessionStorage.setItem('emailField', e.currentTarget.value)
+		const validate = e.currentTarget.value.replace(/[а-яёА-ЯЁ]/, '').slice(0, 200)
+		setEmailField(validate)
+		sessionStorage.setItem('emailField', validate)
+	};
+	const onClickButtonHandler = () => {
+		if (!nameField || !emailField || !textField || !emailField.match(validRegex)) setButtonErrorStyle(s.errorButton)
+		if (!nameField) setNameFieldErrorStyle(s.errorBorder)
+		if (!emailField || !emailField.match(validRegex)) setEmailFieldErrorStyle(s.errorBorder)
+		if (!textField) setTextFieldErrorStyle(s.errorBorder)
+
 	};
 	const onChangeTextField = (e: ChangeEvent<HTMLTextAreaElement>) => {
-		setTextField(e.currentTarget.value)
-		sessionStorage.setItem('textField', e.currentTarget.value)
+		const validate = e.currentTarget.value.slice(0, 3000)
+		validate.match(cyrillicChar) ? setFontSizeCyrillicTextField(s.fontSizeCyrillic)
+			: setFontSizeCyrillicTextField('')
+		setTextField(validate)
+		sessionStorage.setItem('textField', validate)
 	};
+	const onAnimationEnd = () => {
+		setIsAnimationLoaded(s.animationIsLoaded);
+		setButtonErrorStyle('')
+	}
+	const onBlurEmailInput = () => {
+		if (!emailField.match(validRegex)) setEmailFieldErrorStyle(s.errorBorder)
+	};
+	useEffect(() => {
+		if (nameField) setNameFieldErrorStyle('')
+		if (emailField) setEmailFieldErrorStyle('')
+		if (textField) setTextFieldErrorStyle('')
+	}, [nameField, emailField, textField])
 
 	return (
 		<>
@@ -54,24 +96,25 @@ export const Contact: React.FC<ContactType> = memo(({ }) => {
 							<form className={s.contacts__form} action="">
 								<div className={s.contacts__block_input}>
 									<label className={s.bg_ForAutocompliteText}></label>
-									<input className={s.contacts__input_name} id="name" required name="name" type="text" autoComplete={autocomplite} value={nameField} onChange={onChangeNameField} />
+									<input className={`${s.contacts__input_name} ${fontSizeCyrillicName} ${nameFieldErrorStyle}`} id="name" required name="name" type="text" autoComplete={autocomplite} value={nameField} onChange={onChangeNameField} />
 									<label className={s.contacts__label_name} >NAME</label>
 									<label className={s.placeholder} htmlFor="name">NAME</label>
 								</div>
 								<div className={s.contacts__block_input}>
 									<label className={s.bg_ForAutocompliteText}></label>
-									<input className={s.contacts__input_email} required name="email" id="email" type="text" autoComplete={autocomplite} value={emailField} onChange={onChangeEmailField} />
+									<input className={`${s.contacts__input_email} ${emailFieldErrorStyle}`} required name="email" id="email" type="text" autoComplete={autocomplite} value={emailField} onChange={onChangeEmailField} onBlur={onBlurEmailInput} />
 									<label className={s.contacts__label_email} >EMAIL</label>
 									<label className={s.placeholder} htmlFor="email">EMAIL</label>
 								</div>
 								<div className={s.contacts__block_input}>
-									<textarea placeholder="" required className={s.contacts__textarea} name="message" id="message" value={textField} onChange={onChangeTextField} />
+									<textarea required className={`${s.contacts__textarea} ${fontSizeCyrillicTextField} ${textFieldErrorStyle}`} name="message" id="message" value={textField} onChange={onChangeTextField} />
 									<label className={s.contacts__label_message} >MESSAGE</label>
 									<label className={s.placeholder} htmlFor="message">MESSAGE</label>
+									{/* <TextareaMessage cyrillicChar={cyrillicChar} /> */}
 								</div>
 							</form>
 						</div>
-						<button className={s.contacts__form_button} type="submit" form="contacts">SEND ME MESSAGE</button>
+						<button className={`${s.contacts__form_button} ${buttonErrorStyle} ${isAnimationLoaded}`} type="submit" form="contacts" onClick={onClickButtonHandler} onAnimationEnd={onAnimationEnd}>SEND ME MESSAGE</button>
 					</div>
 				</div>
 			</section>

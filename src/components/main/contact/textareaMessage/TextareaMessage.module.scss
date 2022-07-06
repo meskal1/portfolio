@@ -1,0 +1,75 @@
+@import "../../../../mixin.scss";
+.contacts__label_message {
+	position: absolute;
+	opacity: 0;
+	top: -6px;
+	left: 10px;
+	font-size: 14px;
+	font-weight: 600;
+	color: #F9C847;
+	transform: scale(0);
+	transition: all ease 0.5s;
+}	
+.contacts__textarea {
+	position: relative;
+	font-family: 'League Spartan', sans-serif;
+	font-size: rem(20);
+	color: white;
+	caret-color: red;
+	padding: 15px 20px;
+	width: 100%;
+	min-height: 150px;
+	outline: none;
+	border: 1px solid #676975;
+	border-radius: 30px;
+	background:#676975;
+	background: linear-gradient(to bottom, rgb(18, 19, 27) 0%, rgb(38, 39, 47) 100%);
+	@include adaptiveValue("min-height",150,120,462,320,1);
+	// -webkit-appearance: none; 
+	// appearance: none;
+	overflow-y: overlay;
+	resize: none;
+	&::-webkit-scrollbar {
+		width: 12px; /* Remove scrollbar space */
+	}
+	&:hover {
+		&::-webkit-scrollbar-track {
+			background: rgba(241, 241, 241, 0.322);
+			background-clip: padding-box;
+			border: 4px solid transparent;
+			border-radius: 9999px;
+		}
+		&::-webkit-scrollbar-thumb {
+			border: 4px solid rgba(0, 0, 0, 0);
+			background-clip: padding-box;
+			border-radius: 9999px;
+			background-color: rgba(255, 255, 255, 0.475);
+		}
+		&::-webkit-scrollbar-thumb:hover {
+			background: rgb(89, 55, 55);
+			border: 3px solid transparent;
+			background-clip: padding-box;
+			border-radius: 9999px;
+			background-color: #ffffff;
+		}
+	}
+	 &:focus  ~ .contacts__label_message ~ .placeholder,
+	 &:valid  ~ .contacts__label_message ~ .placeholder {
+		transform: scale(0);
+	 }
+	 &:focus ~ .contacts__label_message,
+	 &:valid ~ .contacts__label_message {
+		opacity: 1;
+		transform: scale(1);
+	 }
+}
+.placeholder{
+	position: absolute;
+	top: 20px;
+	left: 21px;
+	color: rgb(102, 103, 116);
+	font-size: rem(14);
+	font-weight: 600;
+	cursor: text;
+	transition: all ease 0.4s;
+}
