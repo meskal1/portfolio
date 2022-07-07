@@ -1,4 +1,5 @@
 import React, { ChangeEvent, memo, useEffect, useState } from 'react';
+import usePortal from 'react-useportal';
 import s from './Contact.module.scss'
 import { TextareaMessage } from './textareaMessage/TextareaMessage';
 
@@ -7,6 +8,11 @@ export type ContactType = {
 }
 
 export const Contact: React.FC<ContactType> = memo(({ }) => {
+	const { openPortal, closePortal, isOpen, Portal } = usePortal({ bindTo: document.getElementById('wrapper')! })
+	// При нажатии на бургер добавляется/убирается атрибут style у body со свойством overflow: hidden.
+	// Добавляются/убираются стили отображения бургера.
+
+
 	console.log('rendered contact');
 	const [autocomplite, setAutocomplite] = useState(localStorage.getItem('isOffAutocomplite') || 'off')
 	const [isChecked, setIsChecked] = useState<boolean>(localStorage.getItem('isOffAutocomplite') === 'on' ? true : false)
@@ -57,7 +63,14 @@ export const Contact: React.FC<ContactType> = memo(({ }) => {
 		if (!nameField) setNameFieldErrorStyle(s.errorBorder)
 		if (!emailField || !emailField.match(validRegex)) setEmailFieldErrorStyle(s.errorBorder)
 		if (!textField) setTextFieldErrorStyle(s.errorBorder)
-
+		openPortal()
+		// document.querySelector('body')?.style.setProperty('overflow', 'hidden')
+		// if (isOpen) {
+		// 	// document.querySelector('body')?.style.setProperty('overflow', 'hidden')
+		// } else {
+		// 	// document.querySelector('body')?.removeAttribute('style')
+		// 	document.querySelector('body')?.style.setProperty('overflow', 'hidden')
+		// }
 	};
 	const onChangeTextField = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		const validate = e.currentTarget.value.slice(0, 3000)
@@ -71,7 +84,7 @@ export const Contact: React.FC<ContactType> = memo(({ }) => {
 		setButtonErrorStyle('')
 	}
 	const onBlurEmailInput = () => {
-		if (!emailField.match(validRegex)) setEmailFieldErrorStyle(s.errorBorder)
+		if (!emailField.match(validRegex) && emailField) setEmailFieldErrorStyle(s.errorBorder)
 	};
 	useEffect(() => {
 		if (nameField) setNameFieldErrorStyle('')
@@ -114,6 +127,9 @@ export const Contact: React.FC<ContactType> = memo(({ }) => {
 								</div>
 							</form>
 						</div>
+						{isOpen && <Portal>
+							<div className={s.messageSuccessfullySent}><span>Successfully sent</span></div>
+						</Portal>}
 						<button className={`${s.contacts__form_button} ${buttonErrorStyle} ${isAnimationLoaded}`} type="submit" form="contacts" onClick={onClickButtonHandler} onAnimationEnd={onAnimationEnd}>SEND ME MESSAGE</button>
 					</div>
 				</div>

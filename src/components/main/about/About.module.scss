@@ -43,6 +43,9 @@
 		@include adaptiveValue("row-gap",15,10,630,320,1);
 	}
 	&__invitation_button {
+		-moz-user-select: none;
+		-khtml-user-select: none;
+		user-select: none;
 		opacity: 0;
 		color: black;
 		display: inline-block;
@@ -51,12 +54,13 @@
 		border-radius: 30px;
 		background: linear-gradient(to bottom, #F9C847 , #f9c64782);
 		transition: all linear 0.05s;
+		cursor: pointer;
 		&:active {
 			box-shadow: #f9c64752 0px 16px 15px -2px;
 			transform: translate(0px,2px);
 			}
 			&:hover {
-			color: white;
+			// color: #8fdf53;
 			}
 	}
 }

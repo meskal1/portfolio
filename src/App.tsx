@@ -50,7 +50,7 @@ function App() {
 
 	return (
 		<>
-			<div className={`${s.wrapper} ${isMenuOpen}`}>
+			<div className={`${s.wrapper} ${isMenuOpen}`} id="wrapper">
 				<div className={s.logo_animated_container}>
 					<div className={s.logo2}><img className={s.logo1} src={logo} alt="logo2" /></div>
 					<div className={s.wave_container}><div className={s.wave}></div></div>

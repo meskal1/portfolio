@@ -35,7 +35,7 @@ export const About: React.FC<AboutType> = ({ contentDisplayed }) => {
 						</div>
 						<div className={s.about__invitation_block}>
 							<InvitationText canIStartAimateInvitationText={canIStartAimateInvitationText} />
-							<a className={`${s.about__invitation_button} ${canIStartAimateButton}`} onAnimationEnd={onAnimationEnd} href="#">HIRE ME</a>
+							<a className={`${s.about__invitation_button} ${canIStartAimateButton}`} onAnimationEnd={onAnimationEnd} >HIRE ME</a>
 						</div>
 					</div>
 				</div>

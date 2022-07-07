@@ -5,6 +5,7 @@
 	left: 0;
 	font-size: 23px;
 	line-height: 35px;
+	cursor: pointer;
 	@include adaptiveValue("line-height",35,22,630,388,1);
 	@include adaptiveValue("font-size",23,22,630,388,1);
 	@media (min-width: 536px) and (max-height: 736px) {
@@ -41,4 +42,14 @@
 		0% {background:transparent}
 		100% {background:transparent}
 	}
+}
+.active{
+	// display: inline-block;
+	// transform-origin: bottom;
+	animation: smoke .5s linear forwards;
+}
+@keyframes smoke {
+	50% {opacity: 1; }
+	100% {opacity: 0; filter: blur(10px);}
+	// transform: translate(300px,-300px) rotate(720deg) scale(4);
 }

@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
+import React, { MouseEvent, useEffect, useState } from 'react';
 import s from './AboutText.module.scss'
 
 type AboutTextType = {
@@ -12,19 +12,15 @@ export const AboutText: React.FC<AboutTextType> = ({ canIStartTypingAboutText, t
 	const [counter, setCounter] = useState(0);
 	const [typedAboutText, setTypedAboutText] = useState(['']);
 	const [showAboutText, setShowAboutText] = useState('');
+	// При наведении на символ растворяет его (добавляя класс s.active)
+	const onMouseOver = (e: MouseEvent<HTMLSpanElement>) => {
+		if (e.currentTarget.textContent && showAboutText.length === aboutText.length) e.currentTarget.setAttribute('class', s.active)
+	};
+	// Оборачивает каждый символ в span
+	const wrappSpanShowAboutText = showAboutText.split(``).map(el => <span onMouseOver={onMouseOver}>{el}</span>)
 
 	const startIvivtationAnimate = () => ivivtationAnimate()
 
-	// const aboutTextRef = useRef() as MutableRefObject<HTMLParagraphElement>;
-	// const a = document.querySelector(`#wq`)
-	// if (a !== null) a.innerHTML = a.textContent?.replace(/\S/g, "<span>$&</span>")
-	// console.log(a?.textContent);
-	// aboutTextRef.current
-	// let a;
-	// if (aboutTextRef.current !== undefined) a = aboutTextRef.current
-	// if (aboutTextRef.current !== undefined) a.innerHTML = a.textContent?.replace(/\S/g, "<span>$&</span>")
-
-	// let b = a.innerHTML
 	if (canIStartTypingAboutText) typewriter();
 
 	function typewriter() {
@@ -36,22 +32,14 @@ export const AboutText: React.FC<AboutTextType> = ({ canIStartTypingAboutText, t
 			}
 		}, 30)
 	}
+
 	useEffect(() => {
-		if (showAboutText.length === aboutText.length) {
-			startIvivtationAnimate()
-			setShowAboutText('')
-			setShowAboutText(showAboutText.split(``).map(el => `<span>${el}</span>`).join(``))
-			// console.log(a);
-			// aboutTextRef.innerHTML = aboutTextRef.current.textContent
-			// a = aboutTextRef.current
-			// a.innerHTML = a.textContent?.replace(/\S/g, "<span>$&</span>")
-			// let c = 
-		}
+		if (showAboutText.length === aboutText.length) startIvivtationAnimate()
 	}, [showAboutText])
 
 	return (
 		<>
-			<p className={s.about__text} id="wq">{showAboutText}<span className={s.typewriterStick}>.</span></p>
+			<p className={s.about__text}>{wrappSpanShowAboutText}<span className={s.typewriterStick}>.</span></p>
 		</>
 	);
 }
