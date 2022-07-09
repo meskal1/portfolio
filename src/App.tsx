@@ -13,11 +13,11 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 function App() {
 
 	// Отображается лого, потом меняется стиль для всего контента с display: none на display: flex
-	const [isContentDisplayed, setIsContentDisplayed] = useState<string>(s.displayNone)
+	const [isContentDisplayed, setIsContentDisplayed] = useState<string>(s.displayContentNone)
 	setTimeout(() => {
-		setIsContentDisplayed(s.display)
+		setIsContentDisplayed(s.content)
 	}, 3290)
-	const contentDisplayed = isContentDisplayed === s.display
+	const contentDisplayed = isContentDisplayed === s.content
 
 	const [isMenuOpen, setIsMenuOpen] = useState<string>('')
 	// При нажатии на бургер добавляется/убирается атрибут style у body со свойством overflow: hidden.

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, memo, useEffect, useState } from 'react';
+import React, { ChangeEvent, MouseEvent, memo, useEffect, useState } from 'react';
 import usePortal from 'react-useportal';
 import s from './Contact.module.scss'
 import { TextareaMessage } from './textareaMessage/TextareaMessage';
@@ -8,10 +8,8 @@ export type ContactType = {
 }
 
 export const Contact: React.FC<ContactType> = memo(({ }) => {
+	// Скачанный модуль usePortal 
 	const { openPortal, closePortal, isOpen, Portal } = usePortal({ bindTo: document.getElementById('wrapper')! })
-	// При нажатии на бургер добавляется/убирается атрибут style у body со свойством overflow: hidden.
-	// Добавляются/убираются стили отображения бургера.
-
 
 	console.log('rendered contact');
 	const [autocomplite, setAutocomplite] = useState(localStorage.getItem('isOffAutocomplite') || 'off')
@@ -58,20 +56,31 @@ export const Contact: React.FC<ContactType> = memo(({ }) => {
 		setEmailField(validate)
 		sessionStorage.setItem('emailField', validate)
 	};
-	const onClickButtonHandler = () => {
-		if (!nameField || !emailField || !textField || !emailField.match(validRegex)) setButtonErrorStyle(s.errorButton)
+	const onClickButtonHandler = (e: MouseEvent<HTMLButtonElement>) => {
+		if (!nameField || !emailField || !textField || !emailField.match(validRegex)) {
+			setButtonErrorStyle(s.errorButton)
+		} else {
+			// Если поля заполнены без ошибок - выпадает модальное окно на 2 секунды и зачищаются поля
+			openPortal(e);
+			document.querySelector('body')?.style.setProperty('overflow', 'hidden');
+			// document.querySelector('#content')?.setAttribute('style', 'opacity: .5;')
+			setTimeout(() => {
+				closePortal()
+				document.querySelector('body')?.removeAttribute('style')
+				// document.querySelector('#content')?.removeAttribute('style')
+				setNameField('')
+				sessionStorage.setItem('nameField', '')
+				setEmailField('')
+				sessionStorage.setItem('emailField', '')
+				setTextField('')
+				sessionStorage.setItem('textField', '')
+			}, 2000)
+		}
 		if (!nameField) setNameFieldErrorStyle(s.errorBorder)
 		if (!emailField || !emailField.match(validRegex)) setEmailFieldErrorStyle(s.errorBorder)
 		if (!textField) setTextFieldErrorStyle(s.errorBorder)
-		openPortal()
-		// document.querySelector('body')?.style.setProperty('overflow', 'hidden')
-		// if (isOpen) {
-		// 	// document.querySelector('body')?.style.setProperty('overflow', 'hidden')
-		// } else {
-		// 	// document.querySelector('body')?.removeAttribute('style')
-		// 	document.querySelector('body')?.style.setProperty('overflow', 'hidden')
-		// }
 	};
+
 	const onChangeTextField = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		const validate = e.currentTarget.value.slice(0, 3000)
 		validate.match(cyrillicChar) ? setFontSizeCyrillicTextField(s.fontSizeCyrillic)
@@ -87,6 +96,8 @@ export const Contact: React.FC<ContactType> = memo(({ }) => {
 		if (!emailField.match(validRegex) && emailField) setEmailFieldErrorStyle(s.errorBorder)
 	};
 	useEffect(() => {
+		nameField.match(cyrillicChar) ? setFontSizeCyrillicName(s.fontSizeCyrillic) : setFontSizeCyrillicName('')
+		textField.match(cyrillicChar) ? setFontSizeCyrillicTextField(s.fontSizeCyrillic) : setFontSizeCyrillicTextField('')
 		if (nameField) setNameFieldErrorStyle('')
 		if (emailField) setEmailFieldErrorStyle('')
 		if (textField) setTextFieldErrorStyle('')
