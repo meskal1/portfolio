@@ -1,15 +1,5 @@
 @import "../../mixin.scss";
 .header {
-	// position: fixed;
-	// position: relative;
-	// z-index: 3;
-	// width: 100%;
-	// top: 0px;
-	// left: 0px;
-	// background: transparent;
-	@media (max-width: 811px) {
-	// position: relative;
-	}
 	&__container {
 	max-width: 1050px;
 	margin: 0 auto;

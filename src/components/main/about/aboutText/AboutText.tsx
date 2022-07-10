@@ -17,7 +17,7 @@ export const AboutText: React.FC<AboutTextType> = ({ canIStartTypingAboutText, t
 		if (e.currentTarget.textContent && showAboutText.length === aboutText.length) e.currentTarget.setAttribute('class', s.active)
 	};
 	// Оборачивает каждый символ в span
-	const wrappSpanShowAboutText = showAboutText.split(``).map(el => <span onMouseOver={onMouseOver}>{el}</span>)
+	const wrappSpanShowAboutText = showAboutText.split(``).map((el, i) => <span onMouseOver={onMouseOver} key={i}>{el}</span>)
 
 	const startIvivtationAnimate = () => ivivtationAnimate()
 
