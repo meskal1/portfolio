@@ -139,7 +139,7 @@ export const Contact: React.FC<ContactType> = memo(({ }) => {
 							</form>
 						</div>
 						{isOpen && <Portal>
-							<div className={s.messageSuccessfullySent}><span>Successfully sent</span></div>
+							<div className={s.modalContainer}><span className={s.modalText}>Successfully sent</span></div>
 						</Portal>}
 						<button className={`${s.contacts__form_button} ${buttonErrorStyle} ${isAnimationLoaded}`} type="submit" form="contacts" onClick={onClickButtonHandler} onAnimationEnd={onAnimationEnd}>SEND ME MESSAGE</button>
 					</div>
@@ -148,3 +148,4 @@ export const Contact: React.FC<ContactType> = memo(({ }) => {
 		</>
 	);
 });
+//600 x 960 540 x 960 820 x 1180 810 x 1080 768 x 1024 1280 x 720

@@ -8,6 +8,10 @@ type AboutType = {
 	contentDisplayed: boolean
 }
 
+const cyrillicChar = /[а-яёА-ЯЁ]/;
+
+const aboutText = `Hi, my name is Daniil, I'm an InfoSec engineer and now a front-end developer. I like to create things that are awesome for users to interact with. As a developer, I pursuit to create simple, understandable and beautiful solutions for the web. It all started when I wanted to create my own website, which served for search of the information, compliting of relevant courses and the achievement of the goal that you are now observing. And I don't forget about sports. Now, no one can stop me. :)`;
+
 export const About: React.FC<AboutType> = ({ contentDisplayed }) => {
 	console.log('render modal');
 	const { openPortal, closePortal, isOpen, Portal } = usePortal({ bindTo: document.getElementById('wrapper')! })
@@ -40,9 +44,6 @@ export const About: React.FC<AboutType> = ({ contentDisplayed }) => {
 	};
 	const onAnimationButtonErrorEnd = () => setButtonErrorStyle('');
 
-	const cyrillicChar = /[а-яёА-ЯЁ]/;
-
-	const aboutText = `Hi, my name is Daniil, I'm an InfoSec engineer and now a front-end developer. I like to create things that are awesome for users to interact with. As a developer, I pursuit to create simple, understandable and beautiful solutions for the web. It all started when I wanted to create my own website, which served for search of the information, compliting of relevant courses and the achievement of the goal that you are now observing. And I don't forget about sports. Now, no one can stop me. :)`;
 	const [canIStartTypingAboutText, setCanIStartTypingAboutText] = useState<boolean>(false);
 	const [canIStartAimateButton, setCanIStartAimateButton] = useState<string>('');
 
@@ -67,9 +68,10 @@ export const About: React.FC<AboutType> = ({ contentDisplayed }) => {
 		document.querySelector('body')?.removeAttribute('style')
 		setCompanyFieldErrorStyle('')
 		setContactFieldErrorStyle('')
+		setButtonErrorStyle('')
 	};
 
-	// Если введена кирилица то меняю размер шрифта, если поля не пусты убираю ErrorStyle
+	// Если введена кирилица то меняю размер шрифта, если поля заполнены, убираю ErrorStyle
 	useEffect(() => {
 		companyField.match(cyrillicChar) ? setFontSizeCyrillicCompany(s.fontSizeCyrillic) : setFontSizeCyrillicCompany('')
 		contactField.match(cyrillicChar) ? setFontSizeCyrillicContactField(s.fontSizeCyrillic) : setFontSizeCyrillicContactField('')

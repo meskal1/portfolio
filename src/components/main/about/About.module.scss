@@ -260,7 +260,6 @@
 	cursor: text;
 	transition: all ease 0.4s;
 }
-
 .errorButton{
 	animation: animateErrorButton 0.4s ease forwards;
 }
@@ -282,9 +281,6 @@
 	33% {transform: translate(0,100px);}
 	66% {transform: translate(0,-30px);}
 	100% {transform: translate(0,0px);}
-	// 70% {transform: translate(0,0px);}
-	// 85% {transform: translate(0,-30px);}
-	// 100% {transform: translate(0,550px);}
 }
 @keyframes animateButton {
 	0% {transform: translate(0,20px);}
