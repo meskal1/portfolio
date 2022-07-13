@@ -9,21 +9,23 @@ export type HeaderType = {
 	mediaQueryWidth: boolean
 }
 
-export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidth }) => {
+const headerLinks = [
+	{ id: '1', link: '/home', name: 'Home' },
+	{ id: '2', link: '/skills', name: 'Skills' },
+	{ id: '3', link: '/projects', name: 'Projects' },
+	{ id: '4', link: '/contacts', name: 'Contact' },
+	{ id: '5', link: '/about', name: 'About me' },
+]
+
+export const Header: React.FC<HeaderType> = React.memo(({ onClickBurgerMenu, mediaQueryWidth }) => {
 	console.log('rendered header');
-	const headerLinks = [
-		{ id: '1', link: '/home', name: 'Home' },
-		{ id: '2', link: '/skills', name: 'Skills' },
-		{ id: '3', link: '/projects', name: 'Projects' },
-		{ id: '4', link: '/contacts', name: 'Contact' },
-		{ id: '5', link: '/about', name: 'About me' },
-	]
+
 	// Проверяю какая ссылка открыта в данный момент
 	const location = useLocation();
 	const [isActive, setIsActive] = useState(s.not_active)
 	const [isMenuOpen, setIsMenuOpen] = useState('')
 
-	// Если width больше 535px и применены стили s.active, то сбросить стили (функционал если с открытым меню повернуть в landscape (горизонт))
+	// Если width больше 535px и применены стили s.active, то сбросить стили (функционал если с открытым меню повернуть в landscape (горизонт), то меню закрывается как по нажатию кнопки)
 	if (isMenuOpen && !mediaQueryWidth) {
 		setIsActive(s.not_active);
 		setIsMenuOpen('');
@@ -72,4 +74,4 @@ export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidt
 			</header>
 		</>
 	);
-};
+});

@@ -54,8 +54,10 @@
 		@include adaptiveValue("margin-bottom",25,15,500,320,1);
 	}
 	&__download_cv{
+		-moz-user-select: none;
+		-khtml-user-select: none;
+		user-select: none;
 		align-self: flex-start;
-		animation: animateLink 0.7s ease 1 1.3s forwards;
 		display:flex;
 		opacity: 0;
 		color: black;
@@ -65,15 +67,13 @@
 		text-align: center;
 		background: linear-gradient(to bottom, #F9C847 , #f9c64782);
 		transition: all linear 0.05s;
+		cursor: pointer;
 		@media (max-width: 811px) {
 			align-self: unset;
 		}
 		&:active {
 		box-shadow: #f9c64752 0px 16px 15px -2px;
 		transform: translate(0px,2px);
-		}
-		&:hover {
-		color: white;
 		}
 	}
 	&__pic {
@@ -176,13 +176,21 @@
 			}
 		}
 }
+.animationIsLoading{
+	opacity: 0;
+	animation: animateLink 0.7s ease 1 1.3s forwards;
+}
+.animationIsLoaded{
+	opacity: 1;
+	box-shadow: #f9c64752 0px 20px 15px 0px;
+}
 @keyframes animateTitle {
 	0% {transform: translate(0,20px);}
 	100% {transform: translate(0px,0px);opacity: 1}
 }
 @keyframes animateLink {
 	0% {transform: translate(0,20px);}
-	100% {transform: translate(0px,0px);opacity: 1; box-shadow: #f9c64752 0px 20px 15px 0px;}
+	100% {transform: translate(0px,0px);opacity: 1; }
 }
 @keyframes animatePhoto {
 	0% {height: 230px;}
