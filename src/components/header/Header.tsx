@@ -4,7 +4,7 @@ import logo from '../../img/logo.svg'
 import { Link, useLocation } from 'react-router-dom';
 import { NavItems } from './navItems/NavItems';
 
-export type HeaderType = {
+type HeaderType = {
 	onClickBurgerMenu: () => void
 	mediaQueryWidth: boolean
 }

@@ -6,7 +6,7 @@ import { Home } from './components/main/home/Home';
 import { Contact } from './components/main/contact/Contact';
 import { About } from './components/main/about/About';
 import Projects from './components/main/projects/Projects';
-import Skills from './components/main/skills/Skills';
+import { Skills } from './components/main/skills/Skills';
 import logo from './img/transparent_logo.svg'
 import { Route, Routes, Navigate } from 'react-router-dom';
 
