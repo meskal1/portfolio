@@ -35,7 +35,7 @@
 }
 .nav_burger_items{
 	display: none;
-	@media (max-width: 535px) {
+	@media (max-width: 536px) {
 		display: unset;
 		position: absolute;
 		z-index: -1;
@@ -80,7 +80,7 @@
 	z-index: 5;
 	width: 45px;
 	height: 40px;
-	@media (min-width: 535px) {
+	@media (min-width: 536px) {
 		display: none;
 	}
 	.menu_burger {

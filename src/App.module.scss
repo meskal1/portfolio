@@ -28,7 +28,7 @@
 .menuOpen{
 	&::after{
 		height: 100vh;
-		@media (min-width: 535px) {
+		@media (min-width: 536px) {
 			height: 0;
 		}
 	}

@@ -28,16 +28,36 @@
 	flex-wrap: wrap;
 	max-width: 500px;
 	justify-content: center;
-	gap: 15px 20px;
+	row-gap: 15px;
+	column-gap: 20px;
+	@include adaptiveValue("row-gap",15,10,536,360,1);
+	@include adaptiveValue("column-gap",20,10,536,360,1);
+	@media (max-width: 360px) {
+		// gap: 10px 10px;
+	}
 	}
 	&__item{
-		color: #F9C847;
+		color: #F9C655;
 		text-align: center;
-		padding: 10px;
-		font-size: rem(20);
-		border: 2px solid white;
+		// padding-top: 10;
+		// padding: 10px;
+		// font-size: rem(20);
+		border: 1px solid white;
 		border-radius: 30px;
-		flex: 0 1 127px;
+		// flex: 0 1 127px;
+		// line-height: rem(20);
+		@include adaptiveValue("line-height",20,15,536,360,1);
+		@include adaptiveValue("flex-basis",127,102,536,360,1);
+		@include adaptiveValue("padding-top",10,5,536,360,1);
+		@include adaptiveValue("padding-bottom",8,2,536,360,1);
+		@include adaptiveValue("padding-left",10,5,536,360,1);
+		@include adaptiveValue("padding-right",10,5,536,360,1);
+		@include adaptiveValue("font-size",20,17,536,360,1);
+		@media (max-width: 394px) {
+			// flex: 0 1 102px;
+			// padding: 5px;
+			// font-size: rem(17);
+		}
 	}
 	&__absolute{
 		// position: absolute;

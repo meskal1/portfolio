@@ -18,19 +18,19 @@ export const Skills: React.FC<SkillsType> = React.memo(({ }) => {
 							<p className={s.skills__item}>Redux</p>
 							<p className={s.skills__item}>JavaScript</p>
 							<p className={s.skills__item}>TypeScript</p>
-							<p className={s.skills__item}>REST API</p>
-							<p className={s.skills__item}>AXIOS</p>
+							<p className={s.skills__item}>Rest API</p>
+							<p className={s.skills__item}>Axios</p>
+							<p className={s.skills__item}>Unit Tests</p>
+							<p className={s.skills__item}>SnapShot</p>
+							<p className={s.skills__item}>StoryBook</p>
+							<p className={s.skills__item}>Git</p>
+							<p className={s.skills__item}>After Effects</p>
+							<p className={s.skills__item}>SASS</p>
 							<p className={s.skills__item}>HTML</p>
 							<p className={s.skills__item}>CSS</p>
-							<p className={s.skills__item}>SASS</p>
-							<p className={s.skills__item}>Git</p>
-							<p className={s.skills__item}>Unit Tests</p>
-							<p className={s.skills__item}>StoryBook</p>
-							<p className={s.skills__item}>SnapShot</p>
-							<p className={s.skills__item}>After Effects</p>
-							<p className={`${s.skills__item} ${s.skills__absolute}`}>Handsome</p>
+							{/* <p className={`${s.skills__item} ${s.skills__absolute}`}>Handsome</p>
 							<p className={`${s.skills__item} ${s.skills__absolute}`}>Awesome</p>
-							<p className={`${s.skills__item} ${s.skills__absolute}`}>Curious</p>
+							<p className={`${s.skills__item} ${s.skills__absolute}`}>Curious</p> */}
 							{/* <SkillsItem />
 							<SkillsItem />
 							<SkillsItem /> */}
