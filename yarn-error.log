@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\android-1ba2kes3qw\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/react-flash-message
+  C:\Program Files\nodejs\node.exe C:\Users\android-1ba2kes3qw\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/lottie-web
 
 PATH: 
-  C:\Users\android-1ba2kes3qw\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\android-1ba2kes3qw\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Python310\Scripts;C:\Python310;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\Common Files\Acronis\SnapAPI;C:\Program Files\PuTTY;C:\Program Files\nodejs;C:\Program Files\Microsoft VS Code\bin;C:\Users\android-1ba2kes3qw\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Nmap;C:\Users\android-1ba2kes3qw\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\android-1ba2kes3qw\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  C:\Users\android-1ba2kes3qw\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\android-1ba2kes3qw\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Python310\Scripts;C:\Python310;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\Common Files\Acronis\SnapAPI;C:\Program Files\PuTTY;C:\Program Files\nodejs;C:\Program Files\Microsoft VS Code\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\android-1ba2kes3qw\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Nmap;C:\Users\android-1ba2kes3qw\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\android-1ba2kes3qw\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 
 Yarn version: 
   1.22.17
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2freact-flash-message: Not found
+  Error: https://registry.yarnpkg.com/@types%2flottie-web: Not found
       at Request.params.callback [as _callback] (C:\Users\android-1ba2kes3qw\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:67029:18)
       at Request.self.callback (C:\Users\android-1ba2kes3qw\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140883:22)
       at Request.emit (node:events:526:28)
@@ -40,16 +40,23 @@ npm manifest:
   		"@types/node": "^16.11.33",
   		"@types/react": "^18.0.8",
   		"@types/react-dom": "^18.0.3",
+  		"@types/react-lottie": "^1.2.6",
+  		"@types/react-redux": "^7.1.24",
   		"@types/react-router": "^5.1.18",
   		"@types/react-router-dom": "^5.3.3",
   		"gh-pages": "^3.2.3",
+  		"lottie-web": "^5.9.6",
   		"node-sass": "^7.0.1",
   		"react": "^18.1.0",
+  		"react-delayed": "^0.2.3",
   		"react-dom": "^18.1.0",
-  		"react-flash-message": "^1.0.8",
+  		"react-lottie": "^1.2.3",
+  		"react-redux": "^8.0.2",
   		"react-router": "^6.3.0",
   		"react-router-dom": "^6.3.0",
   		"react-scripts": "^5.0.1",
+  		"react-useportal": "^1.0.16",
+  		"redux": "^4.2.0",
   		"sass": "^1.52.3",
   		"sass-math": "^1.0.0",
   		"save-dev": "^0.0.1-security",
@@ -1113,7 +1120,7 @@ Lockfile:
       core-js-pure "^3.20.2"
       regenerator-runtime "^0.13.4"
   
-  "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.16.3", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+  "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.16.3", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
     version "7.17.9"
     resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.17.9.tgz"
     integrity sha512-lSiBBvodq29uShpWGNbgFdKYNiFDo5/HIYsaCEY9ff4sb10x9jizo2+pRrSyF4jKZCXqgzuqBOQKbUm90gQwJg==
@@ -1936,6 +1943,14 @@ Lockfile:
     resolved "https://registry.npmjs.org/@types/history/-/history-4.7.11.tgz"
     integrity sha512-qjDJRrmvBMiTx+jyLxvLfJU7UznFuokDv4f3WRuriHKERccVpFU+8XMQUAbDzoiJCsmexxRExQeMwwCdamSKDA==
   
+  "@types/hoist-non-react-statics@^3.3.0", "@types/hoist-non-react-statics@^3.3.1":
+    version "3.3.1"
+    resolved "https://registry.npmjs.org/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz"
+    integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
+    dependencies:
+      "@types/react" "*"
+      hoist-non-react-statics "^3.3.0"
+  
   "@types/html-minifier-terser@^6.0.0":
     version "6.1.0"
     resolved "https://registry.npmjs.org/@types/html-minifier-terser/-/html-minifier-terser-6.1.0.tgz"
@@ -2042,6 +2057,23 @@ Lockfile:
     dependencies:
       "@types/react" "*"
   
+  "@types/react-lottie@^1.2.6":
+    version "1.2.6"
+    resolved "https://registry.yarnpkg.com/@types/react-lottie/-/react-lottie-1.2.6.tgz#4f351dfdf5f93a46a3a9714fbb319f1e0f030eaf"
+    integrity sha512-fvGJHD7SeUdVESHo7f7erRnXkTWaa/6Mo5TB+R0/ieSftKoFspA4sMlF2qMH6BljXI7ehFJbBtrD5bzDxPCkGg==
+    dependencies:
+      "@types/react" "*"
+  
+  "@types/react-redux@^7.1.24":
+    version "7.1.24"
+    resolved "https://registry.npmjs.org/@types/react-redux/-/react-redux-7.1.24.tgz"
+    integrity sha512-7FkurKcS1k0FHZEtdbbgN8Oc6b+stGSfZYjQGicofJ0j4U0qIn/jaSvnP2pLwZKiai3/17xqqxkkrxTgN8UNbQ==
+    dependencies:
+      "@types/hoist-non-react-statics" "^3.3.0"
+      "@types/react" "*"
+      hoist-non-react-statics "^3.3.0"
+      redux "^4.0.0"
+  
   "@types/react-router-dom@^5.3.3":
     version "5.3.3"
     resolved "https://registry.npmjs.org/@types/react-router-dom/-/react-router-dom-5.3.3.tgz"
@@ -2123,6 +2155,11 @@ Lockfile:
     version "2.0.2"
     resolved "https://registry.npmjs.org/@types/trusted-types/-/trusted-types-2.0.2.tgz"
     integrity sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==
+  
+  "@types/use-sync-external-store@^0.0.3":
+    version "0.0.3"
+    resolved "https://registry.npmjs.org/@types/use-sync-external-store/-/use-sync-external-store-0.0.3.tgz"
+    integrity sha512-EwmlvuaxPNej9+T4v5AuBPJa2x2UOJVdjCtDHgcDqitUeOtjnJKJ+apYjVcAoBEMjKW1VVFGZLUb5+qqa09XFA==
   
   "@types/ws@^8.5.1":
     version "8.5.3"
@@ -2896,6 +2933,14 @@ Lockfile:
       babel-plugin-macros "^3.1.0"
       babel-plugin-transform-react-remove-prop-types "^0.4.24"
   
+  babel-runtime@^6.26.0:
+    version "6.26.0"
+    resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
+    integrity sha512-ITKNuq2wKlW1fJg9sSW52eepoYgZBggvOAHC0u/CYu/qxQ9EVzThCgR69BnSXLHjy2f7SY5zaQ4yt7H9ZVxY2g==
+    dependencies:
+      core-js "^2.4.0"
+      regenerator-runtime "^0.11.0"
+  
   balanced-match@^1.0.0:
     version "1.0.2"
     resolved "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
@@ -3407,6 +3452,11 @@ Lockfile:
     version "3.22.4"
     resolved "https://registry.npmjs.org/core-js-pure/-/core-js-pure-3.22.4.tgz"
     integrity sha512-4iF+QZkpzIz0prAFuepmxwJ2h5t4agvE8WPYqs2mjLJMNNwJOnpch76w2Q7bUfCPEv/V7wpvOfog0w273M+ZSw==
+  
+  core-js@^2.4.0:
+    version "2.6.12"
+    resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
+    integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
   
   core-js@^3.19.2:
     version "3.22.4"
@@ -5107,6 +5157,13 @@ Lockfile:
     dependencies:
       "@babel/runtime" "^7.7.6"
   
+  hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.2:
+    version "3.3.2"
+    resolved "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz"
+    integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
+    dependencies:
+      react-is "^16.7.0"
+  
   hoopy@^0.1.4:
     version "0.1.4"
     resolved "https://registry.npmjs.org/hoopy/-/hoopy-0.1.4.tgz"
@@ -5322,7 +5379,7 @@ Lockfile:
   
   immutable@^4.0.0:
     version "4.1.0"
-    resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.1.0.tgz#f795787f0db780183307b9eb2091fcac1f6fafef"
+    resolved "https://registry.npmjs.org/immutable/-/immutable-4.1.0.tgz"
     integrity sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ==
   
   import-fresh@^3.0.0, import-fresh@^3.1.0, import-fresh@^3.2.1:
@@ -6428,6 +6485,11 @@ Lockfile:
     integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
     dependencies:
       js-tokens "^3.0.0 || ^4.0.0"
+  
+  lottie-web@^5.1.3, lottie-web@^5.9.6:
+    version "5.9.6"
+    resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.9.6.tgz#62ae68563355d3e04aa75d53dec3dd4bea0e57c9"
+    integrity sha512-JFs7KsHwflugH5qIXBpB4905yC1Sub2MZWtl/elvO/QC6qj1ApqbUZJyjzJseJUtVpgiDaXQLjBlIJGS7UUUXA==
   
   lower-case@^2.0.2:
     version "2.0.2"
@@ -7871,7 +7933,7 @@ Lockfile:
       kleur "^3.0.3"
       sisteransi "^1.0.5"
   
-  prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+  prop-types@^15.6.2, prop-types@^15.8.1:
     version "15.8.1"
     resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
     integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -7971,6 +8033,11 @@ Lockfile:
       regenerator-runtime "^0.13.9"
       whatwg-fetch "^3.6.2"
   
+  react-delayed@^0.2.3:
+    version "0.2.3"
+    resolved "https://registry.npmjs.org/react-delayed/-/react-delayed-0.2.3.tgz"
+    integrity sha512-3bd+YlsSS+I3gedANUPQCxhTs1OmCz/rzCLsCY/K3Wju7gS+Qoc7jS14/7w5U2pmpSaSBOUs9qI3iwsMCCDD9g==
+  
   react-dev-utils@^12.0.1:
     version "12.0.1"
     resolved "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-12.0.1.tgz"
@@ -8014,14 +8081,7 @@ Lockfile:
     resolved "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.11.tgz"
     integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
   
-  react-flash-message@^1.0.8:
-    version "1.0.8"
-    resolved "https://registry.yarnpkg.com/react-flash-message/-/react-flash-message-1.0.8.tgz#25146e1a229d91e0f40d714344b366c210f4c271"
-    integrity sha512-XND1LenvTjZI9SvGgGxF74SDZih1fS+iN304/Lhwd/vukTyBLJ9PrOvJehdf9KkxdWtK3fxmQl+c/cpZktyMVg==
-    dependencies:
-      prop-types "^15.7.2"
-  
-  react-is@^16.13.1:
+  react-is@^16.13.1, react-is@^16.7.0:
     version "16.13.1"
     resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
     integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -8035,6 +8095,26 @@ Lockfile:
     version "18.1.0"
     resolved "https://registry.npmjs.org/react-is/-/react-is-18.1.0.tgz"
     integrity sha512-Fl7FuabXsJnV5Q1qIOQwx/sagGF18kogb4gpfcG4gjLBWO0WDiiz1ko/ExayuxE7InyQkBLkxRFG5oxY6Uu3Kg==
+  
+  react-lottie@^1.2.3:
+    version "1.2.3"
+    resolved "https://registry.yarnpkg.com/react-lottie/-/react-lottie-1.2.3.tgz#8544b96939e088658072eea5e12d912cdaa3acc1"
+    integrity sha512-qLCERxUr8M+4mm1LU0Ruxw5Y5Fn/OmYkGfnA+JDM/dZb3oKwVAJCjwnjkj9TMHtzR2U6sMEUD3ZZ1RaHagM7kA==
+    dependencies:
+      babel-runtime "^6.26.0"
+      lottie-web "^5.1.3"
+  
+  react-redux@^8.0.2:
+    version "8.0.2"
+    resolved "https://registry.npmjs.org/react-redux/-/react-redux-8.0.2.tgz"
+    integrity sha512-nBwiscMw3NoP59NFCXFf02f8xdo+vSHT/uZ1ldDwF7XaTpzm+Phk97VT4urYBl5TYAPNVaFm12UHAEyzkpNzRA==
+    dependencies:
+      "@babel/runtime" "^7.12.1"
+      "@types/hoist-non-react-statics" "^3.3.1"
+      "@types/use-sync-external-store" "^0.0.3"
+      hoist-non-react-statics "^3.3.2"
+      react-is "^18.0.0"
+      use-sync-external-store "^1.0.0"
   
   react-refresh@^0.11.0:
     version "0.11.0"
@@ -8111,6 +8191,13 @@ Lockfile:
     optionalDependencies:
       fsevents "^2.3.2"
   
+  react-useportal@^1.0.16:
+    version "1.0.16"
+    resolved "https://registry.yarnpkg.com/react-useportal/-/react-useportal-1.0.16.tgz#d442b4f430d92e5e9f7adb40f59375d12c51caa2"
+    integrity sha512-sbmixDvJvWAS2YaGB4dA6e7EA08MXTjQxjcujC4WYLWSJOR2BsF3PnVAlJ9N70dDC/Z6zjgs8IKiaPzmGYHcXQ==
+    dependencies:
+      use-ssr "^1.0.22"
+  
   react@^18.1.0:
     version "18.1.0"
     resolved "https://registry.npmjs.org/react/-/react-18.1.0.tgz"
@@ -8181,6 +8268,13 @@ Lockfile:
       indent-string "^4.0.0"
       strip-indent "^3.0.0"
   
+  redux@^4.0.0, redux@^4.2.0:
+    version "4.2.0"
+    resolved "https://registry.npmjs.org/redux/-/redux-4.2.0.tgz"
+    integrity sha512-oSBmcKKIuIR4ME29/AeNUnl5L+hvBq7OaJWzaptTQJAntaPvxIJqfnjbaEiCzzaIz+XmVILfqAM3Ob0aXLPfjA==
+    dependencies:
+      "@babel/runtime" "^7.9.2"
+  
   regenerate-unicode-properties@^10.0.1:
     version "10.0.1"
     resolved "https://registry.npmjs.org/regenerate-unicode-properties/-/regenerate-unicode-properties-10.0.1.tgz"
@@ -8192,6 +8286,11 @@ Lockfile:
     version "1.4.2"
     resolved "https://registry.npmjs.org/regenerate/-/regenerate-1.4.2.tgz"
     integrity sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A==
+  
+  regenerator-runtime@^0.11.0:
+    version "0.11.1"
+    resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
+    integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
   
   regenerator-runtime@^0.13.4, regenerator-runtime@^0.13.9:
     version "0.13.9"
@@ -8445,9 +8544,9 @@ Lockfile:
     integrity sha512-sNRWEW71zu9HfgtIvUQYi5FTXys10x/wtOFtaBFg2yTgdDiGlxyr448suw8ZKAEHX4T2X1uxnrpcAVwIerDTKQ==
   
   sass@^1.52.3:
-    version "1.52.3"
-    resolved "https://registry.yarnpkg.com/sass/-/sass-1.52.3.tgz#b7cc7ffea2341ccc9a0c4fd372bf1b3f9be1b6cb"
-    integrity sha512-LNNPJ9lafx+j1ArtA7GyEJm9eawXN8KlA1+5dF6IZyoONg1Tyo/g+muOsENWJH/2Q1FHbbV4UwliU0cXMa/VIA==
+    version "1.53.0"
+    resolved "https://registry.npmjs.org/sass/-/sass-1.53.0.tgz"
+    integrity sha512-zb/oMirbKhUgRQ0/GFz8TSAwRq2IlR29vOUJZOx0l8sV+CkHUfHa4u5nqrG+1VceZp7Jfj59SVW9ogdhTvJDcQ==
     dependencies:
       chokidar ">=3.0.0 <4.0.0"
       immutable "^4.0.0"
@@ -9402,7 +9501,7 @@ Lockfile:
   
   typewriter-effect@^2.19.0:
     version "2.19.0"
-    resolved "https://registry.yarnpkg.com/typewriter-effect/-/typewriter-effect-2.19.0.tgz#396fe35e1313279ae6202775bf8dff5db37c5b64"
+    resolved "https://registry.npmjs.org/typewriter-effect/-/typewriter-effect-2.19.0.tgz"
     integrity sha512-rhUX1ukmAXNFWUnMFx8CDU1uLWJQ7pRYzDU7WfHJRq43i6SmWSP9vFiUsOGfXINodUAgZiJ5xnzwLciHxZDGDg==
     dependencies:
       prop-types "^15.6.2"
@@ -9493,6 +9592,16 @@ Lockfile:
     integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
     dependencies:
       punycode "^2.1.0"
+  
+  use-ssr@^1.0.22:
+    version "1.0.24"
+    resolved "https://registry.yarnpkg.com/use-ssr/-/use-ssr-1.0.24.tgz#213a3df58f5ab9268e6fe1a57ad0a9de91e514d1"
+    integrity sha512-0MFps7ezL57/3o0yl4CvrHLlp9z20n1rQZV/lSRz7if+TUoM6POU1XdOvEjIgjgKeIhTEye1U0khrIYWCTWw4g==
+  
+  use-sync-external-store@^1.0.0:
+    version "1.2.0"
+    resolved "https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz"
+    integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
   
   util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
     version "1.0.2"
