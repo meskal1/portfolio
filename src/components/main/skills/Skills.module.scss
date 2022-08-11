@@ -41,7 +41,7 @@
 		display: flex;
 		white-space: nowrap;
 		justify-content: center;
-		z-index: 20;
+		z-index: 20;//Убрать как закончу
 		@include adaptiveValue("width",127,102,536,360,1);
 		// border: 1px solid red;
 	}
