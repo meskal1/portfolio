@@ -1,148 +1,533 @@
-@import "../../../mixin.scss";
+@import '../../../mixin.scss';
+:root {
+  @include adaptiveValue('--translate-Y', 89, 44, 536, 378, 1);
+  @include adaptiveValue('--translate-Y1', 542, 352, 536, 378, 1);
+  @include adaptiveValue('--translate-X1', 230, 178, 536, 378, 1);
+  @include adaptiveValue('--translate-Y2', 545, 354, 536, 378, 1);
+  @include adaptiveValue('--translate-X2', 45, 36, 536, 378, 1);
+  @include adaptiveValue('--translate-Y3', 542, 352, 536, 378, 1);
+  @include adaptiveValue('--translate-X3', -64, -46, 536, 378, 1);
+  @include adaptiveValue('--translate-Y4', 490, 320, 536, 378, 1);
+  @include adaptiveValue('--translate-X4', 192, 148, 536, 378, 1);
+  @include adaptiveValue('--translate-Y5', 487, 318, 536, 378, 1);
+  @include adaptiveValue('--translate-X5', 83, 66, 536, 378, 1);
+  @include adaptiveValue('--translate-Y6', 490, 320, 536, 378, 1);
+  @include adaptiveValue('--translate-X6', -102, -76, 536, 378, 1);
+  @include adaptiveValue('--translate-Y7', 432, 284, 536, 378, 1);
+  @include adaptiveValue('--translate-X7', 230, 178, 536, 378, 1);
+  @include adaptiveValue('--translate-Y8', 435, 286, 536, 378, 1);
+  @include adaptiveValue('--translate-X8', 45, 36, 536, 378, 1);
+  @include adaptiveValue('--translate-Y9', 432, 284, 536, 378, 1);
+  @include adaptiveValue('--translate-X9', -64, -46, 536, 378, 1);
+  @include adaptiveValue('--translate-Y10', 380, 252, 536, 378, 1);
+  @include adaptiveValue('--translate-X10', 192, 148, 536, 378, 1);
+  @include adaptiveValue('--translate-Y11', 377, 250, 536, 378, 1);
+  @include adaptiveValue('--translate-X11', 83, 66, 536, 378, 1);
+  @include adaptiveValue('--translate-Y12', 380, 252, 536, 378, 1);
+  @include adaptiveValue('--translate-X12', -102, -76, 536, 378, 1);
+  @include adaptiveValue('--translate-Y13', 322, 216, 536, 378, 1);
+  @include adaptiveValue('--translate-X13', 230, 178, 536, 378, 1);
+  @include adaptiveValue('--translate-Y14', 325, 218, 536, 378, 1);
+  @include adaptiveValue('--translate-X14', 45, 36, 536, 378, 1);
+  @include adaptiveValue('--translate-Y15', 322, 216, 536, 378, 1);
+  @include adaptiveValue('--translate-X15', -64, -46, 536, 378, 1);
+  //   @media (min-width: 537px) {
+  //     //  --translate-Y: 27px;
+  //     //  --translate-Y1: 27px;
+  //     //  --translate-X1: 27px;
+  //     //  --translate-Y2: 27px;
+  //     //  --translate-X2: 27px;
+  //     //  --translate-Y3: 27px;
+  //     //  --translate-X3: -64px;
+  //     //  --translate-Y4: 27px;
+  //     //  --translate-X4: 27px;
+  //     //  --translate-Y5: 27px;
+  //     //  --translate-X5: 27px;
+  //     //  --translate-Y6: 27px;
+  //     //  --translate-X6: 27px;
+  //     //  --translate-Y7: 27px;
+  //     //  --translate-X7: 27px;
+  //     //  --translate-Y8: 27px;
+  //     //  --translate-X8: 27px;
+  //     //  --translate-Y9: 27px;
+  //     //  --translate-X9: -65px;
+  //     //  --translate-Y10: 27px;
+  //     //  --translate-X10: 27px;
+  //     //  --translate-Y11: 27px;
+  //     //  --translate-X11: 27px;
+  //     //  --translate-Y12: 27px;
+  //     //  --translate-X12: 27px;
+  //     //  --translate-Y13: 27px;
+  //     //  --translate-X13: 27px;
+  //     //  --translate-Y14: 27px;
+  //     //  --translate-X14: 27px;
+  //     //   --translate-Y15: 27px;
+  //     //  --translate-X15: -65px;
+  //   }
+  @media (max-width: 377px) {
+    --translate-Y: 27px;
+    //     --translate-Y1: 27px;
+    //     --translate-X1: 27px;
+    //     --translate-Y2: 27px;
+    //     --translate-X2: 27px;
+    //     --translate-Y3: 27px;
+    //     --translate-X3: 27px;
+    //     --translate-Y4: 27px;
+    //     --translate-X4: 27px;
+    //     --translate-Y5: 27px;
+    //     --translate-X5: 27px;
+    //     --translate-Y6: 27px;
+    //     --translate-X6: 27px;
+    //     --translate-Y7: 27px;
+    //     --translate-X7: 27px;
+    //     --translate-Y8: 27px;
+    //     --translate-X8: 27px;
+    //     --translate-Y9: 27px;
+    //     --translate-X9: 27px;
+    //     --translate-Y10: 27px;
+    //     --translate-X10: 27px;
+    //     --translate-Y11: 27px;
+    //     --translate-X11: 27px;
+    //     --translate-Y12: 27px;
+    //     --translate-X12: 27px;
+    //     --translate-Y13: 27px;
+    //     --translate-X13: 27px;
+    //     --translate-Y14: 27px;
+    //     --translate-X14: 27px;
+    //     --translate-Y15: 27px;
+    //     --translate-X15: 27px;
+  }
+  @media (max-width: 354px) {
+    --translate-Y: 44px;
+    //     --translate-Y1: 44px;
+    //     --translate-X1: 27px;
+    //     --translate-Y2: 27px;
+    //     --translate-X2: 27px;
+    //     --translate-Y3: 27px;
+    //     --translate-X3: 27px;
+    //     --translate-Y4: 27px;
+    //     --translate-X4: 27px;
+    //     --translate-Y5: 27px;
+    //     --translate-X5: 27px;
+    //     --translate-Y6: 27px;
+    //     --translate-X6: 27px;
+    //     --translate-Y7: 27px;
+    //     --translate-X7: 27px;
+    //     --translate-Y8: 27px;
+    //     --translate-X8: 27px;
+    //     --translate-Y9: 27px;
+    //     --translate-X9: 27px;
+    //     --translate-Y10: 27px;
+    //     --translate-X10: 27px;
+    //     --translate-Y11: 27px;
+    //     --translate-X11: 27px;
+    //     --translate-Y12: 27px;
+    //     --translate-X12: 27px;
+    //     --translate-Y13: 27px;
+    //     --translate-X13: 27px;
+    //     --translate-Y14: 27px;
+    //     --translate-X14: 27px;
+    //     --translate-Y15: 27px;
+    //     --translate-X15: 27px;
+  }
+  @media (max-width: 280px) {
+    --translate-Y: 61px;
+    //     --translate-Y1: 61px;
+    //     --translate-X1: 27px;
+    //     --translate-Y2: 27px;
+    //     --translate-X2: 27px;
+    //     --translate-Y3: 27px;
+    //     --translate-X3: 27px;
+    //     --translate-Y4: 27px;
+    //     --translate-X4: 27px;
+    //     --translate-Y5: 27px;
+    //     --translate-X5: 27px;
+    //     --translate-Y6: 27px;
+    //     --translate-X6: 27px;
+    //     --translate-Y7: 27px;
+    //     --translate-X7: 27px;
+    //     --translate-Y8: 27px;
+    //     --translate-X8: 27px;
+    //     --translate-Y9: 27px;
+    //     --translate-X9: 27px;
+    //     --translate-Y10: 27px;
+    //     --translate-X10: 27px;
+    //     --translate-Y11: 27px;
+    //     --translate-X11: 27px;
+    //     --translate-Y12: 27px;
+    //     --translate-X12: 27px;
+    //     --translate-Y13: 27px;
+    //     --translate-X13: 27px;
+    //     --translate-Y14: 27px;
+    //     --translate-X14: 27px;
+    //     --translate-Y15: 27px;
+    //     --translate-X15: 27px;
+  }
+}
 .skills {
-	// background: #DDFEE9;
-	&__container {
-		display: flex;
-		justify-content: center;
-		flex-grow: 1;
-		max-width: 1050px;
-		margin: 0 auto;
-		padding: 0 15px;
-	}
-	&__content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		flex-grow: 1;
-		gap: 20px;
-	}
-	&__title {
-		opacity: 0;
-		animation: animateTitle 0.7s ease 1 1.1s forwards;
-		font-size: rem(50);
-		font-weight: 700;
-	}
-	&__block_items {
-	position: relative;
-	display: flex;
-	flex-wrap: wrap;
-	// max-width: 430px;
-	justify-content: center;
-	row-gap: 15px;
-	column-gap: 20px;
-	@include adaptiveValue("row-gap",15,10,536,360,1);
-	@include adaptiveValue("column-gap",20,10,536,360,1);
-	@include adaptiveValue("width",450,250,536,280,1);
-	@media (max-width: 360px) {
-		// gap: 10px 10px;
-	}
-	& div {
-		display: flex;
-		white-space: nowrap;
-		justify-content: center;
-		z-index: 20;//Убрать как закончу
-		@include adaptiveValue("width",127,102,536,360,1);
-		// border: 1px solid red;
-	}
-	// & div:nth-child(1) p{
-	// 	width: 40px;
-	// 	transform: translate(230px,535px);
-	// }
-	// & div:nth-child(2) p{
-	// 	width: 40px;
-	// 	transform: translate(45px,538px);
-	// }
-	// & div:nth-child(3) p{
-	// 	width: 40px;
-	// 	transform: translate(-65px,535px);
-	// }
-	// & div:nth-child(4) p{
-	// 	width: 40px;
-	// 	transform: translate(192px,482px);
-	// }
-	// & div:nth-child(5) p{
-	// 	width: 40px;
-	// 	transform: translate(82px,480px);
-	// }
-	// & div:nth-child(6) p{
-	// 	width: 40px;
-	// 	transform: translate(-102px,482px);
-	// }
-	// & div:nth-child(7) p{
-	// 	width: 40px;
-	// 	transform: translate(230px,425px);
-	// }
-	// & div:nth-child(8) p{
-	// 	width: 40px;
-	// 	transform: translate(45px,427px);
-	// }
-	// & div:nth-child(9) p{
-	// 	width: 40px;
-	// 	transform: translate(-65px,425px);
-	// }
-	// & div:nth-child(10) p{
-	// 	width: 40px;
-	// 	transform: translate(192px,372px);
-	// }
-	// & div:nth-child(11) p{
-	// 	width: 40px;
-	// 	transform: translate(82px,370px);
-	// }
-	// & div:nth-child(12) p{
-	// 	width: 40px;
-	// 	transform: translate(-102px,373px);
-	// }
-	// & div:nth-child(13) p{
-	// 	width: 40px;
-	// 	transform: translate(230px,315px);
-	// }
-	// & div:nth-child(14) p{
-	// 	width: 40px;
-	// 	transform: translate(45px,318px);
-	// }
-	// & div:nth-child(15) p{
-	// 	width: 40px;
-	// 	transform: translate(-65px,315px);
-	// }
-	}
-	&__item{
-		overflow: hidden;
-		color: #F9C655;
-		text-align: center;
-		border: 1px solid white;
-		border-radius: 30px;
-		// flex: 0 1 127px;
-		@include adaptiveValue("line-height",20,15,536,360,1);
-		@include adaptiveValue("width",127,102,536,360,1);
-		// @include adaptiveValue("flex-basis",127,102,536,360,1);
-		@include adaptiveValue("padding-top",10,5,536,360,1);
-		@include adaptiveValue("padding-bottom",8,2,536,360,1);
-		@include adaptiveValue("padding-left",10,5,536,360,1);
-		@include adaptiveValue("padding-right",10,5,536,360,1);
-		@include adaptiveValue("font-size",20,17,536,360,1);
-		transition: all linear 0.3s;
-		@media (max-width: 394px) {
-		}
-	}
-	&__absolute{
-		// position: absolute;
-	}
+  display: flex;
+  flex-grow: 1;
+  // background: #DDFEE9;
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 20px;
+  }
+  &__title {
+    opacity: 0;
+    animation: animateTitle 0.7s ease 1 1.1s forwards;
+    font-size: rem(50);
+    font-weight: 700;
+  }
+  &__block_items {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    // max-width: 430px;
+    justify-content: center;
+    @include adaptiveValue('row-gap', 15, 10, 536, 378, 1);
+    @include adaptiveValue('column-gap', 20, 10, 536, 378, 1);
+    @include adaptiveValue('width', 450, 250, 536, 280, 1);
+    @media (max-width: 360px) {
+      // gap: 10px 10px;
+    }
+    //  & div {
+    //    display: flex;
+    //    white-space: nowrap;
+    //    justify-content: center;
+    //    z-index: 20; //Убрать как закончу
+    //    border: 1px solid red;
+    //    @include adaptiveValue('width', 127, 102, 536, 378, 1);
+    //    @media (max-width: 377px) {
+    //      // gap: 10px 10px;
+    //      width: unset;
+    //    }
+    //  }
+    //  & div:nth-child(1) p {
+    //    &::before {
+    //      background: green;
+    //      transform: translate(var(--translate-X1), var(--translate-Y1));
+    //    }
+    //    width: 40px;
+    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    //  }
+    //  & div:nth-child(2) p {
+    //    &::before {
+    //      background: green;
+    //      transform: translate(var(--translate-X2), var(--translate-Y2));
+    //    }
+    //    width: 40px;
+    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    //  }
+    //  & div:nth-child(3) p {
+    //    &::before {
+    //      background: red;
+    //      transform: translate(var(--translate-X3), var(--translate-Y3));
+    //    }
+    //    width: 40px;
+    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    //  }
+    //  & div:nth-child(4) p {
+    //    &::before {
+    //      background: red;
+    //      transform: translate(var(--translate-X4), var(--translate-Y4));
+    //    }
+    //    width: 40px;
+    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    //  }
+    //  & div:nth-child(5) p {
+    //    &::before {
+    //      background: green;
+    //      transform: translate(var(--translate-X5), var(--translate-Y5));
+    //    }
+    //    width: 40px;
+    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    //  }
+    //  & div:nth-child(6) p {
+    //    &::before {
+    //      background: green;
+    //      transform: translate(var(--translate-X6), var(--translate-Y6));
+    //    }
+    //    width: 40px;
+    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    //  }
+    //  & div:nth-child(7) p {
+    //    &::before {
+    //      background: red;
+    //      transform: translate(var(--translate-X7), var(--translate-Y7));
+    //    }
+    //    width: 40px;
+    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    //  }
+    //  & div:nth-child(8) p {
+    //    &::before {
+    //      background: red;
+    //      transform: translate(var(--translate-X8), var(--translate-Y8));
+    //    }
+    //    width: 40px;
+    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    //  }
+    //  & div:nth-child(9) p {
+    //    &::before {
+    //      background: green;
+    //      transform: translate(var(--translate-X9), var(--translate-Y9));
+    //    }
+    //    width: 40px;
+    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    //  }
+    //  & div:nth-child(10) p {
+    //    &::before {
+    //      background: green;
+    //      transform: translate(var(--translate-X10), var(--translate-Y10));
+    //    }
+    //    width: 40px;
+    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    //  }
+    //  & div:nth-child(11) p {
+    //    &::before {
+    //      background: red;
+    //      transform: translate(var(--translate-X11), var(--translate-Y11));
+    //    }
+    //    width: 40px;
+    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    //  }
+    //  & div:nth-child(12) p {
+    //    &::before {
+    //      background: red;
+    //      transform: translate(var(--translate-X12), var(--translate-Y12));
+    //    }
+    //    width: 40px;
+    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    //  }
+    //  & div:nth-child(13) p {
+    //    &::before {
+    //      background: green;
+    //      transform: translate(var(--translate-X13), var(--translate-Y13));
+    //    }
+    //    width: 40px;
+    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    //  }
+    //  & div:nth-child(14) p {
+    //    &::before {
+    //      background: green;
+    //      transform: translate(var(--translate-X14), var(--translate-Y14));
+    //    }
+    //    width: 40px;
+    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    //  }
+    //  & div:nth-child(15) p {
+    //    &::before {
+    //      background: red;
+    //      transform: translate(var(--translate-X15), var(--translate-Y15));
+    //    }
+    //    width: 40px;
+    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    //  }
+  }
+  &__item {
+    position: relative; //New
+    color: #f9c655;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 30px;
+    @include adaptiveValue('line-height', 20, 15, 536, 378, 1);
+    @include adaptiveValue('width', 127, 102, 536, 378, 1);
+    @include adaptiveValue('padding-top', 10, 5, 536, 378, 1);
+    @include adaptiveValue('padding-bottom', 8, 2, 536, 378, 1);
+    @include adaptiveValue('padding-left', 10, 5, 536, 378, 1);
+    @include adaptiveValue('padding-right', 10, 5, 536, 378, 1);
+    @include adaptiveValue('font-size', 20, 17, 536, 378, 1);
+    transition: opacity linear 0.3s, color linear 0.3s;
+    &::before {
+      content: '';
+      z-index: 30;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      border-radius: 50px;
+    }
+    @media (max-width: 377px) {
+      width: unset;
+      display: flex;
+    }
+    &:nth-child(1) {
+      // opacity: 0;
+      &::before {
+        background: green;
+        transform: translate(var(--translate-X1), var(--translate-Y1));
+        width: 40px;
+        @include adaptiveValue('width', 40, 25, 536, 378, 1);
+      }
+    }
+    &:nth-child(2) {
+      // opacity: 0;
+      &::before {
+        background: green;
+        transform: translate(var(--translate-X2), var(--translate-Y2));
+        width: 40px;
+        @include adaptiveValue('width', 40, 25, 536, 378, 1);
+      }
+    }
+    &:nth-child(3) {
+      &::before {
+        background: red;
+        transform: translate(var(--translate-X3), var(--translate-Y3));
+        width: 40px;
+        @include adaptiveValue('width', 40, 25, 536, 378, 1);
+      }
+    }
+    & div:nth-child(4) p {
+      &::before {
+        background: red;
+        transform: translate(var(--translate-X4), var(--translate-Y4));
+      }
+      width: 40px;
+      @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    }
+    & div:nth-child(5) p {
+      &::before {
+        background: green;
+        transform: translate(var(--translate-X5), var(--translate-Y5));
+      }
+      width: 40px;
+      @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    }
+    & div:nth-child(6) p {
+      &::before {
+        background: green;
+        transform: translate(var(--translate-X6), var(--translate-Y6));
+      }
+      width: 40px;
+      @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    }
+    & div:nth-child(7) p {
+      &::before {
+        background: red;
+        transform: translate(var(--translate-X7), var(--translate-Y7));
+      }
+      width: 40px;
+      @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    }
+    & div:nth-child(8) p {
+      &::before {
+        background: red;
+        transform: translate(var(--translate-X8), var(--translate-Y8));
+      }
+      width: 40px;
+      @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    }
+    & div:nth-child(9) p {
+      &::before {
+        background: green;
+        transform: translate(var(--translate-X9), var(--translate-Y9));
+      }
+      width: 40px;
+      @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    }
+    & div:nth-child(10) p {
+      &::before {
+        background: green;
+        transform: translate(var(--translate-X10), var(--translate-Y10));
+      }
+      width: 40px;
+      @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    }
+    & div:nth-child(11) p {
+      &::before {
+        background: red;
+        transform: translate(var(--translate-X11), var(--translate-Y11));
+      }
+      width: 40px;
+      @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    }
+    & div:nth-child(12) p {
+      &::before {
+        background: red;
+        transform: translate(var(--translate-X12), var(--translate-Y12));
+      }
+      width: 40px;
+      @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    }
+    & div:nth-child(13) p {
+      &::before {
+        background: green;
+        transform: translate(var(--translate-X13), var(--translate-Y13));
+      }
+      width: 40px;
+      @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    }
+    & div:nth-child(14) p {
+      &::before {
+        background: green;
+        transform: translate(var(--translate-X14), var(--translate-Y14));
+      }
+      width: 40px;
+      @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    }
+    & div:nth-child(15) p {
+      &::before {
+        background: red;
+        transform: translate(var(--translate-X15), var(--translate-Y15));
+      }
+      width: 40px;
+      @include adaptiveValue('width', 40, 25, 536, 378, 1);
+    }
+  }
+  &__absolute {
+    // position: absolute;
+  }
 }
 @keyframes animateTitle {
-	0% {transform: translate(0,20px);}
-	100% {transform: translate(0px,0px);opacity: 1}
+  0% {
+    transform: translate(0, 20px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
 }
-.avatar{
-	position: absolute;
-	top: -700px;
-	margin: 0 auto;
-	opacity: 0;
-	// border: 2px solid green;
-	width: 320px;
-	animation: animateTitleAvatar 0.6s linear 1 1.8s forwards;
+.avatarBackPlate {
+  //   z-index: 30; // Убрать как закончу
+  border: 1px solid green;
+  @include adaptiveValue('width', 320, 245, 536, 378, 1);
+  @include adaptiveValue('height', 371, 254, 536, 378, 1);
+}
+.avatarSpeed {
+  //   will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+.avatar {
+   //  will-change: transform;
+  transform: translate3d(0, -600px, 0);
+  -webkit-transform: translate3d(0, -600px, 0);
+  //   border: 1px solid red;
+  position: absolute;
+  margin: 0 auto;
+  opacity: 0;
+  @include adaptiveValue('width', 320, 245, 536, 378, 1);
+  animation: animateTitleAvatar 0.6s linear 1 1.8s forwards;
 }
 @keyframes animateTitleAvatar {
-	0% {opacity: 1;}
-	100% {top: 170px; opacity: 1;}
+  0% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, var(--translate-Y), 0);
+    -webkit-transform: translate3d(0, var(--translate-Y), 0);
+    opacity: 1;
+  }
 }

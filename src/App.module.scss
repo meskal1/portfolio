@@ -1,124 +1,162 @@
 .wrapper {
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
-	overflow: hidden;
-	min-height: 100%;
-	&::before{
-		content:'';
-		position: absolute;
-		z-index: 2;
-		width: 100%;
-		height: 100%;
-		background: #1C1D25;
-		animation: before 0s 1 linear 3.29s forwards;
-	}
-	&::after{
-		content:'';
-		position: absolute;
-		z-index: 4;
-		width: 100%;
-		height: 0vh;
-		transition: all ease 0.5s;
-		// background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(249,200,71,1) 100%);
-		background: linear-gradient(to bottom, rgba(28,29,37,1) 0%,rgba(249,200,71,1) 100%);
-		// background: linear-gradient(to bottom, rgba(249,200,71,1) 0%,rgba(28,29,37,1) 100%);
-	}
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+  min-height: 100%;
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: #1c1d25;
+    animation: before 0s 1 linear 3.29s forwards;
+  }
+  &::after {
+    content: '';
+    transform: translate3d(0, 0, 0);
+    position: absolute;
+    z-index: 4;
+    width: 100%;
+    height: 0vh;
+    transition: all ease 0.5s;
+    // background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(249,200,71,1) 100%);
+    background: linear-gradient(to bottom, rgba(28, 29, 37, 1) 0%, rgba(249, 200, 71, 1) 100%);
+    // background: linear-gradient(to bottom, rgba(249,200,71,1) 0%,rgba(28,29,37,1) 100%);
+  }
 }
-.menuOpen{
-	&::after{
-		height: 100vh;
-		@media (min-width: 536px) {
-			height: 0;
-		}
-	}
+.menuOpen {
+  &::after {
+    transform: translate3d(0, 0, 0);
+    height: 100vh;
+    @media (min-width: 536px) {
+      transform: translate3d(0, 0, 0);
+      height: 0;
+    }
+  }
 }
-@keyframes before{
-	0%{transform: scale(1);}
-	100%{transform: scale(0);}
+@keyframes before {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
 }
-.displayContentNone{
-	display: none;
+.displayContentNone {
+  display: none;
 }
-.content{
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
-	// gap: 20px;
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  // gap: 20px;
 }
 .main {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
-@keyframes zindex{
-	0%{z-index: 2;}
-	100%{z-index: 0;}
+@keyframes zindex {
+  0% {
+    z-index: 2;
+  }
+  100% {
+    z-index: 0;
+  }
 }
-.logo_animated_container{
-	position: absolute;
-	margin: auto;
-	top: 0; left: 0; bottom: 0; right: 0;
-	z-index: 2;
-	animation: zindex 0s 1 linear 3.29s forwards;
-	.logo2{
-		position: absolute;
-		margin: auto;
-		top: 0; left: 0; bottom: 0; right: 0;
-		z-index: 1;
-		width: 90px;
-		height: 124px;
-		transform: rotate(90deg);
-		animation: scale 0.2s 1 linear 3.09s forwards;
-		.logo1{
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
-	}
-	.wave_container {
-		width: 88px;
-		height: 122px;
-		overflow: hidden;
-		position: absolute;
-		margin: auto;
- 		top:0; left: 0; bottom: 0; right: 0;
-		transform: rotate(90deg);
-		animation: scale  0.2s 1 linear 3.09s forwards;
-		 &::before{
-			content:'';
-			opacity: 1;
-			position: absolute;
-			bottom: 0;
-			left: 1px;
-			width: 90px;
-			height: 120px;
-			background: #1C1D25;
-			animation: waveContainer 2s 1 linear 0.08s forwards;
-		}
-		.wave {
-			background: url("./img/wave_top.png") 0 0 /50px repeat-x;
-			width:7000px;
-			height: 10px;
-			animation: waves 10s infinite linear, waveHeight 2s 1 linear forwards, scale 0.2s 1 linear 3.09s forwards;
-			position: relative;
-		}
-	}
+.logo_animated_container {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  animation: zindex 0s 1 linear 3.29s forwards;
+  .logo2 {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    width: 90px;
+    height: 124px;
+    transform: rotate(90deg);
+    animation: scale 0.2s 1 linear 3.09s forwards;
+    .logo1 {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .wave_container {
+    width: 88px;
+    height: 122px;
+    overflow: hidden;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: rotate(90deg);
+    animation: scale 0.2s 1 linear 3.09s forwards;
+    &::before {
+      content: '';
+      opacity: 1;
+      position: absolute;
+      bottom: 0;
+      left: 1px;
+      width: 90px;
+      height: 120px;
+      background: #1c1d25;
+      animation: waveContainer 2s 1 linear 0.08s forwards;
+    }
+    .wave {
+      background: url('./img/wave_top.png') 0 0 /50px repeat-x;
+      width: 7000px;
+      height: 10px;
+      animation: waves 10s infinite linear, waveHeight 2s 1 linear forwards, scale 0.2s 1 linear 3.09s forwards;
+      position: relative;
+    }
+  }
 }
- @keyframes waves {
-	0% {margin-left: 0;}
-	100% {margin-left: -2000px; }
+@keyframes waves {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -2000px;
+  }
 }
-@keyframes waveContainer{
-	0%{top: 120px; background: #F9C847;}
-	100%{top: 0px; background: #F9C847;}
+@keyframes waveContainer {
+  0% {
+    top: 120px;
+    background: #f9c847;
+  }
+  100% {
+    top: 0px;
+    background: #f9c847;
+  }
 }
-@keyframes waveHeight{
-	0%{top: 120px;}
-	100%{top: 0px;}
+@keyframes waveHeight {
+  0% {
+    top: 120px;
+  }
+  100% {
+    top: 0px;
+  }
 }
-@keyframes scale{
-	0%{transform: scale(1) rotate(90deg);}
-	100%{transform: scale(0) rotate(90deg);}
+@keyframes scale {
+  0% {
+    transform: scale(1) rotate(90deg);
+  }
+  100% {
+    transform: scale(0) rotate(90deg);
+  }
 }
