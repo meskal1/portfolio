@@ -1,167 +1,186 @@
 @import '../../../mixin.scss';
 :root {
   @include adaptiveValue('--translate-Y', 89, 44, 536, 378, 1);
-  @include adaptiveValue('--translate-Y1', 542, 352, 536, 378, 1);
-  @include adaptiveValue('--translate-X1', 230, 178, 536, 378, 1);
-  @include adaptiveValue('--translate-Y2', 545, 354, 536, 378, 1);
-  @include adaptiveValue('--translate-X2', 45, 36, 536, 378, 1);
-  @include adaptiveValue('--translate-Y3', 542, 352, 536, 378, 1);
-  @include adaptiveValue('--translate-X3', -64, -46, 536, 378, 1);
-  @include adaptiveValue('--translate-Y4', 490, 320, 536, 378, 1);
-  @include adaptiveValue('--translate-X4', 192, 148, 536, 378, 1);
-  @include adaptiveValue('--translate-Y5', 487, 318, 536, 378, 1);
-  @include adaptiveValue('--translate-X5', 83, 66, 536, 378, 1);
-  @include adaptiveValue('--translate-Y6', 490, 320, 536, 378, 1);
-  @include adaptiveValue('--translate-X6', -102, -76, 536, 378, 1);
-  @include adaptiveValue('--translate-Y7', 432, 284, 536, 378, 1);
-  @include adaptiveValue('--translate-X7', 230, 178, 536, 378, 1);
-  @include adaptiveValue('--translate-Y8', 435, 286, 536, 378, 1);
-  @include adaptiveValue('--translate-X8', 45, 36, 536, 378, 1);
-  @include adaptiveValue('--translate-Y9', 432, 284, 536, 378, 1);
-  @include adaptiveValue('--translate-X9', -64, -46, 536, 378, 1);
-  @include adaptiveValue('--translate-Y10', 380, 252, 536, 378, 1);
-  @include adaptiveValue('--translate-X10', 192, 148, 536, 378, 1);
-  @include adaptiveValue('--translate-Y11', 377, 250, 536, 378, 1);
-  @include adaptiveValue('--translate-X11', 83, 66, 536, 378, 1);
-  @include adaptiveValue('--translate-Y12', 380, 252, 536, 378, 1);
-  @include adaptiveValue('--translate-X12', -102, -76, 536, 378, 1);
-  @include adaptiveValue('--translate-Y13', 322, 216, 536, 378, 1);
-  @include adaptiveValue('--translate-X13', 230, 178, 536, 378, 1);
-  @include adaptiveValue('--translate-Y14', 325, 218, 536, 378, 1);
-  @include adaptiveValue('--translate-X14', 45, 36, 536, 378, 1);
-  @include adaptiveValue('--translate-Y15', 322, 216, 536, 378, 1);
-  @include adaptiveValue('--translate-X15', -64, -46, 536, 378, 1);
-  //   @media (min-width: 537px) {
-  //     //  --translate-Y: 27px;
-  //     //  --translate-Y1: 27px;
-  //     //  --translate-X1: 27px;
-  //     //  --translate-Y2: 27px;
-  //     //  --translate-X2: 27px;
-  //     //  --translate-Y3: 27px;
-  //     //  --translate-X3: -64px;
-  //     //  --translate-Y4: 27px;
-  //     //  --translate-X4: 27px;
-  //     //  --translate-Y5: 27px;
-  //     //  --translate-X5: 27px;
-  //     //  --translate-Y6: 27px;
-  //     //  --translate-X6: 27px;
-  //     //  --translate-Y7: 27px;
-  //     //  --translate-X7: 27px;
-  //     //  --translate-Y8: 27px;
-  //     //  --translate-X8: 27px;
-  //     //  --translate-Y9: 27px;
-  //     //  --translate-X9: -65px;
-  //     //  --translate-Y10: 27px;
-  //     //  --translate-X10: 27px;
-  //     //  --translate-Y11: 27px;
-  //     //  --translate-X11: 27px;
-  //     //  --translate-Y12: 27px;
-  //     //  --translate-X12: 27px;
-  //     //  --translate-Y13: 27px;
-  //     //  --translate-X13: 27px;
-  //     //  --translate-Y14: 27px;
-  //     //  --translate-X14: 27px;
-  //     //   --translate-Y15: 27px;
-  //     //  --translate-X15: -65px;
-  //   }
+  @include adaptiveValue('--translate-Y1', 542, 350, 536, 378, 1);
+  @include adaptiveValue('--translate-X1', 276, 218, 536, 378, 1);
+  @include adaptiveValue('--translate-Y2', 545, 353, 536, 378, 1);
+  @include adaptiveValue('--translate-X2', 88, 70, 536, 378, 1);
+  @include adaptiveValue('--translate-Y3', 542, 350, 536, 378, 1);
+  @include adaptiveValue('--translate-X3', -18, -6, 536, 378, 1);
+  @include adaptiveValue('--translate-Y4', 490, 319, 536, 378, 1);
+  @include adaptiveValue('--translate-X4', 235, 182, 536, 378, 1);
+  @include adaptiveValue('--translate-Y5', 487, 316, 536, 378, 1);
+  @include adaptiveValue('--translate-X5', 129, 106, 536, 378, 1);
+  @include adaptiveValue('--translate-Y6', 490, 319, 536, 378, 1);
+  @include adaptiveValue('--translate-X6', -59, -42, 536, 378, 1);
+  @include adaptiveValue('--translate-Y7', 432, 282, 536, 378, 1);
+  @include adaptiveValue('--translate-X7', 276, 218, 536, 378, 1);
+  @include adaptiveValue('--translate-Y8', 435, 285, 536, 378, 1);
+  @include adaptiveValue('--translate-X8', 88, 70, 536, 378, 1);
+  @include adaptiveValue('--translate-Y9', 432, 282, 536, 378, 1);
+  @include adaptiveValue('--translate-X9', -18, -6, 536, 378, 1);
+  @include adaptiveValue('--translate-Y10', 380, 251, 536, 378, 1);
+  @include adaptiveValue('--translate-X10', 235, 182, 536, 378, 1);
+  @include adaptiveValue('--translate-Y11', 377, 248, 536, 378, 1);
+  @include adaptiveValue('--translate-X11', 129, 106, 536, 378, 1);
+  @include adaptiveValue('--translate-Y12', 380, 251, 536, 378, 1);
+  @include adaptiveValue('--translate-X12', -59, -42, 536, 378, 1);
+  @include adaptiveValue('--translate-Y13', 322, 214, 536, 378, 1);
+  @include adaptiveValue('--translate-X13', 276, 218, 536, 378, 1);
+  @include adaptiveValue('--translate-Y14', 325, 217, 536, 378, 1);
+  @include adaptiveValue('--translate-X14', 88, 70, 536, 378, 1);
+  @include adaptiveValue('--translate-Y15', 322, 214, 536, 378, 1);
+  @include adaptiveValue('--translate-X15', -18, -6, 536, 378, 1);
   @media (max-width: 377px) {
     --translate-Y: 27px;
-    //     --translate-Y1: 27px;
-    //     --translate-X1: 27px;
-    //     --translate-Y2: 27px;
-    //     --translate-X2: 27px;
-    //     --translate-Y3: 27px;
-    //     --translate-X3: 27px;
-    //     --translate-Y4: 27px;
-    //     --translate-X4: 27px;
-    //     --translate-Y5: 27px;
-    //     --translate-X5: 27px;
-    //     --translate-Y6: 27px;
-    //     --translate-X6: 27px;
-    //     --translate-Y7: 27px;
-    //     --translate-X7: 27px;
-    //     --translate-Y8: 27px;
-    //     --translate-X8: 27px;
-    //     --translate-Y9: 27px;
-    //     --translate-X9: 27px;
-    //     --translate-Y10: 27px;
-    //     --translate-X10: 27px;
-    //     --translate-Y11: 27px;
-    //     --translate-X11: 27px;
-    //     --translate-Y12: 27px;
-    //     --translate-X12: 27px;
-    //     --translate-Y13: 27px;
-    //     --translate-X13: 27px;
-    //     --translate-Y14: 27px;
-    //     --translate-X14: 27px;
-    //     --translate-Y15: 27px;
-    //     --translate-X15: 27px;
+    --translate-Y1: 316px;
+    --translate-X1: 208px;
+    --translate-Y2: 318px;
+    --translate-X2: 112px;
+    --translate-Y3: 316px;
+    --translate-X3: 81px;
+    --translate-Y4: 318px;
+    --translate-X4: -49px;
+    --translate-Y5: 282px;
+    --translate-X5: 209px;
+    --translate-Y6: 284px;
+    --translate-X6: 95px;
+    --translate-Y7: 282px;
+    --translate-X7: 69px;
+    --translate-Y8: 284px;
+    --translate-X8: -55px;
+    --translate-Y9: 248px;
+    --translate-X9: 217px;
+    --translate-Y10: 250px;
+    --translate-X10: 89px;
+    --translate-Y11: 248px;
+    --translate-X11: 81px;
+    --translate-Y12: 250px;
+    --translate-X12: -64px;
+    --translate-Y13: 214px;
+    --translate-X13: 135px;
+    --translate-Y14: 216px;
+    --translate-X14: 41px;
+    --translate-Y15: 214px;
+    --translate-X15: 25px;
+  }
+  @media (max-width: 375px) {
+    --translate-Y: 27px;
+    --translate-X9: 172px;
+    --translate-X10: 45px;
+    --translate-X11: 36px;
+    --translate-Y12: 216px;
+    --translate-X12: 145px;
+    --translate-X13: 90px;
+    --translate-X14: -4px;
+    --translate-X15: -19px;
   }
   @media (max-width: 354px) {
     --translate-Y: 44px;
-    //     --translate-Y1: 44px;
-    //     --translate-X1: 27px;
-    //     --translate-Y2: 27px;
-    //     --translate-X2: 27px;
-    //     --translate-Y3: 27px;
-    //     --translate-X3: 27px;
-    //     --translate-Y4: 27px;
-    //     --translate-X4: 27px;
-    //     --translate-Y5: 27px;
-    //     --translate-X5: 27px;
-    //     --translate-Y6: 27px;
-    //     --translate-X6: 27px;
-    //     --translate-Y7: 27px;
-    //     --translate-X7: 27px;
-    //     --translate-Y8: 27px;
-    //     --translate-X8: 27px;
-    //     --translate-Y9: 27px;
-    //     --translate-X9: 27px;
-    //     --translate-Y10: 27px;
-    //     --translate-X10: 27px;
-    //     --translate-Y11: 27px;
-    //     --translate-X11: 27px;
-    //     --translate-Y12: 27px;
-    //     --translate-X12: 27px;
-    //     --translate-Y13: 27px;
-    //     --translate-X13: 27px;
-    //     --translate-Y14: 27px;
-    //     --translate-X14: 27px;
-    //     --translate-Y15: 27px;
-    //     --translate-X15: 27px;
+    --translate-Y1: 350px;
+    --translate-Y2: 352px;
+    --translate-Y3: 350px;
+    --translate-Y4: 353px;
+    --translate-X4: -50px;
+    --translate-Y5: 316px;
+    --translate-X5: 163px;
+    --translate-Y6: 319px;
+    --translate-X6: 49px;
+    --translate-Y7: 316px;
+    --translate-X7: 24px;
+    --translate-X8: 127px;
+    --translate-Y9: 282px;
+    --translate-X9: 72px;
+    --translate-Y10: 285px;
+    --translate-X10: -55px;
+    --translate-X11: 203px;
+    --translate-Y12: 251px;
+    --translate-X12: 59px;
+    --translate-Y13: 248px;
+    --translate-X13: 5px;
+    --translate-Y14: 251px;
+    --translate-X14: -90px;
+    --translate-X15: 80px;
+  }
+  @media (max-width: 353px) {
+    --translate-Y: 44px;
+    --translate-X1: 160px;
+    --translate-Y2: 353px;
+    --translate-X2: 65px;
+    --translate-X3: 34px;
+    --translate-Y4: 319px;
+    --translate-X4: 131px;
+    --translate-X5: 71px;
+    --translate-X6: -42px;
+    --translate-Y7: 282px;
+    --translate-X7: 207px;
+    --translate-Y8: 285px;
+    --translate-X8: 82px;
+    --translate-X9: 27px;
+    --translate-X10: -100px;
+  }
+  @media (max-width: 350px) {
+    --translate-Y: 44px;
+    --translate-X3: 33px;
+    --translate-X7: 185px;
+    --translate-X8: 61px;
+    --translate-X9: 6px;
+    --translate-Y10: 251px;
+    --translate-X10: 166px;
+    --translate-X11: 156px;
+    --translate-X12: 13px;
+    --translate-X13: -43px;
+    --translate-Y14: 217px;
+    --translate-X14: 71px;
+    --translate-X15: 54px;
+  }
+  @media (max-width: 333px) {
+    --translate-Y3: 350px;
+    --translate-X3: 33px;
+    --translate-X10: 135px;
+    --translate-X11: 127px;
+    --translate-X12: -18px;
+    --translate-Y13: 214px;
+    --translate-X13: 135px;
+    --translate-X14: 40px;
+    --translate-X15: 25px;
+  }
+  @media (max-width: 294px) {
+    --translate-X3: 33px;
+    --translate-X7: 139px;
+    --translate-X8: 15px;
+    --translate-Y9: 248px;
+    --translate-X9: 172px;
+    --translate-X10: 45px;
+    --translate-X11: 36px;
+    --translate-Y12: 217px;
+    --translate-X12: 145px;
+    --translate-X13: 90px;
+    --translate-X14: -3px;
+    --translate-X15: -20px;
   }
   @media (max-width: 280px) {
     --translate-Y: 61px;
-    //     --translate-Y1: 61px;
-    //     --translate-X1: 27px;
-    //     --translate-Y2: 27px;
-    //     --translate-X2: 27px;
-    //     --translate-Y3: 27px;
-    //     --translate-X3: 27px;
-    //     --translate-Y4: 27px;
-    //     --translate-X4: 27px;
-    //     --translate-Y5: 27px;
-    //     --translate-X5: 27px;
-    //     --translate-Y6: 27px;
-    //     --translate-X6: 27px;
-    //     --translate-Y7: 27px;
-    //     --translate-X7: 27px;
-    //     --translate-Y8: 27px;
-    //     --translate-X8: 27px;
-    //     --translate-Y9: 27px;
-    //     --translate-X9: 27px;
-    //     --translate-Y10: 27px;
-    //     --translate-X10: 27px;
-    //     --translate-Y11: 27px;
-    //     --translate-X11: 27px;
-    //     --translate-Y12: 27px;
-    //     --translate-X12: 27px;
-    //     --translate-Y13: 27px;
-    //     --translate-X13: 27px;
-    //     --translate-Y14: 27px;
-    //     --translate-X14: 27px;
-    //     --translate-Y15: 27px;
-    //     --translate-X15: 27px;
+    --translate-Y1: 383px;
+    --translate-Y2: 386px;
+    --translate-Y3: 383px;
+    --translate-Y4: 352px;
+    --translate-X4: 132px;
+    --translate-Y5: 349px;
+    --translate-Y6: 352px;
+    --translate-Y7: 315px;
+    --translate-Y8: 318px;
+    --translate-Y9: 281px;
+    --translate-Y10: 284px;
+    --translate-Y11: 281px;
+    --translate-Y12: 250px;
+    --translate-X12: 115px;
+    --translate-Y13: 247px;
+    --translate-X13: 59px;
+    --translate-Y14: 250px;
+    --translate-X14: -34px;
+    --translate-Y15: 213px;
+    --translate-X15: 80px;
   }
 }
 .skills {
@@ -202,141 +221,9 @@
     @media (max-width: 360px) {
       // gap: 10px 10px;
     }
-    //  & div {
-    //    display: flex;
-    //    white-space: nowrap;
-    //    justify-content: center;
-    //    z-index: 20; //Убрать как закончу
-    //    border: 1px solid red;
-    //    @include adaptiveValue('width', 127, 102, 536, 378, 1);
-    //    @media (max-width: 377px) {
-    //      // gap: 10px 10px;
-    //      width: unset;
-    //    }
-    //  }
-    //  & div:nth-child(1) p {
-    //    &::before {
-    //      background: green;
-    //      transform: translate(var(--translate-X1), var(--translate-Y1));
-    //    }
-    //    width: 40px;
-    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
-    //  }
-    //  & div:nth-child(2) p {
-    //    &::before {
-    //      background: green;
-    //      transform: translate(var(--translate-X2), var(--translate-Y2));
-    //    }
-    //    width: 40px;
-    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
-    //  }
-    //  & div:nth-child(3) p {
-    //    &::before {
-    //      background: red;
-    //      transform: translate(var(--translate-X3), var(--translate-Y3));
-    //    }
-    //    width: 40px;
-    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
-    //  }
-    //  & div:nth-child(4) p {
-    //    &::before {
-    //      background: red;
-    //      transform: translate(var(--translate-X4), var(--translate-Y4));
-    //    }
-    //    width: 40px;
-    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
-    //  }
-    //  & div:nth-child(5) p {
-    //    &::before {
-    //      background: green;
-    //      transform: translate(var(--translate-X5), var(--translate-Y5));
-    //    }
-    //    width: 40px;
-    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
-    //  }
-    //  & div:nth-child(6) p {
-    //    &::before {
-    //      background: green;
-    //      transform: translate(var(--translate-X6), var(--translate-Y6));
-    //    }
-    //    width: 40px;
-    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
-    //  }
-    //  & div:nth-child(7) p {
-    //    &::before {
-    //      background: red;
-    //      transform: translate(var(--translate-X7), var(--translate-Y7));
-    //    }
-    //    width: 40px;
-    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
-    //  }
-    //  & div:nth-child(8) p {
-    //    &::before {
-    //      background: red;
-    //      transform: translate(var(--translate-X8), var(--translate-Y8));
-    //    }
-    //    width: 40px;
-    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
-    //  }
-    //  & div:nth-child(9) p {
-    //    &::before {
-    //      background: green;
-    //      transform: translate(var(--translate-X9), var(--translate-Y9));
-    //    }
-    //    width: 40px;
-    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
-    //  }
-    //  & div:nth-child(10) p {
-    //    &::before {
-    //      background: green;
-    //      transform: translate(var(--translate-X10), var(--translate-Y10));
-    //    }
-    //    width: 40px;
-    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
-    //  }
-    //  & div:nth-child(11) p {
-    //    &::before {
-    //      background: red;
-    //      transform: translate(var(--translate-X11), var(--translate-Y11));
-    //    }
-    //    width: 40px;
-    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
-    //  }
-    //  & div:nth-child(12) p {
-    //    &::before {
-    //      background: red;
-    //      transform: translate(var(--translate-X12), var(--translate-Y12));
-    //    }
-    //    width: 40px;
-    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
-    //  }
-    //  & div:nth-child(13) p {
-    //    &::before {
-    //      background: green;
-    //      transform: translate(var(--translate-X13), var(--translate-Y13));
-    //    }
-    //    width: 40px;
-    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
-    //  }
-    //  & div:nth-child(14) p {
-    //    &::before {
-    //      background: green;
-    //      transform: translate(var(--translate-X14), var(--translate-Y14));
-    //    }
-    //    width: 40px;
-    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
-    //  }
-    //  & div:nth-child(15) p {
-    //    &::before {
-    //      background: red;
-    //      transform: translate(var(--translate-X15), var(--translate-Y15));
-    //    }
-    //    width: 40px;
-    //    @include adaptiveValue('width', 40, 25, 536, 378, 1);
-    //  }
   }
   &__item {
-    position: relative; //New
+    position: relative;
     color: #f9c655;
     text-align: center;
     border: 1px solid white;
@@ -364,21 +251,19 @@
       display: flex;
     }
     &:nth-child(1) {
-      // opacity: 0;
       &::before {
         background: green;
         transform: translate(var(--translate-X1), var(--translate-Y1));
         width: 40px;
-        @include adaptiveValue('width', 40, 25, 536, 378, 1);
+        @include adaptiveValue('width', 40, 23, 536, 378, 1);
       }
     }
     &:nth-child(2) {
-      // opacity: 0;
       &::before {
         background: green;
         transform: translate(var(--translate-X2), var(--translate-Y2));
         width: 40px;
-        @include adaptiveValue('width', 40, 25, 536, 378, 1);
+        @include adaptiveValue('width', 40, 23, 536, 378, 1);
       }
     }
     &:nth-child(3) {
@@ -386,104 +271,104 @@
         background: red;
         transform: translate(var(--translate-X3), var(--translate-Y3));
         width: 40px;
-        @include adaptiveValue('width', 40, 25, 536, 378, 1);
+        @include adaptiveValue('width', 40, 23, 536, 378, 1);
       }
     }
-    & div:nth-child(4) p {
+    &:nth-child(4) {
       &::before {
         background: red;
         transform: translate(var(--translate-X4), var(--translate-Y4));
+        width: 40px;
+        @include adaptiveValue('width', 40, 23, 536, 378, 1);
       }
-      width: 40px;
-      @include adaptiveValue('width', 40, 25, 536, 378, 1);
     }
-    & div:nth-child(5) p {
+    &:nth-child(5) {
       &::before {
         background: green;
         transform: translate(var(--translate-X5), var(--translate-Y5));
+        width: 40px;
+        @include adaptiveValue('width', 40, 23, 536, 378, 1);
       }
-      width: 40px;
-      @include adaptiveValue('width', 40, 25, 536, 378, 1);
     }
-    & div:nth-child(6) p {
+    &:nth-child(6) {
       &::before {
         background: green;
         transform: translate(var(--translate-X6), var(--translate-Y6));
+        width: 40px;
+        @include adaptiveValue('width', 40, 23, 536, 378, 1);
       }
-      width: 40px;
-      @include adaptiveValue('width', 40, 25, 536, 378, 1);
     }
-    & div:nth-child(7) p {
+    &:nth-child(7) {
       &::before {
         background: red;
         transform: translate(var(--translate-X7), var(--translate-Y7));
+        width: 40px;
+        @include adaptiveValue('width', 40, 23, 536, 378, 1);
       }
-      width: 40px;
-      @include adaptiveValue('width', 40, 25, 536, 378, 1);
     }
-    & div:nth-child(8) p {
+    &:nth-child(8) {
       &::before {
         background: red;
         transform: translate(var(--translate-X8), var(--translate-Y8));
+        width: 40px;
+        @include adaptiveValue('width', 40, 23, 536, 378, 1);
       }
-      width: 40px;
-      @include adaptiveValue('width', 40, 25, 536, 378, 1);
     }
-    & div:nth-child(9) p {
+    &:nth-child(9) {
       &::before {
         background: green;
         transform: translate(var(--translate-X9), var(--translate-Y9));
+        width: 40px;
+        @include adaptiveValue('width', 40, 23, 536, 378, 1);
       }
-      width: 40px;
-      @include adaptiveValue('width', 40, 25, 536, 378, 1);
     }
-    & div:nth-child(10) p {
+    &:nth-child(10) {
       &::before {
         background: green;
         transform: translate(var(--translate-X10), var(--translate-Y10));
+        width: 40px;
+        @include adaptiveValue('width', 40, 23, 536, 378, 1);
       }
-      width: 40px;
-      @include adaptiveValue('width', 40, 25, 536, 378, 1);
     }
-    & div:nth-child(11) p {
+    &:nth-child(11) {
       &::before {
         background: red;
         transform: translate(var(--translate-X11), var(--translate-Y11));
+        width: 40px;
+        @include adaptiveValue('width', 40, 23, 536, 378, 1);
       }
-      width: 40px;
-      @include adaptiveValue('width', 40, 25, 536, 378, 1);
     }
-    & div:nth-child(12) p {
+    &:nth-child(12) {
       &::before {
         background: red;
         transform: translate(var(--translate-X12), var(--translate-Y12));
+        width: 40px;
+        @include adaptiveValue('width', 40, 23, 536, 378, 1);
       }
-      width: 40px;
-      @include adaptiveValue('width', 40, 25, 536, 378, 1);
     }
-    & div:nth-child(13) p {
+    &:nth-child(13) {
       &::before {
         background: green;
         transform: translate(var(--translate-X13), var(--translate-Y13));
+        width: 40px;
+        @include adaptiveValue('width', 40, 23, 536, 378, 1);
       }
-      width: 40px;
-      @include adaptiveValue('width', 40, 25, 536, 378, 1);
     }
-    & div:nth-child(14) p {
+    &:nth-child(14) {
       &::before {
         background: green;
         transform: translate(var(--translate-X14), var(--translate-Y14));
+        width: 40px;
+        @include adaptiveValue('width', 40, 23, 536, 378, 1);
       }
-      width: 40px;
-      @include adaptiveValue('width', 40, 25, 536, 378, 1);
     }
-    & div:nth-child(15) p {
+    &:nth-child(15) {
       &::before {
         background: red;
         transform: translate(var(--translate-X15), var(--translate-Y15));
+        width: 40px;
+        @include adaptiveValue('width', 40, 23, 536, 378, 1);
       }
-      width: 40px;
-      @include adaptiveValue('width', 40, 25, 536, 378, 1);
     }
   }
   &__absolute {
@@ -500,18 +385,16 @@
   }
 }
 .avatarBackPlate {
-  //   z-index: 30; // Убрать как закончу
-  border: 1px solid green;
+  //   border: 1px solid green;
   @include adaptiveValue('width', 320, 245, 536, 378, 1);
   @include adaptiveValue('height', 371, 254, 536, 378, 1);
 }
 .avatarSpeed {
-  //   will-change: transform;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 }
 .avatar {
-   //  will-change: transform;
+  //  will-change: transform;
   transform: translate3d(0, -600px, 0);
   -webkit-transform: translate3d(0, -600px, 0);
   //   border: 1px solid red;

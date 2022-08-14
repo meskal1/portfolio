@@ -79,6 +79,10 @@ $containerWidth: $maxWidthContainer + $containerPadding;
   $flyValue: #{rem($yIntersection)}' + ' #{$slope * 100}vw;
 
   $propertyValue: #{'clamp(' rem($minSize) ',' $flyValue ',' rem($startSize) ')'};
+  // Если работаем с отрицательными значениями, например $startSize меньше $minSize
+  @if $minSize>$startSize {
+    $propertyValue: #{'clamp(' rem($startSize) ',' $flyValue ',' rem($minSize) ')'};
+  }
 
   @if $widthFrom == $containerWidth or $widthFrom == $maxWidth or $keepSize == 1 or $keepSize == 2 {
     @media (min-width: $widthFromMedia) {

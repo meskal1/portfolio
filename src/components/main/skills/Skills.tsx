@@ -26,6 +26,7 @@ const skillsArray = [
 ]
 
 export const Skills: React.FC<SkillsType> = React.memo(({ animationSkills }) => {
+  console.log('render skills')
   const skills = skillsArray.map((el, i) => {
     return (
       <p key={i} className={s.skills__item}>
