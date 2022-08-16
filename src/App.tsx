@@ -10,7 +10,8 @@ import { Skills } from './components/main/skills/Skills'
 import logo from './img/transparent_logo.svg'
 import { Route, Routes, Navigate } from 'react-router-dom'
 
-import animationData from './lottie/skills.json' // ЛИБО асинк аваит либо хз
+import animationData from './lottie/skills.json' //
+// import animationData from './lottie/9ZxqWN9nht.json' //
 // import animationDataa from './components/main/skills/Skills.module' // ЛИБО асинк аваит либо хз
 const animationSkills = animationData
 

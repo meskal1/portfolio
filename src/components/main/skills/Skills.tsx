@@ -73,7 +73,7 @@ export const Skills: React.FC<SkillsType> = React.memo(({ animationSkills }) => 
             </div>
             <div className={s.avatarBackPlate}></div>
             <div className={s.avatar} onClick={onClickAnimationPaused}>
-              <Lottie config={defaultOptions} playingState={isAvatarPaused} speed={0.1} />
+              <Lottie config={defaultOptions} playingState={isAvatarPaused} speed={1} />
             </div>
           </div>
         </div>

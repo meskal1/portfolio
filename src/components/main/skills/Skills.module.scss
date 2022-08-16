@@ -1,200 +1,228 @@
 @import '../../../mixin.scss';
-@mixin animationCoin($translateX, $translateY, $number) {
-  animation: animateCoin + $number 3s linear 1s infinite;
-  @keyframes #{animateCoin + $number} {
-    0% {
-    }
-    20% {
-      transform: translate(var($translateX), calc(var($translateY) - 100px));
-    }
-    100% {
-      transform: translate(-50%, -50%);
+@mixin animationCoin($translateX, $translateY, $number, $delay: 0) {
+  &:nth-child(#{$number}) {
+    &::before {
+      background: green;
+      transform: translate(var($translateX), var($translateY));
+      animation: animateCoin + $number 2s linear $delay + s forwards;
+      @keyframes #{animateCoin + $number} {
+        0% {
+          opacity: 1;
+        }
+        5% {
+          transform: translate(var($translateX), calc(var($translateY) - 100px));
+        }
+        25% {
+          transform: translate(-50%, -50%);
+          height: 12px;
+          width: 12px;
+        }
+        30% {
+          height: 106%;
+        }
+        50% {
+          width: 103%;
+          height: 106%;
+        }
+        85% {
+          height: 0;
+        }
+        100% {
+          transform: translate(-50%, -50%);
+          height: 0;
+          width: 103%;
+          opacity: 1;
+        }
+      }
     }
   }
 }
-
 :root {
   @include adaptiveValue('--translate-Y', 89, 44, 536, 378, 1);
   @include adaptiveValue('--translate-Y1', 445, 277, 536, 378, 1);
   @include adaptiveValue('--translate-X1', 228, 174, 536, 378, 1);
   @include adaptiveValue('--translate-Y2', 465, 290, 536, 378, 1);
   @include adaptiveValue('--translate-X2', 35, 28, 536, 378, 1);
-  @include adaptiveValue('--translate-Y3', 542, 350, 536, 378, 1);
-  @include adaptiveValue('--translate-X3', -18, -6, 536, 378, 1);
-  @include adaptiveValue('--translate-Y4', 490, 319, 536, 378, 1);
-  @include adaptiveValue('--translate-X4', 235, 182, 536, 378, 1);
-  @include adaptiveValue('--translate-Y5', 487, 316, 536, 378, 1);
-  @include adaptiveValue('--translate-X5', 129, 106, 536, 378, 1);
-  @include adaptiveValue('--translate-Y6', 490, 319, 536, 378, 1);
-  @include adaptiveValue('--translate-X6', -59, -42, 536, 378, 1);
-  @include adaptiveValue('--translate-Y7', 432, 282, 536, 378, 1);
-  @include adaptiveValue('--translate-X7', 276, 218, 536, 378, 1);
-  @include adaptiveValue('--translate-Y8', 435, 285, 536, 378, 1);
-  @include adaptiveValue('--translate-X8', 88, 70, 536, 378, 1);
-  @include adaptiveValue('--translate-Y9', 432, 282, 536, 378, 1);
-  @include adaptiveValue('--translate-X9', -18, -6, 536, 378, 1);
-  @include adaptiveValue('--translate-Y10', 380, 251, 536, 378, 1);
-  @include adaptiveValue('--translate-X10', 235, 182, 536, 378, 1);
-  @include adaptiveValue('--translate-Y11', 377, 248, 536, 378, 1);
-  @include adaptiveValue('--translate-X11', 129, 106, 536, 378, 1);
-  @include adaptiveValue('--translate-Y12', 380, 251, 536, 378, 1);
-  @include adaptiveValue('--translate-X12', -59, -42, 536, 378, 1);
-  @include adaptiveValue('--translate-Y13', 322, 214, 536, 378, 1);
-  @include adaptiveValue('--translate-X13', 276, 218, 536, 378, 1);
-  @include adaptiveValue('--translate-Y14', 325, 217, 536, 378, 1);
-  @include adaptiveValue('--translate-X14', 88, 70, 536, 378, 1);
-  @include adaptiveValue('--translate-Y15', 322, 214, 536, 378, 1);
-  @include adaptiveValue('--translate-X15', -18, -6, 536, 378, 1);
+  @include adaptiveValue('--translate-Y3', 445, 277, 536, 378, 1);
+  @include adaptiveValue('--translate-X3', -66, -50, 536, 378, 1);
+  @include adaptiveValue('--translate-Y4', 410, 256, 536, 378, 1);
+  @include adaptiveValue('--translate-X4', 182, 140, 536, 378, 1);
+  @include adaptiveValue('--translate-Y5', 390, 243, 536, 378, 1);
+  @include adaptiveValue('--translate-X5', 81, 62, 536, 378, 1);
+  @include adaptiveValue('--translate-Y6', 410, 256, 536, 378, 1);
+  @include adaptiveValue('--translate-X6', -112, -84, 536, 378, 1);
+  @include adaptiveValue('--translate-Y7', 335, 209, 536, 378, 1);
+  @include adaptiveValue('--translate-X7', 228, 174, 536, 378, 1);
+  @include adaptiveValue('--translate-Y8', 355, 222, 536, 378, 1);
+  @include adaptiveValue('--translate-X8', 35, 28, 536, 378, 1);
+  @include adaptiveValue('--translate-Y9', 335, 209, 536, 378, 1);
+  @include adaptiveValue('--translate-X9', -66, -50, 536, 378, 1);
+  @include adaptiveValue('--translate-Y10', 300, 188, 536, 378, 1);
+  @include adaptiveValue('--translate-X10', 182, 140, 536, 378, 1);
+  @include adaptiveValue('--translate-Y11', 280, 175, 536, 378, 1);
+  @include adaptiveValue('--translate-X11', 81, 62, 536, 378, 1);
+  @include adaptiveValue('--translate-Y12', 300, 188, 536, 378, 1);
+  @include adaptiveValue('--translate-X12', -112, -84, 536, 378, 1);
+  @include adaptiveValue('--translate-Y13', 225, 141, 536, 378, 1);
+  @include adaptiveValue('--translate-X13', 228, 174, 536, 378, 1);
+  @include adaptiveValue('--translate-Y14', 245, 154, 536, 378, 1);
+  @include adaptiveValue('--translate-X14', 35, 28, 536, 378, 1);
+  @include adaptiveValue('--translate-Y15', 225, 141, 536, 378, 1);
+  @include adaptiveValue('--translate-X15', -66, -50, 536, 378, 1);
   @media (max-width: 377px) {
     --translate-Y: 27px;
-    --translate-Y1: 316px;
-    --translate-X1: 208px;
-    --translate-Y2: 318px;
-    --translate-X2: 112px;
-    --translate-Y3: 316px;
-    --translate-X3: 81px;
-    --translate-Y4: 318px;
-    --translate-X4: -49px;
-    --translate-Y5: 282px;
-    --translate-X5: 209px;
-    --translate-Y6: 284px;
-    --translate-X6: 95px;
-    --translate-Y7: 282px;
-    --translate-X7: 69px;
-    --translate-Y8: 284px;
-    --translate-X8: -55px;
-    --translate-Y9: 248px;
-    --translate-X9: 217px;
-    --translate-Y10: 250px;
-    --translate-X10: 89px;
-    --translate-Y11: 248px;
-    --translate-X11: 81px;
-    --translate-Y12: 250px;
-    --translate-X12: -64px;
-    --translate-Y13: 214px;
-    --translate-X13: 135px;
-    --translate-Y14: 216px;
-    --translate-X14: 41px;
-    --translate-Y15: 214px;
-    --translate-X15: 25px;
+    --translate-Y1: 243px;
+    --translate-X1: 189px;
+    --translate-Y2: 256px;
+    --translate-X2: 92px;
+    --translate-Y3: 243px;
+    --translate-X3: 44px;
+    --translate-Y4: 256px;
+    --translate-X4: -84px;
+    --translate-Y5: 209px;
+    --translate-X5: 180px;
+    --translate-Y6: 222px;
+    --translate-X6: 77px;
+    --translate-Y7: 209px;
+    --translate-X7: 36px;
+    --translate-Y8: 222px;
+    --translate-X8: -87px;
+    --translate-Y9: 175px;
+    --translate-X9: 182px;
+    --translate-Y10: 188px;
+    --translate-X10: 81px;
+    --translate-Y11: 175px;
+    --translate-X11: 37px;
+    --translate-Y12: 188px;
+    --translate-X12: -95px;
+    --translate-Y13: 141px;
+    --translate-X13: 116px;
+    --translate-Y14: 154px;
+    --translate-X14: 28px;
+    --translate-Y15: 141px;
+    --translate-X15: 6px;
   }
   @media (max-width: 375px) {
     --translate-Y: 27px;
-    --translate-X9: 172px;
-    --translate-X10: 45px;
-    --translate-X11: 36px;
-    --translate-Y12: 216px;
-    --translate-X12: 145px;
-    --translate-X13: 90px;
-    --translate-X14: -4px;
-    --translate-X15: -19px;
+    --translate-X9: 137px;
+    --translate-X10: 36px;
+    --translate-X11: -8px;
+    --translate-Y12: 154px;
+    --translate-X12: 113px;
+    --translate-X13: 72px;
+    --translate-X14: -16px;
+    --translate-X15: -39px;
   }
   @media (max-width: 354px) {
     --translate-Y: 44px;
-    --translate-Y1: 350px;
-    --translate-Y2: 352px;
-    --translate-Y3: 350px;
-    --translate-Y4: 353px;
-    --translate-X4: -50px;
-    --translate-Y5: 316px;
-    --translate-X5: 163px;
-    --translate-Y6: 319px;
-    --translate-X6: 49px;
-    --translate-Y7: 316px;
-    --translate-X7: 24px;
-    --translate-X8: 127px;
-    --translate-Y9: 282px;
-    --translate-X9: 72px;
-    --translate-Y10: 285px;
-    --translate-X10: -55px;
-    --translate-X11: 203px;
-    --translate-Y12: 251px;
-    --translate-X12: 59px;
-    --translate-Y13: 248px;
-    --translate-X13: 5px;
-    --translate-Y14: 251px;
-    --translate-X14: -90px;
-    --translate-X15: 80px;
+    --translate-Y1: 276px;
+    --translate-Y2: 290px;
+    --translate-Y3: 276px;
+    --translate-X3: 45px;
+    --translate-Y4: 290px;
+    --translate-X4: -84px;
+    --translate-Y5: 242px;
+    --translate-X5: 136px;
+    --translate-Y6: 256px;
+    --translate-X6: 32px;
+    --translate-Y7: 242px;
+    --translate-X7: -9px;
+    --translate-X8: 95px;
+    --translate-Y9: 208px;
+    --translate-X9: 38px;
+    --translate-Y10: 222px;
+    --translate-X10: -64px;
+    --translate-Y11: 174px;
+    --translate-X11: 161px;
+    --translate-Y12: 188px;
+    --translate-X12: 27px;
+    --translate-Y13: 174px;
+    --translate-X13: -13px;
+    --translate-Y14: 188px;
+    --translate-X14: -102px;
+    --translate-Y15: 140px;
+    --translate-X15: 61px;
   }
   @media (max-width: 353px) {
     --translate-Y: 44px;
-    --translate-X1: 160px;
-    --translate-Y2: 353px;
-    --translate-X2: 65px;
-    --translate-X3: 34px;
-    --translate-Y4: 319px;
-    --translate-X4: 131px;
-    --translate-X5: 71px;
-    --translate-X6: -42px;
-    --translate-Y7: 282px;
-    --translate-X7: 207px;
-    --translate-Y8: 285px;
-    --translate-X8: 82px;
-    --translate-X9: 27px;
-    --translate-X10: -100px;
+    --translate-X1: 141px;
+    --translate-Y2: 290px;
+    --translate-X2: 44px;
+    --translate-X3: -2px;
+    --translate-Y4: 256px;
+    --translate-X4: 96px;
+    --translate-X5: 44px;
+    --translate-X6: -60px;
+    --translate-Y7: 208px;
+    --translate-X7: 174px;
+    --translate-Y8: 222px;
+    --translate-X8: 50px;
+    --translate-X9: -7px;
+    --translate-X10: -109px;
   }
   @media (max-width: 350px) {
     --translate-Y: 44px;
-    --translate-X3: 33px;
-    --translate-X7: 185px;
-    --translate-X8: 61px;
-    --translate-X9: 6px;
-    --translate-Y10: 251px;
-    --translate-X10: 166px;
-    --translate-X11: 156px;
-    --translate-X12: 13px;
-    --translate-X13: -43px;
-    --translate-Y14: 217px;
-    --translate-X14: 71px;
-    --translate-X15: 54px;
+    --translate-X3: -2px;
+    --translate-X7: 152px;
+    --translate-X8: 29px;
+    --translate-X9: -29px;
+    --translate-Y10: 188px;
+    --translate-X10: 156px;
+    --translate-X11: 113px;
+    --translate-X12: -20px;
+    --translate-X13: -60px;
+    --translate-Y14: 154px;
+    --translate-X14: 58px;
+    --translate-X15: 36px;
   }
   @media (max-width: 333px) {
-    --translate-Y3: 350px;
-    --translate-X3: 33px;
-    --translate-X10: 135px;
-    --translate-X11: 127px;
-    --translate-X12: -18px;
-    --translate-Y13: 214px;
-    --translate-X13: 135px;
-    --translate-X14: 40px;
-    --translate-X15: 25px;
+    --translate-Y3: 276px;
+    --translate-X3: -2px;
+    --translate-X10: 127px;
+    --translate-X11: 84px;
+    --translate-X12: -49px;
+    --translate-Y13: 140px;
+    --translate-X13: 117px;
+    --translate-X14: 28px;
+    --translate-X15: 7px;
   }
   @media (max-width: 294px) {
-    --translate-X3: 33px;
-    --translate-X7: 139px;
-    --translate-X8: 15px;
-    --translate-Y9: 248px;
-    --translate-X9: 172px;
-    --translate-X10: 45px;
-    --translate-X11: 36px;
-    --translate-Y12: 217px;
-    --translate-X12: 145px;
-    --translate-X13: 90px;
-    --translate-X14: -3px;
-    --translate-X15: -20px;
+    --translate-X3: -2px;
+    --translate-X7: 106px;
+    --translate-X8: -18px;
+    --translate-Y9: 174px;
+    --translate-X9: 138px;
+    --translate-X10: 35px;
+    --translate-X11: -7px;
+    --translate-Y12: 154px;
+    --translate-X12: 113px;
+    --translate-X13: 72px;
+    --translate-X14: -17px;
+    --translate-X15: -39px;
   }
   @media (max-width: 280px) {
     --translate-Y: 61px;
-    --translate-Y1: 383px;
-    --translate-Y2: 386px;
-    --translate-Y3: 383px;
-    --translate-Y4: 352px;
-    --translate-X4: 132px;
-    --translate-Y5: 349px;
-    --translate-Y6: 352px;
-    --translate-Y7: 315px;
-    --translate-Y8: 318px;
-    --translate-Y9: 281px;
-    --translate-Y10: 284px;
-    --translate-Y11: 281px;
-    --translate-Y12: 250px;
-    --translate-X12: 115px;
-    --translate-Y13: 247px;
-    --translate-X13: 59px;
-    --translate-Y14: 250px;
-    --translate-X14: -34px;
-    --translate-Y15: 213px;
-    --translate-X15: 80px;
+    --translate-Y1: 311px;
+    --translate-X1: 142px;
+    --translate-Y2: 324px;
+    --translate-Y3: 311px;
+    --translate-Y4: 290px;
+    --translate-X4: 97px;
+    --translate-Y5: 277px;
+    --translate-Y6: 290px;
+    --translate-Y7: 243px;
+    --translate-Y8: 256px;
+    --translate-Y9: 209px;
+    --translate-Y10: 222px;
+    --translate-Y11: 209px;
+    --translate-Y12: 188px;
+    --translate-X12: 82px;
+    --translate-Y13: 175px;
+    --translate-X13: 42px;
+    --translate-Y14: 188px;
+    --translate-X14: -47px;
+    --translate-Y15: 141px;
+    --translate-X15: 61px;
   }
 }
 .skills {
@@ -256,146 +284,119 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      // left: 0px;
-      // width: 100%;
-      // height: 100%;
+      transform: translate(-50%, -50%);
+      border-radius: 50px;
       height: 12px;
       width: 12px;
-      border-radius: 50px;
-      // @include adaptiveValue('width', 15, 15, 536, 378, 1);
-      transform: translate(-50%, -50%);
-      transition: width 3s linear, height 0.7s linear;
+      // opacity: 0;
     }
     @media (max-width: 377px) {
       width: unset;
       display: flex;
     }
-    &:nth-child(1) {
-      &::before {
-        background: green;
-        transform: translate(var(--translate-X1), var(--translate-Y1));
-        @include animationCoin(--translate-X1, --translate-Y1, 1);
-      }
-    }
-    &:nth-child(2) {
-      &::before {
-        background: green;
-        transform: translate(var(--translate-X2), var(--translate-Y2));
-        @include animationCoin(--translate-X2, --translate-Y2, 2);
-      }
-    }
-    //  @keyframes animateCoin {
-    //    0% {
+    @include animationCoin(--translate-X1, --translate-Y1, 1, 0.5);
+    @include animationCoin(--translate-X2, --translate-Y2, 2, 0);
+    @include animationCoin(--translate-X3, --translate-Y3, 3, 1);
+    @include animationCoin(--translate-X4, --translate-Y4, 4, 0.5);
+    @include animationCoin(--translate-X5, --translate-Y5, 5, 1.5);
+    @include animationCoin(--translate-X6, --translate-Y6, 6, 1);
+    @include animationCoin(--translate-X7, --translate-Y7, 7, 2);
+    @include animationCoin(--translate-X8, --translate-Y8, 8, 1.5);
+    @include animationCoin(--translate-X9, --translate-Y9, 9, 2.5);
+    @include animationCoin(--translate-X10, --translate-Y10, 10, 2);
+    @include animationCoin(--translate-X11, --translate-Y11, 11, 3);
+    @include animationCoin(--translate-X12, --translate-Y12, 12, 2.5);
+    @include animationCoin(--translate-X13, --translate-Y13, 13, 3.5);
+    @include animationCoin(--translate-X14, --translate-Y14, 14, 3);
+    @include animationCoin(--translate-X15, --translate-Y15, 15, 4);
+    //  &:nth-child(1) {
+    //    &::before {
+    //      background: green;
+    //      transform: translate(var(--translate-X1), var(--translate-Y1));
     //    }
-    //    20% {
-    //      transform: translate(var(--translate-X1), calc(var(--translate-Y1) - 100px));
-    //    }
-    //    100% {
-    //      transform: translate(-50%, -50%);
+    //  }
+    //  &:nth-child(2) {
+    //    &::before {
+    //      background: green;
+    //      transform: translate(var(--translate-X2), var(--translate-Y2));
     //    }
     //  }
     //  &:nth-child(3) {
     //    &::before {
     //      background: red;
     //      transform: translate(var(--translate-X3), var(--translate-Y3));
-    //      width: 40px;
-    //      @include adaptiveValue('width', 40, 23, 536, 378, 1);
     //    }
     //  }
     //  &:nth-child(4) {
     //    &::before {
     //      background: red;
     //      transform: translate(var(--translate-X4), var(--translate-Y4));
-    //      width: 40px;
-    //      @include adaptiveValue('width', 40, 23, 536, 378, 1);
     //    }
     //  }
     //  &:nth-child(5) {
     //    &::before {
     //      background: green;
     //      transform: translate(var(--translate-X5), var(--translate-Y5));
-    //      width: 40px;
-    //      @include adaptiveValue('width', 40, 23, 536, 378, 1);
     //    }
     //  }
     //  &:nth-child(6) {
     //    &::before {
     //      background: green;
     //      transform: translate(var(--translate-X6), var(--translate-Y6));
-    //      width: 40px;
-    //      @include adaptiveValue('width', 40, 23, 536, 378, 1);
     //    }
     //  }
     //  &:nth-child(7) {
     //    &::before {
     //      background: red;
     //      transform: translate(var(--translate-X7), var(--translate-Y7));
-    //      width: 40px;
-    //      @include adaptiveValue('width', 40, 23, 536, 378, 1);
     //    }
     //  }
     //  &:nth-child(8) {
     //    &::before {
     //      background: red;
     //      transform: translate(var(--translate-X8), var(--translate-Y8));
-    //      width: 40px;
-    //      @include adaptiveValue('width', 40, 23, 536, 378, 1);
     //    }
     //  }
     //  &:nth-child(9) {
     //    &::before {
     //      background: green;
     //      transform: translate(var(--translate-X9), var(--translate-Y9));
-    //      width: 40px;
-    //      @include adaptiveValue('width', 40, 23, 536, 378, 1);
     //    }
     //  }
     //  &:nth-child(10) {
     //    &::before {
     //      background: green;
     //      transform: translate(var(--translate-X10), var(--translate-Y10));
-    //      width: 40px;
-    //      @include adaptiveValue('width', 40, 23, 536, 378, 1);
     //    }
     //  }
     //  &:nth-child(11) {
     //    &::before {
     //      background: red;
     //      transform: translate(var(--translate-X11), var(--translate-Y11));
-    //      width: 40px;
-    //      @include adaptiveValue('width', 40, 23, 536, 378, 1);
     //    }
     //  }
     //  &:nth-child(12) {
     //    &::before {
     //      background: red;
     //      transform: translate(var(--translate-X12), var(--translate-Y12));
-    //      width: 40px;
-    //      @include adaptiveValue('width', 40, 23, 536, 378, 1);
     //    }
     //  }
     //  &:nth-child(13) {
     //    &::before {
     //      background: green;
     //      transform: translate(var(--translate-X13), var(--translate-Y13));
-    //      width: 40px;
-    //      @include adaptiveValue('width', 40, 23, 536, 378, 1);
     //    }
     //  }
     //  &:nth-child(14) {
     //    &::before {
     //      background: green;
     //      transform: translate(var(--translate-X14), var(--translate-Y14));
-    //      width: 40px;
-    //      @include adaptiveValue('width', 40, 23, 536, 378, 1);
     //    }
     //  }
     //  &:nth-child(15) {
     //    &::before {
     //      background: red;
     //      transform: translate(var(--translate-X15), var(--translate-Y15));
-    //      width: 40px;
-    //      @include adaptiveValue('width', 40, 23, 536, 378, 1);
     //    }
     //  }
   }
