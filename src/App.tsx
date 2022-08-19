@@ -10,11 +10,6 @@ import { Skills } from './components/main/skills/Skills'
 import logo from './img/transparent_logo.svg'
 import { Route, Routes, Navigate } from 'react-router-dom'
 
-import animationData from './lottie/skills.json' //
-// import animationData from './lottie/9ZxqWN9nht.json' //
-// import animationDataa from './components/main/skills/Skills.module' // ЛИБО асинк аваит либо хз
-const animationSkills = animationData
-
 function App() {
   // Отображается лого, потом меняется стиль для всего контента с display: none на display: flex
   const [contentDisplayedStyle, setContentDisplayedStyle] = useState<string>(s.displayContentNone)
@@ -71,7 +66,7 @@ function App() {
               <Routes>
                 <Route path='/' element={<Navigate to='/home' />} />
                 <Route path='home' element={<Home />} />
-                <Route path='skills' element={<Skills animationSkills={animationSkills} />} />
+                <Route path='skills' element={<Skills />} />
                 <Route path='projects' element={<Projects />} />
                 <Route path='contacts' element={<Contact />} />
                 <Route path='about' element={<About />} />

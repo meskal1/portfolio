@@ -3,17 +3,17 @@
   &:nth-child(#{$number}) {
     &::before {
       background: green;
-      transform: translate(var($translateX), var($translateY));
+      transform: translate3d(var($translateX), var($translateY), 0);
       animation: animateCoin + $number 2s linear $delay + s forwards;
       @keyframes #{animateCoin + $number} {
         0% {
           opacity: 1;
         }
         5% {
-          transform: translate(var($translateX), calc(var($translateY) - 100px));
+          transform: translate3d(var($translateX), calc(var($translateY) - 100px), 0);
         }
         25% {
-          transform: translate(-50%, -50%);
+          transform: translate3d(-50%, -50%, 0);
           height: 12px;
           width: 12px;
         }
@@ -28,7 +28,7 @@
           height: 0;
         }
         100% {
-          transform: translate(-50%, -50%);
+          transform: translate3d(-50%, -50%, 0);
           height: 0;
           width: 103%;
           opacity: 1;
@@ -284,7 +284,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate3d(-50%, -50%, 0);
       border-radius: 50px;
       height: 12px;
       width: 12px;

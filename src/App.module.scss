@@ -118,11 +118,11 @@
       animation: waveContainer 2s 1 linear 0.08s forwards;
     }
     .wave {
+      position: relative;
       background: url('./img/wave_top.png') 0 0 /50px repeat-x;
       width: 7000px;
       height: 10px;
       animation: waves 10s infinite linear, waveHeight 2s 1 linear forwards, scale 0.2s 1 linear 3.09s forwards;
-      position: relative;
     }
   }
 }

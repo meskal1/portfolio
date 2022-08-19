@@ -24,16 +24,21 @@ export const NavAnimatedLink: React.FC<NavAnimatedLinkType> = ({ id, link, name,
   }, 600)
 
   const onClickLinkHandler = () => {
-    if (location !== link) setPageTransition(s.pageTransition)
-    if (location !== link) setMenuColorTransition(s.animationBlackColor)
+    if (location !== link) {
+      setPageTransition(s.pageTransition)
+      setMenuColorTransition(s.animationBlackColor)
+    }
   }
+
   // Убираю после загрузки анимации стили animation: forwards, потому что идет перекрытие ссылок волной (кругом)
   const [isAnimationLoaded, setIsAnimationLoaded] = useState(s.animationIsLoading)
-  const onAnimationEnd = () => setIsAnimationLoaded(s.animationIsLoaded)
+  const onAnimationEnd = () => {
+    setIsAnimationLoaded(s.animationIsLoaded)
+  }
 
-  // Добавил задержку перехода, что бы достигнуть эффекта стирания контента анимационной волной
+  // Задержка перехода по ссылке, что бы достигнуть эффекта стирания контента анимационной волной
   const navigate = useNavigate()
-  const linkDelay = () => {
+  const changeLocationDelay = () => {
     setTimeout(() => {
       navigate(link)
     }, 200)
@@ -48,7 +53,7 @@ export const NavAnimatedLink: React.FC<NavAnimatedLinkType> = ({ id, link, name,
         onClick={onClickLinkHandler}>
         <a
           className={`${s.nav_item__link} ${menuColorTransition} ${location === link ? s.active_link : null}`}
-          onClick={linkDelay}
+          onClick={changeLocationDelay}
           // to={link}
         >
           {name}
