@@ -1,15 +1,16 @@
 import React, { ChangeEvent, MouseEvent, memo, useEffect, useState } from 'react'
 import usePortal from 'react-useportal'
+import { Button } from '../../button/Button'
 import s from './Contact.module.scss'
-import { TextareaMessage } from './textareaMessage/TextareaMessage'
+// import { TextareaMessage } from './textareaMessage/TextareaMessage'
 
 export type ContactType = {}
 
-export const Contact: React.FC<ContactType> = memo(({}) => {
+const Contact: React.FC<ContactType> = memo(({}) => {
   // Скачанный модуль usePortal
   const { openPortal, closePortal, isOpen, Portal } = usePortal({ bindTo: document.getElementById('wrapper')! })
 
-  console.log('rendered contact')
+  console.log('rendered contact вынести конкпу в отдельну компоненту')
   const [autocomplite, setAutocomplite] = useState(localStorage.getItem('isOffAutocomplite') || 'off')
   const [isChecked, setIsChecked] = useState<boolean>(localStorage.getItem('isOffAutocomplite') === 'on' ? true : false)
   const onChangeAutocomplite = () => {
@@ -28,7 +29,7 @@ export const Contact: React.FC<ContactType> = memo(({}) => {
 
   const [buttonErrorStyle, setButtonErrorStyle] = useState<string>('')
   const [nameFieldErrorStyle, setNameFieldErrorStyle] = useState<string>('')
-  const [emailFieldErrorStyle, setEmailFieldErrorStyle] = useState<string>('')
+  //   const [emailFieldErrorStyle, setEmailFieldErrorStyle] = useState<string>('')
 
   const [fontSizeCyrillicName, setFontSizeCyrillicName] = useState<string>('')
   const [textField, setTextField] = useState<string>(sessionStorage.getItem('textField') || '')
@@ -39,7 +40,7 @@ export const Contact: React.FC<ContactType> = memo(({}) => {
   const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[ a-zA-Z0-9-]+(?:\.[ a-zA-Z0-9-]+) *$/
 
   const [nameField, setNameField] = useState<string>(sessionStorage.getItem('nameField') || '')
-  const [emailField, setEmailField] = useState<string>(sessionStorage.getItem('emailField') || '')
+  //   const [emailField, setEmailField] = useState<string>(sessionStorage.getItem('emailField') || '')
 
   const onChangeNameField = (e: ChangeEvent<HTMLInputElement>) => {
     const validate = e.currentTarget.value.replace(/[^a-zA-Zа-яёА-ЯЁ -]/, '').slice(0, 50)
@@ -47,11 +48,11 @@ export const Contact: React.FC<ContactType> = memo(({}) => {
     setNameField(validate)
     sessionStorage.setItem('nameField', validate)
   }
-  const onChangeEmailField = (e: ChangeEvent<HTMLInputElement>) => {
-    const validate = e.currentTarget.value.replace(/[а-яёА-ЯЁ]/, '').slice(0, 200)
-    setEmailField(validate)
-    sessionStorage.setItem('emailField', validate)
-  }
+  //   const onChangeEmailField = (e: ChangeEvent<HTMLInputElement>) => {
+  //     const validate = e.currentTarget.value.replace(/[а-яёА-ЯЁ]/, '').slice(0, 200)
+  //     setEmailField(validate)
+  //     sessionStorage.setItem('emailField', validate)
+  //   }
   const onClickButtonHandler = (e: MouseEvent<HTMLButtonElement>) => {
     if (!nameField || !emailField || !textField || !emailField.match(validRegex)) {
       setButtonErrorStyle(s.errorButton)
@@ -87,9 +88,9 @@ export const Contact: React.FC<ContactType> = memo(({}) => {
     setIsAnimationLoaded(s.animationIsLoaded)
     setButtonErrorStyle('')
   }
-  const onBlurEmailInput = () => {
-    if (!emailField.match(validRegex) && emailField) setEmailFieldErrorStyle(s.errorBorder)
-  }
+  //   const onBlurEmailInput = () => {
+  //     if (!emailField.match(validRegex) && emailField) setEmailFieldErrorStyle(s.errorBorder)
+  //   }
   useEffect(() => {
     nameField.match(cyrillicChar) ? setFontSizeCyrillicName(s.fontSizeCyrillic) : setFontSizeCyrillicName('')
     textField.match(cyrillicChar) ? setFontSizeCyrillicTextField(s.fontSizeCyrillic) : setFontSizeCyrillicTextField('')
@@ -132,7 +133,7 @@ export const Contact: React.FC<ContactType> = memo(({}) => {
                   </label>
                 </div>
                 <div className={s.contacts__block_input}>
-                  <label className={s.bg_ForAutocompliteText}></label>
+                  {/* <label className={s.bg_ForAutocompliteText}></label>
                   <input
                     className={`${s.contacts__input_email} ${emailFieldErrorStyle}`}
                     required
@@ -147,7 +148,7 @@ export const Contact: React.FC<ContactType> = memo(({}) => {
                   <label className={s.contacts__label_email}>EMAIL</label>
                   <label className={s.placeholder} htmlFor='email'>
                     EMAIL
-                  </label>
+                  </label> */}
                 </div>
                 <div className={s.contacts__block_input}>
                   <textarea
@@ -173,18 +174,25 @@ export const Contact: React.FC<ContactType> = memo(({}) => {
                 </div>
               </Portal>
             )}
-            <button
+            <Button
+              type={'submit'}
+              name={'SEND ME MESSAGE'}
+              onClick={e => onClickButtonHandler(e)}
+              styleButtonClass={`${s.contacts__form_button} ${buttonErrorStyle}`}
+              onEndAnimation={onAnimationEnd}
+            />
+            {/* <button
               className={`${s.contacts__form_button} ${buttonErrorStyle} ${isAnimationLoaded}`}
               type='submit'
               form='contacts'
               onClick={onClickButtonHandler}
               onAnimationEnd={onAnimationEnd}>
               SEND ME MESSAGE
-            </button>
+            </button> */}
           </div>
         </div>
       </section>
     </>
   )
 })
-//600 x 960 540 x 960 820 x 1180 810 x 1080 768 x 1024 1280 x 720
+export default Contact

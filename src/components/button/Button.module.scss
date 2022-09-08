@@ -1,0 +1,27 @@
+@import '../../mixin.scss';
+.defaultButton {
+  font-family: 'League Spartan', 'Helvetica', sans-serif;
+  font-size: rem(16);
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+  color: black;
+  font-weight: 700;
+  padding: 9px 15px 6px;
+  border-radius: 30px;
+  background: linear-gradient(to bottom, #f9c847, #f9c64782);
+  transition: all linear 0.05s;
+  cursor: pointer;
+  &:active {
+    box-shadow: #f9c64752 0px 16px 15px -2px;
+    transform: translate(0px, 2px);
+  }
+}
+.animationIsLoading {
+  opacity: 0;
+}
+.animationIsLoaded {
+  animation: none;
+  opacity: 1;
+  box-shadow: #f9c64752 0px 20px 15px 0px;
+}

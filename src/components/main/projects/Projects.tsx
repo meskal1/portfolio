@@ -4,7 +4,7 @@ import s from './Projects.module.scss'
 
 // type ProjectsType = {}
 
-export const Projects = React.memo(() => {
+const Projects = React.memo(() => {
   return (
     <>
       <section className={s.projects}>
@@ -21,3 +21,4 @@ export const Projects = React.memo(() => {
     </>
   )
 })
+export default Projects

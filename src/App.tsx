@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import s from './App.module.scss'
-import { Footer } from './components/footer/Footer'
-import { Header } from './components/header/Header'
-import { Home } from './components/main/home/Home'
-import { Contact } from './components/main/contact/Contact'
-import { About } from './components/main/about/About'
-import { Projects } from './components/main/projects/Projects'
-import { Skills } from './components/main/skills/Skills'
-import logo from './img/main_logo.svg'
+import React, { useEffect, useState, lazy, Suspense } from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import { Lottie } from '@crello/react-lottie'
 import animationData from './lottie/wave_logo.json'
+import s from './App.module.scss'
+import logo from './img/main_logo.svg'
+import { Header } from './components/header/Header'
+// import Lottie from 'lottie-web/build/player/lottie_light'
+
+const Home = lazy(() => import('./components/main/home/Home')) //.then(module => ({ default: module.Home }))
+const Skills = lazy(() => import('./components/main/skills/Skills'))
+const Projects = lazy(() => import('./components/main/projects/Projects'))
+const Contact = lazy(() => import('./components/main/contact/Contact'))
+const About = lazy(() => import('./components/main/about/About'))
+const Footer = lazy(() => import('./components/footer/Footer'))
 
 const lottieOptions = {
   loop: true,
@@ -25,14 +27,10 @@ const lottieOptions = {
 }
 
 function App() {
-  //TODO А нужен ли display: none на display: flex может просто isContentDisplayed = true or false
-  // Отображается лого, потом меняется стиль для всего контента с display: none на display: flex
-  const [contentDisplayedStyle, setContentDisplayedStyle] = useState<string>(s.displayContentNone)
-  const isContentDisplayed = contentDisplayedStyle === s.content
-  //   const onAnimationLogoEnd = () => {} //  setContentDisplayedStyle(s.content)
-  setTimeout(() => {
-    setContentDisplayedStyle(s.content)
-  }, 3290)
+  //   console.log('render APP')
+  //TODO Сделать onAnimationLogoEnd setIsContentDisplayed(true)
+  const [isContentDisplayed, setIsContentDisplayed] = useState<boolean>(false)
+  //   const onAnimationLogoEnd = () => {} //  setIsContentDisplayed(true)
   //TODO
 
   // При нажатии на бургер добавляется/убирается атрибут style у body со свойством overflow: hidden. Добавляются/убираются стили отображения бургера.
@@ -48,53 +46,55 @@ function App() {
   }
 
   // Если width больше 535px и применены стили s.menuOpen, то сбросить стили и удалить атрибут style у body со свойством overflow: hidden (функционал если с открытым меню повернуть в landscape (горизонт))
-  const [mediaQueryWidth, setMediaQueryWidth] = useState<boolean>(false)
+  const [mediaQueryWidth, setMediaQueryWidth] = useState<boolean>(window.matchMedia('(max-width: 535px)').matches)
   if (!mediaQueryWidth && isMenuOpen) {
     document.querySelector('body')?.removeAttribute('style')
     setIsMenuOpen('')
   }
 
   useEffect(() => {
-    const widthWatcher = window.matchMedia('(max-width: 535px)')
-    setMediaQueryWidth(widthWatcher.matches)
+    const showContent = setTimeout(() => {
+      setIsContentDisplayed(true)
+    }, 3290)
 
+    const widthWatcher = window.matchMedia('(max-width: 535px)')
     const updateMediaQueryValue = () => setMediaQueryWidth(widthWatcher.matches)
     widthWatcher.addEventListener('change', updateMediaQueryValue)
 
-    return () => widthWatcher.removeEventListener('change', updateMediaQueryValue)
+    return () => {
+      widthWatcher.removeEventListener('change', updateMediaQueryValue)
+      clearTimeout(showContent)
+    }
   }, [])
 
   return (
     <>
       <div className={`${s.wrapper} ${isMenuOpen}`} id='wrapper'>
-        <div className={s.main_logo}>
-          <div className={s.logo_container}>
-            <img className={s.logo} src={logo} alt='logo2' />
-            <Lottie config={lottieOptions} />
-          </div>
-        </div>
-        {/* <div className={s.logo_animated_container}>
-          <div className={s.logo2}>
-            <img className={s.logo1} src={logo} alt='logo2' />
-          </div>
-          <div className={s.wave_container}>
-            <div className={s.wave}></div>
-          </div>
-        </div> */}
-        {isContentDisplayed && (
-          <div className={contentDisplayedStyle}>
+        {isContentDisplayed ? (
+          <div className={s.content}>
             <Header onClickBurgerMenu={onClickBurgerMenu} mediaQueryWidth={mediaQueryWidth} />
             <main className={s.main}>
-              <Routes>
-                <Route path='/' element={<Navigate to='/home' />} />
-                <Route path='home' element={<Home />} />
-                <Route path='skills' element={<Skills />} />
-                <Route path='projects' element={<Projects />} />
-                <Route path='contacts' element={<Contact />} />
-                <Route path='about' element={<About />} />
-              </Routes>
+              <Suspense fallback={null}>
+                <Routes>
+                  <Route path='/' element={<Navigate to='/home' />} />
+                  <Route path='home' element={<Home />} />
+                  <Route path='skills' element={<Skills />} />
+                  <Route path='projects' element={<Projects />} />
+                  <Route path='contacts' element={<Contact />} />
+                  <Route path='about' element={<About />} />
+                </Routes>
+              </Suspense>
             </main>
-            <Footer isMenuOpen={isMenuOpen} />
+            <Suspense fallback={null}>
+              <Footer isMenuOpen={isMenuOpen} />
+            </Suspense>
+          </div>
+        ) : (
+          <div className={s.main_logo}>
+            <div className={s.logo_container}>
+              <img className={s.logo} src={logo} alt='logo2' />
+              <Lottie config={lottieOptions} />
+            </div>
           </div>
         )}
       </div>

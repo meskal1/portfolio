@@ -46,12 +46,14 @@
     }
   }
   &__link {
+    font-family: 'League Spartan';
     display: inline-block;
     position: relative;
     z-index: 5;
     font-size: 20px;
     font-weight: 500;
     color: #b0b2c3;
+    background: none;
     transition: ease 0.2s all;
     cursor: pointer;
     &::before {

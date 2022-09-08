@@ -1,25 +1,28 @@
-.rotate_copyrights_container{
-	display: flex;
-	position: absolute;
-	top: -22px;
-	right: 54px;
-	flex-direction: column;
-	.heart_container{
-	transition: all 0.5s ease;
-		.heart_logo{
-			width: 20px;
-		}
-	}
-	.react_logo_container{
-	transition: all 0.5s ease;
-		.react_logo{
-			width: 20px;
-		}
-	}
-	.and1_container{
-	transition: all 0.5s ease;
-	}
-	.and2_container{
-		transition: all 0.5s ease;
-	}
+.rotate_copyrights_container {
+  display: flex;
+  position: absolute;
+  top: -22px;
+  right: 54px;
+  flex-direction: column;
+  .heart_container {
+    display: inline-block;
+    transition: all 0.5s ease;
+    .heart_logo {
+      width: 20px;
+    }
+  }
+  .react_logo_container {
+    transition: all 0.5s ease;
+    .react_logo {
+      width: 20px;
+    }
+  }
+  .and1_container {
+    display: inline-block;
+    transition: all 0.5s ease;
+  }
+  .and2_container {
+    display: inline-block;
+    transition: all 0.5s ease;
+  }
 }

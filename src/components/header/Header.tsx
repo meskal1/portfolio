@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import s from './Header.module.scss'
 import logo from '../../img/logo.svg'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { NavItems } from './navItems/NavItems'
 
 type HeaderType = {
@@ -18,10 +18,7 @@ const headerLinks = [
 ]
 
 export const Header: React.FC<HeaderType> = React.memo(({ onClickBurgerMenu, mediaQueryWidth }) => {
-  console.log('rendered header')
-
-  // Проверяю какая ссылка открыта в данный момент
-  const location = useLocation()
+  console.log('rendered Header')
   const [isActive, setIsActive] = useState(s.not_active)
   const [isMenuOpen, setIsMenuOpen] = useState('')
 
@@ -55,17 +52,22 @@ export const Header: React.FC<HeaderType> = React.memo(({ onClickBurgerMenu, med
             <a className={s.header__logo} href='https://meskal1.github.io/portfolio/#'>
               <img className={s.header__logo_img} src={logo} alt='logo' />
             </a>
-            <div className={s.menu_burger_container} onClick={onClickMenuBurger}>
-              <div className={`${s.menu_burger} ${isActive}`}>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </div>
-            {!mediaQueryWidth && <NavItems headerLinks={headerLinks} location={location.pathname} />}
-            <nav className={`${s.nav_burger_items} ${isMenuOpen}`}>
-              <ul className={s.nav_burger_items__list}>{burgerLinks}</ul>
-            </nav>
+            {mediaQueryWidth ? (
+              <>
+                <div className={s.menu_burger_container} onClick={onClickMenuBurger}>
+                  <div className={`${s.menu_burger} ${isActive}`}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+                <nav className={`${s.nav_burger_items} ${isMenuOpen}`}>
+                  <ul className={s.nav_burger_items__list}>{burgerLinks}</ul>
+                </nav>
+              </>
+            ) : (
+              <NavItems headerLinks={headerLinks} />
+            )}
           </div>
         </div>
       </header>
