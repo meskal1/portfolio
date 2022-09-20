@@ -5,19 +5,19 @@ import { Link } from 'react-router-dom'
 import { NavItems } from './navItems/NavItems'
 
 type HeaderType = {
-  onClickBurgerMenu: () => void
   mediaQueryWidth: boolean
+  onClickBurgerMenu: () => void
 }
 
 const headerLinks = [
-  { id: '1', link: '/home', name: 'Home' },
-  { id: '2', link: '/skills', name: 'Skills' },
-  { id: '3', link: '/projects', name: 'Projects' },
-  { id: '4', link: '/contacts', name: 'Contact' },
-  { id: '5', link: '/about', name: 'About me' },
+  { id: 1, link: '/home', name: 'Home' },
+  { id: 2, link: '/skills', name: 'Skills' },
+  { id: 3, link: '/projects', name: 'Projects' },
+  { id: 4, link: '/contacts', name: 'Contact' },
+  { id: 5, link: '/about', name: 'About me' },
 ]
 
-export const Header: React.FC<HeaderType> = React.memo(({ onClickBurgerMenu, mediaQueryWidth }) => {
+export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidth }) => {
   console.log('rendered Header')
   const [isActive, setIsActive] = useState(s.not_active)
   const [isMenuOpen, setIsMenuOpen] = useState('')
@@ -34,9 +34,9 @@ export const Header: React.FC<HeaderType> = React.memo(({ onClickBurgerMenu, med
     onClickBurgerMenu()
   }
 
-  const burgerLinks = headerLinks.map((el, i) => {
+  const burgerLinks = headerLinks.map(el => {
     return (
-      <li className={s.nav_item_burger} style={{ animationDelay: `${+el.id * 0.1}s` }} key={el.id}>
+      <li key={el.id} className={s.nav_item_burger} style={{ animationDelay: `${el.id * 0.1}s` }}>
         <Link onClick={onClickMenuBurger} className={s.nav_item__burger_link} to={el.link}>
           {el.name}
         </Link>
@@ -73,4 +73,4 @@ export const Header: React.FC<HeaderType> = React.memo(({ onClickBurgerMenu, med
       </header>
     </>
   )
-})
+}

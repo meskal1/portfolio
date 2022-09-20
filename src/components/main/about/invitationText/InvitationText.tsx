@@ -3,16 +3,14 @@ import Typewriter from 'typewriter-effect'
 import s from './InvitationText.module.scss'
 
 type InvitationTextType = {
-  canIStartAimateInvitationText: boolean
+  canIStartAimate: boolean
 }
 
-export const InvitationText: React.FC<InvitationTextType> = React.memo(({ canIStartAimateInvitationText }) => {
-  console.log('render available for')
-
+export const InvitationText: React.FC<InvitationTextType> = React.memo(({ canIStartAimate }) => {
   const [isAnimationLoaded, setIsAnimationLoaded] = useState('')
   const [autoStart, setAutoStart] = useState(false)
 
-  if (canIStartAimateInvitationText && autoStart !== true) {
+  if (canIStartAimate && autoStart !== true) {
     setTimeout(() => {
       setIsAnimationLoaded(s.animationIsLoaded)
     }, 1000)

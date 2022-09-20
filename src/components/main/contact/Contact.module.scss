@@ -191,6 +191,9 @@
   &__input_name {
     font-size: rem(20);
     border: 1px solid #676975;
+    &:focus {
+      border: 1px solid #00a300;
+    }
     &:focus ~ .contacts__label_name ~ .placeholder,
     &:valid ~ .contacts__label_name ~ .placeholder {
       transform: scale(0);
@@ -204,6 +207,9 @@
   &__input_email {
     font-size: rem(20);
     border: 1px solid #676975;
+    &:focus {
+      border: 1px solid #00a300;
+    }
     &:focus ~ .contacts__label_email ~ .placeholder,
     &:valid ~ .contacts__label_email ~ .placeholder {
       transform: scale(0);
@@ -214,34 +220,14 @@
       transform: scale(1);
     }
   }
-  &__label_name {
-    position: absolute;
-    opacity: 0;
-    top: -6px;
-    left: 10px;
-    font-size: rem(14);
-    font-weight: 600;
-    color: #f9c847;
-    transform: scale(0);
-    transition: all ease 0.5s;
-  }
-  &__label_email {
-    position: absolute;
-    opacity: 0;
-    top: -6px;
-    left: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #f9c847;
-    transform: scale(0);
-    transition: all ease 0.5s;
-  }
+  &__label_name,
+  &__label_email,
   &__label_message {
     position: absolute;
     opacity: 0;
     top: -6px;
     left: 10px;
-    font-size: 14px;
+    font-size: rem(14);
     font-weight: 600;
     color: #f9c847;
     transform: scale(0);
@@ -266,6 +252,9 @@
     // appearance: none;
     overflow-y: overlay;
     resize: none;
+    &:focus {
+      border: 1px solid #00a300;
+    }
     &::-webkit-scrollbar {
       width: 12px; /* Remove scrollbar space */
     }
@@ -303,7 +292,24 @@
   &__form_button {
     display: inline-block;
     margin: 0px 0px 20px 0px;
-    animation: animateButton 0.7s ease 1 4.2s forwards;
+    font-family: 'League Spartan', 'Helvetica', sans-serif;
+    font-size: rem(16);
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    color: black;
+    font-weight: 700;
+    padding: 9px 15px 6px;
+    border-radius: 30px;
+    background: linear-gradient(to bottom, #f9c847, #f9c64782);
+    transition: all linear 0.05s;
+    cursor: pointer;
+    transform: translate3d(0, 0, 0);
+    &:active {
+      transform: translate3d(0, 0, 0);
+      box-shadow: #f9c64752 0px 16px 15px -2px;
+      transform: translate(0px, 2px);
+    }
     @keyframes animateButton {
       0% {
         transform: translate(0, 20px);
@@ -314,6 +320,17 @@
       }
     }
   }
+}
+.animationIsLoading {
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
+  box-shadow: #f9c64752 0px 20px 15px 0px;
+  animation: animateButton 0.7s ease 1 4.2s forwards;
+}
+.animationIsLoaded {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  box-shadow: #f9c64752 0px 20px 15px 0px;
 }
 .placeholder {
   position: absolute;
@@ -384,14 +401,6 @@
     }
   }
 }
-.animationIsLoading {
-  //   opacity: 0;
-  //   animation: animateButton 0.7s ease 1 4.2s forwards;
-}
-// .animationIsLoaded {
-//   opacity: 1;
-//   box-shadow: #f9c64752 0px 20px 15px 0px;
-// }
 .modalContainer {
   position: fixed;
   top: 0;

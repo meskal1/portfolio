@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button } from '../../../button/Button'
+import { Button } from '../../home/button/Button'
 import s from './SendButton.module.scss'
 
 export type SendButtonType = {
@@ -45,13 +45,13 @@ export const SendButton: React.FC<SendButtonType> = React.memo(({ name, onClick 
 
   return (
     <>
-      <Button
+      {/* <Button
         type={'submit'}
         name={'SEND ME MESSAGE'}
         //   onClick={e => onClickButtonHandler(e)}
         styleButtonClass={`${s.contacts__form_button} ${buttonErrorStyle}`}
         onEndAnimation={onAnimationEnd}
-      />
+      /> */}
     </>
   )
 })

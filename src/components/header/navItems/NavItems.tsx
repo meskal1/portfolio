@@ -2,15 +2,14 @@ import React from 'react'
 import s from './NavItems.module.scss'
 import { NavAnimatedLink } from './navLink/NavAnimatedLink'
 
-export type NavItemsType = {
-  headerLinks: Array<{ id: string; link: string; name: string }>
+type NavItemsType = {
+  headerLinks: Array<{ id: number; link: string; name: string }>
 }
 
-export const NavItems: React.FC<NavItemsType> = React.memo(({ headerLinks }) => {
+export const NavItems: React.FC<NavItemsType> = ({ headerLinks }) => {
   const navLinks = headerLinks.map(el => {
-    return <NavAnimatedLink id={el.id} link={el.link} name={el.name} key={el.id} />
+    return <NavAnimatedLink key={el.id} id={el.id} link={el.link} name={el.name} />
   })
-
   return (
     <>
       <nav className={s.nav_items}>
@@ -18,4 +17,4 @@ export const NavItems: React.FC<NavItemsType> = React.memo(({ headerLinks }) => 
       </nav>
     </>
   )
-})
+}

@@ -38,7 +38,7 @@ const Input: React.FC<InputType> = ({ storageInput, setStorageInput }) => {
         name='email'
         id='email'
         type='text'
-        autoComplete={autocomplite}
+        //   autoComplete={autocomplite}
         value={emailField}
         onChange={onChangeEmailField}
         onBlur={onBlurEmailInput}

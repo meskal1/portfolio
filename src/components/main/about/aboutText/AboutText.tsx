@@ -2,51 +2,52 @@ import React, { MouseEvent, useEffect, useState } from 'react'
 import s from './AboutText.module.scss'
 
 type AboutTextType = {
-  canIStartTypingAboutText: boolean
   textContent: string
   ivivtationAnimate: () => void
 }
 
-export const AboutText: React.FC<AboutTextType> = ({ canIStartTypingAboutText, textContent, ivivtationAnimate }) => {
+export const AboutText: React.FC<AboutTextType> = React.memo(({ textContent, ivivtationAnimate }) => {
+  console.log('render About TEXT')
   const aboutText = textContent.split(``)
-  const [counter, setCounter] = useState(0)
-  const [typedAboutText, setTypedAboutText] = useState([''])
-  const [showAboutText, setShowAboutText] = useState('')
-  // При наведении на символ растворяет его (добавляя класс s.active)
+  const [canIStartTypingAboutText, setCanIStartTypingAboutText] = useState<boolean>(false)
+  const [counter, setCounter] = useState<number>(0)
+  const [typedAboutText, setTypedAboutText] = useState<Array<string>>([''])
+  const [shownAboutText, setShownAboutText] = useState<string>('')
+
   const onMouseOver = (e: MouseEvent<HTMLSpanElement>) => {
-    if (e.currentTarget.textContent && showAboutText.length === aboutText.length) e.currentTarget.setAttribute('class', s.active)
+    if (e.currentTarget.textContent && shownAboutText.length === aboutText.length) e.currentTarget.setAttribute('class', s.active)
   }
-  // Оборачивает каждый символ в span
-  const wrappSpanShowAboutText = showAboutText.split(``).map((el, i) => (
+  const wrappSpanShownAboutText = shownAboutText.split(``).map((el, i) => (
     <span onMouseOver={onMouseOver} key={i}>
       {el}
     </span>
   ))
-
-  const startIvivtationAnimate = () => ivivtationAnimate()
-
-  if (canIStartTypingAboutText) typewriter()
-
-  function typewriter() {
+  const typewriter = () => {
     setTimeout(() => {
-      if (showAboutText.length < aboutText.length) {
-        setTypedAboutText(typedAboutText.concat(aboutText[counter]))
-        setShowAboutText(typedAboutText.join(``))
+      if (shownAboutText.length < aboutText.length) {
+        setTypedAboutText(typedAboutText.concat(aboutText[+counter]))
+        setShownAboutText(typedAboutText.join(``))
         setCounter(counter + 1)
       }
     }, 30)
   }
+  canIStartTypingAboutText ? typewriter() : setTimeout(() => setCanIStartTypingAboutText(true), 2000)
 
+  const startIvivtationAnimate = () => ivivtationAnimate()
   useEffect(() => {
-    if (showAboutText.length === aboutText.length) startIvivtationAnimate()
-  }, [showAboutText])
+    if (shownAboutText.length === aboutText.length) startIvivtationAnimate()
+  }, [shownAboutText])
 
   return (
     <>
       <p className={s.about__text}>
-        {wrappSpanShowAboutText}
-        <span className={s.typewriterStick}>.</span>
+        {wrappSpanShownAboutText}
+        {shownAboutText.length !== aboutText.length ? (
+          <span className={`${s.typewriterStick}`}>.</span>
+        ) : (
+          <span className={`${s.typewriterEndBlink}`}>.</span>
+        )}
       </p>
     </>
   )
-}
+})

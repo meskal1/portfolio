@@ -5,6 +5,7 @@ import animationData from './lottie/wave_logo.json'
 import s from './App.module.scss'
 import logo from './img/main_logo.svg'
 import { Header } from './components/header/Header'
+import AboutModal from './components/main/about/aboutModal/AboutModal'
 // import Lottie from 'lottie-web/build/player/lottie_light'
 
 const Home = lazy(() => import('./components/main/home/Home')) //.then(module => ({ default: module.Home }))
@@ -76,12 +77,15 @@ function App() {
             <main className={s.main}>
               <Suspense fallback={null}>
                 <Routes>
-                  <Route path='/' element={<Navigate to='/home' />} />
+                  <Route path='/' element={<Navigate to='/home' replace />} />
                   <Route path='home' element={<Home />} />
                   <Route path='skills' element={<Skills />} />
                   <Route path='projects' element={<Projects />} />
                   <Route path='contacts' element={<Contact />} />
-                  <Route path='about' element={<About />} />
+                  <Route path='about' element={<About />}>
+                    <Route path='about_modal' element={<AboutModal />} />
+                  </Route>
+                  <Route path='*' element={<p>There's nothing here!</p>} />
                 </Routes>
               </Suspense>
             </main>

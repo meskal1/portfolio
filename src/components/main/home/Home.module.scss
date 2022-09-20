@@ -53,24 +53,6 @@
     @include adaptiveValue('font-size', 32, 25, 500, 320, 1);
     @include adaptiveValue('margin-bottom', 25, 15, 500, 320, 1);
   }
-  &__button {
-    display: flex;
-    align-self: flex-start;
-    text-align: center;
-    animation: animateButton 0.7s ease 1 1.3s forwards;
-    @media (max-width: 811px) {
-      align-self: unset;
-    }
-    @keyframes animateButton {
-      0% {
-        transform: translate(0, 20px);
-      }
-      100% {
-        transform: translate(0px, 0px);
-        opacity: 1;
-      }
-    }
-  }
   &__pic {
     display: inline-block;
     width: 100%;
