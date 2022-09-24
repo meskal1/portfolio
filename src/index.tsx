@@ -4,7 +4,6 @@ import './index.scss'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { HashRouter } from 'react-router-dom'
-import './scripts.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(

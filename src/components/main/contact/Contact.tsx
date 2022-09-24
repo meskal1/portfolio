@@ -1,4 +1,4 @@
-import React, { ChangeEvent, MouseEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, MouseEvent, useEffect, useState, KeyboardEvent } from 'react'
 import usePortal from 'react-useportal'
 import s from './Contact.module.scss'
 
@@ -46,7 +46,7 @@ const Contact = () => {
     setTextState(validate)
     sessionStorage.setItem('textState', validate.trimEnd())
   }
-  const onClickButton = (e: MouseEvent<HTMLButtonElement>) => {
+  const onClickButton = (e: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     if (!nameState || !emailState || !textState || !emailState.match(validEmail)) {
       setErrorStyleButton(s.errorButton)
     } else {
@@ -65,6 +65,25 @@ const Contact = () => {
     if (!emailState || !emailState.match(validEmail)) setErrorStyleEmail(s.errorBorder)
     if (!textState) setErrorStyleText(s.errorBorder)
   }
+  const onKeyDownInput = (e: KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    if (e.key === 'Enter' && e.currentTarget.id === 'name') {
+      e.preventDefault()
+      const emailField = document.getElementById('email')
+      if (emailField && nameState) emailField.focus()
+    }
+    if (e.key === 'Enter' && e.currentTarget.id === 'email') {
+      e.preventDefault()
+      const messageField = document.getElementById('messageContact')
+      if (messageField && emailState) messageField.focus()
+    }
+    if (!e.shiftKey && e.key === 'Enter' && e.currentTarget.id === 'messageContact') {
+      e.preventDefault()
+      if (nameState && emailState && textState) {
+        onClickButton(e)
+        e.currentTarget.blur()
+      }
+    }
+  }
   const onAnimationEndButton = () => {
     setIsAnimationLoaded(s.animationIsLoaded)
     setErrorStyleButton('')
@@ -78,9 +97,9 @@ const Contact = () => {
     if (textState.match(cyrillicChar) && cyrillicStyleText === '') setCyrillicStyleText(s.fontSizeCyrillic)
     if (!textState.match(cyrillicChar) && cyrillicStyleText !== '') setCyrillicStyleText('')
     if (nameState && errorStyleName !== '') setErrorStyleName('')
-    if (emailState && errorStyleEmail !== '') setErrorStyleEmail('')
+    if (emailState && errorStyleEmail !== '' && emailState.match(validEmail)) setErrorStyleEmail('')
     if (textState && errorStyleText !== '') setErrorStyleText('')
-  }, [nameState, emailState, textState])
+  }, [nameState, emailState, textState, cyrillicStyleName, cyrillicStyleText])
 
   return (
     <>
@@ -107,6 +126,7 @@ const Contact = () => {
                     name='name'
                     className={`${s.contacts__input_name} ${cyrillicStyleName} ${errorStyleName}`}
                     onChange={onChangeName}
+                    onKeyDown={onKeyDownInput}
                     autoComplete={autocomplite}
                     required
                   />
@@ -124,6 +144,7 @@ const Contact = () => {
                     name='email'
                     className={`${s.contacts__input_email} ${errorStyleEmail}`}
                     onChange={onChangeEmail}
+                    onKeyDown={onKeyDownInput}
                     onBlur={onBlurEmail}
                     autoComplete={autocomplite}
                     required
@@ -135,11 +156,12 @@ const Contact = () => {
                 </div>
                 <div className={s.contacts__block_input}>
                   <textarea
-                    id='message'
+                    id='messageContact'
                     value={textState}
                     name='message'
                     className={`${s.contacts__textarea} ${cyrillicStyleText} ${errorStyleText}`}
                     onChange={onChangeText}
+                    onKeyDown={onKeyDownInput}
                     required
                   />
                   <label className={s.contacts__label_message}>MESSAGE</label>

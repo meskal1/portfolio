@@ -23,7 +23,7 @@ const About = () => {
             <h2 className={s.about__title}>About me</h2>
             <div className={s.about__text_container}>
               <p className={s.about__text_substrate}>{aboutText}</p>
-              <AboutText textContent={aboutText} ivivtationAnimate={aboutTextIsShown} />
+              <AboutText textContent={aboutText} startIvivtationAnimate={aboutTextIsShown} />
             </div>
             <div className={s.about__invitation_block}>
               <InvitationText canIStartAimate={canIStartAimateInvitationText} />

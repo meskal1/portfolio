@@ -3,10 +3,10 @@ import s from './AboutText.module.scss'
 
 type AboutTextType = {
   textContent: string
-  ivivtationAnimate: () => void
+  startIvivtationAnimate: () => void
 }
 
-export const AboutText: React.FC<AboutTextType> = React.memo(({ textContent, ivivtationAnimate }) => {
+export const AboutText: React.FC<AboutTextType> = React.memo(({ textContent, startIvivtationAnimate }) => {
   console.log('render About TEXT')
   const aboutText = textContent.split(``)
   const [canIStartTypingAboutText, setCanIStartTypingAboutText] = useState<boolean>(false)
@@ -33,10 +33,9 @@ export const AboutText: React.FC<AboutTextType> = React.memo(({ textContent, ivi
   }
   canIStartTypingAboutText ? typewriter() : setTimeout(() => setCanIStartTypingAboutText(true), 2000)
 
-  const startIvivtationAnimate = () => ivivtationAnimate()
   useEffect(() => {
     if (shownAboutText.length === aboutText.length) startIvivtationAnimate()
-  }, [shownAboutText])
+  }, [shownAboutText, aboutText.length, startIvivtationAnimate])
 
   return (
     <>

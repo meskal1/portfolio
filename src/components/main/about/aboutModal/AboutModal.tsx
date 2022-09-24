@@ -60,9 +60,16 @@ const AboutModal = () => {
     closeModal()
   }
   const onKeyDownInput = (e: KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-    if (!e.shiftKey && e.key === 'Enter' && e.currentTarget.tagName === 'TEXTAREA') e.preventDefault()
+    if (!e.shiftKey && e.key === 'Enter' && e.currentTarget.tagName === 'TEXTAREA') {
+      e.preventDefault()
+      if (contactState && companyState) onClickButton()
+    }
     //Предотвращает обновление страницы
-    if (e.key === 'Enter' && e.currentTarget.tagName === 'INPUT') e.preventDefault()
+    if (e.key === 'Enter' && e.currentTarget.tagName === 'INPUT') {
+      e.preventDefault()
+      const messageField = document.getElementById('message')
+      if (messageField && companyState) messageField.focus()
+    }
   }
   const onFocusCloseElement = () => {
     document.addEventListener(
@@ -88,7 +95,7 @@ const AboutModal = () => {
     if (!contactState.match(cyrillicChar) && cyrillicStyleContact !== '') setCyrillicStyleContact('')
     if (companyState && errorStyleCompany !== '') setErrorStyleCompany('')
     if (contactState && errorStyleContact !== '') setErrorStyleContact('')
-  }, [companyState, contactState])
+  }, [companyState, contactState, cyrillicStyleContact, cyrillicStyleСompany, errorStyleCompany, errorStyleContact])
 
   return (
     <>
