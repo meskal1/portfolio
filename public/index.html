@@ -4,7 +4,28 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;600;700&display=swap" />
     <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'" />
+    <!-- <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;600;700&display=swap"
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous" /> -->
+    <!-- <link href="../src/img/main_logo.svg" rel="preload" as="image" crossorigin="anonymous" />
+    <link href="../src/img/logo.svg" rel="preload" as="image" crossorigin="anonymous" />
+    <link href="../src/img/github_logo.svg" rel="preload" as="image" crossorigin="anonymous" />
+    <link href="../src/img/codears_logo.svg" rel="preload" as="image" crossorigin="anonymous" />
+    <link href="../src/img/telegram_logo.svg" rel="preload" as="image" crossorigin="anonymous" />
+    <link href="../src/img/linkedin_logo.svg" rel="preload" as="image" crossorigin="anonymous" />
+    <link href="../src/img/photo.webp" rel="preload" as="image" crossorigin="anonymous" /> -->
+    <!-- <link
       href="%PUBLIC_URL%/static/media/LeagueSpartan-Medium-500.woff2"
       rel="preload"
       as="font"
@@ -23,7 +44,7 @@
     <link href="%PUBLIC_URL%/static/media/codears_logo.svg" rel="preload" as="image" crossorigin="anonymous" />
     <link href="%PUBLIC_URL%/static/media/telegram_logo.svg" rel="preload" as="image" crossorigin="anonymous" />
     <link href="%PUBLIC_URL%/static/media/linkedin_logo.svg" rel="preload" as="image" crossorigin="anonymous" />
-    <link href="%PUBLIC_URL%/static/media/photo.webp" rel="preload" as="image" crossorigin="anonymous" />
+    <link href="%PUBLIC_URL%/static/media/photo.webp" rel="preload" as="image" crossorigin="anonymous" /> -->
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -40,8 +61,10 @@
     -->
     <title>Portfolio</title>
   </head>
-
   <body>
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;600;700&display=swap" />
+    </noscript>
     <div id="root"></div>
   </body>
 </html>

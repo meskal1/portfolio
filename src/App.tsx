@@ -1,4 +1,4 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react'
+import React, { useState, lazy, Suspense, useEffect } from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import { Lottie } from '@crello/react-lottie'
 import animationData from './lottie/wave_logo.json'
@@ -54,19 +54,19 @@ function App() {
     setIsMenuOpen('')
   }
 
-  useEffect(() => {
-    const showContent = setTimeout(() => {
+  const [as, setAs] = useState<boolean>(false)
+  window.onload = () => {
+    setAs(true)
+    setTimeout(() => {
       setIsContentDisplayed(true)
     }, 3290)
+  }
 
+  useEffect(() => {
     const widthWatcher = window.matchMedia('(max-width: 535px)')
     const updateMediaQueryValue = () => setMediaQueryWidth(widthWatcher.matches)
     widthWatcher.addEventListener('change', updateMediaQueryValue)
-
-    return () => {
-      widthWatcher.removeEventListener('change', updateMediaQueryValue)
-      clearTimeout(showContent)
-    }
+    return () => widthWatcher.removeEventListener('change', updateMediaQueryValue)
   }, [])
 
   return (
@@ -87,6 +87,7 @@ function App() {
                     <Route path='about_modal' element={<AboutModal />} />
                   </Route>
                   <Route path='*' element={<p>There's nothing here!</p>} />
+                  <Route path='/*' element={<p>There's nothing here!</p>} />
                 </Routes>
               </Suspense>
             </main>
@@ -98,7 +99,7 @@ function App() {
           <div className={s.main_logo}>
             <div className={s.logo_container}>
               <img className={s.logo} src={logo} alt='logo2' />
-              <Lottie config={lottieOptions} />
+              {as && <Lottie config={lottieOptions} />}
             </div>
           </div>
         )}

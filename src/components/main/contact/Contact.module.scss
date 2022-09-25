@@ -161,7 +161,7 @@
       content: '';
       position: absolute;
       right: -1px;
-      bottom: 0px;
+      bottom: -1px;
       z-index: 0;
       width: 101%;
       height: 56px;
@@ -473,13 +473,13 @@
     opacity: 1;
   }
 }
-
 @keyframes animateInput {
   0% {
     width: 0px;
   }
   79% {
     background: #676975;
+    //  background: #1C1D25;
   }
   80% {
     width: 100%;

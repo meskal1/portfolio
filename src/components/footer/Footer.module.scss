@@ -85,6 +85,9 @@
       right: -2px;
     }
   }
+  &__text {
+    white-space: nowrap;
+  }
   &__copyrights_second_line {
     display: flex;
     position: relative;

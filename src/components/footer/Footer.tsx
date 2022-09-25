@@ -35,7 +35,7 @@ const Footer: React.FC<FooterType> = React.memo(({ isMenuOpen }) => {
           <div className={s.footer__content}>
             <div className={s.footer__block_social}>{socialLinks}</div>
             <div className={s.footer__copyrights}>
-              Designed and build by Daniil Kalach
+              <span className={s.footer__text}>Designed and build by Daniil Kalach</span>
               <div className={s.footer__copyrights_second_line}>
                 &nbsp;with
                 <FooterAnimate />
