@@ -33,4 +33,7 @@ package-lock.json
 .vscode
 
 # My own
+webpack.config.js
 deploy.sh
+craco.config.js
+compress-cra.json

@@ -1,13 +1,9 @@
-import React, { useState, lazy, Suspense, useEffect } from 'react'
+import React, { useState, lazy, Suspense, useEffect, AnimationEvent } from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
-import { Lottie } from '@crello/react-lottie'
-import animationData from './lottie/wave_logo.json'
 import s from './App.module.scss'
 import logo from './img/main_logo.svg'
-// import logo from 'http://192.168.1.120:5000/fbdownload/main_logo.svg?sid=P8Qg9UBHukm.MB3J4N01003&mode=open&dlink=2f70686f746f2f6d61696e5f6c6f676f2e737667&stdhtml=true'
 import { Header } from './components/header/Header'
 import AboutModal from './components/main/about/aboutModal/AboutModal'
-// import Lottie from 'lottie-web/build/player/lottie_light'
 
 const Home = lazy(() => import('./components/main/home/Home')) //.then(module => ({ default: module.Home }))
 const Skills = lazy(() => import('./components/main/skills/Skills'))
@@ -16,24 +12,13 @@ const Contact = lazy(() => import('./components/main/contact/Contact'))
 const About = lazy(() => import('./components/main/about/About'))
 const Footer = lazy(() => import('./components/footer/Footer'))
 
-const lottieOptions = {
-  loop: true,
-  autoplay: true, //Если установлено значение true, анимация будет воспроизводиться сразу после загрузки.
-  animationData: animationData,
-  rendererSettings: {
-    preserveAspectRatio: 'xMidYMid slice',
-    className: `${s.lottie_wave}`,
-    progressiveLoad: true, //будет загружать анимацию постепенно, пока требуются слои
-    viewBoxOnly: true, //если true, не будет добавлять свойства ширины, высоты и преобразования к корневому элементу
-  },
-}
-
 function App() {
   //   console.log('render APP')
   //TODO Сделать onAnimationLogoEnd setIsContentDisplayed(true)
   const [isContentDisplayed, setIsContentDisplayed] = useState<boolean>(false)
-  //   const onAnimationLogoEnd = () => {} //  setIsContentDisplayed(true)
-  //TODO
+  const onAnimationLogoEnd = (e: AnimationEvent<HTMLDivElement>) => {
+    if (/scale/.test(e.animationName)) setIsContentDisplayed(true)
+  }
 
   // При нажатии на бургер добавляется/убирается атрибут style у body со свойством overflow: hidden. Добавляются/убираются стили отображения бургера.
   const [isMenuOpen, setIsMenuOpen] = useState<string>('')
@@ -54,13 +39,11 @@ function App() {
     setIsMenuOpen('')
   }
 
-  const [as, setAs] = useState<boolean>(false)
-  window.onload = () => {
-    setAs(true)
-    setTimeout(() => {
-      setIsContentDisplayed(true)
-    }, 3290)
-  }
+  //   window.onload = () => {
+  //     setTimeout(() => {
+  //       setIsContentDisplayed(true)
+  //     }, 3290)
+  //   }
 
   useEffect(() => {
     const widthWatcher = window.matchMedia('(max-width: 535px)')
@@ -96,10 +79,13 @@ function App() {
             </Suspense>
           </div>
         ) : (
-          <div className={s.main_logo}>
-            <div className={s.logo_container}>
-              <img className={s.logo} src={logo} alt='logo2' />
-              {as && <Lottie config={lottieOptions} />}
+          <div className={s.main_logo} onAnimationEnd={onAnimationLogoEnd}>
+            <img className={s.logo} src={logo} alt='logo2' />
+            <div className={s.cont}>
+              <div className={s.a}>
+                <div className={s.b}></div>
+                <div className={s.c}></div>
+              </div>
             </div>
           </div>
         )}
