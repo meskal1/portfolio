@@ -15,7 +15,7 @@ const Footer = lazy(() => import('./components/footer/Footer'))
 function App() {
   const [isContentDisplayed, setIsContentDisplayed] = useState<boolean>(false)
   const onAnimationLogoEnd = (e: AnimationEvent<HTMLDivElement>) => {
-    // if (/scale/.test(e.animationName)) setIsContentDisplayed(true)
+    if (/scale/.test(e.animationName)) setIsContentDisplayed(true)
   }
   const [isMenuOpen, setIsMenuOpen] = useState<string>('')
   const onClickBurgerMenu = () => {
