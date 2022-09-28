@@ -21,7 +21,6 @@ const skillsArray = [
 
 const Skills = () => {
   console.log('render Skills')
-
   const skills = skillsArray.map((el, i) => {
     return (
       <p key={i} className={s.skills__item}>

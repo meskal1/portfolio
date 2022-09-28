@@ -13,14 +13,10 @@ const About = lazy(() => import('./components/main/about/About'))
 const Footer = lazy(() => import('./components/footer/Footer'))
 
 function App() {
-  //   console.log('render APP')
-  //TODO Сделать onAnimationLogoEnd setIsContentDisplayed(true)
   const [isContentDisplayed, setIsContentDisplayed] = useState<boolean>(false)
   const onAnimationLogoEnd = (e: AnimationEvent<HTMLDivElement>) => {
     if (/scale/.test(e.animationName)) setIsContentDisplayed(true)
   }
-
-  // При нажатии на бургер добавляется/убирается атрибут style у body со свойством overflow: hidden. Добавляются/убираются стили отображения бургера.
   const [isMenuOpen, setIsMenuOpen] = useState<string>('')
   const onClickBurgerMenu = () => {
     if (isMenuOpen === s.menuOpen) {
@@ -79,12 +75,12 @@ function App() {
             </Suspense>
           </div>
         ) : (
-          <div className={s.main_logo} onAnimationEnd={onAnimationLogoEnd}>
-            <img className={s.logo} src={logo} alt='logo2' />
-            <div className={s.cont}>
-              <div className={s.a}>
-                <div className={s.b}></div>
-                <div className={s.c}></div>
+          <div className={s.logo_container} onAnimationEnd={onAnimationLogoEnd}>
+            <img className={s.logo} src={logo} alt='' />
+            <div className={s.waveContainer}>
+              <div className={s.wave}>
+                <div className={s.waveSubBlock1}></div>
+                <div className={s.waveSubBlock2}></div>
               </div>
             </div>
           </div>
