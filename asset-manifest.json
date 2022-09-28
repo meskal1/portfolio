@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.84409adb.css",
-    "main.js": "/portfolio/static/js/main.c570ae02.js",
+    "main.css": "/portfolio/static/css/main.87eb6e7d.css",
+    "main.js": "/portfolio/static/js/main.6627ce5f.js",
     "static/css/239.4d024cf8.chunk.css": "/portfolio/static/css/239.4d024cf8.chunk.css",
     "static/js/239.fd1d0e4a.chunk.js": "/portfolio/static/js/239.fd1d0e4a.chunk.js",
     "static/css/465.0c387fbc.chunk.css": "/portfolio/static/css/465.0c387fbc.chunk.css",
@@ -27,8 +27,8 @@
     "static/media/linkedin_logo.svg": "/portfolio/static/media/linkedin_logo.83abeb75fb98e6849b301201570d8cbc.svg",
     "static/media/heart_logo_white.svg": "/portfolio/static/media/heart_logo_white.bd1c911ade38d2ea729b336c4c90e9b0.svg",
     "static/media/logo.svg": "/portfolio/static/media/logo.2bb5b7d086aae52be8cdf242b42c2e8c.svg",
-    "main.84409adb.css.map": "/portfolio/static/css/main.84409adb.css.map",
-    "main.c570ae02.js.map": "/portfolio/static/js/main.c570ae02.js.map",
+    "main.87eb6e7d.css.map": "/portfolio/static/css/main.87eb6e7d.css.map",
+    "main.6627ce5f.js.map": "/portfolio/static/js/main.6627ce5f.js.map",
     "239.4d024cf8.chunk.css.map": "/portfolio/static/css/239.4d024cf8.chunk.css.map",
     "239.fd1d0e4a.chunk.js.map": "/portfolio/static/js/239.fd1d0e4a.chunk.js.map",
     "465.0c387fbc.chunk.css.map": "/portfolio/static/css/465.0c387fbc.chunk.css.map",
@@ -45,7 +45,7 @@
     "165.cfe691f1.chunk.js.map": "/portfolio/static/js/165.cfe691f1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.84409adb.css",
-    "static/js/main.c570ae02.js"
+    "static/css/main.87eb6e7d.css",
+    "static/js/main.6627ce5f.js"
   ]
 }
