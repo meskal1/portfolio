@@ -65,7 +65,7 @@
 }
 .waveSubBlock1 {
   width: 100%;
-  height: 6px;
+  height: 5px;
   background: url('../src/img/wave.png') 100% / 40px 5px repeat-x;
 }
 .waveSubBlock2 {
@@ -82,7 +82,7 @@
   }
   100% {
     opacity: 0;
-    transform: rotate(90deg) translate3d(-350px, -10px, 0);
+    transform: rotate(90deg) translate3d(-350px, -5px, 0);
   }
 }
 @keyframes scale {
