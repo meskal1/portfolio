@@ -1,38 +1,44 @@
-@import "../../../mixin.scss";
+@import '../../../mixin.scss';
 .projects {
-	// background: #F1E2FF;
-	&__container {
-		display: flex;
-		justify-content: center;
-		flex-grow: 1;
-		max-width: 1050px;
-		margin: 0 auto;
-		padding: 0 15px;
-	}
-	&__content {
-		display: flex;
-		flex-direction: column;
-		// border: black 1px solid;
-
-		// .projects__block_items{
-		// 	display: flex;
-		// 	justify-content: space-between;
-		// 	flex-wrap: wrap;
-		// 	gap: 20px;
-		// 	@media (max-width: 834px) {
-		// 		justify-content: center;
-		// 		padding: 0 15px;
-		// 	 }
-		// }
-	}
-	&__title{
-		opacity: 0;
-		animation: animateTitle 0.7s ease 1 1.1s forwards;
-		font-size: rem(50);
-		font-weight: 700;
-	}
+  // background: #F1E2FF;
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  &__content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 20px;
+  }
+  &__title {
+    opacity: 0;
+    animation: animateTitle 0.7s ease 1 1.1s forwards;
+    font-size: rem(50);
+    font-weight: 700;
+  }
+}
+.swiper_container {
+  display: flex;
+  gap: 30px;
+}
+.project__item {
 }
 @keyframes animateTitle {
-	0% {transform: translate(0,20px);}
-	100% {transform: translate(0px,0px);opacity: 1}
+  0% {
+    transform: translate(0, 20px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
 }
+// Тип "(event: any, params: any) => CustomEvent<any>" не может быть назначен для типа "{ new <T>(type: string, eventInitDict?: CustomEventInit<T> | undefined): CustomEvent<T>; prototype: CustomEvent<any>; }".
+
+//   Тип "(event: any, params: any) => CustomEvent<any>" не предоставляет соответствия для сигнатуры "new <T>(type: string, eventInitDict?: CustomEventInit<T> | undefined): CustomEvent<T>".
