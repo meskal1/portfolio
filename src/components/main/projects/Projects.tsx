@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './swiped-events.js'
+// import './swiped-events.js'
 import s from './Projects.module.scss'
 
 const arr = [
@@ -8,6 +8,7 @@ const arr = [
   { id: 3, urlDemoName: '3', urlGithubName: '3', img: '3', urlDemo: '3', urlGithub: '3' },
   { id: 4, urlDemoName: '4', urlGithubName: '4', img: '4', urlDemo: '4', urlGithub: '4' },
   { id: 5, urlDemoName: '5', urlGithubName: '5', img: '5', urlDemo: '5', urlGithub: '5' },
+  { id: 6, urlDemoName: '6', urlGithubName: '6', img: '6', urlDemo: '6', urlGithub: '6' },
 ]
 
 const Projects = () => {
@@ -36,6 +37,25 @@ const Projects = () => {
   const swiperBlock = document.querySelector('.swiper_container')
   if (swiperBlock) swiperBlock.addEventListener('swiped-left', onClickSwipeLeft)
   if (swiperBlock) swiperBlock.addEventListener('swiped-right', onClickSwipeRight)
+  let touchstartX = 0
+  let touchendX = 0
+  function checkDirection() {
+    if (touchendX < touchstartX) {
+      alert('swiped left!')
+      onClickSwipeLeft()
+    }
+    if (touchendX > touchstartX) {
+      alert('swiped right!')
+      onClickSwipeRight()
+    }
+  }
+  document.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX
+  })
+  document.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX
+    checkDirection()
+  })
   return (
     <>
       <section className={s.projects}>
