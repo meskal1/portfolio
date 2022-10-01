@@ -1,14 +1,49 @@
 import React, { useState } from 'react'
-// import './swiped-events.js'
 import s from './Projects.module.scss'
+import portfolio from '../../../img/2.jpg'
 
 const arr = [
-  { id: 1, urlDemoName: '1', urlGithubName: '1', img: '1', urlDemo: '1', urlGithub: '1' },
-  { id: 2, urlDemoName: '2', urlGithubName: '2', img: '2', urlDemo: '2', urlGithub: '2' },
-  { id: 3, urlDemoName: '3', urlGithubName: '3', img: '3', urlDemo: '3', urlGithub: '3' },
-  { id: 4, urlDemoName: '4', urlGithubName: '4', img: '4', urlDemo: '4', urlGithub: '4' },
-  { id: 5, urlDemoName: '5', urlGithubName: '5', img: '5', urlDemo: '5', urlGithub: '5' },
-  { id: 6, urlDemoName: '6', urlGithubName: '6', img: '6', urlDemo: '6', urlGithub: '6' },
+  {
+    id: 1,
+    img: 'https://github.com/meskal1/CSS_car_animation/raw/main/PreviewCar.jpg',
+    name: 'Car animation',
+    urlDemoName: 'Live Demo',
+    urlDemo: 'https://meskal1.github.io/CSS_car_animation/',
+    urlGithub: 'https://github.com/meskal1/CSS_car_animation',
+  },
+  {
+    id: 2,
+    img: portfolio,
+    name: 'Portfolio',
+    urlDemoName: 'Live Demo',
+    urlDemo: 'https://meskal1.github.io/portfolio/',
+    urlGithub: 'https://github.com/meskal1/portfolio',
+  },
+  {
+    id: 3,
+    img: '3',
+    name: 'Social network',
+    urlDemoName: 'Live Demo in progress',
+    urlDemo: 'https://meskal1.github.io/social_network',
+    urlGithub: 'https://github.com/meskal1/social_network',
+  },
+  {
+    id: 4,
+    img: '4',
+    name: 'Todolist',
+    urlDemoName: 'Live Demo in progress',
+    urlDemo: 'https://meskal1.github.io/my_todo_list/',
+    urlGithub: 'https://github.com/meskal1/my_todo_list',
+  },
+  {
+    id: 5,
+    img: 'https://github.com/meskal1/Counter/raw/main/PreviewCounter.jpg',
+    name: 'Counter',
+    urlDemoName: 'Live Demo',
+    urlDemo: 'https://meskal1.github.io/Counter',
+    urlGithub: 'https://github.com/meskal1/Counter',
+  },
+  { id: 6, name: '6', urlDemoName: '6', urlGithubName: '6', img: '6', urlDemo: '6', urlGithub: '6' },
 ]
 
 const Projects = () => {
@@ -16,14 +51,15 @@ const Projects = () => {
   const proj = arr.map(el => {
     return (
       <div key={el.id} className={s.project__item}>
-        <div className={s.project__pic}>
+        <a className={s.project__pic} href={el.urlDemo} target={el.urlDemo}>
           <img className={s.project__img} src={el.img} alt='' />
-        </div>
+        </a>
+        <p className={s.project__text}>{el.name}</p>
         <a className={s.project__demo} href={el.urlDemo} target={el.urlDemo}>
           {el.urlDemoName}
         </a>
         <a className={s.project__github} href={el.urlGithub} target={el.urlGithub}>
-          {el.urlGithubName}
+          Source
         </a>
       </div>
     )
@@ -34,28 +70,23 @@ const Projects = () => {
   const itemRight = itemCenter === projLength - 1 ? 0 : itemCenter + 1
   const onClickSwipeLeft = () => setItemCenter(itemCenter - 1 >= 0 ? itemCenter - 1 : projLength - 1)
   const onClickSwipeRight = () => setItemCenter(itemCenter + 1 > projLength - 1 ? 0 : itemCenter + 1)
-  const swiperBlock = document.querySelector('.swiper_container')
-  if (swiperBlock) swiperBlock.addEventListener('swiped-left', onClickSwipeLeft)
-  if (swiperBlock) swiperBlock.addEventListener('swiped-right', onClickSwipeRight)
+
+  const swiperBlock = document.getElementById('swiper')
   let touchstartX = 0
   let touchendX = 0
-  function checkDirection() {
-    if (touchendX < touchstartX) {
-      alert('swiped left!')
-      onClickSwipeLeft()
-    }
-    if (touchendX > touchstartX) {
-      alert('swiped right!')
-      onClickSwipeRight()
-    }
-  }
-  document.addEventListener('touchstart', e => {
-    touchstartX = e.changedTouches[0].screenX
-  })
-  document.addEventListener('touchend', e => {
-    touchendX = e.changedTouches[0].screenX
-    checkDirection()
-  })
+  const checkDirection = () => (touchendX < touchstartX ? onClickSwipeRight() : onClickSwipeLeft())
+
+  if (swiperBlock) swiperBlock.addEventListener('touchstart', e => (touchstartX = e.changedTouches[0].screenX), { once: true })
+  if (swiperBlock)
+    swiperBlock.addEventListener(
+      'touchend',
+      e => {
+        touchendX = e.changedTouches[0].screenX
+        checkDirection()
+      },
+      { once: true }
+    )
+
   return (
     <>
       <section className={s.projects}>
@@ -64,12 +95,14 @@ const Projects = () => {
             <h2 className={s.projects__title} onAnimationEnd={onTitleAnimationEnd}>
               Projects
             </h2>
-            <div className={s.swiper_container}>
-              <button onClick={onClickSwipeLeft}>влево</button>
-              <div className={s.left}>{proj[itemLeft]}</div>
-              <div className={s.center}>{proj[itemCenter]}</div>
-              <div className={s.right}>{proj[itemRight]}</div>
-              <button onClick={onClickSwipeRight}>вправо</button>
+            <div className={s.swiper_container} id='swiper'>
+              <button className={s.left_button} onClick={onClickSwipeLeft} />
+              <div className={s.swiper_items_container}>
+                <div className={s.left_item}>{proj[itemLeft]}</div>
+                <div className={s.center_item}>{proj[itemCenter]}</div>
+                <div className={s.right_item}>{proj[itemRight]}</div>
+              </div>
+              <button className={s.right_button} onClick={onClickSwipeRight} />
             </div>
           </div>
         </div>
