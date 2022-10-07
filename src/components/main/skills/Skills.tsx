@@ -1,7 +1,4 @@
 import React from 'react'
-// import Carousel from 'react-material-ui-carousel'
-// import {Carousel} from '3d-react-carousal';
-// import { Paper, Button } from '@mui/material'
 import s from './Skills.module.scss'
 
 const skillsArray = [
@@ -16,10 +13,13 @@ const skillsArray = [
   'StoryBook',
   'Git',
   'SASS',
-  'CSS',
-  'HTML',
-  'Handsome',
-  'Awesome',
+  'Illustrator',
+  'After Effects',
+  'Nginx',
+  // 'CSS',
+  // 'HTML',
+  // 'Handsome',
+  // 'Awesome',
 ]
 
 const Skills = () => {

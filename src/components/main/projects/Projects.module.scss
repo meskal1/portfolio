@@ -26,16 +26,49 @@
   }
 }
 .swiper_container {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @include adaptiveValue('gap', 10, 0, 300, 280, 1);
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 50%;
+    height: 100%;
+    background: white;
+    background: #1c1d25;
+    z-index: 1;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 50%;
+    height: 100%;
+    background: white;
+    background: #1c1d25;
+  }
+}
+.curtainsMove {
+  &::before {
+    animation: curtainsLeft 0.7s linear forwards;
+  }
+  &::after {
+    animation: curtainsRight 0.7s linear forwards;
+  }
 }
 .swiper_items_container {
-  border: 1px solid green;
+  // border: 1px solid green;
   display: grid;
   padding: 30px 185px 50px;
   overflow: hidden;
-  > .swipeItem {
+  @include adaptiveValue('padding-right', 185, 0, 665, 310, 1);
+  @include adaptiveValue('padding-left', 185, 0, 665, 310, 1);
+  .swipeItem {
     grid-area: 1 / -1;
   }
 }
@@ -190,6 +223,22 @@
   }
 }
 
+@keyframes curtainsLeft {
+  0% {
+    transform: translate3d(0px, 0px, 0px);
+  }
+  100% {
+    transform: translate3d(-350px, 0px, 0px);
+  }
+}
+@keyframes curtainsRight {
+  0% {
+    transform: translate3d(0px, 0px, 0px);
+  }
+  100% {
+    transform: translate3d(350px, 0px, 0px);
+  }
+}
 @keyframes opacity {
   99% {
     opacity: 1;
