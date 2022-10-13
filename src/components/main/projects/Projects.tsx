@@ -28,7 +28,7 @@ const items = [
   },
   {
     id: 4,
-    img: '4',
+    img: 'https://github.com/meskal1/portfolio/raw/main/PreviewPortfolio.jpg',
     name: 'Todolist',
     urlDemoName: 'Live Demo in progress',
     urlDemo: 'https://meskal1.github.io/my_todo_list/',
@@ -74,6 +74,14 @@ const items = [
     urlDemo: 'https://meskal1.github.io/CSS_car_animation/',
     urlGithub: 'https://github.com/meskal1/CSS_car_animation',
   },
+  {
+    id: 10,
+    img: 'https://github.com/meskal1/landing_practice/raw/main/PreviewLanding.jpg',
+    name: 'Landing practice',
+    urlDemoName: 'Live Demo',
+    urlDemo: 'https://meskal1.github.io/landing_practice/',
+    urlGithub: 'https://github.com/meskal1/landing_practice',
+  },
 ]
 
 const Projects = () => {
@@ -95,26 +103,28 @@ const Projects = () => {
           '--dir': offset === 0 ? 0 : offset > 0 ? 1 : -1,
         }}>
         <div className={s.project__item}>
-          <a href={element.urlDemo} target={element.urlDemo} onClick={e => onClickImage(offset, e)}>
-            <img className={s.project__img} src={element.img} alt='' />
-          </a>
-          {active && (
+          {styleCurtains && (
             <>
-              <p className={s.project__text}>{element.name}</p>
-              <a className={s.project__demo} href={element.urlDemo} target={element.urlDemo}>
-                {element.urlDemoName}
+              <a href={element.urlDemo} target={element.urlDemo} onClick={e => onClickImage(offset, e)}>
+                <img className={s.project__img} src={element.img} alt='' />
               </a>
-              <a className={s.project__github} href={element.urlGithub} target={element.urlGithub}>
-                Source
-              </a>
+              {active && (
+                <>
+                  <p className={s.project__text}>{element.name}</p>
+                  <a className={s.project__demo} href={element.urlDemo} target={element.urlDemo}>
+                    {element.urlDemoName}
+                  </a>
+                  <a className={s.project__github} href={element.urlGithub} target={element.urlGithub}>
+                    Source
+                  </a>
+                </>
+              )}
             </>
           )}
         </div>
       </div>
     )
   })
-  let touchstartX = 0
-  let touchendX = 0
 
   const onClickSwipeRight = () => setItemCenter(itemCenter === 0 ? amountItems - 1 : itemCenter - 1)
 
@@ -126,15 +136,16 @@ const Projects = () => {
     if (offset === -1) onClickSwipeLeft()
   }
 
-  const checkDirection = () => {
-    if (touchstartX - touchendX > 15) onClickSwipeRight()
-    if (touchendX - touchstartX > 15) onClickSwipeLeft()
-  }
-
   const onTitleAnimationEnd = () => setStyleCurtains(s.curtainsMove)
 
   useEffect(() => {
     const swiperContainer = document.getElementById('swiper')
+    let touchstartX = 0
+    let touchendX = 0
+    const checkDirection = () => {
+      if (touchstartX - touchendX > 15) onClickSwipeRight()
+      if (touchendX - touchstartX > 15) onClickSwipeLeft()
+    }
     const touchstart = (e: TouchEvent) => (touchstartX = e.changedTouches[0].screenX)
     swiperContainer?.addEventListener('touchstart', touchstart)
     const touchend = (e: TouchEvent) => {

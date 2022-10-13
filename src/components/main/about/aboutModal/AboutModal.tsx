@@ -42,11 +42,29 @@ const AboutModal = () => {
     setContactState(validate)
     sessionStorage.setItem('contactState', validate.trimEnd())
   }
-  const onClickButton = () => {
+  const onClickButton = async () => {
     if (!companyState) setErrorStyleCompany(s.errorBorder)
     if (!contactState) setErrorStyleContact(s.errorBorder)
     if (!companyState || !contactState) setErrorStyleButton(s.errorButton)
-    else setIsDataSent(true)
+    else {
+      const data = {
+        company: companyState,
+        contact: contactState,
+      }
+      await fetch('http://kalach.test/about', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+        // .then(response => response.json())
+        .then(jsondata => console.log(jsondata))
+        .catch(error => {
+          console.log('error: ', error)
+        })
+      setIsDataSent(true)
+    }
   }
   const closeModal = () => {
     document.querySelector('body')?.removeAttribute('style')

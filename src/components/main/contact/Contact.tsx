@@ -50,6 +50,23 @@ const Contact = () => {
     if (!nameState || !emailState || !textState || !emailState.match(validEmail)) {
       setErrorStyleButton(s.errorButton)
     } else {
+      const data = {
+        name: nameState,
+        email: emailState,
+        message: textState,
+      }
+      fetch('http://localhost:5000/contact', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+        .then(response => response.json())
+        .then(jsondata => console.log(jsondata))
+        .catch(error => {
+          console.log('error: ', error)
+        })
       document.querySelector('body')?.style.setProperty('overflow', 'hidden')
       openPortal(e)
       setTimeout(() => {

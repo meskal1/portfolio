@@ -1,17 +1,6 @@
 .nav_item {
   position: relative;
-  &::before {
-    content: '';
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 0px;
-    height: 0px;
-    border-radius: 50%;
-    background-color: #f9c847;
-  }
+  &::before,
   &::after {
     content: '';
     position: absolute;
@@ -22,6 +11,11 @@
     width: 0px;
     height: 0px;
     border-radius: 50%;
+  }
+  &::before {
+    background: #f9c847;
+  }
+  &::after {
     background: #1c1d25;
   }
   &:hover {
@@ -68,6 +62,26 @@
     }
   }
 }
+.pageTransition {
+  &::before {
+    animation: animatePageTransition 0.6s ease;
+  }
+  &::after {
+    animation: animatePageTransition 0.6s ease 0.3s;
+  }
+}
+.animationIsLoading {
+  transform: translate3d(0, 0, 0);
+  opacity: 0;
+  animation: animateHeader 1s ease 1 forwards;
+}
+.animationIsLoaded {
+  opacity: 1;
+}
+.animationBlackColor {
+  transform: translate3d(0, 0, 0);
+  animation: menuColorTransition 0.2s ease;
+}
 @keyframes menuColorTransition {
   0% {
     color: black;
@@ -95,23 +109,4 @@
     height: auto;
     z-index: 0;
   }
-}
-.pageTransition {
-  &::before {
-    animation: animatePageTransition 0.6s ease;
-  }
-  &::after {
-    animation: animatePageTransition 0.6s ease 0.3s;
-  }
-}
-
-.animationIsLoading {
-  opacity: 0;
-  animation: animateHeader 1s ease 1 forwards;
-}
-.animationIsLoaded {
-  opacity: 1;
-}
-.animationBlackColor {
-  animation: menuColorTransition 0.2s ease;
 }

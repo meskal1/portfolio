@@ -30,12 +30,14 @@
     text-align: center;
   }
   &__title {
+    transform: translate3d(0, 0, 0);
     opacity: 0;
     animation: animateTitle 0.7s ease 1 1.1s forwards;
     font-size: rem(50);
     font-weight: 700;
   }
   &__text {
+    transform: translate3d(0, 0, 0);
     opacity: 0;
     animation: animateTitle 0.7s ease 1 1.2s forwards;
     font-size: rem(23);
@@ -45,6 +47,9 @@
     display: flex;
     flex-wrap: wrap;
     max-width: 430px;
+    // Что бы убрать багу когда резко переключаеш вкладку виден контент слайдер
+    // происходит при 1й загрузке страницы
+    animation: opacityVisible 1.6s linear;
     .switcher_container {
       opacity: 0;
       position: relative;
@@ -290,6 +295,7 @@
     }
   }
   &__form_button {
+    transform: translate3d(0, 0, 0);
     display: inline-block;
     margin: 0px 0px 20px 0px;
     font-family: 'League Spartan', 'Helvetica', sans-serif;
@@ -312,10 +318,10 @@
     }
     @keyframes animateButton {
       0% {
-        transform: translate(0, 20px);
+        transform: translate3d(0, 20px, 0);
       }
       100% {
-        transform: translate(0px, 0px);
+        transform: translate3d(0px, 0px, 0);
         opacity: 1;
       }
     }
@@ -430,6 +436,17 @@
   }
 }
 // -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+@keyframes opacityVisible {
+  0% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes animateModalBG {
   0% {
     z-index: 11;

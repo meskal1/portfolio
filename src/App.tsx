@@ -35,12 +35,6 @@ function App() {
     setIsMenuOpen('')
   }
 
-  //   window.onload = () => {
-  //     setTimeout(() => {
-  //       setIsContentDisplayed(true)
-  //     }, 3290)
-  //   }
-
   useEffect(() => {
     const widthWatcher = window.matchMedia('(max-width: 535px)')
     const updateMediaQueryValue = () => setMediaQueryWidth(widthWatcher.matches)
@@ -66,7 +60,6 @@ function App() {
                     <Route path='about_modal' element={<AboutModal />} />
                   </Route>
                   <Route path='*' element={<p>There's nothing here!</p>} />
-                  <Route path='/*' element={<p>There's nothing here!</p>} />
                 </Routes>
               </Suspense>
             </main>
