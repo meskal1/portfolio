@@ -20,7 +20,28 @@ const Contact = () => {
   const [emailState, setEmailState] = useState<string>(sessionStorage.getItem('emailState') || '')
   const [textState, setTextState] = useState<string>(sessionStorage.getItem('textState') || '')
   const autocomplite = isChecked ? 'on' : 'off'
+  const postData = {
+    name: nameState,
+    email: emailState,
+    message: textState,
+  }
 
+  const fetchContactData = async () => {
+    await fetch('http://192.168.1.105/contact', {
+      method: 'POST',
+      body: JSON.stringify(postData),
+      headers: {
+        Accept: 'application/json',
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      // .then(response => response.json())
+      .then(response => {
+        console.log('response', response)
+        // response.status === 200
+      })
+      .catch(error => console.log('Some error ocured'))
+  }
   const onChangeAutocomplite = () => {
     setIsChecked(!isChecked)
     localStorage.setItem('isOffAutocomplite', `${!isChecked ? 'on' : 'off'}`)
@@ -50,23 +71,7 @@ const Contact = () => {
     if (!nameState || !emailState || !textState || !emailState.match(validEmail)) {
       setErrorStyleButton(s.errorButton)
     } else {
-      const data = {
-        name: nameState,
-        email: emailState,
-        message: textState,
-      }
-      fetch('http://localhost:5000/contact', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      })
-        .then(response => response.json())
-        .then(jsondata => console.log(jsondata))
-        .catch(error => {
-          console.log('error: ', error)
-        })
+      fetchContactData()
       document.querySelector('body')?.style.setProperty('overflow', 'hidden')
       openPortal(e)
       setTimeout(() => {

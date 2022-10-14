@@ -31,7 +31,27 @@ const AboutModal = () => {
 
   const formStyle = `${!isDataSent ? s.hire__form : s.hire__form_close} ${isDataSent ? s.hire__form_succsess : null}`
   const textStyle = `${s.hire__text} ${isDataSent ? s.hire__text_succsess : null}`
+  const postData = {
+    company: companyState,
+    contact: contactState,
+  }
 
+  const fetchAboutData = async () => {
+    await fetch('http://192.168.1.105/about', {
+      method: 'POST',
+      body: JSON.stringify(postData),
+      headers: {
+        Accept: 'application/json',
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      // .then(response => response.json())
+      .then(response => {
+        console.log('response', response)
+        // response.status === 200
+      })
+      .catch(error => console.log('Some error ocured'))
+  }
   const onChangeCompany = (e: ChangeEvent<HTMLInputElement>) => {
     const validate = e.currentTarget.value.slice(0, 100).trimStart()
     setCompanyState(validate)
@@ -42,27 +62,12 @@ const AboutModal = () => {
     setContactState(validate)
     sessionStorage.setItem('contactState', validate.trimEnd())
   }
-  const onClickButton = async () => {
+  const onClickButton = () => {
     if (!companyState) setErrorStyleCompany(s.errorBorder)
     if (!contactState) setErrorStyleContact(s.errorBorder)
     if (!companyState || !contactState) setErrorStyleButton(s.errorButton)
     else {
-      const data = {
-        company: companyState,
-        contact: contactState,
-      }
-      await fetch('http://kalach.test/about', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      })
-        // .then(response => response.json())
-        .then(jsondata => console.log(jsondata))
-        .catch(error => {
-          console.log('error: ', error)
-        })
+      fetchAboutData()
       setIsDataSent(true)
     }
   }
@@ -80,7 +85,10 @@ const AboutModal = () => {
   const onKeyDownInput = (e: KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     if (!e.shiftKey && e.key === 'Enter' && e.currentTarget.tagName === 'TEXTAREA') {
       e.preventDefault()
-      if (contactState && companyState) onClickButton()
+      if (contactState && companyState) {
+        e.currentTarget.blur()
+        onClickButton()
+      }
     }
     //Предотвращает обновление страницы
     if (e.key === 'Enter' && e.currentTarget.tagName === 'INPUT') {
