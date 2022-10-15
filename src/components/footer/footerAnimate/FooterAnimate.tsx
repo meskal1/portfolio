@@ -8,6 +8,7 @@ export const FooterAnimate = () => {
   const [react, setReact] = useState([-16, 0]) //-16 -44 -73
   const [and1, setAnd1] = useState([26, 0]) // 26 0 -25
   const [and2, setAnd2] = useState([4, 0]) //4 -22 -48
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (heart[0] === 21) {
@@ -32,9 +33,7 @@ export const FooterAnimate = () => {
         setAnd2([-48, 0])
       }
     }, 1200)
-    return () => {
-      clearInterval(interval)
-    }
+    return () => clearInterval(interval)
   }, [heart, react, and1, and2])
 
   return (

@@ -101,6 +101,27 @@
   border: 1px solid black;
   cursor: pointer;
 }
+.project__img_loader {
+  &:before {
+    content: '';
+    transform-origin: left top;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    border-top-color: black;
+    animation: spinner 0.6s linear infinite;
+  }
+}
+@keyframes spinner {
+  100% {
+    rotate: 360deg;
+  }
+}
 .project__text {
   transform: translate3d(0, 0, 0);
   position: absolute;

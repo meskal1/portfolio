@@ -28,6 +28,12 @@
     align-items: center;
     row-gap: 15px;
     text-align: center;
+    &::before {
+      //Предзагрузка картинки для модального окна
+      content: '';
+      opacity: 0;
+      background: url('../../../img/green_checkmark_line.svg');
+    }
   }
   &__title {
     transform: translate3d(0, 0, 0);

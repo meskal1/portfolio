@@ -1,7 +1,6 @@
 import React, { useState, lazy, Suspense, useEffect, AnimationEvent } from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import s from './App.module.scss'
-import logo from './img/main_logo.svg'
 import { Header } from './components/header/Header'
 import AboutModal from './components/main/about/aboutModal/AboutModal'
 
@@ -14,10 +13,26 @@ const Footer = lazy(() => import('./components/footer/Footer'))
 
 function App() {
   const [isContentDisplayed, setIsContentDisplayed] = useState<boolean>(false)
-  const onAnimationLogoEnd = (e: AnimationEvent<HTMLDivElement>) => {
-    if (/scale/.test(e.animationName)) setIsContentDisplayed(true)
-  }
   const [isMenuOpen, setIsMenuOpen] = useState<string>('')
+  const [mediaQueryWidth, setMediaQueryWidth] = useState<boolean>(window.matchMedia('(max-width: 535px)').matches)
+  const [isImgLoaded, setIsImgLoaded] = useState<boolean>(false)
+  const mainLogo = new Image()
+  mainLogo.src = 'https://raw.githubusercontent.com/meskal1/portfolio/9d611fe5476786ce5f3feae21cc78946988c89c1/src/img/main_logo.svg'
+
+  mainLogo.onload = () => setIsImgLoaded(true)
+
+  // Если width больше 535px и применены стили s.menuOpen, то сбросить стили и удалить атрибут style у body со свойством overflow: hidden (функционал если с открытым меню повернуть в landscape (горизонт))
+  if (!mediaQueryWidth && isMenuOpen) {
+    document.querySelector('body')?.removeAttribute('style')
+    setIsMenuOpen('')
+  }
+
+  const onAnimationLogoEnd = (e: AnimationEvent<HTMLDivElement>) => {
+    if (/scale/.test(e.animationName)) {
+      setIsContentDisplayed(true)
+    }
+  }
+
   const onClickBurgerMenu = () => {
     if (isMenuOpen === s.menuOpen) {
       setIsMenuOpen('')
@@ -28,17 +43,13 @@ function App() {
     }
   }
 
-  // Если width больше 535px и применены стили s.menuOpen, то сбросить стили и удалить атрибут style у body со свойством overflow: hidden (функционал если с открытым меню повернуть в landscape (горизонт))
-  const [mediaQueryWidth, setMediaQueryWidth] = useState<boolean>(window.matchMedia('(max-width: 535px)').matches)
-  if (!mediaQueryWidth && isMenuOpen) {
-    document.querySelector('body')?.removeAttribute('style')
-    setIsMenuOpen('')
-  }
-
   useEffect(() => {
     const widthWatcher = window.matchMedia('(max-width: 535px)')
+
     const updateMediaQueryValue = () => setMediaQueryWidth(widthWatcher.matches)
+
     widthWatcher.addEventListener('change', updateMediaQueryValue)
+
     return () => widthWatcher.removeEventListener('change', updateMediaQueryValue)
   }, [])
 
@@ -67,9 +78,9 @@ function App() {
               <Footer isMenuOpen={isMenuOpen} />
             </Suspense>
           </div>
-        ) : (
+        ) : isImgLoaded ? (
           <div className={s.logo_container} onAnimationEnd={onAnimationLogoEnd}>
-            <img className={s.logo} src={logo} alt='' />
+            <img className={s.logo} src={mainLogo.src} alt='' />
             <div className={s.waveContainer}>
               <div className={s.wave}>
                 <div className={s.waveSubBlock1}></div>
@@ -77,7 +88,7 @@ function App() {
               </div>
             </div>
           </div>
-        )}
+        ) : null}
       </div>
     </>
   )

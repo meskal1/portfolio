@@ -16,14 +16,11 @@ const skillsArray = [
   'Illustrator',
   'After Effects',
   'Nginx',
-  // 'CSS',
-  // 'HTML',
-  // 'Handsome',
-  // 'Awesome',
 ]
 
 const Skills = () => {
   console.log('render Skills')
+
   const skills = skillsArray.map((el, i) => {
     return (
       <p key={i} className={s.skills__item}>
@@ -31,6 +28,7 @@ const Skills = () => {
       </p>
     )
   })
+
   const onTitleAnimationEnd = () => {}
 
   return (

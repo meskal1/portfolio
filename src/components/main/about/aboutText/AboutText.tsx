@@ -15,13 +15,17 @@ export const AboutText: React.FC<AboutTextType> = React.memo(({ textContent, sta
   const [shownAboutText, setShownAboutText] = useState<string>('')
 
   const onMouseOver = (e: MouseEvent<HTMLSpanElement>) => {
-    if (e.currentTarget.textContent && shownAboutText.length === aboutText.length) e.currentTarget.setAttribute('class', s.active)
+    if (e.currentTarget.textContent && shownAboutText.length === aboutText.length) {
+      e.currentTarget.setAttribute('class', s.active)
+    }
   }
+
   const wrappSpanShownAboutText = shownAboutText.split(``).map((el, i) => (
     <span onMouseOver={onMouseOver} key={i}>
       {el}
     </span>
   ))
+
   const typewriter = () => {
     setTimeout(() => {
       if (shownAboutText.length < aboutText.length) {
@@ -31,10 +35,17 @@ export const AboutText: React.FC<AboutTextType> = React.memo(({ textContent, sta
       }
     }, 30)
   }
-  canIStartTypingAboutText ? typewriter() : setTimeout(() => setCanIStartTypingAboutText(true), 2000)
+
+  canIStartTypingAboutText
+    ? typewriter()
+    : setTimeout(() => {
+        setCanIStartTypingAboutText(true)
+      }, 2000)
 
   useEffect(() => {
-    if (shownAboutText.length === aboutText.length) startIvivtationAnimate()
+    if (shownAboutText.length === aboutText.length) {
+      startIvivtationAnimate()
+    }
   }, [shownAboutText, aboutText.length, startIvivtationAnimate])
 
   return (

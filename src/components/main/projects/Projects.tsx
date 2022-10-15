@@ -28,7 +28,7 @@ const items = [
   },
   {
     id: 4,
-    img: 'https://github.com/meskal1/portfolio/raw/main/PreviewPortfolio.jpg',
+    img: 'https://github.com/meskal1/my_todo_list/raw/main/Preview.jpg',
     name: 'Todolist',
     urlDemoName: 'Live Demo in progress',
     urlDemo: 'https://meskal1.github.io/my_todo_list/',
@@ -105,7 +105,7 @@ const Projects = () => {
         <div className={s.project__item}>
           {styleCurtains && (
             <>
-              <a href={element.urlDemo} target={element.urlDemo} onClick={e => onClickImage(offset, e)}>
+              <a className={s.project__img_loader} href={element.urlDemo} target={element.urlDemo} onClick={e => onClickImage(offset, e)}>
                 <img className={s.project__img} src={element.img} alt='' />
               </a>
               {active && (
@@ -126,14 +126,24 @@ const Projects = () => {
     )
   })
 
-  const onClickSwipeRight = () => setItemCenter(itemCenter === 0 ? amountItems - 1 : itemCenter - 1)
+  const onClickSwipeRight = () => {
+    setItemCenter(itemCenter === 0 ? amountItems - 1 : itemCenter - 1)
+  }
 
   const onClickSwipeLeft = () => setItemCenter((itemCenter + 1) % amountItems)
 
   const onClickImage = (offset: number, e: MouseEvent<HTMLAnchorElement>) => {
-    if (offset !== 0) e.preventDefault()
-    if (offset === 1) onClickSwipeRight()
-    if (offset === -1) onClickSwipeLeft()
+    if (offset !== 0) {
+      e.preventDefault()
+    }
+
+    if (offset === 1) {
+      onClickSwipeRight()
+    }
+
+    if (offset === -1) {
+      onClickSwipeLeft()
+    }
   }
 
   const onTitleAnimationEnd = () => setStyleCurtains(s.curtainsMove)
@@ -142,12 +152,20 @@ const Projects = () => {
     const swiperContainer = document.getElementById('swiper')
     let touchstartX = 0
     let touchendX = 0
+
     const checkDirection = () => {
-      if (touchstartX - touchendX > 15) onClickSwipeRight()
-      if (touchendX - touchstartX > 15) onClickSwipeLeft()
+      if (touchstartX - touchendX > 15) {
+        onClickSwipeRight()
+      }
+
+      if (touchendX - touchstartX > 15) {
+        onClickSwipeLeft()
+      }
     }
+
     const touchstart = (e: TouchEvent) => (touchstartX = e.changedTouches[0].screenX)
     swiperContainer?.addEventListener('touchstart', touchstart)
+
     const touchend = (e: TouchEvent) => {
       touchendX = e.changedTouches[0].screenX
       checkDirection()

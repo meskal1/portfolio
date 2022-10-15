@@ -10,11 +10,15 @@ const About = () => {
   console.log('render about')
   const [isAimateButtonLoaded, setIsAimateButtonLoaded] = useState<string>(s.animationIsLoading)
   const [canIStartAimateInvitationText, setCanIStartAimateInvitationText] = useState<boolean>(false)
+
   const aboutTextIsShown = useCallback(() => {
     setCanIStartAimateInvitationText(true)
   }, [])
+
   const onAnimationEnd = () => setIsAimateButtonLoaded(s.animationIsLoaded)
+
   const onClickButton = () => document.querySelector('body')?.style.setProperty('overflow', 'hidden')
+
   return (
     <>
       <section className={s.about}>

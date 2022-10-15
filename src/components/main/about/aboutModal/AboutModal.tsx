@@ -9,17 +9,6 @@ const AboutModal = () => {
   console.log('render Modal')
   const navigate = useNavigate()
   const location = useLocation()
-  //Если в адресной строке напрямую введен адрес с открытым попапом то добавить стили...
-  if (location.pathname === '/about/about_modal') {
-    document.querySelector('body')?.style.setProperty('overflow', 'hidden')
-    document.addEventListener(
-      'keydown',
-      e => {
-        if (e.key === 'Escape') closeModal()
-      },
-      { once: true }
-    )
-  }
   const [isDataSent, setIsDataSent] = useState<boolean>(false)
   const [errorStyleButton, setErrorStyleButton] = useState<string>('')
   const [errorStyleCompany, setErrorStyleCompany] = useState<string>('')
@@ -28,12 +17,24 @@ const AboutModal = () => {
   const [cyrillicStyleContact, setCyrillicStyleContact] = useState<string>('')
   const [companyState, setCompanyState] = useState<string>(sessionStorage.getItem('companyState') || '')
   const [contactState, setContactState] = useState<string>(sessionStorage.getItem('contactState') || '')
-
   const formStyle = `${!isDataSent ? s.hire__form : s.hire__form_close} ${isDataSent ? s.hire__form_succsess : null}`
   const textStyle = `${s.hire__text} ${isDataSent ? s.hire__text_succsess : null}`
   const postData = {
     company: companyState,
     contact: contactState,
+  }
+  //Если в адресной строке напрямую введен адрес с открытым попапом то добавить стили...
+  if (location.pathname === '/about/about_modal') {
+    document.querySelector('body')?.style.setProperty('overflow', 'hidden')
+    document.addEventListener(
+      'keydown',
+      e => {
+        if (e.key === 'Escape') {
+          closeModal()
+        }
+      },
+      { once: true }
+    )
   }
 
   const fetchAboutData = async () => {
@@ -52,25 +53,36 @@ const AboutModal = () => {
       })
       .catch(error => console.log('Some error ocured'))
   }
+
   const onChangeCompany = (e: ChangeEvent<HTMLInputElement>) => {
     const validate = e.currentTarget.value.slice(0, 100).trimStart()
     setCompanyState(validate)
     sessionStorage.setItem('companyState', validate.trimEnd())
   }
+
   const onChangeContact = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const validate = e.currentTarget.value.slice(0, 1000).trimStart()
     setContactState(validate)
     sessionStorage.setItem('contactState', validate.trimEnd())
   }
+
   const onClickButton = () => {
-    if (!companyState) setErrorStyleCompany(s.errorBorder)
-    if (!contactState) setErrorStyleContact(s.errorBorder)
-    if (!companyState || !contactState) setErrorStyleButton(s.errorButton)
-    else {
+    if (!companyState) {
+      setErrorStyleCompany(s.errorBorder)
+    }
+
+    if (!contactState) {
+      setErrorStyleContact(s.errorBorder)
+    }
+
+    if (!companyState || !contactState) {
+      setErrorStyleButton(s.errorButton)
+    } else {
       fetchAboutData()
       setIsDataSent(true)
     }
   }
+
   const closeModal = () => {
     document.querySelector('body')?.removeAttribute('style')
     setErrorStyleCompany('')
@@ -78,13 +90,16 @@ const AboutModal = () => {
     setErrorStyleButton('')
     navigate('/about', { replace: true })
   }
+
   const onMouseDownOutOffModal = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target !== e.currentTarget) return
     closeModal()
   }
+
   const onKeyDownInput = (e: KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     if (!e.shiftKey && e.key === 'Enter' && e.currentTarget.tagName === 'TEXTAREA') {
       e.preventDefault()
+
       if (contactState && companyState) {
         e.currentTarget.blur()
         onClickButton()
@@ -94,33 +109,58 @@ const AboutModal = () => {
     if (e.key === 'Enter' && e.currentTarget.tagName === 'INPUT') {
       e.preventDefault()
       const messageField = document.getElementById('message')
-      if (messageField && companyState) messageField.focus()
+
+      if (messageField && companyState) {
+        messageField.focus()
+      }
     }
   }
+
   const onFocusCloseElement = () => {
     document.addEventListener(
       'keydown',
       e => {
-        if (e.key === 'Enter') closeModal()
+        if (e.key === 'Enter') {
+          closeModal()
+        }
       },
       { once: true }
     )
   }
+
   const onAnimationEndCloseModal = (e: AnimationEvent<HTMLFormElement>) => {
     if (/animateCloseModal/.test(e.animationName)) {
       sessionStorage.clear()
       closeModal()
     }
   }
+
   const onAnimationEndButtonError = () => setErrorStyleButton('')
 
   useEffect(() => {
-    if (companyState.match(cyrillicChar) && cyrillicStyleСompany === '') setCyrillicStyleСompany(s.fontSizeCyrillic)
-    if (!companyState.match(cyrillicChar) && cyrillicStyleСompany !== '') setCyrillicStyleСompany('')
-    if (contactState.match(cyrillicChar) && cyrillicStyleContact === '') setCyrillicStyleContact(s.fontSizeCyrillic)
-    if (!contactState.match(cyrillicChar) && cyrillicStyleContact !== '') setCyrillicStyleContact('')
-    if (companyState && errorStyleCompany !== '') setErrorStyleCompany('')
-    if (contactState && errorStyleContact !== '') setErrorStyleContact('')
+    if (companyState.match(cyrillicChar) && cyrillicStyleСompany === '') {
+      setCyrillicStyleСompany(s.fontSizeCyrillic)
+    }
+
+    if (!companyState.match(cyrillicChar) && cyrillicStyleСompany !== '') {
+      setCyrillicStyleСompany('')
+    }
+
+    if (contactState.match(cyrillicChar) && cyrillicStyleContact === '') {
+      setCyrillicStyleContact(s.fontSizeCyrillic)
+    }
+
+    if (!contactState.match(cyrillicChar) && cyrillicStyleContact !== '') {
+      setCyrillicStyleContact('')
+    }
+
+    if (companyState && errorStyleCompany !== '') {
+      setErrorStyleCompany('')
+    }
+
+    if (contactState && errorStyleContact !== '') {
+      setErrorStyleContact('')
+    }
   }, [companyState, contactState, cyrillicStyleContact, cyrillicStyleСompany, errorStyleCompany, errorStyleContact])
 
   return (

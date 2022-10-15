@@ -14,6 +14,7 @@ export const InvitationText: React.FC<InvitationTextType> = React.memo(({ canISt
     setTimeout(() => {
       setIsAnimationLoaded(s.animationIsLoaded)
     }, 1000)
+
     setTimeout(() => {
       setAutoStart(true)
     }, 1400)

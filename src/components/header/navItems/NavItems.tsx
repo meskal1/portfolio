@@ -10,6 +10,7 @@ export const NavItems: React.FC<NavItemsType> = ({ headerLinks }) => {
   const navLinks = headerLinks.map(el => {
     return <NavAnimatedLink key={el.id} id={el.id} link={el.link} name={el.name} />
   })
+
   return (
     <>
       <nav className={s.nav_items}>

@@ -2,6 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://meskal1.github.io/portfolio",
   "dependencies": {
     "3d-react-carousal": "^5.0.0",
     "@craco/craco": "^6.4.5",

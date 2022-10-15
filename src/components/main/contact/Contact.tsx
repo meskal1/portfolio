@@ -9,7 +9,7 @@ const Contact = () => {
   console.log('rendered contact')
   const { openPortal, closePortal, isOpen, Portal } = usePortal({ bindTo: document.getElementById('wrapper')! })
   const [isChecked, setIsChecked] = useState<boolean>(localStorage.getItem('isOffAutocomplite') === 'on')
-  const [isAnimationLoaded, setIsAnimationLoaded] = useState(s.animationIsLoading)
+  const [isAnimationLoaded, setIsAnimationLoaded] = useState<string>(s.animationIsLoading)
   const [errorStyleButton, setErrorStyleButton] = useState<string>('')
   const [errorStyleName, setErrorStyleName] = useState<string>('')
   const [errorStyleEmail, setErrorStyleEmail] = useState<string>('')
@@ -42,10 +42,12 @@ const Contact = () => {
       })
       .catch(error => console.log('Some error ocured'))
   }
+
   const onChangeAutocomplite = () => {
     setIsChecked(!isChecked)
     localStorage.setItem('isOffAutocomplite', `${!isChecked ? 'on' : 'off'}`)
   }
+
   const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     const validate = e.currentTarget.value
       .replace(/[^a-zA-Zа-яёА-ЯЁ -]/, '')
@@ -54,6 +56,7 @@ const Contact = () => {
     setNameState(validate)
     sessionStorage.setItem('nameState', validate.trimEnd())
   }
+
   const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
     const validate = e.currentTarget.value
       .replace(/[а-яёА-ЯЁ]/, '')
@@ -62,11 +65,13 @@ const Contact = () => {
     setEmailState(validate)
     sessionStorage.setItem('emailState', validate.trimEnd())
   }
+
   const onChangeText = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const validate = e.currentTarget.value.slice(0, 3000).trimStart()
     setTextState(validate)
     sessionStorage.setItem('textState', validate.trimEnd())
   }
+
   const onClickButton = (e: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     if (!nameState || !emailState || !textState || !emailState.match(validEmail)) {
       setErrorStyleButton(s.errorButton)
@@ -83,44 +88,88 @@ const Contact = () => {
         sessionStorage.clear()
       }, 2000)
     }
-    if (!nameState) setErrorStyleName(s.errorBorder)
-    if (!emailState || !emailState.match(validEmail)) setErrorStyleEmail(s.errorBorder)
-    if (!textState) setErrorStyleText(s.errorBorder)
+
+    if (!nameState) {
+      setErrorStyleName(s.errorBorder)
+    }
+
+    if (!emailState || !emailState.match(validEmail)) {
+      setErrorStyleEmail(s.errorBorder)
+    }
+
+    if (!textState) {
+      setErrorStyleText(s.errorBorder)
+    }
   }
+
   const onKeyDownInput = (e: KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     if (e.key === 'Enter' && e.currentTarget.id === 'name') {
       e.preventDefault()
       const emailField = document.getElementById('email')
-      if (emailField && nameState) emailField.focus()
+
+      if (emailField && nameState) {
+        emailField.focus()
+      }
     }
+
     if (e.key === 'Enter' && e.currentTarget.id === 'email') {
       e.preventDefault()
       const messageField = document.getElementById('messageContact')
-      if (messageField && emailState) messageField.focus()
+
+      if (messageField && emailState) {
+        messageField.focus()
+      }
     }
+
     if (!e.shiftKey && e.key === 'Enter' && e.currentTarget.id === 'messageContact') {
       e.preventDefault()
+
       if (nameState && emailState && textState) {
         onClickButton(e)
         e.currentTarget.blur()
       }
     }
   }
+
   const onAnimationEndButton = () => {
     setIsAnimationLoaded(s.animationIsLoaded)
     setErrorStyleButton('')
   }
+
   const onBlurEmail = () => {
-    if (!emailState.match(validEmail) && emailState) setErrorStyleEmail(s.errorBorder)
+    if (!emailState.match(validEmail) && emailState) {
+      setErrorStyleEmail(s.errorBorder)
+    }
   }
+
   useEffect(() => {
-    if (nameState.match(cyrillicChar) && cyrillicStyleName === '') setCyrillicStyleName(s.fontSizeCyrillic)
-    if (!nameState.match(cyrillicChar) && cyrillicStyleName !== '') setCyrillicStyleName('')
-    if (textState.match(cyrillicChar) && cyrillicStyleText === '') setCyrillicStyleText(s.fontSizeCyrillic)
-    if (!textState.match(cyrillicChar) && cyrillicStyleText !== '') setCyrillicStyleText('')
-    if (nameState && errorStyleName !== '') setErrorStyleName('')
-    if (emailState && errorStyleEmail !== '' && emailState.match(validEmail)) setErrorStyleEmail('')
-    if (textState && errorStyleText !== '') setErrorStyleText('')
+    if (nameState.match(cyrillicChar) && cyrillicStyleName === '') {
+      setCyrillicStyleName(s.fontSizeCyrillic)
+    }
+
+    if (!nameState.match(cyrillicChar) && cyrillicStyleName !== '') {
+      setCyrillicStyleName('')
+    }
+
+    if (textState.match(cyrillicChar) && cyrillicStyleText === '') {
+      setCyrillicStyleText(s.fontSizeCyrillic)
+    }
+
+    if (!textState.match(cyrillicChar) && cyrillicStyleText !== '') {
+      setCyrillicStyleText('')
+    }
+
+    if (nameState && errorStyleName !== '') {
+      setErrorStyleName('')
+    }
+
+    if (emailState && errorStyleEmail !== '' && emailState.match(validEmail)) {
+      setErrorStyleEmail('')
+    }
+
+    if (textState && errorStyleText !== '') {
+      setErrorStyleText('')
+    }
   }, [nameState, emailState, textState, cyrillicStyleName, cyrillicStyleText])
 
   return (

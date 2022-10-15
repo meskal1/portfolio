@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import s from './Header.module.scss'
-import logo from '../../img/logo.svg'
 import { Link } from 'react-router-dom'
 import { NavItems } from './navItems/NavItems'
 
@@ -19,8 +18,13 @@ const headerLinks = [
 
 export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidth }) => {
   console.log('rendered Header')
-  const [isActive, setIsActive] = useState(s.not_active)
-  const [isMenuOpen, setIsMenuOpen] = useState('')
+  const [isActive, setIsActive] = useState<string>(s.not_active)
+  const [isMenuOpen, setIsMenuOpen] = useState<string>('')
+  const [isImgLoaded, setIsImgLoaded] = useState<boolean>(false)
+  const headerLogo = new Image()
+  headerLogo.src = 'https://raw.githubusercontent.com/meskal1/portfolio/9d611fe5476786ce5f3feae21cc78946988c89c1/src/img/logo.svg'
+
+  headerLogo.onload = () => setIsImgLoaded(true)
 
   // Если width больше 535px и применены стили s.active, то сбросить стили (функционал если с открытым меню повернуть в landscape (горизонт), то меню закрывается как по нажатию кнопки)
   if (isMenuOpen && !mediaQueryWidth) {
@@ -49,24 +53,28 @@ export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidt
       <header className={s.header}>
         <div className={s.header__container}>
           <div className={s.header__content}>
-            <a className={s.header__logo} href='https://meskal1.github.io/portfolio/#'>
-              <img className={s.header__logo_img} src={logo} alt='logo' />
-            </a>
-            {mediaQueryWidth ? (
+            {isImgLoaded && (
               <>
-                <div className={s.menu_burger_container} onClick={onClickMenuBurger}>
-                  <div className={`${s.menu_burger} ${isActive}`}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                </div>
-                <nav className={`${s.nav_burger_items} ${isMenuOpen}`}>
-                  <ul className={s.nav_burger_items__list}>{burgerLinks}</ul>
-                </nav>
+                <a className={s.header__logo} href='https://meskal1.github.io/portfolio/#'>
+                  <img className={s.header__logo_img} src={headerLogo.src} alt='logo' />
+                </a>
+                {mediaQueryWidth ? (
+                  <>
+                    <div className={s.menu_burger_container} onClick={onClickMenuBurger}>
+                      <div className={`${s.menu_burger} ${isActive}`}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                    </div>
+                    <nav className={`${s.nav_burger_items} ${isMenuOpen}`}>
+                      <ul className={s.nav_burger_items__list}>{burgerLinks}</ul>
+                    </nav>
+                  </>
+                ) : (
+                  <NavItems headerLinks={headerLinks} />
+                )}
               </>
-            ) : (
-              <NavItems headerLinks={headerLinks} />
             )}
           </div>
         </div>
