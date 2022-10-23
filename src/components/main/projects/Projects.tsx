@@ -85,8 +85,8 @@ const items = [
 ]
 
 const Projects = () => {
-  const [itemCenter, setItemCenter] = useState<number>(0)
-  const [styleCurtains, setStyleCurtains] = useState<string>('')
+  const [itemCenter, setItemCenter] = useState(0)
+  const [styleCurtains, setStyleCurtains] = useState('')
   const amountItems = items.length
   const swiperItems = [...items, ...items, ...items].map((element, index) => {
     const offset = amountItems + (itemCenter - index)

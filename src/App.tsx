@@ -12,10 +12,10 @@ const About = lazy(() => import('./components/main/about/About'))
 const Footer = lazy(() => import('./components/footer/Footer'))
 
 function App() {
-  const [isContentDisplayed, setIsContentDisplayed] = useState<boolean>(false)
-  const [isMenuOpen, setIsMenuOpen] = useState<string>('')
-  const [mediaQueryWidth, setMediaQueryWidth] = useState<boolean>(window.matchMedia('(max-width: 535px)').matches)
-  const [isImgLoaded, setIsImgLoaded] = useState<boolean>(false)
+  const [isContentDisplayed, setIsContentDisplayed] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState('')
+  const [mediaQueryWidth, setMediaQueryWidth] = useState(window.matchMedia('(max-width: 535px)').matches)
+  const [isImgLoaded, setIsImgLoaded] = useState(false)
   const mainLogo = new Image()
   mainLogo.src = 'https://raw.githubusercontent.com/meskal1/portfolio/9d611fe5476786ce5f3feae21cc78946988c89c1/src/img/main_logo.svg'
 

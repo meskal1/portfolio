@@ -9,14 +9,14 @@ const AboutModal = () => {
   console.log('render Modal')
   const navigate = useNavigate()
   const location = useLocation()
-  const [isDataSent, setIsDataSent] = useState<boolean>(false)
-  const [errorStyleButton, setErrorStyleButton] = useState<string>('')
-  const [errorStyleCompany, setErrorStyleCompany] = useState<string>('')
-  const [errorStyleContact, setErrorStyleContact] = useState<string>('')
-  const [cyrillicStyleСompany, setCyrillicStyleСompany] = useState<string>('')
-  const [cyrillicStyleContact, setCyrillicStyleContact] = useState<string>('')
-  const [companyState, setCompanyState] = useState<string>(sessionStorage.getItem('companyState') || '')
-  const [contactState, setContactState] = useState<string>(sessionStorage.getItem('contactState') || '')
+  const [isDataSent, setIsDataSent] = useState(false)
+  const [errorStyleButton, setErrorStyleButton] = useState('')
+  const [errorStyleCompany, setErrorStyleCompany] = useState('')
+  const [errorStyleContact, setErrorStyleContact] = useState('')
+  const [cyrillicStyleСompany, setCyrillicStyleСompany] = useState('')
+  const [cyrillicStyleContact, setCyrillicStyleContact] = useState('')
+  const [companyState, setCompanyState] = useState(sessionStorage.getItem('companyState') || '')
+  const [contactState, setContactState] = useState(sessionStorage.getItem('contactState') || '')
   const formStyle = `${!isDataSent ? s.hire__form : s.hire__form_close} ${isDataSent ? s.hire__form_succsess : null}`
   const textStyle = `${s.hire__text} ${isDataSent ? s.hire__text_succsess : null}`
   const postData = {
@@ -25,7 +25,7 @@ const AboutModal = () => {
   }
   //Если в адресной строке напрямую введен адрес с открытым попапом то добавить стили...
   if (location.pathname === '/about/about_modal') {
-    document.querySelector('body')?.style.setProperty('overflow', 'hidden')
+    document.body.style.overflow = 'hidden'
     document.addEventListener(
       'keydown',
       e => {
@@ -84,7 +84,7 @@ const AboutModal = () => {
   }
 
   const closeModal = () => {
-    document.querySelector('body')?.removeAttribute('style')
+    document.body.style.overflow = 'unset'
     setErrorStyleCompany('')
     setErrorStyleContact('')
     setErrorStyleButton('')

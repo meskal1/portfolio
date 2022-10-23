@@ -9,10 +9,10 @@ type AboutTextType = {
 export const AboutText: React.FC<AboutTextType> = React.memo(({ textContent, startIvivtationAnimate }) => {
   console.log('render About TEXT')
   const aboutText = textContent.split(``)
-  const [canIStartTypingAboutText, setCanIStartTypingAboutText] = useState<boolean>(false)
-  const [counter, setCounter] = useState<number>(0)
+  const [canIStartTypingAboutText, setCanIStartTypingAboutText] = useState(false)
+  const [counter, setCounter] = useState(0)
   const [typedAboutText, setTypedAboutText] = useState<Array<string>>([''])
-  const [shownAboutText, setShownAboutText] = useState<string>('')
+  const [shownAboutText, setShownAboutText] = useState('')
 
   const onMouseOver = (e: MouseEvent<HTMLSpanElement>) => {
     if (e.currentTarget.textContent && shownAboutText.length === aboutText.length) {

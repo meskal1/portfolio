@@ -18,9 +18,9 @@ const headerLinks = [
 
 export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidth }) => {
   console.log('rendered Header')
-  const [isActive, setIsActive] = useState<string>(s.not_active)
-  const [isMenuOpen, setIsMenuOpen] = useState<string>('')
-  const [isImgLoaded, setIsImgLoaded] = useState<boolean>(false)
+  const [isActive, setIsActive] = useState(s.not_active)
+  const [isMenuOpen, setIsMenuOpen] = useState('')
+  const [isImgLoaded, setIsImgLoaded] = useState(false)
   const headerLogo = new Image()
   headerLogo.src = 'https://raw.githubusercontent.com/meskal1/portfolio/9d611fe5476786ce5f3feae21cc78946988c89c1/src/img/logo.svg'
 

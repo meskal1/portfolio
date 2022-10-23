@@ -8,8 +8,8 @@ const aboutText = `Hi, my name is Daniil, I'm an InfoSec engineer and now a fron
 
 const About = () => {
   console.log('render about')
-  const [isAimateButtonLoaded, setIsAimateButtonLoaded] = useState<string>(s.animationIsLoading)
-  const [canIStartAimateInvitationText, setCanIStartAimateInvitationText] = useState<boolean>(false)
+  const [isAimateButtonLoaded, setIsAimateButtonLoaded] = useState(s.animationIsLoading)
+  const [canIStartAimateInvitationText, setCanIStartAimateInvitationText] = useState(false)
 
   const aboutTextIsShown = useCallback(() => {
     setCanIStartAimateInvitationText(true)

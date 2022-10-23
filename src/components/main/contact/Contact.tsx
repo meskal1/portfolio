@@ -1,29 +1,32 @@
-import React, { ChangeEvent, MouseEvent, useEffect, useState, KeyboardEvent } from 'react'
-import usePortal from 'react-useportal'
+import React, { ChangeEvent, useEffect, useState, KeyboardEvent, useReducer, useRef, MutableRefObject } from 'react'
 import s from './Contact.module.scss'
+import { ContactModal } from './ContactModal/ContactModal'
+import { emailAC, ErrorReducer, errorStyleState, messageAC, nameAC } from './ErrorReducer'
+import { formInitState, FormReducer, onChangeEmailAC, onChangeMessageAC, onChangeNameAC } from './FormReducer'
 
-const cyrillicChar = /[а-яёА-ЯЁ]/
-const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[ a-zA-Z0-9-]+(?:\.[ a-zA-Z0-9-]+) *$/
+const cyrillicRegex = /[а-яёА-ЯЁ]/
+const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[ a-zA-Z0-9-]+(?:\.[ a-zA-Z0-9-]+) *$/
 
 const Contact = () => {
   console.log('rendered contact')
-  const { openPortal, closePortal, isOpen, Portal } = usePortal({ bindTo: document.getElementById('wrapper')! })
-  const [isChecked, setIsChecked] = useState<boolean>(localStorage.getItem('isOffAutocomplite') === 'on')
-  const [isAnimationLoaded, setIsAnimationLoaded] = useState<string>(s.animationIsLoading)
-  const [errorStyleButton, setErrorStyleButton] = useState<string>('')
-  const [errorStyleName, setErrorStyleName] = useState<string>('')
-  const [errorStyleEmail, setErrorStyleEmail] = useState<string>('')
-  const [errorStyleText, setErrorStyleText] = useState<string>('')
-  const [cyrillicStyleName, setCyrillicStyleName] = useState<string>('')
-  const [cyrillicStyleText, setCyrillicStyleText] = useState<string>('')
-  const [nameState, setNameState] = useState<string>(sessionStorage.getItem('nameState') || '')
-  const [emailState, setEmailState] = useState<string>(sessionStorage.getItem('emailState') || '')
-  const [textState, setTextState] = useState<string>(sessionStorage.getItem('textState') || '')
+  const [errorState, errorDispatch] = useReducer(ErrorReducer, errorStyleState)
+  const [formState, formDispatch] = useReducer(FormReducer, formInitState)
+  const [isOpenModal, setIsOpenModal] = useState(false)
+  const [isChecked, setIsChecked] = useState(localStorage.getItem('isOffAutocomplite') === 'on')
+  const [isAnimationLoaded, setIsAnimationLoaded] = useState(s.animationIsLoading)
+  const [errorStyleButton, setErrorStyleButton] = useState('')
+  const refEmail = useRef() as MutableRefObject<HTMLInputElement>
+  const refMessage = useRef() as MutableRefObject<HTMLTextAreaElement>
+  const cyrillicStyleName = formState.name.match(cyrillicRegex) ? s.fontSizeCyrillic : ''
+  const cyrillicStyleMessage = formState.message.match(cyrillicRegex) ? s.fontSizeCyrillic : ''
+  const errorStyleName = errorState.name ? s.errorBorder : ''
+  const errorStyleEmail = errorState.email ? s.errorBorder : ''
+  const errorStyleMessage = errorState.message ? s.errorBorder : ''
   const autocomplite = isChecked ? 'on' : 'off'
   const postData = {
-    name: nameState,
-    email: emailState,
-    message: textState,
+    name: formState.name,
+    email: formState.email,
+    message: formState.message,
   }
 
   const fetchContactData = async () => {
@@ -40,7 +43,7 @@ const Contact = () => {
         console.log('response', response)
         // response.status === 200
       })
-      .catch(error => console.log('Some error ocured'))
+      .catch(error => console.log('Some error occured'))
   }
 
   const onChangeAutocomplite = () => {
@@ -49,85 +52,75 @@ const Contact = () => {
   }
 
   const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
-    const validate = e.currentTarget.value
-      .replace(/[^a-zA-Zа-яёА-ЯЁ -]/, '')
-      .slice(0, 50)
-      .trimStart()
-    setNameState(validate)
-    sessionStorage.setItem('nameState', validate.trimEnd())
+    formDispatch(onChangeNameAC(e.currentTarget.value))
   }
 
   const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-    const validate = e.currentTarget.value
-      .replace(/[а-яёА-ЯЁ]/, '')
-      .slice(0, 200)
-      .trimStart()
-    setEmailState(validate)
-    sessionStorage.setItem('emailState', validate.trimEnd())
+    formDispatch(onChangeEmailAC(e.currentTarget.value))
   }
 
-  const onChangeText = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const validate = e.currentTarget.value.slice(0, 3000).trimStart()
-    setTextState(validate)
-    sessionStorage.setItem('textState', validate.trimEnd())
+  const onChangeMessage = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    formDispatch(onChangeMessageAC(e.currentTarget.value))
   }
 
-  const onClickButton = (e: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-    if (!nameState || !emailState || !textState || !emailState.match(validEmail)) {
-      setErrorStyleButton(s.errorButton)
-    } else {
-      fetchContactData()
-      document.querySelector('body')?.style.setProperty('overflow', 'hidden')
-      openPortal(e)
-      setTimeout(() => {
-        closePortal()
-        document.querySelector('body')?.removeAttribute('style')
-        setNameState('')
-        setEmailState('')
-        setTextState('')
-        sessionStorage.clear()
-      }, 2000)
-    }
-
-    if (!nameState) {
-      setErrorStyleName(s.errorBorder)
-    }
-
-    if (!emailState || !emailState.match(validEmail)) {
-      setErrorStyleEmail(s.errorBorder)
-    }
-
-    if (!textState) {
-      setErrorStyleText(s.errorBorder)
+  const onBlurEmail = () => {
+    if (formState.email && !formState.email.match(emailRegexp)) {
+      errorDispatch(emailAC(true))
     }
   }
 
   const onKeyDownInput = (e: KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-    if (e.key === 'Enter' && e.currentTarget.id === 'name') {
-      e.preventDefault()
-      const emailField = document.getElementById('email')
+    const target = e.currentTarget
 
-      if (emailField && nameState) {
-        emailField.focus()
-      }
+    if (e.key === 'Enter' && target.id === 'name' && target.value) {
+      e.preventDefault()
+      errorDispatch(nameAC(false))
+      refEmail.current?.focus()
     }
 
-    if (e.key === 'Enter' && e.currentTarget.id === 'email') {
+    if (e.key === 'Enter' && target.id === 'email' && target.value && target.value.match(emailRegexp)) {
       e.preventDefault()
-      const messageField = document.getElementById('messageContact')
-
-      if (messageField && emailState) {
-        messageField.focus()
-      }
+      errorDispatch(emailAC(false))
+      refMessage.current?.focus()
     }
 
-    if (!e.shiftKey && e.key === 'Enter' && e.currentTarget.id === 'messageContact') {
+    if (e.key === 'Enter' && target.id === 'messageContact' && !e.shiftKey) {
       e.preventDefault()
 
-      if (nameState && emailState && textState) {
-        onClickButton(e)
-        e.currentTarget.blur()
+      if (formState.name && formState.email && formState.message) {
+        target.blur()
+        onClickButton()
       }
+    }
+  }
+
+  const onClickButton = () => {
+    if (!formState.name) {
+      errorDispatch(nameAC(true))
+    }
+
+    if (!formState.email || !formState.email.match(emailRegexp)) {
+      errorDispatch(emailAC(true))
+    }
+
+    if (!formState.message) {
+      errorDispatch(messageAC(true))
+    }
+
+    if (!formState.name || !formState.email || !formState.message || !formState.email.match(emailRegexp)) {
+      setErrorStyleButton(s.errorButton)
+    } else {
+      fetchContactData()
+      document.body.style.overflow = 'hidden'
+      setIsOpenModal(true)
+      setTimeout(() => {
+        setIsOpenModal(false)
+        document.body.style.overflow = 'unset'
+        formDispatch(onChangeNameAC(''))
+        formDispatch(onChangeEmailAC(''))
+        formDispatch(onChangeMessageAC(''))
+        sessionStorage.clear()
+      }, 2000)
     }
   }
 
@@ -136,45 +129,24 @@ const Contact = () => {
     setErrorStyleButton('')
   }
 
-  const onBlurEmail = () => {
-    if (!emailState.match(validEmail) && emailState) {
-      setErrorStyleEmail(s.errorBorder)
-    }
-  }
-
   useEffect(() => {
-    if (nameState.match(cyrillicChar) && cyrillicStyleName === '') {
-      setCyrillicStyleName(s.fontSizeCyrillic)
+    if (formState.name && errorState.name) {
+      errorDispatch(nameAC(false))
     }
 
-    if (!nameState.match(cyrillicChar) && cyrillicStyleName !== '') {
-      setCyrillicStyleName('')
+    if (formState.email && errorState.email && formState.email.match(emailRegexp)) {
+      errorDispatch(emailAC(false))
     }
 
-    if (textState.match(cyrillicChar) && cyrillicStyleText === '') {
-      setCyrillicStyleText(s.fontSizeCyrillic)
+    if (formState.message && errorState.message) {
+      errorDispatch(messageAC(false))
     }
-
-    if (!textState.match(cyrillicChar) && cyrillicStyleText !== '') {
-      setCyrillicStyleText('')
-    }
-
-    if (nameState && errorStyleName !== '') {
-      setErrorStyleName('')
-    }
-
-    if (emailState && errorStyleEmail !== '' && emailState.match(validEmail)) {
-      setErrorStyleEmail('')
-    }
-
-    if (textState && errorStyleText !== '') {
-      setErrorStyleText('')
-    }
-  }, [nameState, emailState, textState, cyrillicStyleName, cyrillicStyleText])
+  }, [formState])
 
   return (
     <>
       <section className={s.contacts}>
+        <ContactModal isOpen={isOpenModal}>Successfully sent</ContactModal>
         <div className={s.contacts__container}>
           <div className={s.contacts__content}>
             <div className={s.contacts__text_container}>
@@ -189,11 +161,11 @@ const Contact = () => {
               </label>
               <form className={s.contacts__form} id='contacts'>
                 <div className={s.contacts__block_input}>
-                  <label className={s.bg_ForAutocompliteText}></label>
+                  <label className={s.bg_ForAutocompliteText} />
                   <input
                     id='name'
                     type='text'
-                    value={nameState}
+                    value={formState.name}
                     name='name'
                     className={`${s.contacts__input_name} ${cyrillicStyleName} ${errorStyleName}`}
                     onChange={onChangeName}
@@ -203,15 +175,16 @@ const Contact = () => {
                   />
                   <label className={s.contacts__label_name}>NAME</label>
                   <label className={s.placeholder} htmlFor='name'>
-                    NAME
+                    name
                   </label>
                 </div>
                 <div className={s.contacts__block_input}>
                   <label className={s.bg_ForAutocompliteText}></label>
                   <input
+                    ref={refEmail}
                     id='email'
                     type='text'
-                    value={emailState}
+                    value={formState.email}
                     name='email'
                     className={`${s.contacts__input_email} ${errorStyleEmail}`}
                     onChange={onChangeEmail}
@@ -222,33 +195,27 @@ const Contact = () => {
                   />
                   <label className={s.contacts__label_email}>EMAIL</label>
                   <label className={s.placeholder} htmlFor='email'>
-                    EMAIL
+                    email
                   </label>
                 </div>
                 <div className={s.contacts__block_input}>
                   <textarea
+                    ref={refMessage}
                     id='messageContact'
-                    value={textState}
+                    value={formState.message}
                     name='message'
-                    className={`${s.contacts__textarea} ${cyrillicStyleText} ${errorStyleText}`}
-                    onChange={onChangeText}
+                    className={`${s.contacts__textarea} ${cyrillicStyleMessage} ${errorStyleMessage}`}
+                    onChange={onChangeMessage}
                     onKeyDown={onKeyDownInput}
                     required
                   />
                   <label className={s.contacts__label_message}>MESSAGE</label>
                   <label className={s.placeholder} htmlFor='message'>
-                    MESSAGE
+                    message
                   </label>
                 </div>
               </form>
             </div>
-            {isOpen && (
-              <Portal>
-                <div className={s.modalContainer}>
-                  <span className={s.modalText}>Successfully sent</span>
-                </div>
-              </Portal>
-            )}
             <button
               type='button'
               form='contacts'
