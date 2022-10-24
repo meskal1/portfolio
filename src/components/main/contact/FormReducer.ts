@@ -1,9 +1,9 @@
 import React from 'react'
 
 export const formInitState = {
-  name: sessionStorage.getItem('name') || '',
-  email: sessionStorage.getItem('email') || '',
-  message: sessionStorage.getItem('message') || '',
+  name: '',
+  email: '',
+  message: '',
 }
 
 type FormInitStateType = typeof formInitState
@@ -20,7 +20,6 @@ export const FormReducer = (state: FormInitStateType = formInitState, action: Ac
       if (validName[validName.length - 1] === ' ' && validName[validName.length - 2] === ' ') {
         validName = validName.slice(0, -1)
       }
-      sessionStorage.setItem('name', validName.trimEnd())
       return { ...state, name: validName }
     }
     case 'ON_CHANGE_EMAIL': {
@@ -28,7 +27,6 @@ export const FormReducer = (state: FormInitStateType = formInitState, action: Ac
         .replace(/[а-яёА-ЯЁ]/, '')
         .slice(0, 200)
         .trimStart()
-      sessionStorage.setItem('email', validEmail.trimEnd())
       return { ...state, email: validEmail }
     }
     case 'ON_CHANGE_MESSAGE': {
@@ -36,7 +34,6 @@ export const FormReducer = (state: FormInitStateType = formInitState, action: Ac
       if (validMessage[validMessage.length - 1] === ' ' && validMessage[validMessage.length - 2] === ' ') {
         validMessage = validMessage.slice(0, -1)
       }
-      sessionStorage.setItem('message', validMessage.trimEnd())
       return { ...state, message: validMessage }
     }
     default:

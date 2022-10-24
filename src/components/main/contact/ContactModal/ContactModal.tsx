@@ -12,10 +12,12 @@ export const ContactModal: React.FC<ContactModalType> = ({ isOpen, children }) =
     return null
   }
 
+  const textColor = children === 'Successfully sent' ? s.textSuccess : s.textError
+
   return createPortal(
     <>
       <div className={s.modalContainer}>
-        <span className={s.modalText}>{children}</span>
+        <span className={`${s.modalText} ${textColor}`}>{children}</span>
       </div>
     </>,
     document.getElementById('portal')!

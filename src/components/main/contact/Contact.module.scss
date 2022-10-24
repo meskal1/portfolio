@@ -32,7 +32,7 @@
       //Предзагрузка картинки для модального окна
       content: '';
       opacity: 0;
-      background: url('../../../img/green_checkmark_line.svg');
+      background: url('../../../img/green_checkmark_line.svg'), url('../../../img/red_checkmark_line.svg');
     }
   }
   &__title {
@@ -234,6 +234,7 @@
   &__label_name,
   &__label_email,
   &__label_message {
+    text-transform: uppercase;
     position: absolute;
     opacity: 0;
     top: -5px;
@@ -301,6 +302,7 @@
     }
   }
   &__form_button {
+    text-transform: uppercase;
     transform: translate3d(0, 0, 0);
     display: inline-block;
     margin: 0px 0px 20px 0px;

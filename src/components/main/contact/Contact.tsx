@@ -1,4 +1,5 @@
-import React, { ChangeEvent, useEffect, useState, KeyboardEvent, useReducer, useRef, MutableRefObject } from 'react'
+import React, { ChangeEvent, useEffect, useState, KeyboardEvent, useReducer, useRef, MutableRefObject, FormEvent } from 'react'
+import { useLocation } from 'react-router'
 import s from './Contact.module.scss'
 import { ContactModal } from './ContactModal/ContactModal'
 import { emailAC, ErrorReducer, errorStyleState, messageAC, nameAC } from './ErrorReducer'
@@ -9,12 +10,15 @@ const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[ a-zA-Z0-9-]+(?:\.[ a-zA
 
 const Contact = () => {
   console.log('rendered contact')
+  const location = useLocation() // For github demo
+  const locationGithub = location.pathname === ' https://meskal1.github.io/portfolio/#/contacts' // For github demo
   const [errorState, errorDispatch] = useReducer(ErrorReducer, errorStyleState)
   const [formState, formDispatch] = useReducer(FormReducer, formInitState)
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [isChecked, setIsChecked] = useState(localStorage.getItem('isOffAutocomplite') === 'on')
   const [isAnimationLoaded, setIsAnimationLoaded] = useState(s.animationIsLoading)
   const [errorStyleButton, setErrorStyleButton] = useState('')
+  const [sendStatus, setSendStatus] = useState(locationGithub ? 'Github demo' : 'Successfully sent')
   const refEmail = useRef() as MutableRefObject<HTMLInputElement>
   const refMessage = useRef() as MutableRefObject<HTMLTextAreaElement>
   const cyrillicStyleName = formState.name.match(cyrillicRegex) ? s.fontSizeCyrillic : ''
@@ -24,9 +28,9 @@ const Contact = () => {
   const errorStyleMessage = errorState.message ? s.errorBorder : ''
   const autocomplite = isChecked ? 'on' : 'off'
   const postData = {
-    name: formState.name,
-    email: formState.email,
-    message: formState.message,
+    name: formState.name.trimEnd(),
+    email: formState.email.trimEnd(),
+    message: formState.message.trimEnd(),
   }
 
   const fetchContactData = async () => {
@@ -40,10 +44,31 @@ const Contact = () => {
     })
       // .then(response => response.json())
       .then(response => {
-        console.log('response', response)
+        if (sendStatus !== 'Successfully sent') {
+          setSendStatus('Successfully sent')
+        }
+        document.body.style.overflow = 'hidden'
+        setIsOpenModal(true)
+        setTimeout(() => {
+          setIsOpenModal(false)
+          document.body.style.overflow = 'unset'
+          formDispatch(onChangeNameAC(''))
+          formDispatch(onChangeEmailAC(''))
+          formDispatch(onChangeMessageAC(''))
+        }, 2000)
         // response.status === 200
+        // console.log('response', response)
       })
-      .catch(error => console.log('Some error occured'))
+      .catch(error => {
+        setSendStatus('Some error occured')
+        document.body.style.overflow = 'hidden'
+        setIsOpenModal(true)
+        setTimeout(() => {
+          setIsOpenModal(false)
+          document.body.style.overflow = 'unset'
+        }, 2000)
+        console.log('Some error occured')
+      })
   }
 
   const onChangeAutocomplite = () => {
@@ -71,20 +96,21 @@ const Contact = () => {
 
   const onKeyDownInput = (e: KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     const target = e.currentTarget
+    const NEXT_FIELD_KEY = 'Enter'
 
-    if (e.key === 'Enter' && target.id === 'name' && target.value) {
+    if (e.key === NEXT_FIELD_KEY && target.id === 'name' && target.value) {
       e.preventDefault()
       errorDispatch(nameAC(false))
       refEmail.current?.focus()
     }
 
-    if (e.key === 'Enter' && target.id === 'email' && target.value && target.value.match(emailRegexp)) {
+    if (e.key === NEXT_FIELD_KEY && target.id === 'email' && target.value && target.value.match(emailRegexp)) {
       e.preventDefault()
       errorDispatch(emailAC(false))
       refMessage.current?.focus()
     }
 
-    if (e.key === 'Enter' && target.id === 'messageContact' && !e.shiftKey) {
+    if (e.key === NEXT_FIELD_KEY && target.id === 'messageContact' && !e.shiftKey) {
       e.preventDefault()
 
       if (formState.name && formState.email && formState.message) {
@@ -106,21 +132,26 @@ const Contact = () => {
     if (!formState.message) {
       errorDispatch(messageAC(true))
     }
+  }
 
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     if (!formState.name || !formState.email || !formState.message || !formState.email.match(emailRegexp)) {
       setErrorStyleButton(s.errorButton)
     } else {
+      // For github demo
+      //  document.body.style.overflow = 'hidden'
+      //  setIsOpenModal(true)
+      //  setTimeout(() => {
+      //    setIsOpenModal(false)
+      //    document.body.style.overflow = 'unset'
+      //    formDispatch(onChangeNameAC(''))
+      //    formDispatch(onChangeEmailAC(''))
+      //    formDispatch(onChangeMessageAC(''))
+      //  }, 2000)
+
+      // For production
       fetchContactData()
-      document.body.style.overflow = 'hidden'
-      setIsOpenModal(true)
-      setTimeout(() => {
-        setIsOpenModal(false)
-        document.body.style.overflow = 'unset'
-        formDispatch(onChangeNameAC(''))
-        formDispatch(onChangeEmailAC(''))
-        formDispatch(onChangeMessageAC(''))
-        sessionStorage.clear()
-      }, 2000)
     }
   }
 
@@ -146,7 +177,7 @@ const Contact = () => {
   return (
     <>
       <section className={s.contacts}>
-        <ContactModal isOpen={isOpenModal}>Successfully sent</ContactModal>
+        <ContactModal isOpen={isOpenModal}>{sendStatus}</ContactModal>
         <div className={s.contacts__container}>
           <div className={s.contacts__content}>
             <div className={s.contacts__text_container}>
@@ -159,7 +190,7 @@ const Contact = () => {
                 <input type='checkbox' id='checkbox' onChange={onChangeAutocomplite} checked={isChecked} />
                 <span className={s.switcher}></span>
               </label>
-              <form className={s.contacts__form} id='contacts'>
+              <form className={s.contacts__form} id='contacts' onSubmit={onSubmit} noValidate>
                 <div className={s.contacts__block_input}>
                   <label className={s.bg_ForAutocompliteText} />
                   <input
@@ -173,7 +204,7 @@ const Contact = () => {
                     autoComplete={autocomplite}
                     required
                   />
-                  <label className={s.contacts__label_name}>NAME</label>
+                  <label className={s.contacts__label_name}>name</label>
                   <label className={s.placeholder} htmlFor='name'>
                     name
                   </label>
@@ -193,7 +224,7 @@ const Contact = () => {
                     autoComplete={autocomplite}
                     required
                   />
-                  <label className={s.contacts__label_email}>EMAIL</label>
+                  <label className={s.contacts__label_email}>email</label>
                   <label className={s.placeholder} htmlFor='email'>
                     email
                   </label>
@@ -209,7 +240,7 @@ const Contact = () => {
                     onKeyDown={onKeyDownInput}
                     required
                   />
-                  <label className={s.contacts__label_message}>MESSAGE</label>
+                  <label className={s.contacts__label_message}>message</label>
                   <label className={s.placeholder} htmlFor='message'>
                     message
                   </label>
@@ -217,12 +248,12 @@ const Contact = () => {
               </form>
             </div>
             <button
-              type='button'
+              type='submit'
               form='contacts'
               className={`${s.contacts__form_button} ${errorStyleButton} ${isAnimationLoaded}`}
               onClick={onClickButton}
               onAnimationEnd={onAnimationEndButton}>
-              SEND ME MESSAGE
+              send me message
             </button>
           </div>
         </div>
