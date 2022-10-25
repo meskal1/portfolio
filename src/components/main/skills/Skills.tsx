@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from './Skills.module.scss'
 
 const skillsArray = [
@@ -20,16 +20,30 @@ const skillsArray = [
 
 const Skills = () => {
   console.log('render Skills')
+  const [isTitleLoaded, setIsTitleLoaded] = useState('')
 
+  let style = ''
   const skills = skillsArray.map((el, i) => {
+    const random = +(Math.random() * 2).toFixed(2)
+    //  let style = ''
+
+    setTimeout(() => {
+      //  style = s.showItems
+      setIsTitleLoaded(s.showItems)
+    }, random)
+
+    console.log(random)
+
     return (
-      <p key={i} className={s.skills__item}>
-        {el}
-      </p>
+      <div key={i} className={`${s.hideItems} ${style}`}>
+        <p className={s.skills__item}>{el}</p>
+      </div>
     )
   })
 
-  const onTitleAnimationEnd = () => {}
+  const onTitleAnimationEnd = () => {
+    //  setIsTitleLoaded(s.showItems)
+  }
 
   return (
     <>
@@ -37,7 +51,7 @@ const Skills = () => {
         <div className={s.skills__container}>
           <div className={s.skills__content}>
             <h2 className={s.skills__title} onAnimationEnd={onTitleAnimationEnd}>
-              Skills
+              skills
             </h2>
             <div className={s.skills__block_items}>{skills}</div>
           </div>

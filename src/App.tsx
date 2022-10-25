@@ -23,7 +23,7 @@ function App() {
 
   // Если width больше 535px и применены стили s.menuOpen, то сбросить стили и удалить атрибут style у body со свойством overflow: hidden (функционал если с открытым меню повернуть в landscape (горизонт))
   if (!mediaQueryWidth && isMenuOpen) {
-    document.querySelector('body')?.removeAttribute('style')
+    document.body.style.overflow = 'unset'
     setIsMenuOpen('')
   }
 
@@ -36,10 +36,10 @@ function App() {
   const onClickBurgerMenu = () => {
     if (isMenuOpen === s.menuOpen) {
       setIsMenuOpen('')
-      document.querySelector('body')?.removeAttribute('style')
+      document.body.style.overflow = 'unset'
     } else {
       setIsMenuOpen(s.menuOpen)
-      document.querySelector('body')?.style.setProperty('overflow', 'hidden')
+      document.body.style.overflow = 'hidden'
     }
   }
 
