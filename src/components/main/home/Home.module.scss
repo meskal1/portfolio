@@ -31,6 +31,7 @@
     }
   }
   &__name {
+    text-transform: capitalize;
     transform: translate3d(0, 0, 0);
     animation: animateTitle 0.7s ease 1 1.1s forwards;
     opacity: 0;

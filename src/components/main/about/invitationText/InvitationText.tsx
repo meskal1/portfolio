@@ -23,10 +23,10 @@ export const InvitationText: React.FC<InvitationTextType> = React.memo(({ canISt
   return (
     <>
       <div className={`${s.about__invitation} ${isAnimationLoaded}`}>
-        AVAILABLE FOR&nbsp;
+        available for&nbsp;
         <Typewriter
           options={{
-            strings: [`STARTUP`, `EXPERIMENT`, `HUGE SALARY :)`, `BEST COMPANIES`],
+            strings: [`startup`, `experiment`, `huge salary :)`, `best companies`],
             autoStart: autoStart,
             loop: true,
             wrapperClassName: s.typewriter,

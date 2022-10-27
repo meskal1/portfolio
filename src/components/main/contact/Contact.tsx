@@ -9,16 +9,14 @@ const cyrillicRegex = /[а-яёА-ЯЁ]/
 const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[ a-zA-Z0-9-]+(?:\.[ a-zA-Z0-9-]+) *$/
 
 const Contact = () => {
-  console.log('rendered contact')
-  const location = useLocation() // For github demo
-  const locationGithub = location.pathname === ' https://meskal1.github.io/portfolio/#/contacts' // For github demo
+  // console.log('rendered contact')
   const [errorState, errorDispatch] = useReducer(ErrorReducer, errorStyleState)
   const [formState, formDispatch] = useReducer(FormReducer, formInitState)
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [isChecked, setIsChecked] = useState(localStorage.getItem('isOffAutocomplite') === 'on')
   const [isAnimationLoaded, setIsAnimationLoaded] = useState(s.animationIsLoading)
   const [errorStyleButton, setErrorStyleButton] = useState('')
-  const [sendStatus, setSendStatus] = useState(locationGithub ? 'Github demo' : 'Successfully sent')
+  const [sendStatus, setSendStatus] = useState('Successfully sent')
   const refEmail = useRef() as MutableRefObject<HTMLInputElement>
   const refMessage = useRef() as MutableRefObject<HTMLTextAreaElement>
   const cyrillicStyleName = formState.name.match(cyrillicRegex) ? s.fontSizeCyrillic : ''
@@ -44,7 +42,8 @@ const Contact = () => {
     })
       // .then(response => response.json())
       .then(response => {
-        if (sendStatus !== 'Successfully sent') {
+        // For github demo
+        if (sendStatus !== 'Successfully sent' && sendStatus !== 'Github demo') {
           setSendStatus('Successfully sent')
         }
         document.body.style.overflow = 'hidden'
@@ -94,64 +93,62 @@ const Contact = () => {
     }
   }
 
-  const onKeyDownInput = (e: KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-    const target = e.currentTarget
-    const NEXT_FIELD_KEY = 'Enter'
-
-    if (e.key === NEXT_FIELD_KEY && target.id === 'name' && target.value) {
-      e.preventDefault()
-      errorDispatch(nameAC(false))
-      refEmail.current?.focus()
-    }
-
-    if (e.key === NEXT_FIELD_KEY && target.id === 'email' && target.value && target.value.match(emailRegexp)) {
-      e.preventDefault()
-      errorDispatch(emailAC(false))
-      refMessage.current?.focus()
-    }
-
-    if (e.key === NEXT_FIELD_KEY && target.id === 'messageContact' && !e.shiftKey) {
-      e.preventDefault()
-
-      if (formState.name && formState.email && formState.message) {
-        target.blur()
-        onClickButton()
-      }
-    }
-  }
-
-  const onClickButton = () => {
-    if (!formState.name) {
-      errorDispatch(nameAC(true))
-    }
-
-    if (!formState.email || !formState.email.match(emailRegexp)) {
-      errorDispatch(emailAC(true))
-    }
-
-    if (!formState.message) {
-      errorDispatch(messageAC(true))
-    }
-  }
-
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!formState.name || !formState.email || !formState.message || !formState.email.match(emailRegexp)) {
       setErrorStyleButton(s.errorButton)
     } else {
       // For github demo
-      //  document.body.style.overflow = 'hidden'
-      //  setIsOpenModal(true)
-      //  setTimeout(() => {
-      //    setIsOpenModal(false)
-      //    document.body.style.overflow = 'unset'
-      //    formDispatch(onChangeNameAC(''))
-      //    formDispatch(onChangeEmailAC(''))
-      //    formDispatch(onChangeMessageAC(''))
-      //  }, 2000)
+      // document.body.style.overflow = 'hidden'
+      // setIsOpenModal(true)
+      // setTimeout(() => {
+      //   setIsOpenModal(false)
+      //   document.body.style.overflow = 'unset'
+      //   formDispatch(onChangeNameAC(''))
+      //   formDispatch(onChangeEmailAC(''))
+      //   formDispatch(onChangeMessageAC(''))
+      // }, 2000)
 
       // For production
       fetchContactData()
+    }
+  }
+
+  const onKeyDownInput = (e: KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    const target = e.currentTarget
+    const NEXT_FIELD_KEY = 'Enter'
+
+    if (e.key === NEXT_FIELD_KEY && target.id === 'name' && target.value) {
+      e.preventDefault()
+      refEmail.current?.focus()
+    }
+
+    if (e.key === NEXT_FIELD_KEY && target.id === 'email' && target.value && target.value.match(emailRegexp)) {
+      e.preventDefault()
+      refMessage.current?.focus()
+    }
+
+    if (e.key === NEXT_FIELD_KEY && target.id === 'messageContact' && !e.shiftKey) {
+      e.preventDefault()
+
+      if (formState.name && formState.email && formState.message && formState.email.match(emailRegexp)) {
+        target.blur()
+        fetchContactData()
+      }
+    }
+  }
+
+  const onClickButton = () => {
+    if (!formState.name && !errorState.name) {
+      errorDispatch(nameAC(true))
+    }
+
+    if ((!formState.email || !formState.email.match(emailRegexp)) && !errorState.email) {
+      errorDispatch(emailAC(true))
+    }
+
+    if (!formState.message && !errorState.message) {
+      errorDispatch(messageAC(true))
     }
   }
 
@@ -181,7 +178,7 @@ const Contact = () => {
         <div className={s.contacts__container}>
           <div className={s.contacts__content}>
             <div className={s.contacts__text_container}>
-              <h2 className={s.contacts__title}>Contact</h2>
+              <h2 className={s.contacts__title}>contact</h2>
               <p className={s.contacts__text}>Contact me if you have a job or just say hi :)</p>
             </div>
             <div className={s.contacts__form_container}>

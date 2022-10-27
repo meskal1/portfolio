@@ -7,7 +7,7 @@ type AboutTextType = {
 }
 
 export const AboutText: React.FC<AboutTextType> = React.memo(({ textContent, startIvivtationAnimate }) => {
-  console.log('render About TEXT')
+  //   console.log('render About TEXT')
   const aboutText = textContent.split(``)
   const [canIStartTypingAboutText, setCanIStartTypingAboutText] = useState(false)
   const [counter, setCounter] = useState(0)
@@ -31,7 +31,7 @@ export const AboutText: React.FC<AboutTextType> = React.memo(({ textContent, sta
       if (shownAboutText.length < aboutText.length) {
         setTypedAboutText(typedAboutText.concat(aboutText[+counter]))
         setShownAboutText(typedAboutText.join(``))
-        setCounter(counter + 1)
+        setCounter(() => counter + 1)
       }
     }, 30)
   }

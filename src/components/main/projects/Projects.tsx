@@ -1,4 +1,4 @@
-import React, { useEffect, useState, MouseEvent } from 'react'
+import React, { useEffect, useState, MouseEvent, useRef, MutableRefObject } from 'react'
 import s from './Projects.module.scss'
 
 const items = [
@@ -87,6 +87,7 @@ const items = [
 const Projects = () => {
   const [itemCenter, setItemCenter] = useState(0)
   const [styleCurtains, setStyleCurtains] = useState('')
+  const swiperRef = useRef() as MutableRefObject<HTMLDivElement>
   const amountItems = items.length
   const swiperItems = [...items, ...items, ...items].map((element, index) => {
     const offset = amountItems + (itemCenter - index)
@@ -96,12 +97,13 @@ const Projects = () => {
         key={index}
         className={s.swipeItem}
         data-active={active}
-        style={{
-          //@ts-ignore
-          // This idea slider from https://codepen.io/team/keyframers/pen/rNxmVZN?editors=0110
-          '--offset': offset,
-          '--dir': offset === 0 ? 0 : offset > 0 ? 1 : -1,
-        }}>
+        style={
+          {
+            // This idea slider from https://codepen.io/team/keyframers/pen/rNxmVZN?editors=0110
+            '--offset': offset,
+            '--dir': offset === 0 ? 0 : offset > 0 ? 1 : -1,
+          } as React.CSSProperties
+        }>
         <div className={s.project__item}>
           {styleCurtains && (
             <>
@@ -115,7 +117,7 @@ const Projects = () => {
                     {element.urlDemoName}
                   </a>
                   <a className={s.project__github} href={element.urlGithub} target={element.urlGithub}>
-                    Source
+                    source
                   </a>
                 </>
               )}
@@ -130,7 +132,9 @@ const Projects = () => {
     setItemCenter(itemCenter === 0 ? amountItems - 1 : itemCenter - 1)
   }
 
-  const onClickSwipeLeft = () => setItemCenter((itemCenter + 1) % amountItems)
+  const onClickSwipeLeft = () => {
+    setItemCenter((itemCenter + 1) % amountItems)
+  }
 
   const onClickImage = (offset: number, e: MouseEvent<HTMLAnchorElement>) => {
     if (offset !== 0) {
@@ -146,10 +150,11 @@ const Projects = () => {
     }
   }
 
-  const onTitleAnimationEnd = () => setStyleCurtains(s.curtainsMove)
+  const onTitleAnimationEnd = () => {
+    setStyleCurtains(s.curtainsMove)
+  }
 
   useEffect(() => {
-    const swiperContainer = document.getElementById('swiper')
     let touchstartX = 0
     let touchendX = 0
 
@@ -164,17 +169,17 @@ const Projects = () => {
     }
 
     const touchstart = (e: TouchEvent) => (touchstartX = e.changedTouches[0].screenX)
-    swiperContainer?.addEventListener('touchstart', touchstart)
+    swiperRef.current?.addEventListener('touchstart', touchstart)
 
     const touchend = (e: TouchEvent) => {
       touchendX = e.changedTouches[0].screenX
       checkDirection()
     }
-    swiperContainer?.addEventListener('touchend', touchend)
+    swiperRef.current?.addEventListener('touchend', touchend)
 
     return () => {
-      swiperContainer?.removeEventListener('touchstart', touchstart)
-      swiperContainer?.removeEventListener('touchend', touchend)
+      swiperRef.current?.removeEventListener('touchstart', touchstart)
+      swiperRef.current?.removeEventListener('touchend', touchend)
     }
   }, [itemCenter])
 
@@ -184,9 +189,9 @@ const Projects = () => {
         <div className={s.projects__container}>
           <div className={s.projects__content}>
             <h2 className={s.projects__title} onAnimationEnd={onTitleAnimationEnd}>
-              Projects
+              projects
             </h2>
-            <div className={`${s.swiper_container} ${styleCurtains}`} id='swiper'>
+            <div ref={swiperRef} className={`${s.swiper_container} ${styleCurtains}`}>
               <button className={s.left_button} onClick={onClickSwipeLeft} />
               <div className={s.swiper_items_container}>{swiperItems}</div>
               <button className={s.right_button} onClick={onClickSwipeRight} />

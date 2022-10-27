@@ -6,7 +6,7 @@ export const formInitState = {
   message: '',
 }
 
-type FormInitStateType = typeof formInitState
+export type FormInitStateType = typeof formInitState
 
 type ActionType = OnChangeNameACType | OnChangeEmailACType | OnChangeMessageACType
 

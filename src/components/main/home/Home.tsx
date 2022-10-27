@@ -17,7 +17,7 @@ const Home = () => {
             <div className={s.home__text_block}>
               <h2 className={s.home__name}>Daniil Kalach</h2>
               <h1 className={s.home__profession}>Front-end Developer</h1>
-              <Button name={'DOWNLOAD CV'} onClick={onButtonClickDownload} />
+              <Button name={'download cv'} onClick={onButtonClickDownload} />
             </div>
             <div className={s.container_pic}>
               <div className={s.home__pic}>

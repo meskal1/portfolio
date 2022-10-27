@@ -47,6 +47,7 @@
     @include adaptiveValue('row-gap', 15, 10, 630, 320, 1);
   }
   &__invitation_button {
+    text-transform: uppercase;
     -moz-user-select: none;
     -khtml-user-select: none;
     user-select: none;

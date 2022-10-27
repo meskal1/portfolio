@@ -22,27 +22,16 @@ const Skills = () => {
   console.log('render Skills')
   const [isTitleLoaded, setIsTitleLoaded] = useState('')
 
-  let style = ''
   const skills = skillsArray.map((el, i) => {
-    const random = +(Math.random() * 2).toFixed(2)
-    //  let style = ''
-
-    setTimeout(() => {
-      //  style = s.showItems
-      setIsTitleLoaded(s.showItems)
-    }, random)
-
-    console.log(random)
-
     return (
-      <div key={i} className={`${s.hideItems} ${style}`}>
+      <div key={i} className={`${s.hideItems} ${isTitleLoaded}`} style={{ '--delay': `${i / 8}s` } as React.CSSProperties}>
         <p className={s.skills__item}>{el}</p>
       </div>
     )
   })
 
   const onTitleAnimationEnd = () => {
-    //  setIsTitleLoaded(s.showItems)
+    setIsTitleLoaded(s.showItems)
   }
 
   return (

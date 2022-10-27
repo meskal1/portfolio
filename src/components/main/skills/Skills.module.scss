@@ -78,10 +78,10 @@
 }
 .showItems {
   &::after {
-    animation: transformBgItem 0.6s linear 0.5s forwards;
+    animation: transformBgItem 0.6s linear var(--delay) forwards;
   }
   &::before {
-    animation: opacityInvisible 0.35s linear 0.5s forwards;
+    animation: opacityInvisible 0.35s linear var(--delay) forwards;
   }
 }
 @keyframes animateTitle {
