@@ -8,15 +8,15 @@ const aboutText = `Hi, my name is Daniil, I'm an InfoSec engineer and now a fron
 
 const About = () => {
   console.log('render about')
-  const [isAimateButtonLoaded, setIsAimateButtonLoaded] = useState(s.animationIsLoading)
-  const [canIStartAimateInvitationText, setCanIStartAimateInvitationText] = useState(false)
+  const [isButtonVisible, setIsButtonVisible] = useState(s.animationIsLoading)
+  const [canIShowInvitationText, setCanIShowInvitationText] = useState(false)
 
   const aboutTextIsShown = useCallback(() => {
-    setCanIStartAimateInvitationText(true)
+    setCanIShowInvitationText(true)
   }, [])
 
-  const onAnimationEnd = () => {
-    setIsAimateButtonLoaded(s.animationIsLoaded)
+  const onAnimationButtonEnd = () => {
+    setIsButtonVisible(s.animationIsLoaded)
   }
 
   return (
@@ -30,10 +30,10 @@ const About = () => {
               <AboutText textContent={aboutText} startIvivtationAnimate={aboutTextIsShown} />
             </div>
             <div className={s.about__invitation_block}>
-              <InvitationText canIStartAimate={canIStartAimateInvitationText} />
+              <InvitationText canIStartAimate={canIShowInvitationText} />
               <Link
-                onAnimationEnd={onAnimationEnd}
-                className={`${s.about__invitation_button} ${canIStartAimateInvitationText ? isAimateButtonLoaded : ''}`}
+                onAnimationEnd={onAnimationButtonEnd}
+                className={`${s.about__invitation_button} ${canIShowInvitationText ? isButtonVisible : ''}`}
                 to='about_modal'>
                 hire me
               </Link>

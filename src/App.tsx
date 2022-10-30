@@ -2,7 +2,7 @@ import React, { useState, lazy, Suspense, useEffect, AnimationEvent } from 'reac
 import { Route, Routes, Navigate } from 'react-router-dom'
 import s from './App.module.scss'
 import { Header } from './components/header/Header'
-import AboutModal from './components/main/about/aboutModal/AboutModal'
+import { AboutModal } from './components/main/about/aboutModal/AboutModal'
 
 const Home = lazy(() => import('./components/main/home/Home')) //.then(module => ({ default: module.Home }))
 const Skills = lazy(() => import('./components/main/skills/Skills'))
@@ -18,7 +18,6 @@ function App() {
   const [isImgLoaded, setIsImgLoaded] = useState(false)
   const mainLogo = new Image()
   mainLogo.src = 'https://raw.githubusercontent.com/meskal1/portfolio/9d611fe5476786ce5f3feae21cc78946988c89c1/src/img/main_logo.svg'
-
   mainLogo.onload = () => setIsImgLoaded(true)
 
   // Если width больше 535px и применены стили s.menuOpen, то сбросить стили и удалить атрибут style у body со свойством overflow: hidden (функционал если с открытым меню повернуть в landscape (горизонт))

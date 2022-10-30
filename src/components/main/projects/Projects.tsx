@@ -157,6 +157,7 @@ const Projects = () => {
   useEffect(() => {
     let touchstartX = 0
     let touchendX = 0
+    const swiper = swiperRef.current
 
     const checkDirection = () => {
       if (touchstartX - touchendX > 15) {
@@ -169,17 +170,17 @@ const Projects = () => {
     }
 
     const touchstart = (e: TouchEvent) => (touchstartX = e.changedTouches[0].screenX)
-    swiperRef.current?.addEventListener('touchstart', touchstart)
+    swiper.addEventListener('touchstart', touchstart)
 
     const touchend = (e: TouchEvent) => {
       touchendX = e.changedTouches[0].screenX
       checkDirection()
     }
-    swiperRef.current?.addEventListener('touchend', touchend)
+    swiper.addEventListener('touchend', touchend)
 
     return () => {
-      swiperRef.current?.removeEventListener('touchstart', touchstart)
-      swiperRef.current?.removeEventListener('touchend', touchend)
+      swiper.removeEventListener('touchstart', touchstart)
+      swiper.removeEventListener('touchend', touchend)
     }
   }, [itemCenter])
 

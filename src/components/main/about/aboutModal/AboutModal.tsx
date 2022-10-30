@@ -6,8 +6,9 @@ import React, {
   AnimationEvent,
   KeyboardEvent,
   MutableRefObject,
-  useRef,
   useReducer,
+  FormEvent,
+  useRef,
 } from 'react'
 import { useNavigate } from 'react-router'
 import FocusLock from 'react-focus-lock'
@@ -17,20 +18,25 @@ import { errorStyleModalState, ErrorModalReducer, companyAC, contactAC, buttonAC
 
 const cyrillicRegex = /[а-яёА-ЯЁ]/
 
-const AboutModal = () => {
+export const AboutModal = () => {
   console.log('render Modal')
   const navigate = useNavigate()
   const [errorState, errorDispatch] = useReducer(ErrorModalReducer, errorStyleModalState)
   const [formState, formDispatch] = useReducer(FormModalReducer, formModalInitState)
-  const [isDataSent, setIsDataSent] = useState(false)
+  const [sendStatus, setSendStatus] = useState(false)
+  const [statusTextStyle, setStatusTextStyle] = useState('')
   const errorStyleCompany = errorState.company ? s.errorBorder : ''
   const errorStyleContact = errorState.contact ? s.errorBorder : ''
   const errorStyleButton = errorState.button ? s.errorButton : ''
   const cyrillicStyleСompany = formState.company.match(cyrillicRegex) ? s.fontSizeCyrillic : ''
   const cyrillicStyleContact = formState.contact.match(cyrillicRegex) ? s.fontSizeCyrillic : ''
   const refContact = useRef() as MutableRefObject<HTMLTextAreaElement>
-  const formStyle = isDataSent ? `${s.hire__form_close} ${s.hire__form_succsess}` : s.hire__form
-  const textStyle = `${s.hire__text} ${isDataSent ? s.hire__text_succsess : ''}`
+  const formStyle = sendStatus ? `${s.hire__form_close} ${s.hire__form_procced_success}` : s.hire__form
+  const proccedErrorStyle = statusTextStyle === s.hire__text_error ? s.hire__form_procced_error : ''
+  const textMessage =
+    formState.contact || formState.company
+      ? ({ '--message': sendStatus ? `'New partnership started'` : `'Gihub error demo'` } as React.CSSProperties)
+      : {}
   const postData = {
     company: formState.company.trimEnd(),
     contact: formState.contact.trimEnd(),
@@ -49,10 +55,23 @@ const AboutModal = () => {
     })
       // .then(response => response.json())
       .then(response => {
-        console.log('response', response)
+        setStatusTextStyle(s.hire__text_success)
+        if (sendStatus !== true) {
+          setSendStatus(true)
+        }
         // response.status === 200
+        // console.log('response', response)
       })
-      .catch(error => console.log('Some error ocured'))
+      .catch(error => {
+        setStatusTextStyle(s.hire__text_error)
+        if (sendStatus !== false) {
+          setSendStatus(false)
+        }
+        setTimeout(() => {
+          setStatusTextStyle('')
+        }, 3000)
+        console.log('Some error occured')
+      })
   }
 
   const onChangeCompany = (e: ChangeEvent<HTMLInputElement>) => {
@@ -63,6 +82,15 @@ const AboutModal = () => {
     formDispatch(onChangeContactAC(e.currentTarget.value))
   }
 
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!formState.contact || !formState.company) {
+      errorDispatch(buttonAC(true))
+    } else {
+      fetchAboutData()
+    }
+  }
+
   const onClickButton = () => {
     if (!formState.company && !errorState.company) {
       errorDispatch(companyAC(true))
@@ -70,13 +98,6 @@ const AboutModal = () => {
 
     if (!formState.contact && !errorState.contact) {
       errorDispatch(contactAC(true))
-    }
-
-    if (!formState.contact || !formState.company) {
-      errorDispatch(buttonAC(true))
-    } else {
-      fetchAboutData()
-      setIsDataSent(true)
     }
   }
 
@@ -104,7 +125,7 @@ const AboutModal = () => {
 
       if (formState.contact && formState.company) {
         target.blur()
-        onClickButton()
+        fetchAboutData()
       }
     }
   }
@@ -150,16 +171,21 @@ const AboutModal = () => {
     return () => {
       document.removeEventListener('keydown', onEscape)
     }
-  }, [formState])
+  }, [formState, errorState])
 
   return (
     <>
       <div className={s.hireModal_container}>
         <FocusLock>
           <div className={s.hireModal} onMouseDown={onMouseDownOutOffModal}>
-            <form className={formStyle} id='hireMe' onAnimationEnd={onAnimationEndCloseModal}>
+            <form
+              className={`${formStyle} ${proccedErrorStyle}`}
+              id='hireMe'
+              onAnimationEnd={onAnimationEndCloseModal}
+              onSubmit={onSubmit}
+              noValidate>
               <div className={s.hire__text_container}>
-                <span className={textStyle}>
+                <span className={`${s.hire__status_text} ${statusTextStyle}`} style={textMessage}>
                   Thank you, I appreciate your trust. You can contact me via{' '}
                   <a tabIndex={1} className={s.contactLinks} href='https://t.me/DaniilKalach' target='https://t.me/DaniilKalach'>
                     telegram
@@ -204,7 +230,7 @@ const AboutModal = () => {
                 </label>
               </div>
               <button
-                type='button'
+                type='submit'
                 form='hireMe'
                 tabIndex={4}
                 className={`${s.hire__form_button} ${errorStyleButton}`}
@@ -219,14 +245,3 @@ const AboutModal = () => {
     </>
   )
 }
-export default AboutModal
-// Ни одна перегрузка не соответствует этому вызову.
-//   Перегрузка 1 из 2, "(type: "keydown", listener: (this: Document, ev: KeyboardEvent) => any, options?: boolean | AddEventListenerOptions | undefined): void", возвратила следующую ошибку.
-//     Аргумент типа "(e: KeyboardEvent) => void" нельзя назначить параметру типа "(this: Document, ev: KeyboardEvent) => any".
-//       Типы параметров "e" и "ev" несовместимы.
-//         В типе "KeyboardEvent" отсутствуют следующие свойства из типа "KeyboardEvent<Element>": locale, nativeEvent, isDefaultPrevented, isPropagationStopped, persist
-//   Перегрузка 2 из 2, "(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void", возвратила следующую ошибку.
-//     Аргумент типа "(e: KeyboardEvent) => void" нельзя назначить параметру типа "EventListenerOrEventListenerObject".
-//       Тип "(e: KeyboardEvent) => void" не может быть назначен для типа "EventListener".
-//         Типы параметров "e" и "evt" несовместимы.
-//           В типе "Event" отсутствуют следующие свойства из типа "KeyboardEvent<Element>": altKey, charCode, ctrlKey, code и еще 15.

@@ -8,19 +8,19 @@ type AboutTextType = {
 
 export const AboutText: React.FC<AboutTextType> = React.memo(({ textContent, startIvivtationAnimate }) => {
   //   console.log('render About TEXT')
-  const aboutText = textContent.split(``)
-  const [canIStartTypingAboutText, setCanIStartTypingAboutText] = useState(false)
+  const [canIStartTypingText, setCanIStartTypingText] = useState(false)
   const [counter, setCounter] = useState(0)
-  const [typedAboutText, setTypedAboutText] = useState<Array<string>>([''])
-  const [shownAboutText, setShownAboutText] = useState('')
+  const [typedText, setTypedText] = useState<Array<string>>([''])
+  const [shownText, setShownText] = useState('')
+  const aboutText = textContent.split(``)
 
   const onMouseOver = (e: MouseEvent<HTMLSpanElement>) => {
-    if (e.currentTarget.textContent && shownAboutText.length === aboutText.length) {
+    if (e.currentTarget.textContent && shownText.length === aboutText.length) {
       e.currentTarget.setAttribute('class', s.active)
     }
   }
 
-  const wrappSpanShownAboutText = shownAboutText.split(``).map((el, i) => (
+  const wrappSpanShownText = shownText.split(``).map((el, i) => (
     <span onMouseOver={onMouseOver} key={i}>
       {el}
     </span>
@@ -28,31 +28,33 @@ export const AboutText: React.FC<AboutTextType> = React.memo(({ textContent, sta
 
   const typewriter = () => {
     setTimeout(() => {
-      if (shownAboutText.length < aboutText.length) {
-        setTypedAboutText(typedAboutText.concat(aboutText[+counter]))
-        setShownAboutText(typedAboutText.join(``))
+      if (shownText.length < aboutText.length) {
+        setTypedText(typedText.concat(aboutText[+counter]))
+        setShownText(typedText.join(``))
         setCounter(() => counter + 1)
       }
     }, 30)
   }
 
-  canIStartTypingAboutText
-    ? typewriter()
-    : setTimeout(() => {
-        setCanIStartTypingAboutText(true)
-      }, 2000)
-
   useEffect(() => {
-    if (shownAboutText.length === aboutText.length) {
+    if (!canIStartTypingText) {
+      setTimeout(() => {
+        setCanIStartTypingText(true)
+      }, 2000)
+    }
+
+    typewriter()
+
+    if (shownText.length === aboutText.length) {
       startIvivtationAnimate()
     }
-  }, [shownAboutText, aboutText.length, startIvivtationAnimate])
+  }, [shownText, aboutText.length, startIvivtationAnimate, canIStartTypingText])
 
   return (
     <>
       <p className={s.about__text}>
-        {wrappSpanShownAboutText}
-        {shownAboutText.length !== aboutText.length ? (
+        {wrappSpanShownText}
+        {shownText.length !== aboutText.length ? (
           <span className={`${s.typewriterStick}`}>.</span>
         ) : (
           <span className={`${s.typewriterEndBlink}`}>.</span>

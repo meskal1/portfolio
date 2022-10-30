@@ -1,7 +1,6 @@
 import React, { ChangeEvent, useEffect, useState, KeyboardEvent, useReducer, useRef, MutableRefObject, FormEvent } from 'react'
-import { useLocation } from 'react-router'
 import s from './Contact.module.scss'
-import { ContactModal } from './ContactModal/ContactModal'
+import { ContactModal } from './contactModal/ContactModal'
 import { emailAC, ErrorReducer, errorStyleState, messageAC, nameAC } from './ErrorReducer'
 import { formInitState, FormReducer, onChangeEmailAC, onChangeMessageAC, onChangeNameAC } from './FormReducer'
 
@@ -42,8 +41,7 @@ const Contact = () => {
     })
       // .then(response => response.json())
       .then(response => {
-        // For github demo
-        if (sendStatus !== 'Successfully sent' && sendStatus !== 'Github demo') {
+        if (sendStatus !== 'Successfully sent') {
           setSendStatus('Successfully sent')
         }
         document.body.style.overflow = 'hidden'

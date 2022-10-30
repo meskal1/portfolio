@@ -1,10 +1,23 @@
 import React from 'react'
 import s from './Home.module.scss'
 import photo from '../../../img/photo.webp'
+import photo_safari from '../../../img/photo_safari.webp'
 import { Button } from './button/Button'
+import { detect } from 'detect-browser'
+//@ts-ignore
+// import BrowserDetection from 'react-browser-detection'
+// const { detect } = require('detect-browser')
 
 const Home = () => {
   console.log('render Home')
+  const browser = detect()
+
+  if (browser) {
+    console.log(browser.name)
+    console.log(browser.version)
+    console.log(browser.os)
+  }
+
   const onButtonClickDownload = () => {
     //  window.location.href = 'https://download.cdn.viber.com/desktop/windows/ViberSetup.exe'
   }

@@ -17,6 +17,7 @@
 }
 .hire__form,
 .hire__form_close {
+  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -27,7 +28,6 @@
   flex: 0 1 500px;
   @include adaptiveValue('row-gap', 15, 10, 530, 320, 1);
   @include adaptiveValue('padding', 20, 10, 530, 280, 1);
-  overflow: hidden;
   &::before {
     content: '';
     position: absolute;
@@ -38,6 +38,7 @@
     height: 615px;
     transform: rotate(55deg) translate(-720px, -35px);
     background: #2c2d35;
+    //  background: red;
   }
   &::after {
     content: '';
@@ -49,6 +50,7 @@
     height: 615px;
     transform: rotate(55deg) translate(-720px, -35px);
     background: #2c2d35;
+    //  background: green;
   }
 }
 .hire__form {
@@ -85,7 +87,7 @@
     }
   }
 }
-.hire__form_succsess {
+.hire__form_procced_success {
   &::before {
     animation: animateCoverLayout1 1s ease forwards;
     @keyframes animateCoverLayout1 {
@@ -99,6 +101,37 @@
     @keyframes animateCoverLayout2 {
       100% {
         transform: rotate(55deg) translate(340px, -35px);
+      }
+    }
+  }
+}
+.hire__form_procced_error {
+  &::before {
+    animation: animateOpenLayout1 1s ease forwards, animateCloseLayout1 1s ease 2s forwards;
+    @keyframes animateOpenLayout1 {
+      100% {
+        transform: rotate(55deg) translate(-120px, -35px);
+      }
+    }
+    @keyframes animateCloseLayout1 {
+      100% {
+        transform: rotate(55deg) translate(450px, -35px);
+      }
+    }
+  }
+  &::after {
+    animation: animateOpenLayout2 1s ease 0.1s, animateCloseLayout2 1.2s ease 2s forwards;
+    @keyframes animateOpenLayout2 {
+      100% {
+        transform: rotate(55deg) translate(340px, -35px);
+      }
+    }
+    @keyframes animateCloseLayout2 {
+      0% {
+        transform: rotate(55deg) translate(-550px, -35px);
+      }
+      100% {
+        transform: rotate(55deg) translate(450px, -35px);
       }
     }
   }
@@ -139,14 +172,17 @@
     background: #f9c847;
   }
 }
-.hire__text {
+.hire__status_text {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
   font-size: rem(25);
   color: white;
   text-align: center;
   margin: 0px 0px 5px 0px;
   @include adaptiveValue('font-size', 25, 20, 400, 280, 1);
   &::before {
-    content: 'New partnership started';
+    content: var(--message);
     position: absolute;
     display: flex;
     align-items: flex-end;
@@ -158,14 +194,14 @@
     transform: translate(-50%, -50%);
     @include adaptiveValue('font-size', 30, 20, 391, 320, 1);
     font-weight: 600;
-    color: #5fb531;
     width: 320px;
     height: 90px;
-    background: url('../../../../img/green_checkmark_line.svg') 50% 0px /50px no-repeat;
   }
 }
-.hire__text_succsess {
+.hire__text_success {
   &::before {
+    color: #5fb531;
+    background: url('../../../../img/green_checkmark_line.svg') 50% 0px /50px no-repeat;
     animation: animateZindex 0s ease 0.4s forwards;
   }
   @keyframes animateZindex {
@@ -174,6 +210,31 @@
     }
     100% {
       z-index: 12;
+      opacity: 1;
+    }
+  }
+}
+.hire__text_error {
+  &::before {
+    color: #e70004;
+    background: url('../../../../img/red_checkmark_line.svg') 50% 0px /50px no-repeat;
+    animation: textVisible 0s ease 0.4s forwards, textInvisible 0s ease 2.2s forwards;
+  }
+  @keyframes textVisible {
+    99% {
+      opacity: 0;
+    }
+    100% {
+      z-index: 12;
+      opacity: 1;
+    }
+  }
+  @keyframes textInvisible {
+    99% {
+      opacity: 1;
+    }
+    100% {
+      z-index: -1;
       opacity: 1;
     }
   }
