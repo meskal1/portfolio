@@ -1,22 +1,13 @@
 import React from 'react'
 import s from './Home.module.scss'
 import photo from '../../../img/photo.webp'
-import photo_safari from '../../../img/photo_safari.webp'
+import photo_safari from '../../../img/photo_safari.jpg'
 import { Button } from './button/Button'
-import { detect } from 'detect-browser'
-//@ts-ignore
-// import BrowserDetection from 'react-browser-detection'
-// const { detect } = require('detect-browser')
+import { canIuseWEBP } from '../../../canIuse'
 
 const Home = () => {
   console.log('render Home')
-  const browser = detect()
-
-  if (browser) {
-    console.log(browser.name)
-    console.log(browser.version)
-    console.log(browser.os)
-  }
+  const preferedPhoto = canIuseWEBP ? photo_safari : photo
 
   const onButtonClickDownload = () => {
     //  window.location.href = 'https://download.cdn.viber.com/desktop/windows/ViberSetup.exe'
@@ -34,7 +25,7 @@ const Home = () => {
             </div>
             <div className={s.container_pic}>
               <div className={s.home__pic}>
-                <img className={s.home__img} src={photo} alt='' />
+                <img className={s.home__img} src={preferedPhoto} alt='' />
               </div>
             </div>
           </div>
