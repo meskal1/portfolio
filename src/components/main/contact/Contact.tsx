@@ -31,7 +31,7 @@ const Contact = () => {
   }
 
   const fetchContactData = async () => {
-    await fetch('http://192.168.1.105/contact', {
+    await fetch('http://192.168.1.105/api/contact', {
       method: 'POST',
       body: JSON.stringify(postData),
       headers: {

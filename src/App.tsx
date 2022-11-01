@@ -3,6 +3,7 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 import s from './App.module.scss'
 import { Header } from './components/header/Header'
 import { AboutModal } from './components/main/about/aboutModal/AboutModal'
+import { Page404 } from './components/main/page404/Page404'
 
 const Home = lazy(() => import('./components/main/home/Home')) //.then(module => ({ default: module.Home }))
 const Skills = lazy(() => import('./components/main/skills/Skills'))
@@ -69,7 +70,7 @@ function App() {
                   <Route path='about' element={<About />}>
                     <Route path='about_modal' element={<AboutModal />} />
                   </Route>
-                  <Route path='*' element={<p>There's nothing here!</p>} />
+                  <Route path='*' element={<Page404 />} />
                 </Routes>
               </Suspense>
             </main>

@@ -9,10 +9,10 @@ let webpOpera = false
 let webpYandex = false
 
 if (browser) {
-  console.log(browser.name)
-  console.log(browser.version)
-  console.log(browser.version?.split('.')[0])
-  console.log(browser.os)
+  //   console.log(browser.name)
+  //   console.log(browser.version)
+  //   console.log(browser.version?.split('.')[0])
+  //   console.log(browser.os)
   const name = browser.name
   const version = browser.version?.split('.')[0] || 0
   webpChrome = name === 'chrome' && version < 32

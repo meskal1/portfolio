@@ -24,7 +24,9 @@ export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidt
   const headerLogo = new Image()
   headerLogo.src = 'https://raw.githubusercontent.com/meskal1/portfolio/9d611fe5476786ce5f3feae21cc78946988c89c1/src/img/logo.svg'
 
-  headerLogo.onload = () => setIsImgLoaded(true)
+  if (!isImgLoaded) {
+    headerLogo.onload = () => setIsImgLoaded(true)
+  }
 
   // Если width больше 535px и применены стили s.active, то сбросить стили (функционал если с открытым меню повернуть в landscape (горизонт), то меню закрывается как по нажатию кнопки)
   if (isMenuOpen && !mediaQueryWidth) {
@@ -55,7 +57,7 @@ export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidt
           <div className={s.header__content}>
             {isImgLoaded && (
               <>
-                <a className={s.header__logo} href='https://meskal1.github.io/portfolio/#'>
+                <a className={s.header__logo} href='https://daniilkalach.com'>
                   <img className={s.header__logo_img} src={headerLogo.src} alt='logo' />
                 </a>
                 {mediaQueryWidth ? (

@@ -7,7 +7,7 @@ type ButtonType = {
 }
 
 export const Button: React.FC<ButtonType> = ({ name, onClick }) => {
-  console.log('render button')
+  //   console.log('render button')
   const [isAnimationLoaded, setIsAnimationLoaded] = useState(s.animationIsLoading)
 
   const onAnimationEnd = () => setIsAnimationLoaded(s.animationIsLoaded)

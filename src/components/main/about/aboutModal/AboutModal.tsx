@@ -45,7 +45,8 @@ export const AboutModal = () => {
   document.body.style.overflow = 'hidden'
 
   const fetchAboutData = async () => {
-    await fetch('http://192.168.1.105/about', {
+    //  await fetch('http://localhost:5000/about', {
+    await fetch('http://192.168.1.105/api/about', {
       method: 'POST',
       body: JSON.stringify(postData),
       headers: {
