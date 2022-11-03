@@ -19,7 +19,7 @@ import { errorStyleModalState, ErrorModalReducer, companyAC, contactAC, buttonAC
 const cyrillicRegex = /[а-яёА-ЯЁ]/
 
 export const AboutModal = () => {
-  console.log('render Modal')
+  //   console.log('render Modal')
   const navigate = useNavigate()
   const [errorState, errorDispatch] = useReducer(ErrorModalReducer, errorStyleModalState)
   const [formState, formDispatch] = useReducer(FormModalReducer, formModalInitState)
@@ -35,7 +35,7 @@ export const AboutModal = () => {
   const proccedErrorStyle = statusTextStyle === s.hire__text_error ? s.hire__form_procced_error : ''
   const textMessage =
     formState.contact || formState.company
-      ? ({ '--message': sendStatus ? `'New partnership started'` : `'Gihub error demo'` } as React.CSSProperties)
+      ? ({ '--message': sendStatus ? `'New partnership started'` : `'Github error demo'` } as React.CSSProperties)
       : {}
   const postData = {
     company: formState.company.trimEnd(),

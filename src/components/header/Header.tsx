@@ -17,7 +17,7 @@ const headerLinks = [
 ]
 
 export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidth }) => {
-  console.log('rendered Header')
+  //   console.log('rendered Header')
   const [isActive, setIsActive] = useState(s.not_active)
   const [isMenuOpen, setIsMenuOpen] = useState('')
   const [isImgLoaded, setIsImgLoaded] = useState(false)
@@ -57,7 +57,7 @@ export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidt
           <div className={s.header__content}>
             {isImgLoaded && (
               <>
-                <a className={s.header__logo} href='https://daniilkalach.com'>
+                <a className={s.header__logo} href='https://meskal1.github.io/portfolio/'>
                   <img className={s.header__logo_img} src={headerLogo.src} alt='logo' />
                 </a>
                 {mediaQueryWidth ? (

@@ -19,7 +19,7 @@ const skillsArray = [
 ]
 
 const Skills = () => {
-  console.log('render Skills')
+  //   console.log('render Skills')
   const [isTitleLoaded, setIsTitleLoaded] = useState('')
 
   const skills = skillsArray.map((el, i) => {

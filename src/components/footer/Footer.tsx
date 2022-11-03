@@ -18,7 +18,7 @@ const linksSocial = [
 ]
 
 const Footer: React.FC<FooterType> = React.memo(({ isMenuOpen }) => {
-  console.log('rendered Footer')
+  //   console.log('rendered Footer')
   const menuOpen = isMenuOpen !== '' ? { display: 'unset' } : {}
   const socialLinks = linksSocial.map(el => {
     return (

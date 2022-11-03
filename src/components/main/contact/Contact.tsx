@@ -57,7 +57,9 @@ const Contact = () => {
         // console.log('response', response)
       })
       .catch(error => {
-        setSendStatus('Some error occured')
+        if (sendStatus !== 'Github error demo') {
+          setSendStatus('Github error demo')
+        }
         document.body.style.overflow = 'hidden'
         setIsOpenModal(true)
         setTimeout(() => {
