@@ -18,8 +18,7 @@ const skillsArray = [
   'Nginx',
 ]
 
-const Skills = () => {
-  //   console.log('render Skills')
+export const Skills = () => {
   const [isTitleLoaded, setIsTitleLoaded] = useState('')
 
   const skills = skillsArray.map((el, i) => {
@@ -49,4 +48,3 @@ const Skills = () => {
     </>
   )
 }
-export default Skills

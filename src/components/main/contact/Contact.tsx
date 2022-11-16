@@ -7,8 +7,7 @@ import { formInitState, FormReducer, onChangeEmailAC, onChangeMessageAC, onChang
 const cyrillicRegex = /[а-яёА-ЯЁ]/
 const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[ a-zA-Z0-9-]+(?:\.[ a-zA-Z0-9-]+) *$/
 
-const Contact = () => {
-  // console.log('rendered contact')
+export const Contact = () => {
   const [errorState, errorDispatch] = useReducer(ErrorReducer, errorStyleState)
   const [formState, formDispatch] = useReducer(FormReducer, formInitState)
   const [isOpenModal, setIsOpenModal] = useState(false)
@@ -258,4 +257,3 @@ const Contact = () => {
     </>
   )
 }
-export default Contact

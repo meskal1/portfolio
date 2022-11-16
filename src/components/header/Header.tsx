@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import s from './Header.module.scss'
 import { Link } from 'react-router-dom'
 import { NavItems } from './navItems/NavItems'
+import { PATH } from '../../RoutePaths.enum'
+import { DemoProject } from '../../Links.enum'
 
 type HeaderType = {
   mediaQueryWidth: boolean
@@ -9,11 +11,11 @@ type HeaderType = {
 }
 
 const headerLinks = [
-  { id: 1, link: '/home', name: 'Home' },
-  { id: 2, link: '/skills', name: 'Skills' },
-  { id: 3, link: '/projects', name: 'Projects' },
-  { id: 4, link: '/contacts', name: 'Contact' },
-  { id: 5, link: '/about', name: 'About me' },
+  { id: 1, link: PATH.HOME, name: 'Home' },
+  { id: 2, link: PATH.SKILLS, name: 'Skills' },
+  { id: 3, link: PATH.PROJECTS, name: 'Projects' },
+  { id: 4, link: PATH.CONTACTS, name: 'Contact' },
+  { id: 5, link: PATH.ABOUT, name: 'About me' },
 ]
 
 export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidth }) => {
@@ -57,7 +59,7 @@ export const Header: React.FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidt
           <div className={s.header__content}>
             {isImgLoaded && (
               <>
-                <a className={s.header__logo} href='https://meskal1.github.io/portfolio/'>
+                <a className={s.header__logo} href={DemoProject.Portfolio}>
                   <img className={s.header__logo_img} src={headerLogo.src} alt='logo' />
                 </a>
                 {mediaQueryWidth ? (

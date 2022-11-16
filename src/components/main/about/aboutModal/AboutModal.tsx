@@ -15,6 +15,7 @@ import FocusLock from 'react-focus-lock'
 import s from './AboutModal.module.scss'
 import { FormModalReducer, formModalInitState, onChangeCompanyAC, onChangeContactAC } from './FormModalReducer'
 import { errorStyleModalState, ErrorModalReducer, companyAC, contactAC, buttonAC } from './ErrorModalReducer'
+import { Social } from '../../../../Links.enum'
 
 const cyrillicRegex = /[а-яёА-ЯЁ]/
 
@@ -188,7 +189,7 @@ export const AboutModal = () => {
               <div className={s.hire__text_container}>
                 <span className={`${s.hire__status_text} ${statusTextStyle}`} style={textMessage}>
                   Thank you, I appreciate your trust. You can contact me via{' '}
-                  <a tabIndex={1} className={s.contactLinks} href='https://t.me/DaniilKalach' target='https://t.me/DaniilKalach'>
+                  <a tabIndex={1} className={s.contactLinks} href={Social.Telegram} target={Social.Telegram}>
                     telegram
                   </a>{' '}
                   or leave your details down below:

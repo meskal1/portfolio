@@ -5,25 +5,25 @@ import codears_logo from '../../img/codears_logo.svg'
 import telegram_logo from '../../img/telegram_logo.svg'
 import linkedin_logo from '../../img/linkedin_logo.svg'
 import { FooterAnimate } from './footerAnimate/FooterAnimate'
+import { Social } from '../../Links.enum'
 
 type FooterType = {
   isMenuOpen: string
 }
 
 const linksSocial = [
-  { id: 1, name: github_logo, address: 'https://github.com/meskal1' },
-  { id: 2, name: codears_logo, address: 'https://www.codewars.com/users/meskal1' },
-  { id: 3, name: telegram_logo, address: 'https://t.me/DaniilKalach' },
-  { id: 4, name: linkedin_logo, address: 'https://www.linkedin.com/in/daniilkalach/' },
+  { id: 1, img: github_logo, address: Social.Github },
+  { id: 2, img: codears_logo, address: Social.Codewars },
+  { id: 3, img: telegram_logo, address: Social.Telegram },
+  { id: 4, img: linkedin_logo, address: Social.Linkedin },
 ]
 
-const Footer: React.FC<FooterType> = React.memo(({ isMenuOpen }) => {
-  //   console.log('rendered Footer')
+export const Footer: React.FC<FooterType> = React.memo(({ isMenuOpen }) => {
   const menuOpen = isMenuOpen !== '' ? { display: 'unset' } : {}
   const socialLinks = linksSocial.map(el => {
     return (
       <a key={el.id} className={s.footer__pic_social} href={el.address} target={el.address}>
-        <img className={s.footer__social_img} src={el.name} alt={el.name + ''} />
+        <img className={s.footer__social_img} src={el.img} alt={el.img + ''} />
       </a>
     )
   })
@@ -49,4 +49,3 @@ const Footer: React.FC<FooterType> = React.memo(({ isMenuOpen }) => {
     </>
   )
 })
-export default Footer

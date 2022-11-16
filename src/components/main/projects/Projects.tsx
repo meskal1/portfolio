@@ -1,90 +1,91 @@
 import React, { useEffect, useState, MouseEvent, useRef, MutableRefObject } from 'react'
+import { DemoProject, SourceProject, Image } from '../../../Links.enum'
 import s from './Projects.module.scss'
 
 const items = [
   {
     id: 1,
-    img: 'https://github.com/meskal1/portfolio/raw/main/PreviewPortfolio.jpg',
+    img: Image.Portfolio,
     name: 'Portfolio',
     urlDemoName: 'Live Demo',
-    urlDemo: 'https://meskal1.github.io/portfolio/',
-    urlGithub: 'https://github.com/meskal1/portfolio',
+    urlDemo: DemoProject.Portfolio,
+    urlGithub: SourceProject.Portfolio,
   },
   {
     id: 2,
-    img: 'https://github.com/meskal1/portfolio/raw/main/LottiePreview.jpg',
+    img: Image.LottieAnimation,
     name: 'Lottie animation',
     urlDemoName: 'Live Demo',
-    urlDemo: 'https://lottiefiles.com/122697-get-skills-from-the-box',
-    urlGithub: 'https://lottiefiles.com/122697-get-skills-from-the-box',
+    urlDemo: DemoProject.LottieAnimation,
+    urlGithub: SourceProject.LottieAnimation,
   },
   {
     id: 3,
-    img: 'https://github.com/meskal1/social_network/raw/main/Preview.jpg',
+    img: Image.SocialNetwork,
     name: 'Social network',
     urlDemoName: 'In progress',
-    urlDemo: 'https://github.com/meskal1/social_network',
-    urlGithub: 'https://github.com/meskal1/social_network',
+    urlDemo: SourceProject.SocialNetwork,
+    urlGithub: SourceProject.SocialNetwork,
   },
   {
     id: 4,
-    img: 'https://github.com/meskal1/my_todo_list/raw/main/Preview.jpg',
+    img: Image.Todolist,
     name: 'Todolist',
     urlDemoName: 'Live Demo in progress',
-    urlDemo: 'https://meskal1.github.io/my_todo_list/',
-    urlGithub: 'https://github.com/meskal1/my_todo_list',
+    urlDemo: DemoProject.Todolist,
+    urlGithub: SourceProject.Todolist,
   },
   {
     id: 5,
-    img: 'https://github.com/meskal1/Counter/raw/main/Preview.jpg',
+    img: Image.Counter,
     name: 'Counter',
     urlDemoName: 'Live Demo',
-    urlDemo: 'https://meskal1.github.io/Counter',
-    urlGithub: 'https://github.com/meskal1/Counter',
+    urlDemo: DemoProject.Counter,
+    urlGithub: SourceProject.Counter,
   },
   {
     id: 6,
-    img: 'https://github.com/meskal1/drum_kit/raw/main/PreviewDrumKit.jpg',
+    img: Image.DrumKit,
     name: 'Drum Kit',
     urlDemoName: 'Live Demo',
-    urlDemo: 'https://meskal1.github.io/drum_kit/',
-    urlGithub: 'https://github.com/meskal1/drum_kit',
+    urlDemo: DemoProject.DrumKit,
+    urlGithub: SourceProject.DrumKit,
   },
   {
     id: 7,
-    img: 'https://github.com/meskal1/guess_my_number/raw/main/Preview.jpg',
+    img: Image.GuessTheNumber,
     name: 'Guess the number',
     urlDemoName: 'Live Demo',
-    urlDemo: 'https://meskal1.github.io/guess_my_number/',
-    urlGithub: 'https://github.com/meskal1/guess_my_number',
+    urlDemo: DemoProject.GuessTheNumber,
+    urlGithub: SourceProject.GuessTheNumber,
   },
   {
     id: 8,
-    img: 'https://github.com/meskal1/pig_game/raw/main/Preview.jpg',
+    img: Image.PigGame,
     name: 'Pig game',
     urlDemoName: 'Live Demo',
-    urlDemo: 'https://meskal1.github.io/pig_game/',
-    urlGithub: 'https://github.com/meskal1/pig_game',
+    urlDemo: DemoProject.PigGame,
+    urlGithub: SourceProject.PigGame,
   },
   {
     id: 9,
-    img: 'https://github.com/meskal1/CSS_car_animation/raw/main/PreviewCar.jpg',
+    img: Image.CarAnimation,
     name: 'Car animation',
     urlDemoName: 'Live Demo',
-    urlDemo: 'https://meskal1.github.io/CSS_car_animation/',
-    urlGithub: 'https://github.com/meskal1/CSS_car_animation',
+    urlDemo: DemoProject.CarAnimation,
+    urlGithub: SourceProject.CarAnimation,
   },
   {
     id: 10,
-    img: 'https://github.com/meskal1/landing_practice/raw/main/PreviewLanding.jpg',
+    img: Image.LandingPractice,
     name: 'Landing practice',
     urlDemoName: 'Live Demo',
-    urlDemo: 'https://meskal1.github.io/landing_practice/',
-    urlGithub: 'https://github.com/meskal1/landing_practice',
+    urlDemo: DemoProject.LandingPractice,
+    urlGithub: SourceProject.LandingPractice,
   },
 ]
 
-const Projects = () => {
+export const Projects = () => {
   const [itemCenter, setItemCenter] = useState(0)
   const [styleCurtains, setStyleCurtains] = useState('')
   const swiperRef = useRef() as MutableRefObject<HTMLDivElement>
@@ -203,4 +204,3 @@ const Projects = () => {
     </>
   )
 }
-export default Projects

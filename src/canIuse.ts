@@ -6,7 +6,7 @@ let webpChrome = false
 let webpSafari = false
 let webpFirefox = false
 let webpOpera = false
-let webpYandex = false
+// let webpYandex = false
 
 if (browser) {
   //   console.log(browser.name)
@@ -22,4 +22,4 @@ if (browser) {
   //   webpYandex = name === 'yandexbrowser' && version < 22
 }
 
-export const canIuseWEBP = webpSafari || webpFirefox || webpOpera || webpChrome || webpYandex
+export const canIuseWEBP = !(webpSafari || webpFirefox || webpOpera || webpChrome)

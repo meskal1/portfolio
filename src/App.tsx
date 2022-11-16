@@ -4,13 +4,14 @@ import s from './App.module.scss'
 import { Header } from './components/header/Header'
 import { AboutModal } from './components/main/about/aboutModal/AboutModal'
 import { Page404 } from './components/main/page404/Page404'
+import { PATH } from './RoutePaths.enum'
 
-const Home = lazy(() => import('./components/main/home/Home')) //.then(module => ({ default: module.Home }))
-const Skills = lazy(() => import('./components/main/skills/Skills'))
-const Projects = lazy(() => import('./components/main/projects/Projects'))
-const Contact = lazy(() => import('./components/main/contact/Contact'))
-const About = lazy(() => import('./components/main/about/About'))
-const Footer = lazy(() => import('./components/footer/Footer'))
+const Home = lazy(() => import('./components/main/home/Home').then(module => ({ default: module.Home })))
+const Skills = lazy(() => import('./components/main/skills/Skills').then(module => ({ default: module.Skills })))
+const Projects = lazy(() => import('./components/main/projects/Projects').then(module => ({ default: module.Projects })))
+const Contact = lazy(() => import('./components/main/contact/Contact').then(module => ({ default: module.Contact })))
+const About = lazy(() => import('./components/main/about/About').then(module => ({ default: module.About })))
+const Footer = lazy(() => import('./components/footer/Footer').then(module => ({ default: module.Footer })))
 
 function App() {
   const [isContentDisplayed, setIsContentDisplayed] = useState(false)
@@ -62,13 +63,13 @@ function App() {
             <main className={s.main}>
               <Suspense fallback={null}>
                 <Routes>
-                  <Route path='/' element={<Navigate to='/home' replace />} />
-                  <Route path='home' element={<Home />} />
-                  <Route path='skills' element={<Skills />} />
-                  <Route path='projects' element={<Projects />} />
-                  <Route path='contacts' element={<Contact />} />
-                  <Route path='about' element={<About />}>
-                    <Route path='about_modal' element={<AboutModal />} />
+                  <Route path='/' element={<Navigate to={PATH.HOME} replace />} />
+                  <Route path={PATH.HOME} element={<Home />} />
+                  <Route path={PATH.SKILLS} element={<Skills />} />
+                  <Route path={PATH.PROJECTS} element={<Projects />} />
+                  <Route path={PATH.CONTACTS} element={<Contact />} />
+                  <Route path={PATH.ABOUT} element={<About />}>
+                    <Route path={PATH.ABOUT_MODAL} element={<AboutModal />} />
                   </Route>
                   <Route path='*' element={<Page404 />} />
                 </Routes>
