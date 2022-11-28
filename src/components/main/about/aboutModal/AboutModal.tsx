@@ -46,34 +46,33 @@ export const AboutModal = () => {
   document.body.style.overflow = 'hidden'
 
   const fetchAboutData = async () => {
-    //  await fetch('http://localhost:5000/about', {
-    await fetch('http://192.168.1.105/api/about', {
-      method: 'POST',
-      body: JSON.stringify(postData),
-      headers: {
-        Accept: 'application/json',
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    })
-      // .then(response => response.json())
-      .then(response => {
-        setStatusTextStyle(s.hire__text_success)
-        if (sendStatus !== true) {
-          setSendStatus(true)
-        }
-        // response.status === 200
-        // console.log('response', response)
+    try {
+      await fetch('http://192.168.1.105/api/about', {
+        method: 'POST',
+        body: JSON.stringify(postData),
+        headers: {
+          Accept: 'application/json',
+          'Content-type': 'application/json; charset=UTF-8',
+        },
       })
-      .catch(error => {
-        setStatusTextStyle(s.hire__text_error)
-        if (sendStatus !== false) {
-          setSendStatus(false)
-        }
-        setTimeout(() => {
-          setStatusTextStyle('')
-        }, 3000)
-        console.log('Some error occured')
-      })
+      // console.log(await response.text())
+      setStatusTextStyle(s.hire__text_success)
+
+      if (sendStatus !== true) {
+        setSendStatus(true)
+      }
+    } catch {
+      setStatusTextStyle(s.hire__text_error)
+
+      if (sendStatus !== false) {
+        setSendStatus(false)
+      }
+
+      setTimeout(() => {
+        setStatusTextStyle('')
+      }, 3000)
+      console.log('Some error occured')
+    }
   }
 
   const onChangeCompany = (e: ChangeEvent<HTMLInputElement>) => {

@@ -30,43 +30,44 @@ export const Contact = () => {
   }
 
   const fetchContactData = async () => {
-    await fetch('http://192.168.1.105/api/contact', {
-      method: 'POST',
-      body: JSON.stringify(postData),
-      headers: {
-        Accept: 'application/json',
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    })
-      // .then(response => response.json())
-      .then(response => {
-        if (sendStatus !== 'Successfully sent') {
-          setSendStatus('Successfully sent')
-        }
-        document.body.style.overflow = 'hidden'
-        setIsOpenModal(true)
-        setTimeout(() => {
-          setIsOpenModal(false)
-          document.body.style.overflow = 'unset'
-          formDispatch(onChangeNameAC(''))
-          formDispatch(onChangeEmailAC(''))
-          formDispatch(onChangeMessageAC(''))
-        }, 2000)
-        // response.status === 200
-        // console.log('response', response)
+    try {
+      await fetch('http://192.168.1.105/api/contact', {
+        method: 'POST',
+        body: JSON.stringify(postData),
+        headers: {
+          Accept: 'application/json',
+          'Content-type': 'application/json; charset=UTF-8',
+        },
       })
-      .catch(error => {
-        if (sendStatus !== 'Github error demo') {
-          setSendStatus('Github error demo')
-        }
-        document.body.style.overflow = 'hidden'
-        setIsOpenModal(true)
-        setTimeout(() => {
-          setIsOpenModal(false)
-          document.body.style.overflow = 'unset'
-        }, 2000)
-        console.log('Some error occured')
-      })
+
+      if (sendStatus !== 'Successfully sent') {
+        setSendStatus('Successfully sent')
+      }
+
+      document.body.style.overflow = 'hidden'
+      setIsOpenModal(true)
+
+      setTimeout(() => {
+        setIsOpenModal(false)
+        document.body.style.overflow = 'unset'
+        formDispatch(onChangeNameAC(''))
+        formDispatch(onChangeEmailAC(''))
+        formDispatch(onChangeMessageAC(''))
+      }, 2000)
+    } catch {
+      if (sendStatus !== 'Github error demo') {
+        setSendStatus('Github error demo')
+      }
+
+      document.body.style.overflow = 'hidden'
+      setIsOpenModal(true)
+
+      setTimeout(() => {
+        setIsOpenModal(false)
+        document.body.style.overflow = 'unset'
+      }, 2000)
+      console.log('Some error occured')
+    }
   }
 
   const onChangeAutocomplite = () => {
