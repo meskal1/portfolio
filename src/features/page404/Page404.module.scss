@@ -1,0 +1,53 @@
+@import '../../common/styles/mixins/mixin';
+
+.container_page404 {
+  @include adaptiveValue('row-gap', 50, 15, 570, 280, 1);
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+
+  opacity: 0;
+
+  animation: blured 0.5s linear 1s forwards;
+}
+
+.container_logo404 {
+  @include adaptiveValue('height', 200, 95, 570, 280, 1);
+
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.logo404 {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  padding: 0 15px;
+
+  object-fit: contain;
+}
+
+.message_404 {
+  @include adaptiveValue('font-size', 50, 25, 570, 280, 1);
+
+  padding: 0px 0px 0px 20px;
+  font-size: rem(50);
+  text-align: center;
+}
+@keyframes blured {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}

@@ -1,0 +1,171 @@
+@import '../../../common/styles/mixins/mixin';
+
+.footer {
+  position: relative;
+  z-index: 4;
+
+  &__container {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  &__content {
+    padding: 15px 0;
+    text-align: center;
+  }
+
+  &__block_social {
+    @include adaptiveValue('margin-bottom', 20, 10, 500, 320, 1);
+
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+    margin: 0px 0px 20px 0px;
+
+    opacity: 0;
+
+    animation: animateFooter 0.7s ease 1 1.7s forwards;
+    @media (max-width: 377px) {
+      animation: animateFooter 0.7s ease 1 0.8s forwards;
+    }
+  }
+
+  &__social_img {
+    width: 30px;
+    height: 30px;
+  }
+
+  &__pic_social {
+    position: relative;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    transition: all 0.1s linear;
+
+    &::before {
+      content: '';
+
+      position: absolute;
+      z-index: -1;
+      bottom: 1px;
+      left: 1px;
+
+      width: 28px;
+      height: 28px;
+
+      background: white;
+      border-radius: 50%;
+    }
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 30px;
+      height: 30px;
+    }
+
+    &:nth-child(1) {
+      &::after {
+        background: url('../../../assets/img/Icons/github_logo.svg');
+      }
+    }
+
+    &:nth-child(2) {
+      &::after {
+        background: url('../../../assets/img/Icons/codears_logo.svg');
+      }
+    }
+
+    &:nth-child(3) {
+      &::after {
+        background: url('../../../assets/img/Icons/telegram_logo.svg');
+      }
+    }
+
+    &:nth-child(4) {
+      &::after {
+        background: url('../../../assets/img/Icons/linkedin_logo.svg');
+      }
+    }
+
+    &:hover {
+      &::before,
+      &::after {
+        transform: translate(0, -2px);
+        transition: all 0.1s ease;
+      }
+
+      &::before {
+        background: #f9c847;
+      }
+    }
+  }
+
+  &__copyrights {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+
+    line-height: 22px;
+    color: rgb(112 108 108);
+
+    opacity: 0;
+
+    animation: animateFooter 0.7s ease 1 1.8s forwards;
+
+    .year_container {
+      display: inline-block;
+      margin: 0px 0px 0px 35px;
+    }
+
+    .copyright {
+      position: relative;
+      top: -2px;
+      right: -2px;
+      display: inline-block;
+    }
+    @media (max-width: 377px) {
+      flex-direction: column;
+      align-items: center;
+      animation: animateFooter 0.7s ease 1 0.9s forwards;
+    }
+  }
+
+  &__text {
+    white-space: nowrap;
+  }
+
+  &__copyrights_second_line {
+    position: relative;
+    display: flex;
+  }
+  @media (max-width: 377px) {
+    position: fixed;
+    z-index: 5;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: none;
+  }
+}
+@keyframes animateFooter {
+  0% {
+    transform: translate(0, 20px);
+  }
+
+  100% {
+    transform: translate(0, 0px);
+    opacity: 1;
+  }
+}

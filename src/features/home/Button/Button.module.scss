@@ -1,0 +1,57 @@
+@import '../../../common/styles/mixins/mixin';
+
+.button {
+  cursor: pointer;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+
+  display: flex;
+  align-self: flex-start;
+
+  padding: 9px 15px 6px;
+
+  font-family: 'League Spartan', Helvetica, sans-serif;
+  font-size: rem(16);
+  font-weight: 700;
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
+
+  background: linear-gradient(to bottom, #f9c847, #f9c64782);
+  border-radius: 30px;
+
+  transition: all linear 0.05s;
+
+  &:active {
+    transform: translate3d(0px, 2px, 0);
+    box-shadow: #f9c64752 0px 16px 15px -2px;
+  }
+  @media (max-width: 811px) {
+    align-self: unset;
+  }
+}
+
+.animationIsLoading {
+  transform: translate3d(0, 0, 0);
+  opacity: 0;
+  box-shadow: #f9c64752 0px 20px 15px 0px;
+  animation: animateButton 0.7s ease 1 1.3s forwards;
+  @keyframes animateButton {
+    0% {
+      transform: translate(0, 20px);
+    }
+
+    100% {
+      transform: translate(0px, 0px);
+      opacity: 1;
+    }
+  }
+}
+
+.animationIsLoaded {
+  transform: translate3d(0, 0, 0);
+  //   animation: none;
+  opacity: 1;
+  box-shadow: #f9c64752 0px 20px 15px 0px;
+}

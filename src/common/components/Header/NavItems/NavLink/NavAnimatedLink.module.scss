@@ -1,0 +1,140 @@
+.nav_item {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 0px;
+    height: 0px;
+
+    border-radius: 50%;
+  }
+
+  &::before {
+    background: #f9c847;
+  }
+
+  &::after {
+    background: #1c1d25;
+  }
+
+  &:hover {
+    .nav_item__link {
+      transform: scale(1.1);
+      color: #f9c847;
+    }
+
+    .nav_item__link::before {
+      // background: #F9C847;
+      width: 100%;
+      box-shadow: #f9c847 0px 20px 15px 3px;
+    }
+  }
+
+  .active_link {
+    transform: scale(1.1);
+    color: #f9c847;
+
+    &::before {
+      // background: #F9C847;
+      cursor: auto;
+      width: 100%;
+      box-shadow: #f9c847 0px 20px 15px 3px;
+    }
+  }
+
+  &__link {
+    cursor: pointer;
+
+    position: relative;
+    z-index: 5;
+
+    display: inline-block;
+
+    font-family: 'League Spartan';
+    font-size: 20px;
+    font-weight: 500;
+    color: #b0b2c3;
+
+    background: none;
+
+    transition: ease 0.2s all;
+
+    &::before {
+      content: '';
+
+      position: absolute;
+      z-index: -1;
+      top: -10px;
+
+      display: block;
+
+      width: 0;
+      // height: 3px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.pageTransition {
+  &::before {
+    animation: animatePageTransition 0.6s ease;
+  }
+
+  &::after {
+    animation: animatePageTransition 0.6s ease 0.3s;
+  }
+}
+
+.animationIsLoading {
+  transform: translate3d(0, 0, 0);
+  opacity: 0;
+  animation: animateHeader 1s ease 1 forwards;
+}
+
+.animationIsLoaded {
+  opacity: 1;
+}
+
+.animationBlackColor {
+  transform: translate3d(0, 0, 0);
+  animation: menuColorTransition 0.2s ease;
+}
+@keyframes menuColorTransition {
+  0% {
+    color: black;
+  }
+
+  100% {
+    color: black;
+  }
+}
+@keyframes animateHeader {
+  0% {
+    transform: translate(0, -20px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
+}
+@keyframes animatePageTransition {
+  99% {
+    z-index: 2;
+  }
+
+  100% {
+    z-index: 0;
+    width: 5000px;
+    height: auto;
+    padding-bottom: 5000px;
+  }
+}

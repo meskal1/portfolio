@@ -1,0 +1,126 @@
+.wrapper {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  min-height: 100%;
+  //  background: #1c1d25;
+  &::after {
+    content: '';
+
+    position: absolute;
+    z-index: 4;
+    transform: translate3d(0, 0, 0);
+
+    width: 100%;
+    height: 0vh;
+
+    background: linear-gradient(to bottom, rgb(28 29 37 / 100%) 0%, rgb(249 200 71 / 100%) 100%);
+
+    transition: all ease 0.5s;
+  }
+}
+
+.menuOpen {
+  &::after {
+    transform: translate3d(0, 0, 0);
+    height: 100vh;
+    @media (min-width: 536px) {
+      transform: translate3d(0, 0, 0);
+      height: 0;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.logo_container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  overflow: hidden;
+
+  width: 110px;
+  height: 80px;
+  margin: auto;
+
+  animation: scale 0.39s linear 2.9s forwards;
+}
+
+.logo {
+  position: relative;
+  z-index: 1;
+
+  width: 101%;
+  height: 101%;
+
+  animation: bGround 0s linear 1.95s forwards;
+}
+
+.waveContainer {
+  animation: fillTheWave 2s 1 linear forwards;
+}
+
+.wave {
+  width: 348px;
+  height: 110px;
+}
+
+.waveSubBlock1 {
+  width: 100%;
+  height: 5px;
+  background: url('../assets/img/wave.png') 100% / 40px 5px repeat-x;
+}
+
+.waveSubBlock2 {
+  width: 100%;
+  height: 100%;
+  background: #f9c847;
+}
+@keyframes fillTheWave {
+  0% {
+    transform: rotate(90deg) translate3d(-80px, 110px, 0);
+  }
+
+  99% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(90deg) translate3d(-350px, -5px, 0);
+    opacity: 0;
+  }
+}
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes bGround {
+  0% {
+    background: #f9c847;
+  }
+
+  100% {
+    background: #f9c847;
+  }
+}
