@@ -8,7 +8,7 @@ type ErrorStyleStateType = typeof errorStyleState
 
 type ActionType = NameACType | EmailACType | MessageACType
 
-export const ErrorReducer = (
+export const errorReducer = (
   state: ErrorStyleStateType = errorStyleState,
   action: ActionType
 ): ErrorStyleStateType => {

@@ -21,24 +21,24 @@ import { PATH } from '../../../constants/routePaths.enum'
 import s from './AboutModal.module.scss'
 import {
   errorStyleModalState,
-  ErrorModalReducer,
   companyAC,
   contactAC,
   buttonAC,
-} from './ErrorModalReducer'
+  errorAboutReducer,
+} from './errorAboutReducer'
 import {
-  FormModalReducer,
   formModalInitState,
   onChangeCompanyAC,
   onChangeContactAC,
-} from './FormModalReducer'
+  formAboutReducer,
+} from './formAboutReducer'
 
 const cyrillicRegex = /[а-яёА-ЯЁ]/
 
 export const AboutModal = () => {
   const navigate = useNavigate()
-  const [errorState, errorDispatch] = useReducer(ErrorModalReducer, errorStyleModalState)
-  const [formState, formDispatch] = useReducer(FormModalReducer, formModalInitState)
+  const [errorState, errorDispatch] = useReducer(errorAboutReducer, errorStyleModalState)
+  const [formState, formDispatch] = useReducer(formAboutReducer, formModalInitState)
   const [sendStatus, setSendStatus] = useState(false)
   const [statusTextStyle, setStatusTextStyle] = useState('')
   const errorStyleCompany = errorState.company ? s.errorBorder : ''

@@ -7,7 +7,7 @@ export type FormModalInitStateType = typeof formModalInitState
 
 type ActionType = OnChangeCompanyACType | OnChangeContactACType
 
-export const FormModalReducer = (
+export const formAboutReducer = (
   state: FormModalInitStateType = formModalInitState,
   action: ActionType
 ): FormModalInitStateType => {

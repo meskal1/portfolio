@@ -10,22 +10,22 @@ import {
 } from 'react'
 
 import s from './Contact.module.scss'
-import { emailAC, ErrorReducer, errorStyleState, messageAC, nameAC } from './ErrorReducer'
+import { errorReducer, errorStyleState, emailAC, nameAC, messageAC } from './errorReducer'
 import {
+  formReducer,
   formInitState,
-  FormReducer,
+  onChangeNameAC,
   onChangeEmailAC,
   onChangeMessageAC,
-  onChangeNameAC,
-} from './FormReducer'
+} from './formReducer'
 import { ContactModal } from './Modal/ContactModal'
 
 const cyrillicRegex = /[а-яёА-ЯЁ]/
 const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[ a-zA-Z0-9-]+(?:\.[ a-zA-Z0-9-]+) *$/
 
 export const Contact = () => {
-  const [errorState, errorDispatch] = useReducer(ErrorReducer, errorStyleState)
-  const [formState, formDispatch] = useReducer(FormReducer, formInitState)
+  const [errorState, errorDispatch] = useReducer(errorReducer, errorStyleState)
+  const [formState, formDispatch] = useReducer(formReducer, formInitState)
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [isChecked, setIsChecked] = useState(localStorage.getItem('isOffAutocomplite') === 'on')
   const [isAnimationLoaded, setIsAnimationLoaded] = useState(s.animationIsLoading)

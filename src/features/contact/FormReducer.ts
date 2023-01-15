@@ -8,7 +8,7 @@ export type FormInitStateType = typeof formInitState
 
 type ActionType = OnChangeNameACType | OnChangeEmailACType | OnChangeMessageACType
 
-export const FormReducer = (
+export const formReducer = (
   state: FormInitStateType = formInitState,
   action: ActionType
 ): FormInitStateType => {

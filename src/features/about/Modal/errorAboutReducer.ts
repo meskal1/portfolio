@@ -8,7 +8,7 @@ type ErrorStyleModalType = typeof errorStyleModalState
 
 type ActionType = CompanyACType | ContactACType | ButtonACType
 
-export const ErrorModalReducer = (
+export const errorAboutReducer = (
   state: ErrorStyleModalType = errorStyleModalState,
   action: ActionType
 ): ErrorStyleModalType => {
