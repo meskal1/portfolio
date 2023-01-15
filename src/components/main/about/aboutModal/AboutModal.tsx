@@ -29,7 +29,7 @@ export const AboutModal = () => {
   const errorStyleCompany = errorState.company ? s.errorBorder : ''
   const errorStyleContact = errorState.contact ? s.errorBorder : ''
   const errorStyleButton = errorState.button ? s.errorButton : ''
-  const cyrillicStyleСompany = formState.company.match(cyrillicRegex) ? s.fontSizeCyrillic : ''
+  const cyrillicStyleCompany = formState.company.match(cyrillicRegex) ? s.fontSizeCyrillic : ''
   const cyrillicStyleContact = formState.contact.match(cyrillicRegex) ? s.fontSizeCyrillic : ''
   const refContact = useRef() as MutableRefObject<HTMLTextAreaElement>
   const formStyle = sendStatus ? `${s.hire__form_close} ${s.hire__form_procced_success}` : s.hire__form
@@ -202,7 +202,7 @@ export const AboutModal = () => {
                   tabIndex={2}
                   value={formState.company}
                   name='companyName'
-                  className={`${s.hire__input_company_name} ${cyrillicStyleСompany} ${errorStyleCompany}`}
+                  className={`${s.hire__input_company_name} ${cyrillicStyleCompany} ${errorStyleCompany}`}
                   onChange={onChangeCompany}
                   onKeyDown={onKeyDownInput}
                   autoComplete='off'
