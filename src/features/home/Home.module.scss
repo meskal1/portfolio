@@ -34,8 +34,6 @@
   }
 
   &__name {
-    @include adaptiveValue('font-size', 70, 50, 500, 320, 0);
-
     transform: translate3d(0, 0, 0);
 
     margin: 0px 0px 10px 0px;
@@ -49,6 +47,8 @@
 
     animation: animateTitle 0.7s ease 1 1.1s forwards;
     @media (max-width: 811px) {
+      @include adaptiveValue('font-size', 70, 50, 500, 320, 0);
+
       margin: 0px;
       font-size: rem(70);
     }
