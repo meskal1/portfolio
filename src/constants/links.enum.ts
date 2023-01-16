@@ -7,7 +7,7 @@ export enum Social {
 
 export enum DemoProject {
   Portfolio = 'https://meskal1.github.io/portfolio/',
-  LottieAnimation = 'https://lottiefiles.com/122697-get-skills-from-the-box',
+  LottieAnimation = 'https://lottiefiles.com/133779-get-skills-from-the-box',
   SocialNetwork = 'https://meskal1.github.io/social_network/',
   Todolist = 'https://meskal1.github.io/my_todo_list/',
   Counter = 'https://meskal1.github.io/Counter',
@@ -20,7 +20,7 @@ export enum DemoProject {
 
 export enum SourceProject {
   Portfolio = 'https://github.com/meskal1/portfolio',
-  LottieAnimation = 'https://lottiefiles.com/122697-get-skills-from-the-box',
+  LottieAnimation = 'https://lottiefiles.com/qleyzl2iiaosh9v5',
   SocialNetwork = 'https://github.com/meskal1/social_network',
   Todolist = 'https://github.com/meskal1/my_todo_list',
   Counter = 'https://github.com/meskal1/Counter',
