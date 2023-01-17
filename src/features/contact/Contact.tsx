@@ -47,7 +47,7 @@ export const Contact = () => {
 
   const fetchContactData = async () => {
     try {
-      await fetch(process.env.REACT_APP_CONTACT_URL as RequestInfo | URL, {
+      const response = await fetch(process.env.REACT_APP_CONTACT_URL as RequestInfo | URL, {
         method: 'POST',
         body: JSON.stringify(postData),
         headers: {
@@ -56,6 +56,7 @@ export const Contact = () => {
         },
       })
 
+      response.text().then(text => console.log(text))
       if (sendStatus !== 'Successfully sent') {
         setSendStatus('Successfully sent')
       }
