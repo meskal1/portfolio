@@ -30,7 +30,7 @@ export const Contact = () => {
   const [isChecked, setIsChecked] = useState(localStorage.getItem('isOffAutocomplite') === 'on')
   const [isAnimationLoaded, setIsAnimationLoaded] = useState(s.animationIsLoading)
   const [errorStyleButton, setErrorStyleButton] = useState('')
-  const [sendStatus, setSendStatus] = useState('Successfully sent')
+  const [sendStatus, setSendStatus] = useState('')
   const refEmail = useRef() as MutableRefObject<HTMLInputElement>
   const refMessage = useRef() as MutableRefObject<HTMLTextAreaElement>
   const cyrillicStyleName = formState.name.match(cyrillicRegex) ? s.fontSizeCyrillic : ''
@@ -57,14 +57,10 @@ export const Contact = () => {
       })
 
       response.text().then(text => console.log(text))
-      if (sendStatus !== 'Successfully sent') {
-        setSendStatus('Successfully sent')
-      }
-
-      document.body.style.overflow = 'hidden'
-      setIsOpenModal(true)
+      setSendStatus('Successfully sent')
 
       setTimeout(() => {
+        setSendStatus('')
         setIsOpenModal(false)
         document.body.style.overflow = 'unset'
         formDispatch(onChangeNameAC(''))
@@ -72,18 +68,13 @@ export const Contact = () => {
         formDispatch(onChangeMessageAC(''))
       }, 2000)
     } catch {
-      if (sendStatus !== 'Github error demo') {
-        setSendStatus('Github error demo')
-      }
-
-      document.body.style.overflow = 'hidden'
-      setIsOpenModal(true)
+      setSendStatus('Some error occured')
 
       setTimeout(() => {
+        setSendStatus('')
         setIsOpenModal(false)
         document.body.style.overflow = 'unset'
       }, 2000)
-      console.log('Some error occured')
     }
   }
 
@@ -120,6 +111,8 @@ export const Contact = () => {
     ) {
       setErrorStyleButton(s.errorButton)
     } else {
+      document.body.style.overflow = 'hidden'
+      setIsOpenModal(true)
       fetchContactData()
     }
   }
@@ -154,6 +147,8 @@ export const Contact = () => {
       ) {
         target.blur()
         fetchContactData()
+        document.body.style.overflow = 'hidden'
+        setIsOpenModal(true)
       }
     }
   }

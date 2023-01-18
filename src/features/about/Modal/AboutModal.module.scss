@@ -20,6 +20,49 @@
   background: rgb(0 0 0 / 90%);
 }
 
+.hireModalSpiner {
+  &::after {
+    content: '';
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 500px;
+    height: 350px;
+
+    background: rgb(0 0 0 / 60%);
+    border-radius: 10px;
+  }
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform-origin: left top;
+    transform: translate(-50%, -50%);
+
+    width: 45px;
+    height: 45px;
+
+    border: 2px solid #ccc;
+    border-top-color: transparent;
+    border-radius: 50%;
+
+    animation: spinner 0.6s linear infinite;
+  }
+}
+@keyframes spinner {
+  100% {
+    rotate: 360deg;
+  }
+}
+
 .hire__form,
 .hire__form_close {
   @include adaptiveValue('row-gap', 15, 10, 530, 320, 1);
@@ -250,6 +293,14 @@
     font-weight: 600;
 
     opacity: 0;
+  }
+
+  // Preload svgs
+  &::after {
+    content: '';
+    opacity: 0;
+    background: url('../../../assets/img/Icons/green_checkmark_line.svg'),
+      url('../../../assets/img/Icons/red_checkmark_line.svg');
   }
 }
 

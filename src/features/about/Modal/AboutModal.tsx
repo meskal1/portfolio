@@ -41,6 +41,7 @@ export const AboutModal = () => {
   const [formState, formDispatch] = useReducer(formAboutReducer, formModalInitState)
   const [sendStatus, setSendStatus] = useState(false)
   const [statusTextStyle, setStatusTextStyle] = useState('')
+  const [modalStyle, setModalStyle] = useState('')
   const errorStyleCompany = errorState.company ? s.errorBorder : ''
   const errorStyleContact = errorState.contact ? s.errorBorder : ''
   const errorStyleButton = errorState.button ? s.errorButton : ''
@@ -54,7 +55,7 @@ export const AboutModal = () => {
   const textMessage =
     formState.contact || formState.company
       ? ({
-          '--message': sendStatus ? `'New partnership started'` : `'Github error demo'`,
+          '--message': sendStatus ? `'New partnership started'` : `'Some error occured'`,
         } as CSSProperties)
       : {}
   const postData = {
@@ -66,7 +67,8 @@ export const AboutModal = () => {
 
   const fetchAboutData = async () => {
     try {
-      await fetch(process.env.REACT_APP_ABOUT_URL as RequestInfo | URL, {
+      setModalStyle(s.hireModalSpiner)
+      const response = await fetch(process.env.REACT_APP_ABOUT_URL as RequestInfo | URL, {
         method: 'POST',
         body: JSON.stringify(postData),
         headers: {
@@ -74,13 +76,17 @@ export const AboutModal = () => {
           'Content-type': 'application/json; charset=UTF-8',
         },
       })
+
+      response.text().then(text => console.log(text))
       setStatusTextStyle(s.hire__text_success)
+      setModalStyle('')
 
       if (sendStatus !== true) {
         setSendStatus(true)
       }
     } catch {
       setStatusTextStyle(s.hire__text_error)
+      setModalStyle('')
 
       if (sendStatus !== false) {
         setSendStatus(false)
@@ -89,7 +95,6 @@ export const AboutModal = () => {
       setTimeout(() => {
         setStatusTextStyle('')
       }, 3000)
-      console.log('Some error occured')
     }
   }
 
@@ -194,7 +199,7 @@ export const AboutModal = () => {
   return (
     <div className={s.hireModal_container}>
       <FocusLock>
-        <div className={s.hireModal} onMouseDown={handleMouseDownOutOffModal}>
+        <div className={`${s.hireModal} ${modalStyle}`} onMouseDown={handleMouseDownOutOffModal}>
           <form
             className={`${formStyle} ${proccedErrorStyle}`}
             id="hireMe"

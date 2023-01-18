@@ -2,6 +2,8 @@
 
 .modalContainer {
   position: fixed;
+  z-index: 11;
+  // -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
   top: 0;
 
   display: flex;
@@ -15,60 +17,70 @@
   font-weight: 600;
 
   background: rgb(0 0 0 / 90%);
+}
 
-  animation: animateModalBG ease 2s;
+.modalText {
+  position: relative;
 
-  .modalText {
-    position: relative;
+  display: flex;
+  align-items: flex-end;
 
-    display: flex;
-    align-items: flex-end;
+  height: 100px;
 
-    height: 100px;
+  animation: animateModalText ease 2s;
 
-    animation: animateModalText ease 2s;
+  &::before {
+    content: '';
 
-    &::before {
-      content: '';
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%, 0);
 
-      position: absolute;
-      top: 0px;
-      left: 50%;
-      transform: translate(-50%, 0);
-
-      width: 50px;
-      height: 50px;
-    }
-  }
-
-  .textSuccess {
-    color: #5fb531;
-
-    &::before {
-      background: url('../../../assets/img/Icons/green_checkmark_line.svg') 0 0 / contain no-repeat;
-    }
-  }
-
-  .textError {
-    color: #e70004;
-
-    &::before {
-      background: url('../../../assets/img/Icons/red_checkmark_line.svg') 0 0 / contain no-repeat;
-    }
+    width: 50px;
+    height: 50px;
   }
 }
-// -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
-@keyframes animateModalBG {
-  0% {
-    z-index: 11;
-  }
 
-  99% {
-    z-index: 11;
-  }
+.textSuccess {
+  color: #5fb531;
 
+  &::before {
+    background: url('../../../assets/img/Icons/green_checkmark_line.svg') 0 0 / contain no-repeat;
+  }
+}
+
+.textError {
+  color: #e70004;
+
+  &::before {
+    background: url('../../../assets/img/Icons/red_checkmark_line.svg') 0 0 / contain no-repeat;
+  }
+}
+
+.modalSpiner {
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: left top;
+    transform: translate(-50%, -50%);
+
+    width: 45px;
+    height: 45px;
+
+    border: 2px solid #ccc;
+    border-top-color: #030304;
+    border-radius: 50%;
+
+    animation: spinner 0.6s linear infinite;
+  }
+}
+@keyframes spinner {
   100% {
-    z-index: -1;
+    rotate: 360deg;
   }
 }
 @keyframes animateModalText {

@@ -14,11 +14,13 @@ export const ContactModal: FC<ContactModalType> = ({ isOpen, children }) => {
     return null
   }
 
-  const textColor = children === 'Successfully sent' ? s.textSuccess : s.textError
+  const modalSucces = children === 'Successfully sent' ? s.textSuccess : null
+  const modalError = children === 'Some error occured' ? s.textError : null
+  const modalStyle = children === '' ? s.modalSpiner : `${modalSucces || modalError} ${s.modalText}`
 
   return createPortal(
     <div className={s.modalContainer}>
-      <span className={`${s.modalText} ${textColor}`}>{children}</span>
+      <span className={modalStyle}>{children}</span>
     </div>,
     document.getElementById('portal')!
   )
