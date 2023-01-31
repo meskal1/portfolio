@@ -154,16 +154,10 @@ export const AboutModal = () => {
     }
   }
 
-  const handleFocusCloseElement = () => {
-    document.addEventListener(
-      'keydown',
-      e => {
-        if (e.key === 'Enter') {
-          handleCloseModal()
-        }
-      },
-      { once: true }
-    )
+  const handleKeyDownClose = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter') {
+      handleCloseModal()
+    }
   }
 
   const handleAnimationEndCloseModal = (e: AnimationEvent<HTMLFormElement>) => {
@@ -224,7 +218,7 @@ export const AboutModal = () => {
                 tabIndex={5}
                 className={s.close_modal}
                 onClick={handleCloseModal}
-                onFocus={handleFocusCloseElement}
+                onKeyDown={handleKeyDownClose}
               ></div>
             </div>
             <div className={s.hire__block_input}>
