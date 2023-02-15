@@ -63,3 +63,18 @@ code {
   flex-direction: column;
   min-height: 100%;
 }
+
+body::after {
+  content: url('./assets/img/Icons/codears_logo.svg') url('./assets/img/Icons/github_logo.svg')
+    url('./assets/img/Icons/heart_logo_white.svg') url('./assets/img/Icons/linkedin_logo.svg')
+    url('./assets/img/Icons/logo.svg') url('./assets/img/Icons/react_logo.svg')
+    url('./assets/img/Icons/telegram_logo.svg');
+
+  position: absolute;
+  z-index: -1;
+
+  overflow: hidden;
+
+  width: 0;
+  height: 0;
+}
