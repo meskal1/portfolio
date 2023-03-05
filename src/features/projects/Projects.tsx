@@ -7,14 +7,22 @@ import s from './Projects.module.scss'
 const items = [
   {
     id: 1,
-    img: Image.Portfolio,
-    name: 'Portfolio',
+    img: Image.Cards,
+    name: 'Cards',
     urlDemoName: 'Live Demo',
-    urlDemo: DemoProject.Portfolio,
-    urlGithub: SourceProject.Portfolio,
+    urlDemo: DemoProject.Cards,
+    urlGithub: SourceProject.Cards,
   },
   {
     id: 2,
+    img: Image.SimpleChat,
+    name: 'Simple chat',
+    urlDemoName: 'Live Demo',
+    urlDemo: DemoProject.SimpleChat,
+    urlGithub: SourceProject.SimpleChat,
+  },
+  {
+    id: 3,
     img: Image.LottieAnimation,
     name: 'Lottie animation',
     urlDemoName: 'Live Demo',
@@ -22,20 +30,12 @@ const items = [
     urlGithub: SourceProject.LottieAnimation,
   },
   {
-    id: 3,
-    img: Image.SocialNetwork,
-    name: 'Social network',
-    urlDemoName: 'In progress',
-    urlDemo: SourceProject.SocialNetwork,
-    urlGithub: SourceProject.SocialNetwork,
-  },
-  {
     id: 4,
-    img: Image.Todolist,
-    name: 'Todolist',
-    urlDemoName: 'Live Demo in progress',
-    urlDemo: DemoProject.Todolist,
-    urlGithub: SourceProject.Todolist,
+    img: Image.LandingPractice,
+    name: 'Landing practice',
+    urlDemoName: 'Live Demo',
+    urlDemo: DemoProject.LandingPractice,
+    urlGithub: SourceProject.LandingPractice,
   },
   {
     id: 5,
@@ -79,11 +79,11 @@ const items = [
   },
   {
     id: 10,
-    img: Image.LandingPractice,
-    name: 'Landing practice',
+    img: Image.Todolist,
+    name: 'Todolist',
     urlDemoName: 'Live Demo',
-    urlDemo: DemoProject.LandingPractice,
-    urlGithub: SourceProject.LandingPractice,
+    urlDemo: DemoProject.Todolist,
+    urlGithub: SourceProject.Todolist,
   },
 ]
 

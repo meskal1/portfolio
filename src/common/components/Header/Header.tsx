@@ -52,7 +52,7 @@ export const Header: FC<HeaderType> = ({ onClickBurgerMenu, mediaQueryWidth }) =
         <div className={s.header__content}>
           {isImgLoaded && (
             <>
-              <a className={s.header__logo} href={DemoProject.Portfolio}>
+              <a className={s.header__logo} href={'https://meskal1.github.io/portfolio/'}>
                 <img className={s.header__logo_img} src={headerLogo.src} alt="logo" />
               </a>
               {mediaQueryWidth ? (

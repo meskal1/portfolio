@@ -6,9 +6,9 @@ export enum Social {
 }
 
 export enum DemoProject {
-  Portfolio = 'https://meskal1.github.io/portfolio/',
+  Cards = 'https://meskal1.github.io/cards/',
   LottieAnimation = 'https://lottiefiles.com/133779-get-skills-from-the-box',
-  SocialNetwork = 'https://meskal1.github.io/social_network/',
+  SimpleChat = 'https://meskal1.github.io/simple-chat/',
   Todolist = 'https://meskal1.github.io/my_todo_list/',
   Counter = 'https://meskal1.github.io/Counter',
   DrumKit = 'https://meskal1.github.io/drum_kit/',
@@ -19,9 +19,9 @@ export enum DemoProject {
 }
 
 export enum SourceProject {
-  Portfolio = 'https://github.com/meskal1/portfolio',
+  Cards = 'https://github.com/meskal1/cards',
   LottieAnimation = 'https://lottiefiles.com/qleyzl2iiaosh9v5',
-  SocialNetwork = 'https://github.com/meskal1/social_network',
+  SimpleChat = 'https://github.com/meskal1/simple-chat',
   Todolist = 'https://github.com/meskal1/my_todo_list',
   Counter = 'https://github.com/meskal1/Counter',
   DrumKit = 'https://github.com/meskal1/drum_kit',
@@ -32,10 +32,10 @@ export enum SourceProject {
 }
 
 export enum Image {
-  Portfolio = 'https://github.com/meskal1/portfolio/raw/main/PreviewPortfolio.jpg',
+  Cards = 'https://github.com/meskal1/cards/blob/main/src/assets/img/readmePictures/portfolioPreview%20(1).jpg?raw=true',
   LottieAnimation = 'https://github.com/meskal1/portfolio/raw/main/LottiePreview.jpg',
-  SocialNetwork = 'https://github.com/meskal1/social_network/raw/main/Preview.jpg',
-  Todolist = 'https://github.com/meskal1/my_todo_list/raw/main/Preview.jpg',
+  SimpleChat = 'https://github.com/meskal1/simple-chat/blob/main/src/assets/preview/portfolioPreview1.jpg?raw=true',
+  Todolist = 'https://github.com/meskal1/my_todo_list/blob/main/src/assets/img/portfolioPreview.jpg?raw=true',
   Counter = 'https://github.com/meskal1/Counter/raw/main/Preview.jpg',
   DrumKit = 'https://github.com/meskal1/drum_kit/raw/main/PreviewDrumKit.jpg',
   GuessTheNumber = 'https://github.com/meskal1/guess_my_number/raw/main/Preview.jpg',
